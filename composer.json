@@ -1,0 +1,21 @@
+{
+    "name": "rmhdev/rainbow",
+    "description": "Immutable colors",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rober Martín H",
+            "email": "rmh.dev@gmail.com"
+        }
+    ],
+    "require": {
+      "php": ">=5.3.3"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "~4.5"
+    },
+    "autoload": {
+      "psr-4": { "Rainbow\\": "src/" }
+    }
+}
