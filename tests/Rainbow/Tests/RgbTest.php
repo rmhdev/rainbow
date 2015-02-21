@@ -54,4 +54,46 @@ class RgbTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @dataProvider getNonFormattedValueDataProvider
+     */
+    public function testNonFormattedRedValueShouldReturnNumericValue($value, $expectedValue)
+    {
+        $color = new Rgb($value);
+
+        $this->assertEquals($expectedValue, $color->getRed());
+        $this->assertInternalType("int", $color->getRed());
+    }
+
+    public function getNonFormattedValueDataProvider()
+    {
+        return array(
+            array("12", 12),
+            array(" 12 ", 12),
+            array("\n12\t", 12),
+        );
+    }
+
+    /**
+     * @dataProvider getNonFormattedValueDataProvider
+     */
+    public function testNonFormattedGreenValueShouldReturnNumericValue($value, $expectedValue)
+    {
+        $color = new Rgb(0, $value);
+
+        $this->assertEquals($expectedValue, $color->getGreen());
+        $this->assertInternalType("int", $color->getGreen());
+    }
+
+    /**
+     * @dataProvider getNonFormattedValueDataProvider
+     */
+    public function testNonFormattedBlueValueShouldReturnNumericValue($value, $expectedValue)
+    {
+        $color = new Rgb(0, 0, $value);
+
+        $this->assertEquals($expectedValue, $color->getBlue());
+        $this->assertInternalType("int", $color->getBlue());
+    }
+
 }

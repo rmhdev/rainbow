@@ -28,7 +28,7 @@ class Rgb
         if ($this->isOutOfBoundsValue($value)) {
             throw new \OutOfBoundsException("Incorrect red value");
         }
-        $this->red = $value;
+        $this->red = (int) $value;
     }
 
     private function isOutOfBoundsValue($value)
@@ -42,7 +42,7 @@ class Rgb
             throw new \OutOfBoundsException("Incorrect green value");
         }
 
-        return $this->green = $value;
+        return $this->green = (int) $value;
     }
 
     private function setBlue($value)
@@ -51,7 +51,7 @@ class Rgb
             throw new \OutOfBoundsException("Incorrect blue value");
         }
 
-        return $this->blue = $value;
+        return $this->blue = (int) $value;
     }
 
     public function getRed()
