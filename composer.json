@@ -16,6 +16,8 @@
       "phpunit/phpunit": "~4.5"
     },
     "autoload": {
-      "psr-4": { "Rainbow\\": "src/" }
+      "psr-0": {
+        "Rainbow": "src/"
+      }
     }
 }
