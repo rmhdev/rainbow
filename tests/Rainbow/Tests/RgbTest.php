@@ -15,12 +15,21 @@ use Rainbow\Rgb;
 class RgbTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testEmptyColorShouldReturnBlack()
+    public function testEmptyColorShouldReturnZeros()
     {
         $color = new Rgb();
 
         $this->assertEquals(0, $color->getRed());
         $this->assertEquals(0, $color->getGreen());
         $this->assertEquals(0, $color->getBlue());
+    }
+
+    public function testColorShouldReturnDefinedValues()
+    {
+        $color = new Rgb(50, 100, 150);
+
+        $this->assertEquals(50, $color->getRed());
+        $this->assertEquals(100, $color->getGreen());
+        $this->assertEquals(150, $color->getBlue());
     }
 }

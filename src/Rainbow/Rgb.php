@@ -12,18 +12,29 @@ namespace Rainbow;
 
 class Rgb
 {
+    private $red;
+    private $green;
+    private $blue;
+
+    public function __construct($red = 0, $green = 0, $blue = 0)
+    {
+        $this->red = $red;
+        $this->green = $green;
+        $this->blue = $blue;
+    }
+
     public function getRed()
     {
-        return 0;
+        return $this->red;
     }
 
     public function getGreen()
     {
-        return 0;
+        return $this->green;
     }
 
     public function getBlue()
     {
-        return 0;
+        return $this->blue;
     }
 }
