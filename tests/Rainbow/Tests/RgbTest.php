@@ -20,5 +20,7 @@ class RgbTest extends \PHPUnit_Framework_TestCase
         $color = new Rgb();
 
         $this->assertEquals(0, $color->getRed());
+        $this->assertEquals(0, $color->getGreen());
+        $this->assertEquals(0, $color->getBlue());
     }
 }

@@ -16,4 +16,14 @@ class Rgb
     {
         return 0;
     }
+
+    public function getGreen()
+    {
+        return 0;
+    }
+
+    public function getBlue()
+    {
+        return 0;
+    }
 }
