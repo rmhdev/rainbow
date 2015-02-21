@@ -47,7 +47,7 @@ class RgbTest extends \PHPUnit_Framework_TestCase
         return array(
             array(-1, 30, 30),
             array(30, -1, 30),
-            //array(30, 30, -1),
+            array(30, 30, -1),
         );
     }
 
