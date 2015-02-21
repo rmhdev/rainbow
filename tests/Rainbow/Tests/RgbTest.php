@@ -32,4 +32,23 @@ class RgbTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(100, $color->getGreen());
         $this->assertEquals(150, $color->getBlue());
     }
+
+    /**
+     * @dataProvider getOutOfBoundsDataProvider
+     * @expectedException \OutOfBoundsException
+     */
+    public function testOutOfBoundsValueShouldThrowException($red, $green, $blue)
+    {
+        new Rgb($red, $green, $blue);
+    }
+
+    public function getOutOfBoundsDataProvider()
+    {
+        return array(
+            array(-1, 30, 30),
+            array(30, -1, 30),
+            //array(30, 30, -1),
+        );
+    }
+
 }

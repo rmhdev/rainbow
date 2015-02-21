@@ -18,9 +18,35 @@ class Rgb
 
     public function __construct($red = 0, $green = 0, $blue = 0)
     {
-        $this->red = $red;
-        $this->green = $green;
-        $this->blue = $blue;
+        $this->setRed($red);
+        $this->setGreen($green);
+        $this->setBlue($blue);
+    }
+
+    private function setRed($value)
+    {
+        if ($value < 0) {
+            throw new \OutOfBoundsException("Incorrect red value");
+        }
+        $this->red = $value;
+    }
+
+    private function setGreen($value)
+    {
+        if ($value < 0) {
+            throw new \OutOfBoundsException("Incorrect green value");
+        }
+
+        return $this->green = $value;
+    }
+
+    private function setBlue($value)
+    {
+        if ($value < 0) {
+            throw new \OutOfBoundsException("Incorrect blue value");
+        }
+
+        return $this->blue = $value;
     }
 
     public function getRed()
