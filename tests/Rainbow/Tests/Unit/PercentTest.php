@@ -31,6 +31,8 @@ class PercentTest extends \PHPUnit_Framework_TestCase
             array(20, 20),
             array("20", 20),
             array("20%", 20),
+            array("20.1", 20),
+            array("20.9", 20),
         );
     }
 
