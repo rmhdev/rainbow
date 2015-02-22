@@ -37,4 +37,9 @@ final class Percent
     {
         return $this->value;
     }
+
+    public function __toString()
+    {
+        return sprintf("%s%%", $this->getValue());
+    }
 }

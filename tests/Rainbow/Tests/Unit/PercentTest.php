@@ -71,4 +71,23 @@ class PercentTest extends \PHPUnit_Framework_TestCase
             array(null),
         );
     }
+
+    /**
+     * @dataProvider getToStringDataProvider
+     */
+    public function testToStringShouldReturnStringValue($value, $expectedValue)
+    {
+        $unit = new Percent($value);
+
+        $this->assertEquals($expectedValue, (string) $unit);
+    }
+
+    public function getToStringDataProvider()
+    {
+        return array(
+            array(0, "0%"),
+            array(12, "12%"),
+            array(" 100 ", "100%"),
+        );
+    }
 }
