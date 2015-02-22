@@ -56,5 +56,23 @@ class DimensionTest extends \PHPUnit_Framework_TestCase
             array(256),
         );
     }
+
+    /**
+     * @dataProvider unexpectedValuesDataProvider
+     * @expectedException \UnexpectedValueException
+     */
+    public function testUnexpectedValueShouldThrowException($value)
+    {
+        new Dimension($value);
+    }
+
+    public function unexpectedValuesDataProvider()
+    {
+        return array(
+            array(""),
+            array("a"),
+            array("10,0"),
+        );
+    }
 }
 
