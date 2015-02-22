@@ -20,24 +20,31 @@ class Rgb
 
     public function __construct($red = 0, $green = 0, $blue = 0)
     {
-        $this->setRed($red);
-        $this->setGreen($green);
-        $this->setBlue($blue);
+        $this
+            ->setRed($red)
+            ->setGreen($green)
+            ->setBlue($blue);
     }
 
     private function setRed($value)
     {
         $this->red = new Dimension($value);
+
+        return $this;
     }
 
     private function setGreen($value)
     {
-        return $this->green = new Dimension($value);
+        $this->green = new Dimension($value);
+
+        return $this;
     }
 
     private function setBlue($value)
     {
-        return $this->blue = new Dimension($value);
+        $this->blue = new Dimension($value);
+
+        return $this;
     }
 
     /**
