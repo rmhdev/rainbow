@@ -33,4 +33,21 @@ class PercentTest extends \PHPUnit_Framework_TestCase
             array("20%", 20),
         );
     }
+
+    /**
+     * @dataProvider getOutOfBoundsDataProvider
+     * @expectedException \OutOfBoundsException
+     */
+    public function testOutOfBoundsValueShouldThrowException($value)
+    {
+        new Percent($value);
+    }
+
+    public function getOutOfBoundsDataProvider()
+    {
+        return array(
+            array(-1),
+            array(101),
+        );
+    }
 }
