@@ -72,6 +72,26 @@ class DimensionTest extends \PHPUnit_Framework_TestCase
             array(""),
             array("a"),
             array("10,0"),
+            array(null),
+        );
+    }
+
+    /**
+     * @dataProvider getToStringDataProvider
+     */
+    public function testToStringShouldReturnStringValue($value, $expectedValue)
+    {
+        $unit = new Dimension($value);
+
+        $this->assertEquals($expectedValue, (string) $unit);
+    }
+
+    public function getToStringDataProvider()
+    {
+        return array(
+            array(0, "0"),
+            array(12, "12"),
+            array(" 12 ", "12"),
         );
     }
 }
