@@ -2,7 +2,7 @@
 
 namespace Rainbow\Unit;
 
-final class Numerical
+final class Dimension
 {
     const MAX_INT = 255;
 
