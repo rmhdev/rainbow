@@ -22,7 +22,7 @@ final class Dimension
         return ($value < 0) || ($value > self::MAX_INT);
     }
 
-    public function getInt()
+    public function getValue()
     {
         return $this->value;
     }

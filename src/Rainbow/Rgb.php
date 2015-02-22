@@ -10,6 +10,8 @@
 
 namespace Rainbow;
 
+use Rainbow\Unit\Dimension;
+
 class Rgb
 {
     private $red;
@@ -25,45 +27,38 @@ class Rgb
 
     private function setRed($value)
     {
-        if ($this->isOutOfBoundsValue($value)) {
-            throw new \OutOfBoundsException("Incorrect red value");
-        }
-        $this->red = (int) $value;
-    }
-
-    private function isOutOfBoundsValue($value)
-    {
-        return ($value < 0) || ($value > 255);
+        $this->red = new Dimension($value);
     }
 
     private function setGreen($value)
     {
-        if ($this->isOutOfBoundsValue($value)) {
-            throw new \OutOfBoundsException("Incorrect green value");
-        }
-
-        return $this->green = (int) $value;
+        return $this->green = new Dimension($value);
     }
 
     private function setBlue($value)
     {
-        if ($this->isOutOfBoundsValue($value)) {
-            throw new \OutOfBoundsException("Incorrect blue value");
-        }
-
-        return $this->blue = (int) $value;
+        return $this->blue = new Dimension($value);
     }
 
+    /**
+     * @return Dimension
+     */
     public function getRed()
     {
         return $this->red;
     }
 
+    /**
+     * @return Dimension
+     */
     public function getGreen()
     {
         return $this->green;
     }
 
+    /**
+     * @return Dimension
+     */
     public function getBlue()
     {
         return $this->blue;

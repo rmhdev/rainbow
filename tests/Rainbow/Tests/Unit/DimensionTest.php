@@ -10,14 +10,14 @@ class DimensionTest extends \PHPUnit_Framework_TestCase
     {
         $unit = new Dimension();
 
-        $this->assertEquals(0, $unit->getInt());
+        $this->assertEquals(0, $unit->getValue());
     }
 
     public function testCorrectValueShouldReturnValue()
     {
         $unit = new Dimension(30);
 
-        $this->assertEquals(30, $unit->getInt());
+        $this->assertEquals(30, $unit->getValue());
     }
 
     /**
@@ -27,8 +27,8 @@ class DimensionTest extends \PHPUnit_Framework_TestCase
     {
         $unit = new Dimension($value);
 
-        $this->assertEquals($expectedValue, $unit->getInt());
-        $this->assertInternalType("int", $unit->getInt());
+        $this->assertEquals($expectedValue, $unit->getValue());
+        $this->assertInternalType("int", $unit->getValue());
     }
 
     public function getCorrectStringValueDataProvider()
