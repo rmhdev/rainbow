@@ -52,4 +52,23 @@ class PercentTest extends \PHPUnit_Framework_TestCase
             array(101),
         );
     }
+
+    /**
+     * @dataProvider unexpectedValuesDataProvider
+     * @expectedException \UnexpectedValueException
+     */
+    public function testUnexpectedValueShouldThrowException($value)
+    {
+        new Percent($value);
+    }
+
+    public function unexpectedValuesDataProvider()
+    {
+        return array(
+            array(""),
+            array("a"),
+            array("10,0"),
+            array(null),
+        );
+    }
 }

@@ -8,11 +8,24 @@ final class Percent
 
     public function __construct($value = 0)
     {
-        $intValue = (int) $value;
-        if ($this->isOutOfBounds($intValue)) {
+        $number = $this->toNumber($value);
+        if ($this->isOutOfBounds($number)) {
             throw new \OutOfBoundsException(sprintf("Incorrect percent value %s", $value));
         }
-        $this->value = $intValue;
+        $this->value = $number;
+    }
+
+    private function toNumber($value)
+    {
+        $processed = trim($value);
+        if ("%" === substr($processed, -1, 1)) {
+            $processed = substr($processed, 0, strlen($processed) - 1);
+        }
+        if (!is_numeric($processed)) {
+            throw new \UnexpectedValueException(sprintf("Incorrect value %s", $value));
+        }
+
+        return (int) $processed;
     }
 
     private function isOutOfBounds($value)
