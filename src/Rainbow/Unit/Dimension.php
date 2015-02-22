@@ -2,7 +2,7 @@
 
 namespace Rainbow\Unit;
 
-final class Dimension
+final class Dimension implements UnitInterface
 {
     const MAX_INT = 255;
 
@@ -26,11 +26,17 @@ final class Dimension
         return ($value < 0) || ($value > self::MAX_INT);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getValue()
     {
         return $this->value;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return (string) $this->getValue();

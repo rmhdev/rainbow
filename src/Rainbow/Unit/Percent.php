@@ -2,7 +2,7 @@
 
 namespace Rainbow\Unit;
 
-final class Percent
+final class Percent implements UnitInterface
 {
     private $value;
 
@@ -33,11 +33,17 @@ final class Percent
         return ($value < 0) || ($value > 100);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getValue()
     {
         return $this->value;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return sprintf("%s%%", $this->getValue());
