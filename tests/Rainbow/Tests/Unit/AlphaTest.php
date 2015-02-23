@@ -36,4 +36,21 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array("\n0.6\t", 0.6),
         );
     }
+
+    /**
+     * @dataProvider getOutOfBoundsDataProvider
+     * @expectedException \OutOfBoundsException
+     */
+    public function testOutOfBoundsValueShouldThrowException($value)
+    {
+        new Alpha($value);
+    }
+
+    public function getOutOfBoundsDataProvider()
+    {
+        return array(
+            array(-0.1),
+            array(1.1),
+        );
+    }
 }
