@@ -94,5 +94,25 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
             array(" 12 ", "12"),
         );
     }
+
+    /**
+     * @dataProvider getPercentValueDataProvider
+     */
+    public function testPercentValuesShouldBeTransformed($value, $expectedValue)
+    {
+        $unit = new Component($value);
+
+        $this->assertEquals($expectedValue, $unit->getValue());
+    }
+
+    public function getPercentValueDataProvider()
+    {
+        return array(
+            array("100%", 255),
+            array("0%", 0),
+            array("50%", 127),
+        );
+    }
 }
+
 

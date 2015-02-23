@@ -13,15 +13,25 @@ final class Component implements UnitInterface
      */
     public function __construct($value = 0)
     {
-        $value = trim($value);
-        if (!is_numeric($value)) {
-            throw new \UnexpectedValueException();
-        }
-        $value = (int) $value;
-        if ($this->isOutOfBoundsValue($value)) {
+        $number = $this->formatNumber($value);
+        if ($this->isOutOfBoundsValue($number)) {
             throw new \OutOfBoundsException(sprintf("Incorrect value %s", $value));
         }
-        $this->value = $value;
+        $this->value = $number;
+    }
+
+    private function formatNumber($value)
+    {
+        $value = trim($value);
+        if ("%" === substr($value, -1, 1)) {
+            $percent = intval($value, 10);
+            $value = ($percent * self::MAX_INT) / 100;
+        }
+        if (!is_numeric($value)) {
+            throw new \UnexpectedValueException(sprintf("Incorrect component %s", $value));
+        }
+
+        return (int) $value;
     }
 
     private function isOutOfBoundsValue($value)
