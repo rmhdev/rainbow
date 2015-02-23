@@ -11,6 +11,7 @@
 namespace Rainbow\Tests;
 
 use Rainbow\Rgb;
+use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Dimension;
 
 class RgbTest extends \PHPUnit_Framework_TestCase
@@ -54,4 +55,11 @@ class RgbTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testAlphaShouldReturnTotalOpacity()
+    {
+        $color = new Rgb();
+        $alpha = new Alpha(1);
+
+        $this->assertEquals($alpha, $color->getAlpha());
+    }
 }

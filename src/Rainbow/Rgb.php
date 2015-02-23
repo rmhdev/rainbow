@@ -10,6 +10,7 @@
 
 namespace Rainbow;
 
+use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Dimension;
 
 class Rgb
@@ -78,5 +79,10 @@ class Rgb
             $this->getGreen()->getValue(),
             $this->getBlue()->getValue()
         );
+    }
+
+    public function getAlpha()
+    {
+        return new Alpha(1);
     }
 }
