@@ -10,7 +10,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     {
         $unit = new Alpha();
 
-        $this->assertEquals(0, $unit->getValue());
+        $this->assertEquals(1, $unit->getValue());
         $this->assertInternalType("float", $unit->getValue());
     }
 
@@ -28,7 +28,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     public function getCorrectValueDataProvider()
     {
         return array(
-            array(1, 1),
+            array(0, 0),
             array("1", 1),
             array("1.0", 1),
             array("0.3", 0.3),

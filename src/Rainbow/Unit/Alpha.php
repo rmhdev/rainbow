@@ -6,7 +6,7 @@ final class Alpha
 {
     private $value;
 
-    public function __construct($value = 0)
+    public function __construct($value = 1)
     {
         $this->value = (float) $value;
     }
