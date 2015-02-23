@@ -53,4 +53,23 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array(1.1),
         );
     }
+
+    /**
+     * @dataProvider unexpectedValuesDataProvider
+     * @expectedException \UnexpectedValueException
+     */
+    public function testUnexpectedValueShouldThrowException($value)
+    {
+        new Alpha($value);
+    }
+
+    public function unexpectedValuesDataProvider()
+    {
+        return array(
+            array(""),
+            array("a"),
+            array("0,1"),
+            array(null),
+        );
+    }
 }

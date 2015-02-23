@@ -13,11 +13,21 @@ final class Alpha
 
     private function setValue($value)
     {
+        if ($this->isNotANumber($value)) {
+            throw new \UnexpectedValueException(sprintf("Incorrect alpha value %s", $value));
+        }
         $number = (float) $value;
         if ($this->isOutOfBounds($number)) {
-            throw new \OutOfBoundsException(sprintf("Incorrect value", $value));
+            throw new \OutOfBoundsException(sprintf("Incorrect alpha value %s", $value));
         }
         $this->value = $number;
+    }
+
+    private function isNotANumber($value)
+    {
+        $value = trim($value);
+
+        return !is_numeric($value);
     }
 
     private function isOutOfBounds($value)
