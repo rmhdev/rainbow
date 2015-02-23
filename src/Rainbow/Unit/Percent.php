@@ -6,6 +6,9 @@ final class Percent implements UnitInterface
 {
     private $value;
 
+    /**
+     * @param int|string $value
+     */
     public function __construct($value = 0)
     {
         $number = $this->toNumber($value);

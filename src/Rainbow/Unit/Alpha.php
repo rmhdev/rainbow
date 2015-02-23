@@ -6,6 +6,9 @@ final class Alpha implements UnitInterface
 {
     private $value;
 
+    /**
+     * @param int|number $value
+     */
     public function __construct($value = 1)
     {
         $this->setValue($value);
@@ -37,11 +40,17 @@ final class Alpha implements UnitInterface
         return ($value < 0) || ($value > 1);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getValue()
     {
         return $this->value;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return (string) $this->getValue();

@@ -8,6 +8,9 @@ final class Component implements UnitInterface
 
     private $value;
 
+    /**
+     * @param int|string $value
+     */
     public function __construct($value = 0)
     {
         $value = trim($value);
