@@ -2,7 +2,7 @@
 
 namespace Rainbow\Unit;
 
-final class Alpha
+final class Alpha implements UnitInterface
 {
     private $value;
 
@@ -19,7 +19,7 @@ final class Alpha
         if ($this->isOutOfBounds($value)) {
             throw new \OutOfBoundsException(sprintf("Incorrect alpha value %s", $value));
         }
-        $this->value = $this->toNumber($value);
+        $this->value = $this->formatNumber($value);
     }
 
     private function isNotANumber($value)
@@ -27,7 +27,7 @@ final class Alpha
         return !is_numeric(trim($value));
     }
 
-    private function toNumber($value)
+    private function formatNumber($value)
     {
         return floor(floatval($value) * 10) / 10;
     }
