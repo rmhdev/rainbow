@@ -34,6 +34,9 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array("0.3", 0.3),
             array(" 0.5 ", 0.5),
             array("\n0.6\t", 0.6),
+            array(0.41, 0.4),
+            array(0.45, 0.4),
+            array(0.49, 0.4),
         );
     }
 

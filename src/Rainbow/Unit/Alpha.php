@@ -16,7 +16,7 @@ final class Alpha
         if ($this->isNotANumber($value)) {
             throw new \UnexpectedValueException(sprintf("Incorrect alpha value %s", $value));
         }
-        $number = (float) $value;
+        $number = $this->toNumber($value);
         if ($this->isOutOfBounds($number)) {
             throw new \OutOfBoundsException(sprintf("Incorrect alpha value %s", $value));
         }
@@ -28,6 +28,11 @@ final class Alpha
         $value = trim($value);
 
         return !is_numeric($value);
+    }
+
+    private function toNumber($value)
+    {
+        return floor(floatval($value) * 10) / 10;
     }
 
     private function isOutOfBounds($value)
