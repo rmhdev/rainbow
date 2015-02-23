@@ -70,4 +70,13 @@ class Rgb
     {
         return $this->blue;
     }
+
+    public function __toString()
+    {
+        return sprintf("rgb(%d, %d, %d)",
+            $this->getRed()->getValue(),
+            $this->getGreen()->getValue(),
+            $this->getBlue()->getValue()
+        );
+    }
 }

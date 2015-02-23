@@ -35,4 +35,23 @@ class RgbTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(new Dimension(150), $color->getBlue());
     }
 
+    /**
+     * @dataProvider getToStringDataProvider
+     */
+    public function testToStringShouldReturnValidString($red, $green, $blue, $expectedValue)
+    {
+        $color = new Rgb($red, $green, $blue);
+
+        $this->assertEquals($expectedValue, (string) $color);
+    }
+
+    public function getToStringDataProvider()
+    {
+        return array(
+            array(0, 0, 0, "rgb(0, 0, 0)"),
+            array(10, 20, 30, "rgb(10, 20, 30)"),
+            array(255, 255, 255, "rgb(255, 255, 255)"),
+        );
+    }
+
 }
