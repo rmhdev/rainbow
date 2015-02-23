@@ -11,5 +11,6 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
         $unit = new Alpha();
 
         $this->assertEquals(0, $unit->getValue());
+        $this->assertInternalType("float", $unit->getValue());
     }
 }

@@ -6,6 +6,6 @@ final class Alpha
 {
     public function getValue()
     {
-        return 0;
+        return (float) 0;
     }
 }
