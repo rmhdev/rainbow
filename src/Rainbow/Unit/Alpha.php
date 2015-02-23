@@ -16,18 +16,15 @@ final class Alpha
         if ($this->isNotANumber($value)) {
             throw new \UnexpectedValueException(sprintf("Incorrect alpha value %s", $value));
         }
-        $number = $this->toNumber($value);
-        if ($this->isOutOfBounds($number)) {
+        if ($this->isOutOfBounds($value)) {
             throw new \OutOfBoundsException(sprintf("Incorrect alpha value %s", $value));
         }
-        $this->value = $number;
+        $this->value = $this->toNumber($value);
     }
 
     private function isNotANumber($value)
     {
-        $value = trim($value);
-
-        return !is_numeric($value);
+        return !is_numeric(trim($value));
     }
 
     private function toNumber($value)
