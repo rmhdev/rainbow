@@ -11,7 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Unit\Alpha;
-use Rainbow\Unit\Dimension;
+use Rainbow\Unit\Component;
 
 class Rgb
 {
@@ -29,27 +29,27 @@ class Rgb
 
     private function setRed($value)
     {
-        $this->red = new Dimension($value);
+        $this->red = new Component($value);
 
         return $this;
     }
 
     private function setGreen($value)
     {
-        $this->green = new Dimension($value);
+        $this->green = new Component($value);
 
         return $this;
     }
 
     private function setBlue($value)
     {
-        $this->blue = new Dimension($value);
+        $this->blue = new Component($value);
 
         return $this;
     }
 
     /**
-     * @return Dimension
+     * @return Component
      */
     public function getRed()
     {
@@ -57,7 +57,7 @@ class Rgb
     }
 
     /**
-     * @return Dimension
+     * @return Component
      */
     public function getGreen()
     {
@@ -65,7 +65,7 @@ class Rgb
     }
 
     /**
-     * @return Dimension
+     * @return Component
      */
     public function getBlue()
     {

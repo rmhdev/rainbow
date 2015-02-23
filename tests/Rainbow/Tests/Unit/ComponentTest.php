@@ -2,20 +2,20 @@
 
 namespace Rainbow\Tests\Unit;
 
-use Rainbow\Unit\Dimension;
+use Rainbow\Unit\Component;
 
-class DimensionTest extends \PHPUnit_Framework_TestCase
+class ComponentTest extends \PHPUnit_Framework_TestCase
 {
     public function testEmptyShouldReturnZero()
     {
-        $unit = new Dimension();
+        $unit = new Component();
 
         $this->assertEquals(0, $unit->getValue());
     }
 
     public function testCorrectValueShouldReturnValue()
     {
-        $unit = new Dimension(30);
+        $unit = new Component(30);
 
         $this->assertEquals(30, $unit->getValue());
     }
@@ -25,7 +25,7 @@ class DimensionTest extends \PHPUnit_Framework_TestCase
      */
     public function testCorrectStringShouldReturnValue($value, $expectedValue)
     {
-        $unit = new Dimension($value);
+        $unit = new Component($value);
 
         $this->assertEquals($expectedValue, $unit->getValue());
         $this->assertInternalType("int", $unit->getValue());
@@ -46,7 +46,7 @@ class DimensionTest extends \PHPUnit_Framework_TestCase
      */
     public function testOutOfBoundsValueShouldThrowException($value)
     {
-        new Dimension($value);
+        new Component($value);
     }
 
     public function getOutOfBoundsDataProvider()
@@ -63,7 +63,7 @@ class DimensionTest extends \PHPUnit_Framework_TestCase
      */
     public function testUnexpectedValueShouldThrowException($value)
     {
-        new Dimension($value);
+        new Component($value);
     }
 
     public function unexpectedValuesDataProvider()
@@ -81,7 +81,7 @@ class DimensionTest extends \PHPUnit_Framework_TestCase
      */
     public function testToStringShouldReturnStringValue($value, $expectedValue)
     {
-        $unit = new Dimension($value);
+        $unit = new Component($value);
 
         $this->assertEquals($expectedValue, (string) $unit);
     }

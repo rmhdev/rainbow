@@ -2,7 +2,7 @@
 
 namespace Rainbow\Unit;
 
-final class Dimension implements UnitInterface
+final class Component implements UnitInterface
 {
     const MAX_INT = 255;
 

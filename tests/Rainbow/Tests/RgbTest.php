@@ -12,7 +12,7 @@ namespace Rainbow\Tests;
 
 use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
-use Rainbow\Unit\Dimension;
+use Rainbow\Unit\Component;
 
 class RgbTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class RgbTest extends \PHPUnit_Framework_TestCase
     {
         $color = new Rgb();
 
-        $empty = new Dimension();
+        $empty = new Component();
         $this->assertEquals($empty, $color->getRed());
         $this->assertEquals($empty, $color->getGreen());
         $this->assertEquals($empty, $color->getBlue());
@@ -31,9 +31,9 @@ class RgbTest extends \PHPUnit_Framework_TestCase
     {
         $color = new Rgb(50, 100, 150);
 
-        $this->assertEquals(new Dimension(50), $color->getRed());
-        $this->assertEquals(new Dimension(100), $color->getGreen());
-        $this->assertEquals(new Dimension(150), $color->getBlue());
+        $this->assertEquals(new Component(50), $color->getRed());
+        $this->assertEquals(new Component(100), $color->getGreen());
+        $this->assertEquals(new Component(150), $color->getBlue());
     }
 
     /**
