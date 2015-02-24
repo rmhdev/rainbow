@@ -14,18 +14,29 @@ use Rainbow\Unit\Percent;
 
 final class Hsl
 {
+    private $hue;
+    private $saturation;
+    private $lightness;
+
+    public function __construct($hue = 0, $saturation = 0, $lightness = 0)
+    {
+        $this->hue = $hue;
+        $this->saturation = new Percent($saturation);
+        $this->lightness = new Percent($lightness);
+    }
+
     public function getHue()
     {
-        return 0;
+        return $this->hue;
     }
 
     public function getSaturation()
     {
-        return new Percent(0);
+        return $this->saturation;
     }
 
     public function getLightness()
     {
-        return new Percent(0);
+        return $this->lightness;
     }
 }

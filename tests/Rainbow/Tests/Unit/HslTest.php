@@ -17,4 +17,13 @@ class HslTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($saturation, $color->getSaturation());
         $this->assertEquals($lightness, $color->getLightness());
     }
+
+    public function testColorShouldReturnDefinedValues()
+    {
+        $color = new Hsl(20, 30, 40);
+
+        $this->assertEquals(20, $color->getHue());
+        $this->assertEquals(new Percent(30), $color->getSaturation());
+        $this->assertEquals(new Percent(40), $color->getLightness());
+    }
 }
