@@ -3,6 +3,7 @@
 namespace Rainbow\Tests;
 
 use Rainbow\Hsl;
+use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
 
 class HslTest extends \PHPUnit_Framework_TestCase
@@ -11,7 +12,7 @@ class HslTest extends \PHPUnit_Framework_TestCase
     {
         $color = new Hsl();
 
-        $this->assertEquals(0, $color->getHue());
+        $this->assertEquals(new Angle(0), $color->getHue());
         $this->assertEquals(new Percent(0), $color->getSaturation());
         $this->assertEquals(new Percent(0), $color->getLightness());
     }
@@ -20,7 +21,7 @@ class HslTest extends \PHPUnit_Framework_TestCase
     {
         $color = new Hsl(20, 30, 40);
 
-        $this->assertEquals(20, $color->getHue());
+        $this->assertEquals(new Angle(20), $color->getHue());
         $this->assertEquals(new Percent(30), $color->getSaturation());
         $this->assertEquals(new Percent(40), $color->getLightness());
     }
