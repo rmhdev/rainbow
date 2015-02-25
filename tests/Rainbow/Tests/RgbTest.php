@@ -49,9 +49,9 @@ class RgbTest extends \PHPUnit_Framework_TestCase
     public function getToStringDataProvider()
     {
         return array(
-            array(0, 0, 0, "rgb(0, 0, 0)"),
-            array(10, 20, 30, "rgb(10, 20, 30)"),
-            array(255, 255, 255, "rgb(255, 255, 255)"),
+            array(0, 0, 0, "rgb(0,0,0)"),
+            array(10, 20, 30, "rgb(10,20,30)"),
+            array(255, 255, 255, "rgb(255,255,255)"),
         );
     }
 

@@ -74,10 +74,10 @@ class Rgb
 
     public function __toString()
     {
-        return sprintf("rgb(%d, %d, %d)",
-            $this->getRed()->getValue(),
-            $this->getGreen()->getValue(),
-            $this->getBlue()->getValue()
+        return sprintf("rgb(%s,%s,%s)",
+            $this->getRed(),
+            $this->getGreen(),
+            $this->getBlue()
         );
     }
 
