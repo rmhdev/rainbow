@@ -13,6 +13,6 @@ final class Angle
 
     public function getValue()
     {
-        return $this->value;
+        return ($this->value < 0) ? (360 + $this->value) : $this->value;
     }
 }

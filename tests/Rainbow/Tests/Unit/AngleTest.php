@@ -34,4 +34,21 @@ class AngleTest extends \PHPUnit_Framework_TestCase
             array("\t50\n", 50),
         );
     }
+
+    /**
+     * @dataProvider getOutOfBoundsDataProvider
+     */
+    public function testOutOfBoundsValueShouldBeCorrected($value, $expectedValue)
+    {
+        $unit = new Angle($value);
+
+        $this->assertEquals($expectedValue, $unit->getValue());
+    }
+
+    public function getOutOfBoundsDataProvider()
+    {
+        return array(
+            array(-10, 350),
+        );
+    }
 }
