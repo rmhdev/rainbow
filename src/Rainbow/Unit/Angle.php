@@ -25,4 +25,9 @@ final class Angle
     {
         return $this->value;
     }
+
+    public function __toString()
+    {
+        return (string) $this->getValue();
+    }
 }

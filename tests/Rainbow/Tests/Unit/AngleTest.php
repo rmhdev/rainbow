@@ -73,4 +73,24 @@ class AngleTest extends \PHPUnit_Framework_TestCase
             array(null),
         );
     }
+
+    /**
+     * @dataProvider getToStringDataProvider
+     */
+    public function testToStringShouldReturnStringValue($value, $expectedValue)
+    {
+        $unit = new Angle($value);
+
+        $this->assertEquals($expectedValue, (string) $unit);
+    }
+
+    public function getToStringDataProvider()
+    {
+        return array(
+            array(0, "0"),
+            array(" 1 ", "1"),
+            array("700", "340"),
+            array(-100, "260"),
+        );
+    }
 }
