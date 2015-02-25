@@ -8,11 +8,12 @@ final class Angle
 
     public function __construct($value = 0)
     {
-        $this->value = (int) $value;
+        $number = (int) $value;
+        $this->value = (($number % 360) + 360) % 360;
     }
 
     public function getValue()
     {
-        return ($this->value < 0) ? (360 + $this->value) : $this->value;
+        return $this->value;
     }
 }
