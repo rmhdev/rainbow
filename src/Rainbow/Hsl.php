@@ -40,4 +40,13 @@ final class Hsl
     {
         return $this->lightness;
     }
+
+    public function __toString()
+    {
+        return sprintf("hsl(%s,%s,%s)",
+            $this->getHue(),
+            $this->getSaturation(),
+            $this->getLightness()
+        );
+    }
 }
