@@ -10,6 +10,7 @@
 
 namespace Rainbow;
 
+use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
 
@@ -48,5 +49,10 @@ final class Hsl
             $this->getSaturation(),
             $this->getLightness()
         );
+    }
+
+    public function getAlpha()
+    {
+        return new Alpha(1);
     }
 }
