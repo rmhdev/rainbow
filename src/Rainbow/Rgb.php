@@ -21,31 +21,9 @@ class Rgb
 
     public function __construct($red = 0, $green = 0, $blue = 0)
     {
-        $this
-            ->setRed($red)
-            ->setGreen($green)
-            ->setBlue($blue);
-    }
-
-    private function setRed($value)
-    {
-        $this->red = new Component($value);
-
-        return $this;
-    }
-
-    private function setGreen($value)
-    {
-        $this->green = new Component($value);
-
-        return $this;
-    }
-
-    private function setBlue($value)
-    {
-        $this->blue = new Component($value);
-
-        return $this;
+        $this->red = new Component($red);
+        $this->green = new Component($green);
+        $this->blue = new Component($blue);
     }
 
     /**
