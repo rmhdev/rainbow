@@ -10,6 +10,7 @@
 
 namespace Rainbow\Tests;
 
+use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
@@ -61,5 +62,12 @@ class RgbTest extends \PHPUnit_Framework_TestCase
         $alpha = new Alpha(1);
 
         $this->assertEquals($alpha, $color->getAlpha());
+    }
+
+    public function testBlackRgbToHslShouldReturnBlack()
+    {
+        $rgb = new Rgb();
+
+        $this->assertEquals(new Hsl(0, 0, 0), $rgb->toHsl());
     }
 }
