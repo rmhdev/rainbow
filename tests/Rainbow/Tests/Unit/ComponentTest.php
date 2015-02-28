@@ -13,11 +13,26 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $unit->getValue());
     }
 
-    public function testCorrectValueShouldReturnValue()
+    /**
+     * @dataProvider getCorrectValueDataProvider
+     */
+    public function testCorrectValueShouldReturnValue($expectedValue, $value)
     {
-        $unit = new Component(30);
+        $unit = new Component($value);
 
-        $this->assertEquals(30, $unit->getValue());
+        $this->assertEquals($expectedValue, $unit->getValue());
+    }
+
+    public function getCorrectValueDataProvider()
+    {
+        return array(
+            array(30, 30),
+            array(127, 127.1),
+            array(127, 127.4),
+            array(128, 127.5),
+            array(128, 127.6),
+            array(128, 127.9),
+        );
     }
 
     /**
@@ -110,7 +125,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
         return array(
             array("100%", 255),
             array("0%", 0),
-            array("50%", 127),
+            array("50%", 128),
         );
     }
 }

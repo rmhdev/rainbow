@@ -68,7 +68,7 @@ class Rgb
     {
         list($hue, $saturation, $lightness) = $this->calculateHslValues();
 
-        return new Hsl($hue, $saturation*100, $lightness*100);
+        return new Hsl($hue, $saturation, $lightness);
     }
 
     /**
@@ -87,7 +87,7 @@ class Rgb
         $lightness = ($max + $min) / 2;
 
         if (0 == $delta) {
-            return array(0, 0, $lightness);
+            return array(0, 0, $lightness * 100);
         }
         $saturation = (0.5 >= $lightness) ?
             ($delta / ($max + $min)) :
@@ -99,6 +99,6 @@ class Rgb
         }
         $hue = $hue * (360 / 6);
 
-        return array($hue, $saturation, $lightness);
+        return array($hue, $saturation * 100, $lightness * 100);
     }
 }

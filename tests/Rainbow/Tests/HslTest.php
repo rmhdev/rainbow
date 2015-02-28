@@ -55,11 +55,23 @@ class HslTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($alpha, $color->getAlpha());
     }
 
-    public function testHslToRgbShouldReturnEquivalentColor()
+    /**
+     * @dataProvider getToRgbDataProvider
+     */
+    public function testHslToRgbShouldReturnEquivalentColor($hue, $saturation, $lightness, $red, $green, $blue)
     {
-        $hsl = new Hsl(0, 0, 0);
-        $expectedRgb = new Rgb(0, 0, 0);
+        $hsl = new Hsl($hue, $saturation, $lightness);
+        $expectedRgb = new Rgb($red, $green, $blue);
 
         $this->assertEquals((string)$expectedRgb, (string)$hsl->toRgb());
+    }
+
+    public function getToRgbDataProvider()
+    {
+        return array(
+            array(0, 0, 0, 0, 0, 0),
+            array(300, 100, 50, 255, 0, 255),
+            array(120, 100, 25, 0, 128, 0),
+        );
     }
 }

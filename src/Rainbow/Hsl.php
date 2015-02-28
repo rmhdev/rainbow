@@ -12,6 +12,7 @@ namespace Rainbow;
 
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
+use Rainbow\Unit\Component;
 use Rainbow\Unit\Percent;
 
 final class Hsl
@@ -58,6 +59,54 @@ final class Hsl
 
     public function toRgb()
     {
-        return new Rgb(0, 0, 0);
+        list($red, $green, $blue) = $this->calculateRgbValues();
+
+        //print_r($red . " " . $green . " " . $blue); die();
+        return new Rgb($red, $green, $blue);
+    }
+
+    /**
+     * @url http://www.w3.org/TR/css3-color/#hsl-color
+     */
+    private function calculateRgbValues()
+    {
+        $hue = $this->getHue()->getValue() / 360;
+        $saturation = $this->getSaturation()->getValue() / 100;
+        $lightness = $this->getLightness()->getValue() / 100;
+
+        $m2 = (0.5 >= $lightness) ?
+            $lightness * ($saturation + 1) :
+            $lightness + $saturation - ($lightness * $saturation);
+        $m1 = $lightness * 2 - $m2;
+
+        $red = $this->hueToRgb($m1, $m2, $hue + 1/3);
+        $green = $this->hueToRgb($m1, $m2, $hue);
+        $blue = $this->hueToRgb($m1, $m2, $hue - 1/3);
+
+        return array(
+            $red * Component::MAX_INT,
+            $green * Component::MAX_INT,
+            $blue * Component::MAX_INT
+        );
+    }
+
+    private function hueToRgb($m1, $m2, $hue)
+    {
+        if (0 > $hue) {
+            $hue += 1;
+        } elseif (1 < $hue) {
+            $hue -= 1;
+        }
+        if (1 > ($hue * 6)) {
+            return $m1 + ($m2 - $m1) * $hue * 6;
+        }
+        if (1 > ($hue * 2)) {
+            return $m2;
+        }
+        if (2 > $hue * 3) {
+            return $m1 + ($m2 - $m1) * (2/3 - $hue) * 6;
+        }
+
+        return $m1;
     }
 }

@@ -30,6 +30,9 @@ final class Component implements UnitInterface
         if (!is_numeric($value)) {
             throw new \UnexpectedValueException(sprintf("Incorrect component %s", $value));
         }
+        if (((int)$value) != $value) {
+            $value = round($value);
+        }
 
         return (int) $value;
     }
