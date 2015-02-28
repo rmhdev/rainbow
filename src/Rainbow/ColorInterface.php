@@ -34,6 +34,13 @@ interface ColorInterface
     public function saturate($saturation);
 
     /**
+     * Decrease the saturation of a color in the HSL color space
+     * @param int|string $saturation  A percentage
+     * @return ColorInterface
+     */
+    public function desaturate($saturation);
+
+    /**
      * Convert to RGB color space
      * @return Rgb
      */

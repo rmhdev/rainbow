@@ -134,9 +134,19 @@ class Rgb implements ColorInterface
 
     /**
      * {@inheritDoc}
+     * @return Rgb
      */
     public function saturate($saturation)
     {
         return $this->toHsl()->saturate($saturation)->toRgb();
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return Rgb
+     */
+    public function desaturate($saturation)
+    {
+        return $this->toHsl()->desaturate($saturation)->toRgb();
     }
 }
