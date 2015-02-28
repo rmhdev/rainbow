@@ -67,7 +67,7 @@ class RgbTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getToHslDataProvider
      */
-    public function testBlackRgbToHslShouldReturnBlack($red, $green, $blue, $hue, $saturation, $lightness)
+    public function testRgbToHslShouldReturnEquivalentColor($red, $green, $blue, $hue, $saturation, $lightness)
     {
         $rgb = new Rgb($red, $green, $blue);
         $hsl = new Hsl($hue, $saturation, $lightness);
