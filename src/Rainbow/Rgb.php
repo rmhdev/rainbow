@@ -101,4 +101,19 @@ class Rgb
 
         return array($hue, $saturation * 100, $lightness * 100);
     }
+
+    public function getHue()
+    {
+        return $this->toHsl()->getHue();
+    }
+
+    public function getSaturation()
+    {
+        return $this->toHsl()->getSaturation();
+    }
+
+    public function getLightness()
+    {
+        return $this->toHsl()->getLightness();
+    }
 }

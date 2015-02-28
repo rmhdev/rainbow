@@ -13,7 +13,9 @@ namespace Rainbow\Tests;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
+use Rainbow\Unit\Angle;
 use Rainbow\Unit\Component;
+use Rainbow\Unit\Percent;
 
 class RgbTest extends AbstractColorTest
 {
@@ -81,5 +83,47 @@ class RgbTest extends AbstractColorTest
         );
 
         $this->assertEquals((string)$hsl, (string)$rgb->toHsl());
+    }
+
+    /**
+     * @dataProvider getRgbHslEquivalenceDataProvider
+     */
+    public function testGetHueShouldReturnAngle($rgbValue, $hslValue)
+    {
+        $rgb = new Rgb(
+            $rgbValue["red"],
+            $rgbValue["green"],
+            $rgbValue["blue"]
+        );
+
+        $this->assertEquals(new Angle($hslValue["hue"]), $rgb->getHue());
+    }
+
+    /**
+     * @dataProvider getRgbHslEquivalenceDataProvider
+     */
+    public function testGetSaturationShouldReturnPercent($rgbValue, $hslValue)
+    {
+        $rgb = new Rgb(
+            $rgbValue["red"],
+            $rgbValue["green"],
+            $rgbValue["blue"]
+        );
+
+        $this->assertEquals(new Percent($hslValue["saturation"]), $rgb->getSaturation());
+    }
+
+    /**
+     * @dataProvider getRgbHslEquivalenceDataProvider
+     */
+    public function testGetLightnessShouldReturnPercent($rgbValue, $hslValue)
+    {
+        $rgb = new Rgb(
+            $rgbValue["red"],
+            $rgbValue["green"],
+            $rgbValue["blue"]
+        );
+
+        $this->assertEquals(new Percent($hslValue["lightness"]), $rgb->getLightness());
     }
 }
