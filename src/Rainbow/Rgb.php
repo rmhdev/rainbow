@@ -13,7 +13,7 @@ namespace Rainbow;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
 
-class Rgb
+class Rgb implements ColorInterface
 {
     private $red;
     private $green;
@@ -50,6 +50,9 @@ class Rgb
         return $this->blue;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return sprintf("rgb(%s,%s,%s)",
@@ -59,6 +62,9 @@ class Rgb
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getAlpha()
     {
         return new Alpha(1);
@@ -117,6 +123,9 @@ class Rgb
         return $this->toHsl()->getLightness();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function saturate($saturation)
     {
         return $this->toHsl()->saturate($saturation)->toRgb();

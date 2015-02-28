@@ -15,7 +15,7 @@ use Rainbow\Unit\Angle;
 use Rainbow\Unit\Component;
 use Rainbow\Unit\Percent;
 
-final class Hsl
+final class Hsl implements ColorInterface
 {
     private $hue;
     private $saturation;
@@ -43,6 +43,9 @@ final class Hsl
         return $this->lightness;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return sprintf("hsl(%s,%s,%s)",
@@ -52,6 +55,9 @@ final class Hsl
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getAlpha()
     {
         return new Alpha(1);
@@ -124,6 +130,10 @@ final class Hsl
         return $this->toRgb()->getBlue();
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Hsl
+     */
     public function saturate($saturation)
     {
         return new self(
