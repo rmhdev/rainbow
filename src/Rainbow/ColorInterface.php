@@ -27,6 +27,18 @@ interface ColorInterface
     public function getAlpha();
 
     /**
+     * Convert to RGB color space
+     * @return Rgb
+     */
+    public function toRgb();
+
+    /**
+     * Convert to HSL color space
+     * @return Hsl
+     */
+    public function toHsl();
+
+    /**
      * Increase the saturation of a color in the HSL color space
      * @param int|string $saturation  A percentage
      * @return ColorInterface
@@ -39,18 +51,5 @@ interface ColorInterface
      * @return ColorInterface
      */
     public function desaturate($saturation);
-
-    /**
-     * Convert to RGB color space
-     * @return Rgb
-     */
-    public function toRgb();
-
-    /**
-     * Convert to HSL color space
-     * @return Hsl
-     */
-    public function toHsl();
-
 
 }
