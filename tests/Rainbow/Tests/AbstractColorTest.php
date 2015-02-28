@@ -2,8 +2,14 @@
 
 namespace Rainbow\Tests;
 
+use Rainbow\Hsl;
+use Rainbow\Rgb;
+
 abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @return array
+     */
     public function getRgbHslEquivalenceDataProvider()
     {
         return array(
@@ -32,6 +38,32 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
                 array("hue" => 90, "saturation" => 80, "lightness" => 50)
             ),
 
+        );
+    }
+
+    /**
+     * @param array $values
+     * @return Rgb
+     */
+    public function createRgb($values)
+    {
+        return new Rgb(
+            $values["red"],
+            $values["green"],
+            $values["blue"]
+        );
+    }
+
+    /**
+     * @param array $values
+     * @return Hsl
+     */
+    public function createHsl($values)
+    {
+        return new Hsl(
+            $values["hue"],
+            $values["saturation"],
+            $values["lightness"]
         );
     }
 }

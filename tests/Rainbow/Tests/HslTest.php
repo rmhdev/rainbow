@@ -56,21 +56,11 @@ class HslTest extends AbstractColorTest
         $this->assertEquals($alpha, $color->getAlpha());
     }
 
-    /**
-     * @dataProvider getRgbHslEquivalenceDataProvider
-     */
-    public function testHslToRgbShouldReturnEquivalentColor($expected, $value)
+
+    public function testHslToRgbShouldReturnEquivalentColor()
     {
-        $hsl = new Hsl(
-            $value["hue"],
-            $value["saturation"],
-            $value["lightness"]
-        );
-        $expectedRgb = new Rgb(
-            $expected["red"],
-            $expected["green"],
-            $expected["blue"]
-        );
+        $hsl = new Hsl(0, 0, 0);
+        $expectedRgb = new Rgb(0, 0, 0);
 
         $this->assertEquals((string)$expectedRgb, (string)$hsl->toRgb());
     }
@@ -80,11 +70,7 @@ class HslTest extends AbstractColorTest
      */
     public function testGetRedShouldReturnComponent($expected, $colorValue)
     {
-        $hsl = new Hsl(
-            $colorValue["hue"],
-            $colorValue["saturation"],
-            $colorValue["lightness"]
-        );
+        $hsl = $this->createHsl($colorValue);
 
         $this->assertEquals(new Component($expected["red"]), $hsl->getRed());
     }
@@ -94,11 +80,7 @@ class HslTest extends AbstractColorTest
      */
     public function testGetGreenShouldReturnComponent($expected, $colorValue)
     {
-        $hsl = new Hsl(
-            $colorValue["hue"],
-            $colorValue["saturation"],
-            $colorValue["lightness"]
-        );
+        $hsl = $this->createHsl($colorValue);
 
         $this->assertEquals(new Component($expected["green"]), $hsl->getGreen());
     }
@@ -108,11 +90,7 @@ class HslTest extends AbstractColorTest
      */
     public function testGetBlueShouldReturnComponent($expected, $colorValue)
     {
-        $hsl = new Hsl(
-            $colorValue["hue"],
-            $colorValue["saturation"],
-            $colorValue["lightness"]
-        );
+        $hsl = $this->createHsl($colorValue);
 
         $this->assertEquals(new Component($expected["blue"]), $hsl->getBlue());
     }

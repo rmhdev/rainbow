@@ -77,43 +77,31 @@ class RgbTest extends AbstractColorTest
     /**
      * @dataProvider getRgbHslEquivalenceDataProvider
      */
-    public function testGetHueShouldReturnAngle($rgbValue, $hslValue)
+    public function testGetHueShouldReturnAngle($rgbValues, $hslValues)
     {
-        $rgb = new Rgb(
-            $rgbValue["red"],
-            $rgbValue["green"],
-            $rgbValue["blue"]
-        );
+        $rgb = $this->createRgb($rgbValues);
 
-        $this->assertEquals(new Angle($hslValue["hue"]), $rgb->getHue());
+        $this->assertEquals(new Angle($hslValues["hue"]), $rgb->getHue());
     }
 
     /**
      * @dataProvider getRgbHslEquivalenceDataProvider
      */
-    public function testGetSaturationShouldReturnPercent($rgbValue, $hslValue)
+    public function testGetSaturationShouldReturnPercent($rgbValues, $hslValues)
     {
-        $rgb = new Rgb(
-            $rgbValue["red"],
-            $rgbValue["green"],
-            $rgbValue["blue"]
-        );
+        $rgb = $this->createRgb($rgbValues);
 
-        $this->assertEquals(new Percent($hslValue["saturation"]), $rgb->getSaturation());
+        $this->assertEquals(new Percent($hslValues["saturation"]), $rgb->getSaturation());
     }
 
     /**
      * @dataProvider getRgbHslEquivalenceDataProvider
      */
-    public function testGetLightnessShouldReturnPercent($rgbValue, $hslValue)
+    public function testGetLightnessShouldReturnPercent($rgbValues, $hslValues)
     {
-        $rgb = new Rgb(
-            $rgbValue["red"],
-            $rgbValue["green"],
-            $rgbValue["blue"]
-        );
+        $rgb = $this->createRgb($rgbValues);
 
-        $this->assertEquals(new Percent($hslValue["lightness"]), $rgb->getLightness());
+        $this->assertEquals(new Percent($hslValues["lightness"]), $rgb->getLightness());
     }
 
     public function testSaturateShouldIncreaseSaturationInNewRgb()
