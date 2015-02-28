@@ -93,7 +93,7 @@ class Rgb
             ($delta / ($max + $min)) :
             ($delta / (2.0 - $delta));
         switch ($max) {
-            case $red:      $hue = (($green - $blue) / $delta) % 6; break;
+            case $red:      $hue = (($green - $blue) / $delta); break;
             case $green:    $hue = (($blue - $red) / $delta) + 2; break;
             default:        $hue = (($red - $green) / $delta) + 4; break;
         }

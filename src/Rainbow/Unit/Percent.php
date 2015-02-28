@@ -27,6 +27,9 @@ final class Percent implements UnitInterface
         if (!is_numeric($processed)) {
             throw new \UnexpectedValueException(sprintf("Incorrect value %s", $value));
         }
+        if (((int)$processed) != $processed) {
+            $processed = round($processed);
+        }
 
         return (int) $processed;
     }
