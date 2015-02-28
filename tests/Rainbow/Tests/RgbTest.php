@@ -42,9 +42,9 @@ class RgbTest extends AbstractColorTest
     /**
      * @dataProvider getToStringDataProvider
      */
-    public function testToStringShouldReturnValidString($red, $green, $blue, $expectedValue)
+    public function testToStringShouldReturnValidString($values, $expectedValue)
     {
-        $color = new Rgb($red, $green, $blue);
+        $color = $this->createRgb($values);
 
         $this->assertEquals($expectedValue, (string) $color);
     }
@@ -52,9 +52,18 @@ class RgbTest extends AbstractColorTest
     public function getToStringDataProvider()
     {
         return array(
-            array(0, 0, 0, "rgb(0,0,0)"),
-            array(10, 20, 30, "rgb(10,20,30)"),
-            array(255, 255, 255, "rgb(255,255,255)"),
+            array(
+                array("red" => 0, "green" => 0, "blue" => 0),
+                "rgb(0,0,0)"
+            ),
+            array(
+                array("red" => 10, "green" => 20, "blue" => 30),
+                "rgb(10,20,30)"
+            ),
+            array(
+                array("red" => 255, "green" => 255, "blue" => 255),
+                "rgb(255,255,255)"
+            ),
         );
     }
 

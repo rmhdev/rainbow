@@ -32,9 +32,9 @@ class HslTest extends AbstractColorTest
     /**
      * @dataProvider getToStringDataProvider
      */
-    public function testToStringShouldReturnValidString($hue, $saturation, $lightness, $expectedValue)
+    public function testToStringShouldReturnValidString($values, $expectedValue)
     {
-        $color = new Hsl($hue, $saturation, $lightness);
+        $color = $this->createHsl($values);
 
         $this->assertEquals($expectedValue, (string) $color);
     }
@@ -42,9 +42,18 @@ class HslTest extends AbstractColorTest
     public function getToStringDataProvider()
     {
         return array(
-            array(0, 0, 0, "hsl(0,0%,0%)"),
-            array(10, 20, 30, "hsl(10,20%,30%)"),
-            array(370, 100, 100, "hsl(10,100%,100%)"),
+            array(
+                array("hue" => 0, "saturation" => 0, "lightness" => 0),
+                "hsl(0,0%,0%)"
+            ),
+            array(
+                array("hue" => 10, "saturation" => 20, "lightness" => 30),
+                "hsl(10,20%,30%)"
+            ),
+            array(
+                array("hue" => 370, "saturation" => 100, "lightness" => 100),
+                "hsl(10,100%,100%)"
+            ),
         );
     }
 
