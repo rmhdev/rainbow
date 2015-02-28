@@ -3,6 +3,7 @@
 namespace Rainbow\Tests;
 
 use Rainbow\Hsl;
+use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
@@ -52,5 +53,13 @@ class HslTest extends \PHPUnit_Framework_TestCase
         $alpha = new Alpha(1);
 
         $this->assertEquals($alpha, $color->getAlpha());
+    }
+
+    public function testHslToRgbShouldReturnEquivalentColor()
+    {
+        $hsl = new Hsl(0, 0, 0);
+        $expectedRgb = new Rgb(0, 0, 0);
+
+        $this->assertEquals((string)$expectedRgb, (string)$hsl->toRgb());
     }
 }

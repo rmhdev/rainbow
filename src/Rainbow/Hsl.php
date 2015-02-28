@@ -55,4 +55,9 @@ final class Hsl
     {
         return new Alpha(1);
     }
+
+    public function toRgb()
+    {
+        return new Rgb(0, 0, 0);
+    }
 }
