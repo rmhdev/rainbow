@@ -61,7 +61,6 @@ final class Hsl
     {
         list($red, $green, $blue) = $this->calculateRgbValues();
 
-        //print_r($red . " " . $green . " " . $blue); die();
         return new Rgb($red, $green, $blue);
     }
 
@@ -108,5 +107,10 @@ final class Hsl
         }
 
         return $m1;
+    }
+
+    public function getRed()
+    {
+        return $this->toRgb()->getRed();
     }
 }
