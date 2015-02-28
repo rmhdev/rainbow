@@ -123,4 +123,13 @@ final class Hsl
     {
         return $this->toRgb()->getBlue();
     }
+
+    public function saturate($saturation)
+    {
+        return new self(
+            $this->getHue()->getValue(),
+            $this->getSaturation()->getValue() + $saturation,
+            $this->getLightness()->getValue()
+        );
+    }
 }

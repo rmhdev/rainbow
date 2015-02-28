@@ -116,4 +116,13 @@ class HslTest extends AbstractColorTest
 
         $this->assertEquals(new Component($expected["blue"]), $hsl->getBlue());
     }
+
+    public function testSaturateShouldIncreaseSaturationInNewHsl()
+    {
+        $hsl = new Hsl(0, 0, 0);
+        $newHsl = $hsl->saturate(10);
+
+        $this->assertEquals(new Percent(0), $hsl->getSaturation());
+        $this->assertEquals(new Percent(10), $newHsl->getSaturation());
+    }
 }
