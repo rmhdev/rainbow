@@ -113,4 +113,14 @@ final class Hsl
     {
         return $this->toRgb()->getRed();
     }
+
+    public function getGreen()
+    {
+        return $this->toRgb()->getGreen();
+    }
+
+    public function getBlue()
+    {
+        return $this->toRgb()->getBlue();
+    }
 }

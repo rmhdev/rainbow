@@ -110,4 +110,32 @@ class HslTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(new Component($expected["red"]), $hsl->getRed());
     }
+
+    /**
+     * @dataProvider getToRgbDataProvider
+     */
+    public function testGetGreenShouldReturnComponent($expected, $colorValue)
+    {
+        $hsl = new Hsl(
+            $colorValue["hue"],
+            $colorValue["saturation"],
+            $colorValue["lightness"]
+        );
+
+        $this->assertEquals(new Component($expected["green"]), $hsl->getGreen());
+    }
+
+    /**
+     * @dataProvider getToRgbDataProvider
+     */
+    public function testGetBlueShouldReturnComponent($expected, $colorValue)
+    {
+        $hsl = new Hsl(
+            $colorValue["hue"],
+            $colorValue["saturation"],
+            $colorValue["lightness"]
+        );
+
+        $this->assertEquals(new Component($expected["blue"]), $hsl->getBlue());
+    }
 }
