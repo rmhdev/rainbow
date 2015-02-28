@@ -20,8 +20,11 @@ final class Angle implements UnitInterface
         if (!is_numeric(trim($value))) {
             throw new \UnexpectedValueException(sprintf("Incorrect angle %s", $value));
         }
+        if ((int)$value != $value) {
+            $value = round($value);
+        }
 
-        return intval($value, 10);
+        return (int)$value;
     }
 
     /**

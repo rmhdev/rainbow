@@ -33,7 +33,9 @@ class AngleTest extends \PHPUnit_Framework_TestCase
             array("359", 359),
             array("\t50\n", 50),
             array(123.1, 123),
-            array(123.9, 123),
+            array(123.4, 123),
+            array(123.5, 124),
+            array(123.9, 124),
         );
     }
 
