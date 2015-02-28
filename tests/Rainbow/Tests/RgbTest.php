@@ -126,4 +126,19 @@ class RgbTest extends AbstractColorTest
 
         $this->assertEquals(new Percent($hslValue["lightness"]), $rgb->getLightness());
     }
+
+    public function testSaturateShouldIncreaseSaturationInNewRgb()
+    {
+        $rgb = new Rgb(128, 230, 26);
+
+        $this->assertEquals(new Rgb(128, 255, 0), $rgb->saturate(20));
+        $this->assertEquals("rgb(128,230,26)", (string)$rgb);
+    }
+
+    public function testSaturateShouldPassBeLessEqualThan100()
+    {
+        $rgb = new Rgb(128, 230, 26); //80% saturation
+
+        $this->assertEquals("100%", (string)$rgb->saturate(30)->toHsl()->getSaturation());
+    }
 }

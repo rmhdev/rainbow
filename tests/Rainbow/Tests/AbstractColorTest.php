@@ -27,6 +27,11 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
                 array("red" => 0, "green" => 128, "blue" => 255),
                 array("hue" => 210, "saturation" => 100, "lightness" => 50)
             ),
+            array(
+                array("red" => 128, "green" => 230, "blue" => 26),
+                array("hue" => 90, "saturation" => 80, "lightness" => 50)
+            ),
+
         );
     }
 }

@@ -91,7 +91,7 @@ class Rgb
         }
         $saturation = (0.5 >= $lightness) ?
             ($delta / ($max + $min)) :
-            ($delta / (2.0 - $delta));
+            ($delta / (2.0 - $max - $min));
         switch ($max) {
             case $red:      $hue = (($green - $blue) / $delta); break;
             case $green:    $hue = (($blue - $red) / $delta) + 2; break;
@@ -115,5 +115,10 @@ class Rgb
     public function getLightness()
     {
         return $this->toHsl()->getLightness();
+    }
+
+    public function saturate($saturation)
+    {
+        return $this->toHsl()->saturate($saturation)->toRgb();
     }
 }
