@@ -81,7 +81,9 @@ class RgbTest extends \PHPUnit_Framework_TestCase
             array(0, 0, 0, 0, 0, 0),
             array(255, 255, 255, 0, 0, 100),
             array(255, 255, 0, 60, 100, 50),
-            //array(255, 0, 255, 300, 100, 50),
+            array(255, 0, 255, 300, 100, 50),
+            array(0, 128, 0, 120, 100, 25),
+            array(128, 0, 128, 300, 100, 25),
         );
     }
 }
