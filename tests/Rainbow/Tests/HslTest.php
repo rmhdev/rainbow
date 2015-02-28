@@ -6,6 +6,7 @@ use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
+use Rainbow\Unit\Component;
 use Rainbow\Unit\Percent;
 
 class HslTest extends \PHPUnit_Framework_TestCase
@@ -94,5 +95,19 @@ class HslTest extends \PHPUnit_Framework_TestCase
                 array("hue" => 30, "saturation" => 100, "lightness" => 50)
             ),
         );
+    }
+
+    /**
+     * @dataProvider getToRgbDataProvider
+     */
+    public function testGetRedShouldReturnComponent($expected, $colorValue)
+    {
+        $hsl = new Hsl(
+            $colorValue["hue"],
+            $colorValue["saturation"],
+            $colorValue["lightness"]
+        );
+
+        $this->assertEquals(new Component($expected["red"]), $hsl->getRed());
     }
 }

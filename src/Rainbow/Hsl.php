@@ -108,4 +108,9 @@ final class Hsl
 
         return $m1;
     }
+
+    public function getRed()
+    {
+        return $this->toRgb()->getRed();
+    }
 }
