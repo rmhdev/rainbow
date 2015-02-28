@@ -128,7 +128,7 @@ final class Hsl
     {
         return new self(
             $this->getHue()->getValue(),
-            $this->getSaturation()->getValue() + $saturation,
+            min($this->getSaturation()->getValue() + $saturation, 100),
             $this->getLightness()->getValue()
         );
     }

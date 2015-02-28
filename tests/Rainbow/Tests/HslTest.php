@@ -125,4 +125,11 @@ class HslTest extends AbstractColorTest
         $this->assertEquals(new Percent(0), $hsl->getSaturation());
         $this->assertEquals(new Percent(10), $newHsl->getSaturation());
     }
+
+    public function testSaturateShouldPassMaximumValue()
+    {
+        $hsl = new Hsl(0, 80, 0);
+
+        $this->assertEquals("100%", (string)$hsl->saturate(30)->getSaturation());
+    }
 }
