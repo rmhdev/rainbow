@@ -9,7 +9,7 @@ use Rainbow\Unit\Angle;
 use Rainbow\Unit\Component;
 use Rainbow\Unit\Percent;
 
-class HslTest extends \PHPUnit_Framework_TestCase
+class HslTest extends AbstractColorTest
 {
     public function testEmptyColorShouldReturnBlack()
     {
@@ -57,7 +57,7 @@ class HslTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider getToRgbDataProvider
+     * @dataProvider getRgbHslEquivalenceDataProvider
      */
     public function testHslToRgbShouldReturnEquivalentColor($expected, $value)
     {
@@ -75,30 +75,8 @@ class HslTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((string)$expectedRgb, (string)$hsl->toRgb());
     }
 
-    public function getToRgbDataProvider()
-    {
-        return array(
-            array(
-                array("red" => 0, "green" => 0, "blue" => 0),
-                array("hue" => 0, "saturation" => 0, "lightness" => 0)
-            ),
-            array(
-                array("red" => 255, "green" => 0, "blue" => 255),
-                array("hue" => 300, "saturation" => 100, "lightness" => 50)
-            ),
-            array(
-                array("red" => 0, "green" => 128, "blue" => 0),
-                array("hue" => 120, "saturation" => 100, "lightness" => 25)
-            ),
-            array(
-                array("red" => 255, "green" => 128, "blue" => 0),
-                array("hue" => 30, "saturation" => 100, "lightness" => 50)
-            ),
-        );
-    }
-
     /**
-     * @dataProvider getToRgbDataProvider
+     * @dataProvider getRgbHslEquivalenceDataProvider
      */
     public function testGetRedShouldReturnComponent($expected, $colorValue)
     {
@@ -112,7 +90,7 @@ class HslTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider getToRgbDataProvider
+     * @dataProvider getRgbHslEquivalenceDataProvider
      */
     public function testGetGreenShouldReturnComponent($expected, $colorValue)
     {
@@ -126,7 +104,7 @@ class HslTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider getToRgbDataProvider
+     * @dataProvider getRgbHslEquivalenceDataProvider
      */
     public function testGetBlueShouldReturnComponent($expected, $colorValue)
     {
