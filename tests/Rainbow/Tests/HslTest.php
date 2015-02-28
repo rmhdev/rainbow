@@ -59,10 +59,18 @@ class HslTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getToRgbDataProvider
      */
-    public function testHslToRgbShouldReturnEquivalentColor($hue, $saturation, $lightness, $red, $green, $blue)
+    public function testHslToRgbShouldReturnEquivalentColor($expected, $value)
     {
-        $hsl = new Hsl($hue, $saturation, $lightness);
-        $expectedRgb = new Rgb($red, $green, $blue);
+        $hsl = new Hsl(
+            $value["hue"],
+            $value["saturation"],
+            $value["lightness"]
+        );
+        $expectedRgb = new Rgb(
+            $expected["red"],
+            $expected["green"],
+            $expected["blue"]
+        );
 
         $this->assertEquals((string)$expectedRgb, (string)$hsl->toRgb());
     }
@@ -70,10 +78,22 @@ class HslTest extends \PHPUnit_Framework_TestCase
     public function getToRgbDataProvider()
     {
         return array(
-            array(0, 0, 0, 0, 0, 0),
-            array(300, 100, 50, 255, 0, 255),
-            array(120, 100, 25, 0, 128, 0),
-            array(30, 100, 50, 255, 128, 0),
+            array(
+                array("red" => 0, "green" => 0, "blue" => 0),
+                array("hue" => 0, "saturation" => 0, "lightness" => 0)
+            ),
+            array(
+                array("red" => 255, "green" => 0, "blue" => 255),
+                array("hue" => 300, "saturation" => 100, "lightness" => 50)
+            ),
+            array(
+                array("red" => 0, "green" => 128, "blue" => 0),
+                array("hue" => 120, "saturation" => 100, "lightness" => 25)
+            ),
+            array(
+                array("red" => 255, "green" => 128, "blue" => 0),
+                array("hue" => 30, "saturation" => 100, "lightness" => 50)
+            ),
         );
     }
 
