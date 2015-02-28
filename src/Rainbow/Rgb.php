@@ -87,21 +87,6 @@ class Rgb implements ColorInterface
         return $translator->translate();
     }
 
-    public function getHue()
-    {
-        return $this->toHsl()->getHue();
-    }
-
-    public function getSaturation()
-    {
-        return $this->toHsl()->getSaturation();
-    }
-
-    public function getLightness()
-    {
-        return $this->toHsl()->getLightness();
-    }
-
     /**
      * {@inheritDoc}
      * @return Rgb
