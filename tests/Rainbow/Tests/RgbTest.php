@@ -15,7 +15,7 @@ use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
 
-class RgbTest extends \PHPUnit_Framework_TestCase
+class RgbTest extends AbstractColorTest
 {
 
     public function testEmptyColorShouldReturnZeros()
@@ -65,25 +65,21 @@ class RgbTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider getToHslDataProvider
+     * @dataProvider getRgbHslEquivalenceDataProvider
      */
-    public function testRgbToHslShouldReturnEquivalentColor($red, $green, $blue, $hue, $saturation, $lightness)
+    public function testRgbToHslShouldReturnEquivalentColor($rgbValue, $hslValue)
     {
-        $rgb = new Rgb($red, $green, $blue);
-        $hsl = new Hsl($hue, $saturation, $lightness);
-
-        $this->assertEquals((string) $hsl, (string)$rgb->toHsl());
-    }
-
-    public function getToHslDataProvider()
-    {
-        return array(
-            array(0, 0, 0, 0, 0, 0),
-            array(255, 255, 255, 0, 0, 100),
-            array(255, 255, 0, 60, 100, 50),
-            array(255, 0, 255, 300, 100, 50),
-            array(0, 128, 0, 120, 100, 25),
-            array(128, 0, 128, 300, 100, 25),
+        $rgb = new Rgb(
+            $rgbValue["red"],
+            $rgbValue["green"],
+            $rgbValue["blue"]
         );
+        $hsl = new Hsl(
+            $hslValue["hue"],
+            $hslValue["saturation"],
+            $hslValue["lightness"]
+        );
+
+        $this->assertEquals((string)$hsl, (string)$rgb->toHsl());
     }
 }
