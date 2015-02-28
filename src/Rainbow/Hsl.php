@@ -110,4 +110,13 @@ final class Hsl implements ColorInterface
             $this->getLightness()->getValue()
         );
     }
+
+    public function lighten($lightness)
+    {
+        return new self(
+            $this->getHue()->getValue(),
+            $this->getSaturation()->getValue(),
+            min($this->getLightness()->getValue() + $lightness, 100)
+        );
+    }
 }
