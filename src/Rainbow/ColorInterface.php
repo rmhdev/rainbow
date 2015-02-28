@@ -39,5 +39,11 @@ interface ColorInterface
      */
     public function toRgb();
 
+    /**
+     * Convert to HSL color space
+     * @return Hsl
+     */
+    public function toHsl();
+
 
 }

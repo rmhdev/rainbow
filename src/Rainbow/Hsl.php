@@ -63,6 +63,15 @@ final class Hsl implements ColorInterface
         return new Alpha(1);
     }
 
+    public function toHsl()
+    {
+        return new self(
+            $this->getHue()->getValue(),
+            $this->getSaturation()->getValue(),
+            $this->getLightness()->getValue()
+        );
+    }
+
     public function toRgb()
     {
         list($red, $green, $blue) = $this->calculateRgbValues();
