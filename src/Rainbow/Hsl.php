@@ -63,6 +63,9 @@ final class Hsl implements ColorInterface
         return new Alpha(1);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function toHsl()
     {
         return new self(
@@ -72,6 +75,9 @@ final class Hsl implements ColorInterface
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function toRgb()
     {
         $translator = new HslToRgbTranslator($this);
@@ -92,6 +98,10 @@ final class Hsl implements ColorInterface
         );
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Hsl
+     */
     public function desaturate($saturation)
     {
         return new self(
