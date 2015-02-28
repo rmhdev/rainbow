@@ -72,6 +72,7 @@ class HslTest extends \PHPUnit_Framework_TestCase
             array(0, 0, 0, 0, 0, 0),
             array(300, 100, 50, 255, 0, 255),
             array(120, 100, 25, 0, 128, 0),
+            array(30, 100, 50, 255, 128, 0),
         );
     }
 }
