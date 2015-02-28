@@ -32,7 +32,7 @@ final class Alpha implements UnitInterface
 
     private function formatNumber($value)
     {
-        return floor(floatval($value) * 10) / 10;
+        return round(floatval($value) * 10) / 10;
     }
 
     private function isOutOfBounds($value)
