@@ -38,7 +38,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getCorrectStringValueDataProvider
      */
-    public function testCorrectStringShouldReturnValue($value, $expectedValue)
+    public function testCorrectStringShouldReturnValue($expectedValue, $value)
     {
         $unit = new Component($value);
 
@@ -49,9 +49,9 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
     public function getCorrectStringValueDataProvider()
     {
         return array(
-            array("12", 12),
-            array(" 12 ", 12),
-            array("\n12\t", 12),
+            array(12, "12"),
+            array(12, " 12 "),
+            array(12, "\n12\t"),
         );
     }
 
@@ -94,7 +94,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getToStringDataProvider
      */
-    public function testToStringShouldReturnStringValue($value, $expectedValue)
+    public function testToStringShouldReturnStringValue($expectedValue, $value)
     {
         $unit = new Component($value);
 
@@ -104,9 +104,9 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
     public function getToStringDataProvider()
     {
         return array(
-            array(0, "0"),
-            array(12, "12"),
-            array(" 12 ", "12"),
+            array("0", 0),
+            array("12", 12),
+            array("12", " 12 "),
         );
     }
 
