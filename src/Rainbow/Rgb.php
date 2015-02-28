@@ -10,6 +10,7 @@
 
 namespace Rainbow;
 
+use Rainbow\Translator\RgbToHslTranslator;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
 
@@ -81,40 +82,9 @@ class Rgb implements ColorInterface
 
     public function toHsl()
     {
-        list($hue, $saturation, $lightness) = $this->calculateHslValues();
+        $translator = new RgbToHslTranslator($this);
 
-        return new Hsl($hue, $saturation, $lightness);
-    }
-
-    /**
-     * @url https://hg.python.org/cpython/file/2.7/Lib/colorsys.py
-     * @return array
-     */
-    private function calculateHslValues()
-    {
-        $red = $this->getRed()->getValue() / Component::MAX_INT;
-        $green = $this->getGreen()->getValue() / Component::MAX_INT;
-        $blue = $this->getBlue()->getValue() / Component::MAX_INT;
-
-        $max = max($red, $green, $blue);
-        $min = min($red, $green, $blue);
-        $delta = $max - $min;
-        $lightness = ($max + $min) / 2;
-
-        if (0 == $delta) {
-            return array(0, 0, $lightness * 100);
-        }
-        $saturation = (0.5 >= $lightness) ?
-            ($delta / ($max + $min)) :
-            ($delta / (2.0 - $max - $min));
-        switch ($max) {
-            case $red:      $hue = (($green - $blue) / $delta); break;
-            case $green:    $hue = (($blue - $red) / $delta) + 2; break;
-            default:        $hue = (($red - $green) / $delta) + 4; break;
-        }
-        $hue = $hue * (360 / 6);
-
-        return array($hue, $saturation * 100, $lightness * 100);
+        return $translator->translate();
     }
 
     public function getHue()

@@ -66,21 +66,10 @@ class RgbTest extends AbstractColorTest
         $this->assertEquals($alpha, $color->getAlpha());
     }
 
-    /**
-     * @dataProvider getRgbHslEquivalenceDataProvider
-     */
-    public function testRgbToHslShouldReturnEquivalentColor($rgbValue, $hslValue)
+    public function testRgbToHslShouldReturnHslColor()
     {
-        $rgb = new Rgb(
-            $rgbValue["red"],
-            $rgbValue["green"],
-            $rgbValue["blue"]
-        );
-        $hsl = new Hsl(
-            $hslValue["hue"],
-            $hslValue["saturation"],
-            $hslValue["lightness"]
-        );
+        $rgb = new Rgb(0, 0, 0);
+        $hsl = new Hsl(0, 0, 0);
 
         $this->assertEquals((string)$hsl, (string)$rgb->toHsl());
     }
