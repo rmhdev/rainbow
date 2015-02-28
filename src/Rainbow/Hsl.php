@@ -151,4 +151,13 @@ final class Hsl implements ColorInterface
             $this->getLightness()->getValue()
         );
     }
+
+    public function desaturate($saturation)
+    {
+        return new self(
+            $this->getHue()->getValue(),
+            max($this->getSaturation()->getValue() - $saturation, 0),
+            $this->getLightness()->getValue()
+        );
+    }
 }

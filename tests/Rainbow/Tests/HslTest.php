@@ -139,4 +139,20 @@ class HslTest extends AbstractColorTest
 
         $this->assertEquals($color, $color->toHsl());
     }
+
+    public function testDesaturateShouldDecreaseSaturationInNewHsl()
+    {
+        $hsl = new Hsl(0, 80, 0);
+        $newHsl = $hsl->desaturate(10);
+
+        $this->assertEquals(new Percent(80), $hsl->getSaturation());
+        $this->assertEquals(new Percent(70), $newHsl->getSaturation());
+    }
+
+    public function testDesaturateShouldPassBeGreaterEqualThanZero()
+    {
+        $hsl = new Hsl(0, 20, 0);
+
+        $this->assertEquals("0%", (string)$hsl->desaturate(30)->getSaturation());
+    }
 }
