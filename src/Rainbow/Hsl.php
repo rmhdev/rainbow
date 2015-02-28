@@ -79,21 +79,6 @@ final class Hsl implements ColorInterface
         return $translator->translate();
     }
 
-    public function getRed()
-    {
-        return $this->toRgb()->getRed();
-    }
-
-    public function getGreen()
-    {
-        return $this->toRgb()->getGreen();
-    }
-
-    public function getBlue()
-    {
-        return $this->toRgb()->getBlue();
-    }
-
     /**
      * {@inheritDoc}
      * @return Hsl

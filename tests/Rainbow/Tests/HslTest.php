@@ -6,7 +6,6 @@ use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
-use Rainbow\Unit\Component;
 use Rainbow\Unit\Percent;
 
 class HslTest extends AbstractColorTest
@@ -72,36 +71,6 @@ class HslTest extends AbstractColorTest
         $expectedRgb = new Rgb(0, 0, 0);
 
         $this->assertEquals((string)$expectedRgb, (string)$hsl->toRgb());
-    }
-
-    /**
-     * @dataProvider getRgbHslEquivalenceDataProvider
-     */
-    public function testGetRedShouldReturnComponent($expected, $colorValue)
-    {
-        $hsl = $this->createHsl($colorValue);
-
-        $this->assertEquals(new Component($expected["red"]), $hsl->getRed());
-    }
-
-    /**
-     * @dataProvider getRgbHslEquivalenceDataProvider
-     */
-    public function testGetGreenShouldReturnComponent($expected, $colorValue)
-    {
-        $hsl = $this->createHsl($colorValue);
-
-        $this->assertEquals(new Component($expected["green"]), $hsl->getGreen());
-    }
-
-    /**
-     * @dataProvider getRgbHslEquivalenceDataProvider
-     */
-    public function testGetBlueShouldReturnComponent($expected, $colorValue)
-    {
-        $hsl = $this->createHsl($colorValue);
-
-        $this->assertEquals(new Component($expected["blue"]), $hsl->getBlue());
     }
 
     public function testSaturateShouldIncreaseSaturationInNewHsl()
