@@ -33,4 +33,11 @@ interface ColorInterface
      */
     public function saturate($saturation);
 
+    /**
+     * Convert to RGB color space
+     * @return Rgb
+     */
+    public function toRgb();
+
+
 }

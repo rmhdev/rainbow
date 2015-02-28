@@ -141,4 +141,11 @@ class RgbTest extends AbstractColorTest
 
         $this->assertEquals("100%", (string)$rgb->saturate(30)->toHsl()->getSaturation());
     }
+
+    public function testToRgbShouldReturnEqualColor()
+    {
+        $rgb = new Rgb(128, 230, 26);
+
+        $this->assertEquals($rgb, $rgb->toRgb());
+    }
 }

@@ -70,6 +70,15 @@ class Rgb implements ColorInterface
         return new Alpha(1);
     }
 
+    public function toRgb()
+    {
+        return new self(
+            $this->getRed()->getValue(),
+            $this->getGreen()->getValue(),
+            $this->getBlue()->getValue()
+        );
+    }
+
     public function toHsl()
     {
         list($hue, $saturation, $lightness) = $this->calculateHslValues();
