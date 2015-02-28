@@ -113,7 +113,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getPercentValueDataProvider
      */
-    public function testPercentValuesShouldBeTransformed($value, $expectedValue)
+    public function testPercentValuesShouldBeTransformed($expectedValue, $value)
     {
         $unit = new Component($value);
 
@@ -123,9 +123,11 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
     public function getPercentValueDataProvider()
     {
         return array(
-            array("100%", 255),
-            array("0%", 0),
-            array("50%", 128),
+            array(255, "100%"),
+            array(0, "0%"),
+            array(128, "50%"),
+            array(191, "75%"),
+            array(64, "25%"),
         );
     }
 }
