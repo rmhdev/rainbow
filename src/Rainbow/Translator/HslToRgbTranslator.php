@@ -70,9 +70,9 @@ final class HslToRgbTranslator implements TranslatorInterface
         $blue = $this->hueToRgb($m1, $m2, $hue - 1/3);
 
         return array(
-            $red * Component::MAX_INT,
-            $green * Component::MAX_INT,
-            $blue * Component::MAX_INT
+            $red * Component::MAX_VALUE,
+            $green * Component::MAX_VALUE,
+            $blue * Component::MAX_VALUE
         );
     }
 

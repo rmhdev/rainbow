@@ -12,7 +12,7 @@ namespace Rainbow\Unit;
 
 final class Component implements UnitInterface
 {
-    const MAX_INT = 255;
+    const MAX_VALUE = 255;
 
     private $value;
 
@@ -33,7 +33,7 @@ final class Component implements UnitInterface
         $value = trim($value);
         if ("%" === substr($value, -1, 1)) {
             $percent = intval($value, 10);
-            $value = ($percent * self::MAX_INT) / 100;
+            $value = ($percent * self::MAX_VALUE) / 100;
         }
         if (!is_numeric($value)) {
             throw new \UnexpectedValueException(sprintf("Incorrect component %s", $value));
@@ -47,7 +47,7 @@ final class Component implements UnitInterface
 
     private function isOutOfBoundsValue($value)
     {
-        return ($value < 0) || ($value > self::MAX_INT);
+        return ($value < 0) || ($value > self::MAX_VALUE);
     }
 
     /**

@@ -85,9 +85,9 @@ final class RgbToHslTranslator implements TranslatorInterface
 
     private function getComponents()
     {
-        $red = $this->color->getRed()->getValue() / Component::MAX_INT;
-        $green = $this->color->getGreen()->getValue() / Component::MAX_INT;
-        $blue = $this->color->getBlue()->getValue() / Component::MAX_INT;
+        $red = $this->color->getRed()->getValue() / Component::MAX_VALUE;
+        $green = $this->color->getGreen()->getValue() / Component::MAX_VALUE;
+        $blue = $this->color->getBlue()->getValue() / Component::MAX_VALUE;
 
         return array($red, $green, $blue);
     }
