@@ -104,4 +104,9 @@ class Rgb implements ColorInterface
     {
         return $this->toHsl()->desaturate($saturation)->toRgb();
     }
+
+    public function lighten($lightness)
+    {
+        return $this->toHsl()->lighten($lightness)->toRgb();
+    }
 }
