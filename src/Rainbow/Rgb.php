@@ -14,7 +14,7 @@ use Rainbow\Translator\RgbToHslTranslator;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
 
-class Rgb implements ColorInterface
+class Rgb extends AbstractColor implements ColorInterface
 {
     private $red;
     private $green;
@@ -91,9 +91,9 @@ class Rgb implements ColorInterface
      * {@inheritDoc}
      * @return Rgb
      */
-    public function saturate($saturation)
+    protected function toCurrent(Hsl $color)
     {
-        return $this->toHsl()->saturate($saturation)->toRgb();
+        return $color->toRgb();
     }
 
     /**
