@@ -103,21 +103,6 @@ class RgbTest extends AbstractColorTest
         $this->assertEquals($rgb, $rgb->toRgb());
     }
 
-    public function testDesaturateShouldDecreaseSaturationInNewColor()
-    {
-        $rgb = new Rgb(128, 230, 26); //80% saturation
-
-        $this->assertEquals(new Rgb(128, 204, 51), $rgb->desaturate(20));
-        $this->assertEquals("rgb(128,230,26)", (string)$rgb);
-    }
-
-    public function testDesaturateShouldBeLesserEqualThanZero()
-    {
-        $rgb = new Rgb(128, 230, 26); //80% saturation
-
-        $this->assertEquals("0%", (string)$rgb->desaturate(90)->toHsl()->getSaturation());
-    }
-
     public function testLightenShouldIncreaseLightnessInNewColor()
     {
         $rgb = new Rgb(128, 128, 128); //50% lightness
@@ -131,5 +116,14 @@ class RgbTest extends AbstractColorTest
         $rgb = new Rgb(128, 128, 128); //50% lightness
 
         $this->assertEquals("100%", (string)$rgb->lighten(60)->toHsl()->getLightness());
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return Rgb
+     */
+    protected function toCurrent(Hsl $color)
+    {
+        return $color->toRgb();
     }
 }

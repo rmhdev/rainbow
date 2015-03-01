@@ -4,6 +4,8 @@ namespace Rainbow\Tests;
 
 use Rainbow\Hsl;
 use Rainbow\Rgb;
+use Rainbow\Unit\Percent;
+use Rainbow\ColorInterface;
 
 abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,5 +33,29 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
             $values["saturation"],
             $values["lightness"]
         );
+    }
+
+    /**
+     * Translate Hsl color space to current color space
+     * @param Hsl $color
+     * @return ColorInterface
+     */
+    abstract protected function toCurrent(Hsl $color);
+
+    public function testDesaturateShouldDecreaseSaturationInNewColor()
+    {
+        $hsl = new Hsl(180, 80, 50);
+        $newColor = $this->toCurrent($hsl)->desaturate(10);
+
+        $this->assertEquals(new Percent(80), $hsl->getSaturation());
+        $this->assertEquals(new Percent(70), $newColor->toHsl()->getSaturation());
+    }
+
+    public function testDesaturateShouldBeGreaterEqualThanZero()
+    {
+        $hsl = new Hsl(180, 20, 50);
+        $newColor = $this->toCurrent($hsl);
+
+        $this->assertEquals("0%", (string)$newColor->desaturate(30)->toHsl()->getSaturation());
     }
 }
