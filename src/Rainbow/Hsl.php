@@ -15,6 +15,13 @@ use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
 
+/**
+ * Class Hsl
+ * @package Rainbow
+ * @method Hsl saturate($saturation)
+ * @method Hsl desaturate($saturation)
+ * @method Hsl lighten($lightness)
+ */
 final class Hsl extends AbstractColor implements ColorInterface
 {
     private $hue;

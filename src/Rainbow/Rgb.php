@@ -14,6 +14,13 @@ use Rainbow\Translator\RgbToHslTranslator;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
 
+/**
+ * Class Rgb
+ * @package Rainbow
+ * @method Rgb saturate($saturation)
+ * @method Rgb desaturate($saturation)
+ * @method Rgb lighten($lightness)
+ */
 class Rgb extends AbstractColor implements ColorInterface
 {
     private $red;
