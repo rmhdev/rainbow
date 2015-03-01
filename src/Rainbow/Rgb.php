@@ -95,22 +95,4 @@ class Rgb extends AbstractColor implements ColorInterface
     {
         return $color->toRgb();
     }
-
-    /**
-     * {@inheritDoc}
-     * @return Rgb
-     */
-    public function desaturate($saturation)
-    {
-        return $this->toHsl()->desaturate($saturation)->toRgb();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @return Rgb
-     */
-    public function lighten($lightness)
-    {
-        return $this->toHsl()->lighten($lightness)->toRgb();
-    }
 }

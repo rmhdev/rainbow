@@ -93,30 +93,4 @@ final class Hsl extends AbstractColor implements ColorInterface
     {
         return $color;
     }
-
-    /**
-     * {@inheritDoc}
-     * @return Hsl
-     */
-    public function desaturate($saturation)
-    {
-        return new self(
-            $this->getHue()->getValue(),
-            max($this->getSaturation()->getValue() - $saturation, 0),
-            $this->getLightness()->getValue()
-        );
-    }
-
-    /**
-     * {@inheritDoc}
-     * @return Hsl
-     */
-    public function lighten($lightness)
-    {
-        return new self(
-            $this->getHue()->getValue(),
-            $this->getSaturation()->getValue(),
-            min($this->getLightness()->getValue() + $lightness, 100)
-        );
-    }
 }
