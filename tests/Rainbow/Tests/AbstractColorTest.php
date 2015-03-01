@@ -42,6 +42,23 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
      */
     abstract protected function toCurrent(Hsl $color);
 
+    public function testSaturateShouldIncreaseSaturationInNewHsl()
+    {
+        $hsl = new Hsl(180, 50, 50);
+        $newColor = $this->toCurrent($hsl)->saturate(10);
+
+        $this->assertEquals(new Percent(50), $hsl->getSaturation());
+        $this->assertEquals(new Percent(60), $newColor->toHsl()->getSaturation());
+    }
+
+    public function testSaturateShouldBeLessOrEqualThan100()
+    {
+        $hsl = new Hsl(180, 80, 50);
+        $newColor = $this->toCurrent($hsl);
+
+        $this->assertEquals("100%", (string)$newColor->saturate(30)->toHsl()->getSaturation());
+    }
+
     public function testDesaturateShouldDecreaseSaturationInNewColor()
     {
         $hsl = new Hsl(180, 80, 50);

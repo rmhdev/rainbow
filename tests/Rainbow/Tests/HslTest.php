@@ -73,22 +73,6 @@ class HslTest extends AbstractColorTest
         $this->assertEquals((string)$expectedRgb, (string)$hsl->toRgb());
     }
 
-    public function testSaturateShouldIncreaseSaturationInNewHsl()
-    {
-        $hsl = new Hsl(0, 0, 0);
-        $newHsl = $hsl->saturate(10);
-
-        $this->assertEquals(new Percent(0), $hsl->getSaturation());
-        $this->assertEquals(new Percent(10), $newHsl->getSaturation());
-    }
-
-    public function testSaturateShouldBeLessEqualThan100()
-    {
-        $hsl = new Hsl(0, 80, 0);
-
-        $this->assertEquals("100%", (string)$hsl->saturate(30)->getSaturation());
-    }
-
     public function testToHslMustReturnEqualColor()
     {
         $color = new Hsl(10, 20, 30);
