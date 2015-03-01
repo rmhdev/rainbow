@@ -100,4 +100,13 @@ final class Hsl extends AbstractColor implements ColorInterface
     {
         return $color;
     }
+
+    public function darken($lightness)
+    {
+        return new Hsl(
+            $this->getHue()->getValue(),
+            $this->getSaturation()->getValue(),
+            $this->getLightness()->getValue() - $lightness
+        );
+    }
 }

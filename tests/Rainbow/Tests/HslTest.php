@@ -88,4 +88,13 @@ class HslTest extends AbstractColorTest
     {
         return $color;
     }
+
+    public function testDarkenShouldDecreaseLightnessInNewColor()
+    {
+        $hsl = new Hsl(90, 80, 50);
+        $newColor = $hsl->darken(30);
+
+        $this->assertEquals(new Percent(50), $hsl->getLightness());
+        $this->assertEquals(new Percent(20), $newColor->getLightness());
+    }
 }
