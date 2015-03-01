@@ -106,7 +106,7 @@ final class Hsl extends AbstractColor implements ColorInterface
         return new Hsl(
             $this->getHue()->getValue(),
             $this->getSaturation()->getValue(),
-            $this->getLightness()->getValue() - $lightness
+            max($this->getLightness()->getValue() - $lightness, 0)
         );
     }
 }
