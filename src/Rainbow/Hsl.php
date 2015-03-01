@@ -111,6 +111,10 @@ final class Hsl implements ColorInterface
         );
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Hsl
+     */
     public function lighten($lightness)
     {
         return new self(

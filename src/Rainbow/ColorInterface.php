@@ -52,4 +52,11 @@ interface ColorInterface
      */
     public function desaturate($saturation);
 
+    /**
+     * Increase the lightness of a color in the HSL color space
+     * @param int|string $lightness  A percentage
+     * @return ColorInterface
+     */
+    public function lighten($lightness);
+
 }
