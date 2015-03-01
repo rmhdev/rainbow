@@ -102,4 +102,9 @@ class Rgb extends AbstractColor implements ColorInterface
     {
         return $color->toRgb();
     }
+
+    public function darken($lightness)
+    {
+        return $this->toHsl()->darken($lightness)->toRgb();
+    }
 }
