@@ -16,9 +16,9 @@ abstract class AbstractColor implements ColorInterface
     {
         return $this->toCurrent(
             new Hsl(
-                $this->getLocalHsl()->getHue()->getValue(),
-                min($this->getLocalHsl()->getSaturation()->getValue() + $saturation, 100),
-                $this->getLocalHsl()->getLightness()->getValue()
+                $this->localHueValue(),
+                $this->localSaturationValue($saturation),
+                $this->localLightnessValue()
             )
         );
     }
@@ -29,6 +29,48 @@ abstract class AbstractColor implements ColorInterface
      * @return ColorInterface
      */
     abstract protected function toCurrent(Hsl $color);
+
+    /**
+     * @return number
+     */
+    private function localHueValue()
+    {
+        return $this->getLocalHsl()->getHue()->getValue();
+    }
+
+    /**
+     * @param int $percentage
+     * @return number
+     */
+    private function localSaturationValue($percentage = 0)
+    {
+        $value = $this->getLocalHsl()->getSaturation()->getValue();
+
+        return $this->formatPercentage($value, $percentage);
+    }
+
+    private function formatPercentage($value = 0, $percentage = 0)
+    {
+        if (!$percentage) {
+            return $value;
+        }
+        if ($percentage < 0) {
+            return max($value + $percentage, 0);
+        }
+
+        return min($value + $percentage, 100);
+    }
+
+    /**
+     * @param int $percentage
+     * @return number
+     */
+    private function localLightnessValue($percentage = 0)
+    {
+        $value = $this->getLocalHsl()->getLightness()->getValue();
+
+        return $this->formatPercentage($value, $percentage);
+    }
 
     /**
      * @return Hsl
@@ -49,9 +91,9 @@ abstract class AbstractColor implements ColorInterface
     {
         return $this->toCurrent(
             new Hsl(
-                $this->getLocalHsl()->getHue()->getValue(),
-                max($this->getLocalHsl()->getSaturation()->getValue() - $saturation, 0),
-                $this->getLocalHsl()->getLightness()->getValue()
+                $this->localHueValue(),
+                $this->localSaturationValue(-$saturation),
+                $this->localLightnessValue()
             )
         );
     }
@@ -63,9 +105,9 @@ abstract class AbstractColor implements ColorInterface
     {
         return $this->toCurrent(
             new Hsl(
-                $this->getLocalHsl()->getHue()->getValue(),
-                $this->getLocalHsl()->getSaturation()->getValue(),
-                min($this->getLocalHsl()->getLightness()->getValue() + $lightness, 100)
+                $this->localHueValue(),
+                $this->localSaturationValue(),
+                $this->localLightnessValue($lightness)
             )
         );
     }
@@ -77,9 +119,9 @@ abstract class AbstractColor implements ColorInterface
     {
         return $this->toCurrent(
             new Hsl(
-                $this->getLocalHsl()->getHue()->getValue(),
-                $this->getLocalHsl()->getSaturation()->getValue(),
-                max($this->getLocalHsl()->getLightness()->getValue() - $lightness, 0)
+                $this->localHueValue(),
+                $this->localSaturationValue(),
+                $this->localLightnessValue(-$lightness)
             )
         );
     }
