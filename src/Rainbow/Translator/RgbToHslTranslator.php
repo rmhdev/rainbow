@@ -6,7 +6,7 @@ use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Component;
 
-final class RgbToHslTranslator
+final class RgbToHslTranslator implements TranslatorInterface
 {
     private $color;
     private $hue;
@@ -18,6 +18,10 @@ final class RgbToHslTranslator
         $this->color = $color;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Hsl
+     */
     public function translate()
     {
         if (!$this->isTranslated()) {
