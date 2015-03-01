@@ -20,6 +20,7 @@ use Rainbow\Unit\Component;
  * @method Rgb saturate($saturation)
  * @method Rgb desaturate($saturation)
  * @method Rgb lighten($lightness)
+ * @method Rgb darken($lightness)
  */
 class Rgb extends AbstractColor implements ColorInterface
 {
@@ -101,10 +102,5 @@ class Rgb extends AbstractColor implements ColorInterface
     protected function toCurrent(Hsl $color)
     {
         return $color->toRgb();
-    }
-
-    public function darken($lightness)
-    {
-        return $this->toHsl()->darken($lightness)->toRgb();
     }
 }

@@ -92,4 +92,21 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals("100%", (string)$newColor->toHsl()->getLightness());
     }
+
+    public function testDarkenShouldDecreaseLightnessInNewColor()
+    {
+        $hsl = new Hsl(90, 80, 50);
+        $newColor = $this->toCurrent($hsl)->darken(30);
+
+        $this->assertEquals(new Percent(50), $hsl->getLightness());
+        $this->assertEquals(new Percent(20), $newColor->toHsl()->getLightness());
+    }
+
+    public function testDarkenShouldBeGreaterEqualThanZero()
+    {
+        $hsl = new Hsl(90, 80, 50);
+        $newColor = $this->toCurrent($hsl)->darken(60);
+
+        $this->assertEquals("0%", (string)$newColor->toHsl()->getLightness());
+    }
 }

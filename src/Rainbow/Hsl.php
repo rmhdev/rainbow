@@ -21,6 +21,7 @@ use Rainbow\Unit\Percent;
  * @method Hsl saturate($saturation)
  * @method Hsl desaturate($saturation)
  * @method Hsl lighten($lightness)
+ * @method Hsl darken($lightness)
  */
 final class Hsl extends AbstractColor implements ColorInterface
 {
@@ -99,14 +100,5 @@ final class Hsl extends AbstractColor implements ColorInterface
     protected function toCurrent(Hsl $color)
     {
         return $color;
-    }
-
-    public function darken($lightness)
-    {
-        return new Hsl(
-            $this->getHue()->getValue(),
-            $this->getSaturation()->getValue(),
-            max($this->getLightness()->getValue() - $lightness, 0)
-        );
     }
 }

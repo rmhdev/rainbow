@@ -59,4 +59,10 @@ interface ColorInterface
      */
     public function lighten($lightness);
 
+    /**
+     * Decrease the lightness of a color in the HSL color space
+     * @param number|string $lightness  A percentage
+     * @return ColorInterface
+     */
+    public function darken($lightness);
 }

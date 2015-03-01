@@ -14,7 +14,6 @@ use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
-use Rainbow\Unit\Percent;
 
 class RgbTest extends AbstractColorTest
 {
@@ -96,22 +95,5 @@ class RgbTest extends AbstractColorTest
     protected function toCurrent(Hsl $color)
     {
         return $color->toRgb();
-    }
-
-    public function testDarkenShouldDecreaseLightnessInNewColor()
-    {
-        $hsl = new Hsl(90, 80, 50);
-        $newColor = $hsl->toRgb()->darken(30);
-
-        $this->assertEquals(new Percent(50), $hsl->getLightness());
-        $this->assertEquals(new Percent(20), $newColor->toHsl()->getLightness());
-    }
-
-    public function testDarkenShouldBeGreaterEqualThanZero()
-    {
-        $hsl = new Hsl(90, 80, 50);
-        $newColor = $hsl->toRgb()->darken(60);
-
-        $this->assertEquals("0%", (string)$newColor->toHsl()->getLightness());
     }
 }

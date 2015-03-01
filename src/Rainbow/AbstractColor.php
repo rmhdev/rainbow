@@ -69,4 +69,18 @@ abstract class AbstractColor implements ColorInterface
             )
         );
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function darken($lightness)
+    {
+        return $this->toCurrent(
+            new Hsl(
+                $this->getLocalHsl()->getHue()->getValue(),
+                $this->getLocalHsl()->getSaturation()->getValue(),
+                max($this->getLocalHsl()->getLightness()->getValue() - $lightness, 0)
+            )
+        );
+    }
 }
