@@ -80,22 +80,6 @@ class HslTest extends AbstractColorTest
         $this->assertEquals($color, $color->toHsl());
     }
 
-    public function testLightenShouldIncreaseLightnessInNewColor()
-    {
-        $hsl = new Hsl(0, 0, 10);
-        $newHsl = $hsl->lighten(20);
-
-        $this->assertEquals("10%", (string)$hsl->getLightness());
-        $this->assertEquals("30%", (string)$newHsl->getLightness());
-    }
-
-    public function testLightenShouldBeLesserEqualThan100()
-    {
-        $hsl = new Hsl(0, 0, 80);
-
-        $this->assertEquals("100%", (string)$hsl->lighten(30)->getLightness());
-    }
-
     /**
      * {@inheritDoc}
      * @return Hsl

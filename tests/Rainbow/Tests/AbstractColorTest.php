@@ -42,7 +42,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
      */
     abstract protected function toCurrent(Hsl $color);
 
-    public function testSaturateShouldIncreaseSaturationInNewHsl()
+    public function testSaturateShouldIncreaseSaturationInNewColor()
     {
         $hsl = new Hsl(180, 50, 50);
         $newColor = $this->toCurrent($hsl)->saturate(10);
@@ -51,7 +51,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(new Percent(60), $newColor->toHsl()->getSaturation());
     }
 
-    public function testSaturateShouldBeLessOrEqualThan100()
+    public function testSaturateShouldBeLesserEqualThan100()
     {
         $hsl = new Hsl(180, 80, 50);
         $newColor = $this->toCurrent($hsl);
@@ -71,8 +71,25 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
     public function testDesaturateShouldBeGreaterEqualThanZero()
     {
         $hsl = new Hsl(180, 20, 50);
-        $newColor = $this->toCurrent($hsl);
+        $newColor = $this->toCurrent($hsl)->desaturate(30);
 
-        $this->assertEquals("0%", (string)$newColor->desaturate(30)->toHsl()->getSaturation());
+        $this->assertEquals("0%", (string)$newColor->toHsl()->getSaturation());
+    }
+
+    public function testLightenShouldIncreaseLightnessInNewColor()
+    {
+        $hsl = new Hsl(180, 50, 50);
+        $newColor = $this->toCurrent($hsl)->lighten(20);
+
+        $this->assertEquals(new Percent(50), $hsl->getLightness());
+        $this->assertEquals(new Percent(70), $newColor->toHsl()->getLightness());
+    }
+
+    public function testLightenShouldBeLesserEqualThan100()
+    {
+        $hsl = new Hsl(180, 50, 80);
+        $newColor = $this->toCurrent($hsl)->lighten(30);
+
+        $this->assertEquals("100%", (string)$newColor->toHsl()->getLightness());
     }
 }
