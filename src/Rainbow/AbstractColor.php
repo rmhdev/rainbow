@@ -20,12 +20,12 @@ abstract class AbstractColor implements ColorInterface
     /**
      * {@inheritDoc}
      */
-    public function saturate($saturation)
+    public function saturate($percentage)
     {
         return $this->toCurrent(
             new Hsl(
                 $this->localHueValue(),
-                $this->localSaturationValue($saturation),
+                $this->localSaturationValue($percentage),
                 $this->localLightnessValue()
             )
         );
@@ -95,12 +95,12 @@ abstract class AbstractColor implements ColorInterface
     /**
      * {@inheritDoc}
      */
-    public function desaturate($saturation)
+    public function desaturate($percentage)
     {
         return $this->toCurrent(
             new Hsl(
                 $this->localHueValue(),
-                $this->localSaturationValue(-$saturation),
+                $this->localSaturationValue(-$percentage),
                 $this->localLightnessValue()
             )
         );
@@ -109,13 +109,13 @@ abstract class AbstractColor implements ColorInterface
     /**
      * {@inheritDoc}
      */
-    public function lighten($lightness)
+    public function lighten($percentage)
     {
         return $this->toCurrent(
             new Hsl(
                 $this->localHueValue(),
                 $this->localSaturationValue(),
-                $this->localLightnessValue($lightness)
+                $this->localLightnessValue($percentage)
             )
         );
     }
@@ -123,13 +123,13 @@ abstract class AbstractColor implements ColorInterface
     /**
      * {@inheritDoc}
      */
-    public function darken($lightness)
+    public function darken($percentage)
     {
         return $this->toCurrent(
             new Hsl(
                 $this->localHueValue(),
                 $this->localSaturationValue(),
-                $this->localLightnessValue(-$lightness)
+                $this->localLightnessValue(-$percentage)
             )
         );
     }

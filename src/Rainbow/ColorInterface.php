@@ -40,29 +40,29 @@ interface ColorInterface
 
     /**
      * Increase the saturation of a color in the HSL color space
-     * @param number|string $saturation  A percentage
+     * @param number|string $percentage  A percentage
      * @return ColorInterface
      */
-    public function saturate($saturation);
+    public function saturate($percentage);
 
     /**
      * Decrease the saturation of a color in the HSL color space
-     * @param number|string $saturation  A percentage
+     * @param number|string $percentage  A percentage
      * @return ColorInterface
      */
-    public function desaturate($saturation);
+    public function desaturate($percentage);
 
     /**
      * Increase the lightness of a color in the HSL color space
-     * @param number|string $lightness  A percentage
+     * @param number|string $percentage  A percentage
      * @return ColorInterface
      */
-    public function lighten($lightness);
+    public function lighten($percentage);
 
     /**
      * Decrease the lightness of a color in the HSL color space
-     * @param number|string $lightness  A percentage
+     * @param number|string $percentage  A percentage
      * @return ColorInterface
      */
-    public function darken($lightness);
+    public function darken($percentage);
 }

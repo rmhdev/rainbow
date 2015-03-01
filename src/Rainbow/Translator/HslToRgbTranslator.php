@@ -16,11 +16,18 @@ use Rainbow\Unit\Component;
 
 final class HslToRgbTranslator implements TranslatorInterface
 {
+    /**
+     * @var Hsl
+     */
     private $color;
+
     private $red;
     private $green;
     private $blue;
 
+    /**
+     * @param Hsl $color
+     */
     public function __construct(Hsl $color)
     {
         $this->color = $color;

@@ -21,6 +21,9 @@ final class RgbToHslTranslator implements TranslatorInterface
     private $saturation;
     private $lightness;
 
+    /**
+     * @param Rgb $color
+     */
     public function __construct(Rgb $color)
     {
         $this->color = $color;

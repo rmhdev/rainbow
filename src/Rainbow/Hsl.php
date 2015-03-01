@@ -18,10 +18,10 @@ use Rainbow\Unit\Percent;
 /**
  * Class Hsl
  * @package Rainbow
- * @method Hsl saturate($saturation)
- * @method Hsl desaturate($saturation)
- * @method Hsl lighten($lightness)
- * @method Hsl darken($lightness)
+ * @method Hsl saturate($percentage)
+ * @method Hsl desaturate($percentage)
+ * @method Hsl lighten($percentage)
+ * @method Hsl darken($percentage)
  */
 final class Hsl extends AbstractColor implements ColorInterface
 {
@@ -29,6 +29,11 @@ final class Hsl extends AbstractColor implements ColorInterface
     private $saturation;
     private $lightness;
 
+    /**
+     * @param int|number|string $hue  An angle
+     * @param int|number|string $saturation  A percentage
+     * @param int|number|string $lightness  A percentage
+     */
     public function __construct($hue = 0, $saturation = 0, $lightness = 0)
     {
         $this->hue = new Angle($hue);

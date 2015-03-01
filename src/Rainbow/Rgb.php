@@ -17,10 +17,10 @@ use Rainbow\Unit\Component;
 /**
  * Class Rgb
  * @package Rainbow
- * @method Rgb saturate($saturation)
- * @method Rgb desaturate($saturation)
- * @method Rgb lighten($lightness)
- * @method Rgb darken($lightness)
+ * @method Rgb saturate($percentage)
+ * @method Rgb desaturate($percentage)
+ * @method Rgb lighten($percentage)
+ * @method Rgb darken($percentage)
  */
 class Rgb extends AbstractColor implements ColorInterface
 {
@@ -28,6 +28,11 @@ class Rgb extends AbstractColor implements ColorInterface
     private $green;
     private $blue;
 
+    /**
+     * @param int|number $red
+     * @param int|number $green
+     * @param int|number $blue
+     */
     public function __construct($red = 0, $green = 0, $blue = 0)
     {
         $this->red = new Component($red);
