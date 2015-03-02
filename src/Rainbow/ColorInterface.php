@@ -21,6 +21,12 @@ interface ColorInterface
     public function __toString();
 
     /**
+     * Name of the color
+     * @return string
+     */
+    public function getName();
+
+    /**
      * Extract the alpha channel
      * @return Alpha
      */

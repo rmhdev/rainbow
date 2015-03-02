@@ -17,6 +17,13 @@ use Rainbow\Unit\Component;
 
 class RgbTest extends AbstractColorTest
 {
+    public function testGetNameShouldReturnConstName()
+    {
+        $color = new Rgb(0, 0, 0);
+
+        $this->assertEquals("rgb", $color->getName());
+        $this->assertEquals("rgb", Rgb::NAME);
+    }
 
     public function testEmptyColorShouldReturnZeros()
     {
@@ -95,12 +102,5 @@ class RgbTest extends AbstractColorTest
     protected function toCurrent(Hsl $color)
     {
         return $color->toRgb();
-    }
-
-    public function testGetNameShouldReturnConstName()
-    {
-        $color = new Rgb(0, 0, 0);
-
-        $this->assertEquals(Rgb::NAME, $color->getName());
     }
 }

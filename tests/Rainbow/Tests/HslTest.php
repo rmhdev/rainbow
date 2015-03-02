@@ -18,6 +18,14 @@ use Rainbow\Unit\Percent;
 
 class HslTest extends AbstractColorTest
 {
+    public function testGetNameShouldReturnConstName()
+    {
+        $color = new Hsl(0, 0, 0);
+
+        $this->assertEquals("hsl", $color->getName());
+        $this->assertEquals("hsl", Hsl::NAME);
+    }
+
     public function testEmptyColorShouldReturnBlack()
     {
         $color = new Hsl();
@@ -95,12 +103,5 @@ class HslTest extends AbstractColorTest
     protected function toCurrent(Hsl $color)
     {
         return $color;
-    }
-
-    public function testGetNameShouldReturnConstName()
-    {
-        $color = new Hsl(0, 0, 0);
-
-        $this->assertEquals(Hsl::NAME, $color->getName());
     }
 }
