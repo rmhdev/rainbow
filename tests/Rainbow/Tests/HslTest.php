@@ -97,15 +97,10 @@ class HslTest extends AbstractColorTest
         return $color;
     }
 
-    public function testGetNameShouldReturnName()
+    public function testGetNameShouldReturnConstName()
     {
         $color = new Hsl(0, 0, 0);
 
-        $this->assertEquals("hsl", $color->getName());
-    }
-
-    public function testConstNameShouldReturnName()
-    {
-        $this->assertEquals("hsl", Hsl::NAME);
+        $this->assertEquals(Hsl::NAME, $color->getName());
     }
 }
