@@ -22,7 +22,6 @@ class RgbTest extends AbstractColorTest
         $color = new Rgb(0, 0, 0);
 
         $this->assertEquals("rgb", $color->getName());
-        $this->assertEquals("rgb", Rgb::NAME);
     }
 
     public function testEmptyColorShouldReturnZeros()

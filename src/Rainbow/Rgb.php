@@ -24,8 +24,6 @@ use Rainbow\Unit\Component;
  */
 class Rgb extends AbstractColor implements ColorInterface
 {
-    const NAME = "rgb";
-
     private $red;
     private $green;
     private $blue;
@@ -40,6 +38,14 @@ class Rgb extends AbstractColor implements ColorInterface
         $this->red = new Component($red);
         $this->green = new Component($green);
         $this->blue = new Component($blue);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+        return "rgb";
     }
 
     /**

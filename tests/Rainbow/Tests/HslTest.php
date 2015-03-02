@@ -23,7 +23,6 @@ class HslTest extends AbstractColorTest
         $color = new Hsl(0, 0, 0);
 
         $this->assertEquals("hsl", $color->getName());
-        $this->assertEquals("hsl", Hsl::NAME);
     }
 
     public function testEmptyColorShouldReturnBlack()
