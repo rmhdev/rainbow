@@ -113,6 +113,6 @@ class Rgb extends AbstractColor implements ColorInterface
 
     public function getName()
     {
-        return "rgb";
+        return self::NAME;
     }
 }

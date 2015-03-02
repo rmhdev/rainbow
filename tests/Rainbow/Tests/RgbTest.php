@@ -97,15 +97,10 @@ class RgbTest extends AbstractColorTest
         return $color->toRgb();
     }
 
-    public function testGetNameShouldReturnName()
+    public function testGetNameShouldReturnConstName()
     {
         $color = new Rgb(0, 0, 0);
 
-        $this->assertEquals("rgb", $color->getName());
-    }
-
-    public function testConstNameShouldReturnName()
-    {
-        $this->assertEquals("rgb", Rgb::NAME);
+        $this->assertEquals(Rgb::NAME, $color->getName());
     }
 }
