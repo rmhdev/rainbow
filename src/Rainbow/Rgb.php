@@ -110,9 +110,4 @@ class Rgb extends AbstractColor implements ColorInterface
     {
         return $color->toRgb();
     }
-
-    public function getName()
-    {
-        return self::NAME;
-    }
 }

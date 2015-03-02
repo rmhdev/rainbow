@@ -108,9 +108,4 @@ final class Hsl extends AbstractColor implements ColorInterface
     {
         return $color;
     }
-
-    public function getName()
-    {
-        return self::NAME;
-    }
 }

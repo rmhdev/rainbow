@@ -12,10 +12,20 @@ namespace Rainbow;
 
 abstract class AbstractColor implements ColorInterface
 {
+    const NAME = "abstract";
+
     /**
      * @var Hsl
      */
     private $localHsl;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+        return $this::NAME;
+    }
 
     /**
      * {@inheritDoc}
