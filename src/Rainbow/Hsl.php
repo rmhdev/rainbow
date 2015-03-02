@@ -25,6 +25,8 @@ use Rainbow\Unit\Percent;
  */
 final class Hsl extends AbstractColor implements ColorInterface
 {
+    const NAME = "hsl";
+
     private $hue;
     private $saturation;
     private $lightness;
@@ -105,5 +107,10 @@ final class Hsl extends AbstractColor implements ColorInterface
     protected function toCurrent(Hsl $color)
     {
         return $color;
+    }
+
+    public function getName()
+    {
+        return "hsl";
     }
 }
