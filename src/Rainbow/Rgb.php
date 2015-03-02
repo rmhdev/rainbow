@@ -24,6 +24,8 @@ use Rainbow\Unit\Component;
  */
 class Rgb extends AbstractColor implements ColorInterface
 {
+    const NAME = "rgb";
+
     private $red;
     private $green;
     private $blue;
@@ -107,5 +109,10 @@ class Rgb extends AbstractColor implements ColorInterface
     protected function toCurrent(Hsl $color)
     {
         return $color->toRgb();
+    }
+
+    public function getName()
+    {
+        return "rgb";
     }
 }
