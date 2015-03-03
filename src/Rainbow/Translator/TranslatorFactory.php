@@ -10,12 +10,17 @@
 
 namespace Rainbow\Translator;
 
-use Rainbow\Rgb;
+use Rainbow\ColorInterface;
 
 final class TranslatorFactory
 {
-    public static function create(Rgb $color, $resultingColorName)
+    public static function create(ColorInterface $color, $resultingColorName)
     {
-        return new RgbToHslTranslator($color);
+        if ("hsl" === $resultingColorName) {
+
+            return new RgbToHslTranslator($color);
+        }
+
+        return new HslToRgbTranslator($color);
     }
 }
