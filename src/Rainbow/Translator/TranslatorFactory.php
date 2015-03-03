@@ -16,6 +16,15 @@ final class TranslatorFactory
 {
     public static function create(ColorInterface $color, $resultingColorName)
     {
+        if ($resultingColorName === $color->getName()) {
+            throw new \UnexpectedValueException(
+                sprintf(
+                    "It is not possible to translate a color to its same type (%s to %s)",
+                    $color->getName(),
+                    $resultingColorName
+                )
+            );
+        }
         if ("hsl" === $resultingColorName) {
 
             return new RgbToHslTranslator($color);
