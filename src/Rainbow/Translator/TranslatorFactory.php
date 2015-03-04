@@ -10,6 +10,7 @@
 
 namespace Rainbow\Translator;
 
+use Doctrine\Instantiator\Exception\UnexpectedValueException;
 use Rainbow\ColorInterface;
 
 final class TranslatorFactory
@@ -21,16 +22,21 @@ final class TranslatorFactory
      */
     public static function create(ColorInterface $color, $resultingColorName)
     {
-        $resultingColorName = strtolower(trim($resultingColorName));
-        if ($resultingColorName === $color->getName()) {
+        $result = strtolower(trim($resultingColorName));
+        if ($result === $color->getName()) {
 
             return new NullTranslator($color);
         }
         $class = sprintf(
             'Rainbow\Translator\%sTo%sTranslator',
             ucfirst($color->getName()),
-            ucfirst($resultingColorName)
+            ucfirst($result)
         );
+        if (!class_exists($class)) {
+            throw new UnexpectedValueException(
+                sprintf("Color %s does not exist", $resultingColorName)
+            );
+        }
 
         return new $class($color);
     }

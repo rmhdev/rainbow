@@ -50,4 +50,13 @@ class TranslatorFactoryTest extends \PHPUnit_Framework_TestCase
             array(new Hsl(0, 0, 0), ' RGb ', 'Rainbow\Translator\HslToRgbTranslator'),
         );
     }
+
+    /**
+     * @expectedException \UnexpectedValueException
+     */
+    public function testIncorrectColorNameShouldThrowException()
+    {
+        $color = new Hsl(0, 0, 0);
+        TranslatorFactory::create($color, "lorem");
+    }
 }
