@@ -34,7 +34,11 @@ final class TranslatorFactory
         );
         if (!class_exists($class)) {
             throw new UnexpectedValueException(
-                sprintf("Color %s does not exist", $resultingColorName)
+                sprintf(
+                    "Translator not found: from %s to %s",
+                    $color->getName(),
+                    $resultingColorName
+                )
             );
         }
 
