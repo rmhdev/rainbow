@@ -14,6 +14,11 @@ use Rainbow\ColorInterface;
 
 final class TranslatorFactory
 {
+    /**
+     * @param ColorInterface $color
+     * @param $resultingColorName
+     * @return TranslatorInterface
+     */
     public static function create(ColorInterface $color, $resultingColorName)
     {
         $resultingColorName = strtolower(trim($resultingColorName));
@@ -21,11 +26,12 @@ final class TranslatorFactory
 
             return new NullTranslator($color);
         }
-        if ("hsl" === $resultingColorName) {
+        $class = sprintf(
+            'Rainbow\Translator\%sTo%sTranslator',
+            ucfirst($color->getName()),
+            ucfirst($resultingColorName)
+        );
 
-            return new RgbToHslTranslator($color);
-        }
-
-        return new HslToRgbTranslator($color);
+        return new $class($color);
     }
 }
