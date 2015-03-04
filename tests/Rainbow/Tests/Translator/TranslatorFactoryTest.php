@@ -24,12 +24,11 @@ class TranslatorFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Rainbow\Translator\HslToRgbTranslator', $translator);
     }
 
-    /**
-     * @expectedException \UnexpectedValueException
-     */
-    public function testCreateSameColorTranslatorShouldThrowException()
+    public function testCreateSameColorTranslatorShouldReturnEqualColor()
     {
-        $color = new Hsl(0, 0, 0);
-        TranslatorFactory::create($color, "hsl");
+        $color = new Hsl(10, 20, 30);
+        $translator = TranslatorFactory::create($color, "hsl");
+
+        $this->assertEquals($color, $translator->translate());
     }
 }
