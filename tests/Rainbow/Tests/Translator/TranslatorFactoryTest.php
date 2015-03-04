@@ -29,6 +29,6 @@ class TranslatorFactoryTest extends \PHPUnit_Framework_TestCase
         $color = new Hsl(10, 20, 30);
         $translator = TranslatorFactory::create($color, "hsl");
 
-        $this->assertEquals($color, $translator->translate());
+        $this->assertInstanceOf('Rainbow\Translator\NullTranslator', $translator);
     }
 }
