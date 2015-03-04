@@ -16,7 +16,7 @@ final class TranslatorFactory
 {
     public static function create(ColorInterface $color, $resultingColorName)
     {
-        $resultingColorName = strtolower($resultingColorName);
+        $resultingColorName = strtolower(trim($resultingColorName));
         if ($resultingColorName === $color->getName()) {
 
             return new NullTranslator($color);

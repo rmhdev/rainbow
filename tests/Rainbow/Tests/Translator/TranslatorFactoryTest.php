@@ -32,11 +32,22 @@ class TranslatorFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Rainbow\Translator\NullTranslator', $translator);
     }
 
-    public function testUnformattedColorNameShouldReturnTranslator()
+    /**
+     * @dataProvider getUnformattedColorNameDataProvider
+     */
+    public function testUnformattedColorNameShouldReturnTranslator($color, $resultingColorName, $expected)
     {
-        $rgb = new Rgb(0, 0, 0);
-        $translator = TranslatorFactory::create($rgb, "HSL");
+        $translator = TranslatorFactory::create($color, $resultingColorName);
 
-        $this->assertInstanceOf('Rainbow\Translator\RgbToHslTranslator', $translator);
+        $this->assertInstanceOf($expected, $translator);
+    }
+
+    public function getUnformattedColorNameDataProvider()
+    {
+        return array(
+            array(new Rgb(0, 0, 0), 'HSL', 'Rainbow\Translator\RgbToHslTranslator'),
+            array(new Rgb(0, 0, 0), ' HsL ', 'Rainbow\Translator\RgbToHslTranslator'),
+            array(new Hsl(0, 0, 0), ' RGb ', 'Rainbow\Translator\HslToRgbTranslator'),
+        );
     }
 }
