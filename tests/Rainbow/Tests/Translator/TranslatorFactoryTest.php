@@ -24,7 +24,7 @@ class TranslatorFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Rainbow\Translator\HslToRgbTranslator', $translator);
     }
 
-    public function testCreateSameColorTranslatorShouldReturnEqualColor()
+    public function testCreateSameColorTranslatorShouldReturnTranslator()
     {
         $color = new Hsl(10, 20, 30);
         $translator = TranslatorFactory::create($color, "hsl");
