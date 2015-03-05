@@ -103,4 +103,11 @@ class HslTest extends AbstractColorTest
     {
         return $color;
     }
+
+    public function testCopyShouldReturnEqualColor()
+    {
+        $color = new Hsl(10, 20, 30);
+
+        $this->assertEquals($color, $color->copy());
+    }
 }
