@@ -95,6 +95,14 @@ class HslTest extends AbstractColorTest
         $this->assertEquals($color, $color->toHsl());
     }
 
+    public function testToRgbShouldReturnEquivalentColor()
+    {
+        $hsl = new Hsl(0, 0, 0);
+        $expectedRgb = new Rgb(0, 0, 0);
+
+        $this->assertEquals((string)$expectedRgb, (string)$hsl->to("rgb"));
+    }
+
     /**
      * {@inheritDoc}
      * @return Hsl

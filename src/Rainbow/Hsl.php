@@ -11,6 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Translator\HslToRgbTranslator;
+use Rainbow\Translator\TranslatorFactory;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
@@ -109,5 +110,10 @@ final class Hsl extends AbstractColor implements ColorInterface
     protected function toCurrent(Hsl $color)
     {
         return $color->copy();
+    }
+
+    public function to($colorName)
+    {
+        return TranslatorFactory::create($this, $colorName)->translate();
     }
 }
