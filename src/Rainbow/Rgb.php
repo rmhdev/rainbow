@@ -11,6 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Translator\RgbToHslTranslator;
+use Rainbow\Translator\TranslatorFactory;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
 
@@ -102,6 +103,11 @@ class Rgb extends AbstractColor implements ColorInterface
         $translator = new RgbToHslTranslator($this);
 
         return $translator->translate();
+    }
+
+    public function to($colorName)
+    {
+        return TranslatorFactory::create($this, $colorName)->translate();
     }
 
     /**
