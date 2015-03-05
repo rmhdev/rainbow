@@ -114,9 +114,4 @@ final class Hsl extends AbstractColor implements ColorInterface
     {
         return $color;
     }
-
-    public function copy()
-    {
-        return clone $this;
-    }
 }

@@ -116,9 +116,4 @@ class Rgb extends AbstractColor implements ColorInterface
     {
         return $color->toRgb();
     }
-
-    public function copy()
-    {
-        return clone $this;
-    }
 }

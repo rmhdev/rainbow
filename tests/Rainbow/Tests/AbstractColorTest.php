@@ -117,4 +117,12 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals("0%", (string)$newColor->toHsl()->getLightness());
     }
+
+    public function testCopyShouldReturnEqualColor()
+    {
+        $hsl = new Hsl(10, 20, 30);
+        $color = $this->toCurrent($hsl);
+
+        $this->assertEquals($color, $color->copy());
+    }
 }

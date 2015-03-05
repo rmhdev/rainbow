@@ -33,6 +33,12 @@ interface ColorInterface
     public function getAlpha();
 
     /**
+     * Create a copy of the color
+     * @return ColorInterface
+     */
+    public function copy();
+
+    /**
      * Convert to RGB color space
      * @return Rgb
      */

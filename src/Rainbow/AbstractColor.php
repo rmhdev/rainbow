@@ -20,6 +20,14 @@ abstract class AbstractColor implements ColorInterface
     /**
      * {@inheritDoc}
      */
+    public function copy()
+    {
+        return clone $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function saturate($percentage)
     {
         return $this->toCurrent(
