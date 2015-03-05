@@ -94,13 +94,6 @@ class RgbTest extends AbstractColorTest
         $this->assertEquals($rgb, $rgb->toRgb());
     }
 
-    public function testToRgbShouldReturnEquivalentColor()
-    {
-        $rgb = new Rgb(0, 0, 0);
-
-        $this->assertEquals((string)$rgb, (string)$rgb->to("rgb"));
-    }
-
     public function testToHslShouldReturnEquivalentColor()
     {
         $rgb = new Rgb(0, 0, 0);
@@ -116,5 +109,14 @@ class RgbTest extends AbstractColorTest
     protected function toCurrent(Hsl $color)
     {
         return $color->toRgb();
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return Rgb
+     */
+    protected function createColor()
+    {
+        return new Rgb(0, 0, 0);
     }
 }

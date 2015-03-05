@@ -125,4 +125,16 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($color, $color->copy());
     }
+
+    public function testToSameShouldReturnEqualColor()
+    {
+        $color = $this->createColor();
+
+        $this->assertEquals((string)$color, (string)$color->to($color->getName()));
+    }
+
+    /**
+     * @return ColorInterface
+     */
+    abstract protected function createColor();
 }
