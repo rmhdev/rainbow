@@ -89,11 +89,7 @@ final class Hsl extends AbstractColor implements ColorInterface
      */
     public function toHsl()
     {
-        return new self(
-            $this->getHue()->getValue(),
-            $this->getSaturation()->getValue(),
-            $this->getLightness()->getValue()
-        );
+        return $this->copy();
     }
 
     /**
@@ -112,6 +108,6 @@ final class Hsl extends AbstractColor implements ColorInterface
      */
     protected function toCurrent(Hsl $color)
     {
-        return $color;
+        return $color->copy();
     }
 }

@@ -94,11 +94,7 @@ class Rgb extends AbstractColor implements ColorInterface
 
     public function toRgb()
     {
-        return new self(
-            $this->getRed()->getValue(),
-            $this->getGreen()->getValue(),
-            $this->getBlue()->getValue()
-        );
+        return $this->copy();
     }
 
     public function toHsl()

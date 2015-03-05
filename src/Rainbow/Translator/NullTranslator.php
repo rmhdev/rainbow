@@ -28,6 +28,6 @@ final class NullTranslator implements TranslatorInterface
      */
     public function translate()
     {
-        return clone $this->color;
+        return $this->color->copy();
     }
 }
