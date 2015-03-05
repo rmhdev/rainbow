@@ -51,6 +51,13 @@ interface ColorInterface
     public function toHsl();
 
     /**
+     * Convert to the indicated color space
+     * @param string $colorName  Expected color name
+     * @return ColorInterface
+     */
+    public function to($colorName);
+
+    /**
      * Increase the saturation of a color in the HSL color space
      * @param number|string $percentage  A percentage
      * @return ColorInterface
