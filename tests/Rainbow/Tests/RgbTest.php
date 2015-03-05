@@ -102,4 +102,11 @@ class RgbTest extends AbstractColorTest
     {
         return $color->toRgb();
     }
+
+    public function testCopyShouldReturnEqualColor()
+    {
+        $color = new Rgb(10, 20, 30);
+
+        $this->assertEquals($color, $color->copy());
+    }
 }
