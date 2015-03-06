@@ -96,7 +96,7 @@ abstract class AbstractColor implements ColorInterface
     private function getLocalHsl()
     {
         if (is_null($this->localHsl)) {
-            $this->localHsl = $this->toHsl();
+            $this->localHsl = $this->getTranslator()->toHsl();
         }
 
         return $this->localHsl;
@@ -144,9 +144,11 @@ abstract class AbstractColor implements ColorInterface
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getTranslator()
     {
         return new Translator($this);
     }
-
 }

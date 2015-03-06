@@ -49,20 +49,20 @@ interface ColorInterface
      * Convert to RGB color space
      * @return Rgb
      */
-    public function toRgb();
+    //public function toRgb();
 
     /**
      * Convert to HSL color space
      * @return Hsl
      */
-    public function toHsl();
+    //public function toHsl();
 
     /**
      * Convert to the indicated color space
      * @param string $colorName  Expected color name
      * @return ColorInterface
      */
-    public function to($colorName);
+    //public function to($colorName);
 
     /**
      * Increase the saturation of a color in the HSL color space

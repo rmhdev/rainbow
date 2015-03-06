@@ -10,8 +10,6 @@
 
 namespace Rainbow;
 
-use Rainbow\Converter\HslToRgbConverter;
-use Rainbow\Converter\ConverterFactory;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
@@ -87,33 +85,10 @@ final class Hsl extends AbstractColor implements ColorInterface
 
     /**
      * {@inheritDoc}
-     */
-    public function toHsl()
-    {
-        return $this->copy();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function toRgb()
-    {
-        $converter = new HslToRgbConverter($this);
-
-        return $converter->convert();
-    }
-
-    /**
-     * {@inheritDoc}
      * @return Hsl
      */
     protected function toCurrent(Hsl $color)
     {
         return $color->copy();
-    }
-
-    public function to($colorName)
-    {
-        return ConverterFactory::create($this, $colorName)->convert();
     }
 }

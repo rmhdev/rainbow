@@ -79,36 +79,13 @@ class RgbTest extends AbstractColorTest
         $this->assertEquals($alpha, $color->getAlpha());
     }
 
-    public function testRgbToHslShouldReturnHslColor()
-    {
-        $rgb = new Rgb(0, 0, 0);
-        $hsl = new Hsl(0, 0, 0);
-
-        $this->assertEquals((string)$hsl, (string)$rgb->toHsl());
-    }
-
-    public function testToRgbShouldReturnEqualColor()
-    {
-        $rgb = new Rgb(128, 230, 26);
-
-        $this->assertEquals($rgb, $rgb->toRgb());
-    }
-
-    public function testToHslShouldReturnEquivalentColor()
-    {
-        $rgb = new Rgb(0, 0, 0);
-        $hsl = new Hsl(0, 0, 0);
-
-        $this->assertEquals((string)$hsl, (string)$rgb->to("hsl"));
-    }
-
     /**
      * {@inheritDoc}
      * @return Rgb
      */
     protected function toCurrent(Hsl $color)
     {
-        return $color->toRgb();
+        return $color->getTranslator()->toRgb();
     }
 
     /**
