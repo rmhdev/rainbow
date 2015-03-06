@@ -8,34 +8,34 @@
  * @license MIT License
  */
 
-namespace Rainbow\Translator;
+namespace Rainbow\Converter;
 
 use Doctrine\Instantiator\Exception\UnexpectedValueException;
 use Rainbow\ColorInterface;
 
-final class TranslatorFactory
+final class ConverterFactory
 {
     /**
      * @param ColorInterface $color
      * @param $resultingColorName
-     * @return TranslatorInterface
+     * @return ConverterInterface
      */
     public static function create(ColorInterface $color, $resultingColorName)
     {
         $result = strtolower(trim($resultingColorName));
         if ($result === $color->getName()) {
 
-            return new NullTranslator($color);
+            return new NullConverter($color);
         }
         $class = sprintf(
-            'Rainbow\Translator\%sTo%sTranslator',
+            'Rainbow\Converter\%sTo%sConverter',
             ucfirst($color->getName()),
             ucfirst($result)
         );
         if (!class_exists($class)) {
             throw new UnexpectedValueException(
                 sprintf(
-                    "Translator not found: from %s to %s",
+                    "Converter not found: from %s to %s",
                     $color->getName(),
                     $resultingColorName
                 )

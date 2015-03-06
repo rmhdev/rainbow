@@ -8,12 +8,12 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Translator;
+namespace Rainbow\Tests\Converter;
 
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 
-abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractConverterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @return array

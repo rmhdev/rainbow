@@ -44,7 +44,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Translate Hsl color space to current color space
+     * Convert Hsl color space to current color space
      * @param Hsl $color
      * @return ColorInterface
      */

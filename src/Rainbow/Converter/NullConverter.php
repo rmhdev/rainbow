@@ -8,11 +8,11 @@
  * @license MIT License
  */
 
-namespace Rainbow\Translator;
+namespace Rainbow\Converter;
 
 use Rainbow\ColorInterface;
 
-final class NullTranslator implements TranslatorInterface
+final class NullConverter implements ConverterInterface
 {
     /**
      * @param ColorInterface $color
@@ -26,7 +26,7 @@ final class NullTranslator implements TranslatorInterface
      * Returns the same color
      * {@inheritDoc}
      */
-    public function translate()
+    public function convert()
     {
         return $this->color->copy();
     }

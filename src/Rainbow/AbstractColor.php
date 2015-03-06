@@ -40,7 +40,7 @@ abstract class AbstractColor implements ColorInterface
     }
 
     /**
-     * Translates back to the current color space
+     * Converts back to the current color space
      * @param Hsl $color
      * @return ColorInterface
      */

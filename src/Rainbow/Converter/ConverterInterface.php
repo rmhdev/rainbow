@@ -8,15 +8,15 @@
  * @license MIT License
  */
 
-namespace Rainbow\Translator;
+namespace Rainbow\Converter;
 
 use Rainbow\ColorInterface;
 
-interface TranslatorInterface
+interface ConverterInterface
 {
     /**
-     * Returns the translated color
+     * Returns the converted color
      * @return ColorInterface
      */
-    public function translate();
+    public function convert();
 }

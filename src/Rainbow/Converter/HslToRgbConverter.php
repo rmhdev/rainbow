@@ -8,13 +8,13 @@
  * @license MIT License
  */
 
-namespace Rainbow\Translator;
+namespace Rainbow\Converter;
 
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Component;
 
-final class HslToRgbTranslator implements TranslatorInterface
+final class HslToRgbConverter implements ConverterInterface
 {
     /**
      * @var Hsl
@@ -37,16 +37,16 @@ final class HslToRgbTranslator implements TranslatorInterface
      * {@inheritDoc}
      * @return Rgb
      */
-    public function translate()
+    public function convert()
     {
-        if (!$this->isTranslated()) {
+        if (!$this->isConverted()) {
             $this->updateValues();
         }
 
         return new Rgb($this->red, $this->green, $this->blue);
     }
 
-    private function isTranslated()
+    private function isConverted()
     {
         return (!is_null($this->red));
     }

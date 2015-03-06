@@ -8,21 +8,19 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Translator;
+namespace Rainbow\Tests\Converter;
 
-use Rainbow\Translator\RgbToHslTranslator;
+use Rainbow\Converter\HslToRgbConverter;
 
-class RgbToHslTranslatorTest extends AbstractTranslatorTest
+class HslToRgbConverterTest extends AbstractConverterTest
 {
     /**
      * @dataProvider getRgbHslEquivalenceDataProvider
      */
     public function testConvertShouldReturnEquivalentHslColor($rgbValues, $hslValues)
     {
-        $translator = new RgbToHslTranslator($this->createRgb($rgbValues));
+        $converter = new HslToRgbConverter($this->createHsl($hslValues));
 
-        $this->assertEquals($this->createHsl($hslValues), $translator->translate());
+        $this->assertEquals($this->createRgb($rgbValues), $converter->convert());
     }
-
-
 }
