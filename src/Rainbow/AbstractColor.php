@@ -10,6 +10,8 @@
 
 namespace Rainbow;
 
+use Rainbow\Translator\Translator;
+
 abstract class AbstractColor implements ColorInterface
 {
     /**
@@ -141,4 +143,10 @@ abstract class AbstractColor implements ColorInterface
             )
         );
     }
+
+    public function getTranslator()
+    {
+        return new Translator($this);
+    }
+
 }

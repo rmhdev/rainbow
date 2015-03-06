@@ -11,6 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Unit\Alpha;
+use Rainbow\Translator\Translator;
 
 interface ColorInterface
 {
@@ -31,6 +32,12 @@ interface ColorInterface
      * @return Alpha
      */
     public function getAlpha();
+
+    /**
+     * Translator object to convert the color space
+     * @return Translator
+     */
+    public function getTranslator();
 
     /**
      * Create a copy of the color

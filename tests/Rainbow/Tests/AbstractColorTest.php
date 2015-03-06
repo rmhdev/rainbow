@@ -137,4 +137,11 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
      * @return ColorInterface
      */
     abstract protected function createColor();
+
+    public function testGetTranslatorShouldReturnTranslator()
+    {
+        $color = $this->createColor();
+
+        $this->assertInstanceOf('Rainbow\Translator\Translator', $color->getTranslator());
+    }
 }
