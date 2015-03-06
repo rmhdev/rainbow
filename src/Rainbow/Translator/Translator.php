@@ -2,12 +2,30 @@
 
 namespace Rainbow\Translator;
 
-use Rainbow\Rgb;
+use Rainbow\ColorInterface;
+use Rainbow\Converter\ConverterFactory;
 
 final class Translator
 {
+    private $color;
+
+    public function __construct(ColorInterface $color)
+    {
+        $this->color = $color;
+    }
+
     public function toRgb()
     {
-        return new Rgb(0, 0, 0);
+        return ConverterFactory::create($this->getColor(), "rgb")->convert();
+    }
+
+    private function getColor()
+    {
+        return $this->color;
+    }
+
+    public function toHsl()
+    {
+        return ConverterFactory::create($this->getColor(), "hsl")->convert();
     }
 }
