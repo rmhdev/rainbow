@@ -12,6 +12,7 @@ namespace Rainbow;
 
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
+use Rainbow\Unit\Percent;
 
 /**
  * Class Rgb
@@ -98,5 +99,10 @@ class Rgb extends AbstractColor implements ColorInterface
     protected function toCurrent(Hsl $color)
     {
         return $color->getTranslator()->toRgb();
+    }
+
+    public function luminance()
+    {
+        return new Percent(0);
     }
 }

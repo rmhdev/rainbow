@@ -14,6 +14,7 @@ use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Component;
+use Rainbow\Unit\Percent;
 
 class RgbTest extends AbstractColorTest
 {
@@ -95,5 +96,12 @@ class RgbTest extends AbstractColorTest
     protected function createColor()
     {
         return new Rgb(0, 0, 0);
+    }
+
+    public function testLuminanceInBlackShouldReturnZero()
+    {
+        $rgb = new Rgb(0, 0, 0);
+
+        $this->assertEquals(new Percent(0), $rgb->luminance());
     }
 }
