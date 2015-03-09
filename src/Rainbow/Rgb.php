@@ -103,6 +103,6 @@ class Rgb extends AbstractColor implements ColorInterface
 
     public function luminance()
     {
-        return new Percent(0);
+        return new Percent(($this->getRed()->getValue() > 0) ? 100 : 0);
     }
 }

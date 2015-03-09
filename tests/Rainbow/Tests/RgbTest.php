@@ -104,4 +104,11 @@ class RgbTest extends AbstractColorTest
 
         $this->assertEquals(new Percent(0), $rgb->luminance());
     }
+
+    public function testLuminanceInWhiteShouldReturn100()
+    {
+        $rgb = new Rgb(255, 255, 255);
+
+        $this->assertEquals(new Percent(100), $rgb->luminance());
+    }
 }
