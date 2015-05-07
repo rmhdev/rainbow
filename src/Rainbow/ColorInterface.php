@@ -11,6 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Unit\Alpha;
+use Rainbow\Unit\Percent;
 use Rainbow\Translator\Translator;
 
 interface ColorInterface
@@ -63,6 +64,13 @@ interface ColorInterface
      * @return ColorInterface
      */
     //public function to($colorName);
+
+    /**
+     * Calculates the relative luminance of a color in the RGB color space
+     * @return Percent
+     * @url http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+     */
+    public function luminance();
 
     /**
      * Increase the saturation of a color in the HSL color space

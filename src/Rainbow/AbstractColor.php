@@ -11,6 +11,8 @@
 namespace Rainbow;
 
 use Rainbow\Translator\Translator;
+use Rainbow\Unit\Component;
+use Rainbow\Unit\Percent;
 
 abstract class AbstractColor implements ColorInterface
 {
@@ -150,5 +152,24 @@ abstract class AbstractColor implements ColorInterface
     public function getTranslator()
     {
         return new Translator($this);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function luminance()
+    {
+        $rgb = $this->getLocalHsl()->getTranslator()->toRgb();
+        $red = $rgb->getRed()->getValue() / Component::MAX_VALUE;
+        $green = $rgb->getGreen()->getValue() / Component::MAX_VALUE;
+        $blue = $rgb->getBlue()->getValue() / Component::MAX_VALUE;
+
+        $red    = ($red <= 0.03928)     ? $red / 12.92 : (($red + 0.055) / 1.055) ** 2.4;
+        $green  = ($green <= 0.03928)   ? $green / 12.92 : (($green + 0.055) / 1.055) ** 2.4;
+        $blue   = ($blue <= 0.03928)    ? $blue / 12.92 : (($blue + 0.055) / 1.055) ** 2.4;
+
+        $value = 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+
+        return new Percent($value * 100);
     }
 }
