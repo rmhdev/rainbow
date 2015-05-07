@@ -94,6 +94,6 @@ final class Hsl extends AbstractColor implements ColorInterface
 
     public function luminance()
     {
-        return new Percent(0);
+        return $this->getSaturation()->getValue() ? new Percent(100) : new Percent(0);
     }
 }

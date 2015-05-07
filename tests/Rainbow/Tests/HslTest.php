@@ -96,10 +96,17 @@ class HslTest extends AbstractColorTest
         return new Hsl(0, 0, 0);
     }
 
-    public function testLuminanceInBlackShouldReturnZero()
+    public function testLuminanceInBlackShouldReturnMinValue()
     {
         $color = new Hsl(0, 0, 0);
 
         $this->assertEquals(new Percent(0), $color->luminance());
+    }
+
+    public function testLuminanceInWhiteShouldReturnMaxValue()
+    {
+        $color = new Hsl(360, 100, 100);
+
+        $this->assertEquals(new Percent(100), $color->luminance());
     }
 }
