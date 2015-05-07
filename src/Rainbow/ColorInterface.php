@@ -47,25 +47,6 @@ interface ColorInterface
     public function copy();
 
     /**
-     * Convert to RGB color space
-     * @return Rgb
-     */
-    //public function toRgb();
-
-    /**
-     * Convert to HSL color space
-     * @return Hsl
-     */
-    //public function toHsl();
-
-    /**
-     * Convert to the indicated color space
-     * @param string $colorName  Expected color name
-     * @return ColorInterface
-     */
-    //public function to($colorName);
-
-    /**
      * Calculates the relative luminance of a color in the RGB color space
      * @return Percent
      * @url http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
