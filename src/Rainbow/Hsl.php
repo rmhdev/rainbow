@@ -91,4 +91,9 @@ final class Hsl extends AbstractColor implements ColorInterface
     {
         return $color->copy();
     }
+
+    public function luminance()
+    {
+        return new Percent(0);
+    }
 }

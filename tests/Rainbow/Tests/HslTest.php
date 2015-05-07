@@ -95,4 +95,11 @@ class HslTest extends AbstractColorTest
     {
         return new Hsl(0, 0, 0);
     }
+
+    public function testLuminanceInBlackShouldReturnZero()
+    {
+        $color = new Hsl(0, 0, 0);
+
+        $this->assertEquals(new Percent(0), $color->luminance());
+    }
 }
