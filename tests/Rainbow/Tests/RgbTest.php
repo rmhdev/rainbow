@@ -98,17 +98,24 @@ class RgbTest extends AbstractColorTest
         return new Rgb(0, 0, 0);
     }
 
-    public function testLuminanceInBlackShouldReturnZero()
+    /**
+     * @dataProvider getLuminanceDataProvider
+     */
+    public function testLuminanceShouldReturnValidPercentage($expected, $red, $green, $blue)
     {
-        $rgb = new Rgb(0, 0, 0);
+        $rgb = new Rgb($red, $green, $blue);
 
-        $this->assertEquals(new Percent(0), $rgb->luminance());
+        $this->assertEquals(new Percent($expected), $rgb->luminance());
     }
 
-    public function testLuminanceInWhiteShouldReturn100()
+    public function getLuminanceDataProvider()
     {
-        $rgb = new Rgb(255, 255, 255);
-
-        $this->assertEquals(new Percent(100), $rgb->luminance());
+        return array(
+            array(0, 0, 0, 0),
+            array(100, 255, 255, 255),
+            array(13, 100, 100, 100),
+            array(35, 160, 160, 160),
+            array(72, 0, 255, 0),
+        );
     }
 }
