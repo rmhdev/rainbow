@@ -45,7 +45,6 @@ abstract class AbstractConverterTest extends \PHPUnit_Framework_TestCase
                 array("red" => 128, "green" => 230, "blue" => 26),
                 array("hue" => 90, "saturation" => 80, "lightness" => 50)
             ),
-
         );
     }
 

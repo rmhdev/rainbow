@@ -113,9 +113,8 @@ class RgbTest extends AbstractColorTest
         return array(
             array(0, 0, 0, 0),
             array(100, 255, 255, 255),
-            //array(13, 100, 100, 100),
-            //array(35, 160, 160, 160),
-            array(72, 0, 255, 0),
+            array(12, 100, 100, 100),
+            array(36, 160, 160, 160),
         );
     }
 }
