@@ -38,7 +38,7 @@ interface ColorInterface
      * Translator object to convert the color space
      * @return Translator
      */
-    public function getTranslator();
+    public function translate();
 
     /**
      * Create a copy of the color

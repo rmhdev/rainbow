@@ -97,6 +97,6 @@ class Rgb extends AbstractColor implements ColorInterface
      */
     protected function toCurrent(Hsl $color)
     {
-        return $color->getTranslator()->toRgb();
+        return $color->translate()->toRgb();
     }
 }

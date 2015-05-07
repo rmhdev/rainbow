@@ -86,7 +86,7 @@ class RgbTest extends AbstractColorTest
      */
     protected function toCurrent(Hsl $color)
     {
-        return $color->getTranslator()->toRgb();
+        return $color->translate()->toRgb();
     }
 
     /**

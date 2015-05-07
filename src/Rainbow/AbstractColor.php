@@ -98,7 +98,7 @@ abstract class AbstractColor implements ColorInterface
     private function getLocalHsl()
     {
         if (is_null($this->localHsl)) {
-            $this->localHsl = $this->getTranslator()->toHsl();
+            $this->localHsl = $this->translate()->toHsl();
         }
 
         return $this->localHsl;
@@ -149,7 +149,7 @@ abstract class AbstractColor implements ColorInterface
     /**
      * {@inheritDoc}
      */
-    public function getTranslator()
+    public function translate()
     {
         return new Translator($this);
     }
@@ -159,7 +159,7 @@ abstract class AbstractColor implements ColorInterface
      */
     public function luminance()
     {
-        $rgb = $this->getLocalHsl()->getTranslator()->toRgb();
+        $rgb = $this->getLocalHsl()->translate()->toRgb();
         $red = $rgb->getRed()->getValue() / Component::MAX_VALUE;
         $green = $rgb->getGreen()->getValue() / Component::MAX_VALUE;
         $blue = $rgb->getBlue()->getValue() / Component::MAX_VALUE;
