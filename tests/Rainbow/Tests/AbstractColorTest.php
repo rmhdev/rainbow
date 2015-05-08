@@ -118,4 +118,12 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Rainbow\Unit\Percent', $color->luma());
     }
+
+    public function testGreyscaleShouldReturnColorWithoutSaturation()
+    {
+        $hsl = new Hsl(90, 90, 50);
+        $color = $this->toCurrent($hsl)->greyscale();
+
+        $this->assertEquals(new Percent(0), $color->translate()->toHsl()->getSaturation());
+    }
 }

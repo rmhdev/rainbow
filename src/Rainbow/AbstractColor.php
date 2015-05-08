@@ -139,4 +139,16 @@ abstract class AbstractColor implements ColorInterface
 
         return $channel->result();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function greyscale()
+    {
+        return $this->toCurrent(new Hsl(
+            $this->getLocalHsl()->getHue()->getValue(),
+            0,
+            $this->getLocalHsl()->getLightness()->getValue()
+        ));
+    }
 }

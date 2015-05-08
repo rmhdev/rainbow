@@ -87,4 +87,10 @@ interface ColorInterface
      * @return ColorInterface
      */
     public function spin($angle);
+
+    /**
+     * Remove all saturation from a color in the HSL color space;
+     * @return ColorInterface
+     */
+    public function greyscale();
 }
