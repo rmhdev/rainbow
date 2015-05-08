@@ -33,4 +33,13 @@ class ContrastTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($dark, $operation->result()->translate()->toRgb());
     }
+
+    public function testBlackReturnsLightColor()
+    {
+        $rgb = new Rgb(0, 0, 0);
+        $light = new Rgb(200, 200, 200);
+        $operation = new Contrast($rgb, null, $light);
+
+        $this->assertEquals($light, $operation->result()->translate()->toRgb());
+    }
 }
