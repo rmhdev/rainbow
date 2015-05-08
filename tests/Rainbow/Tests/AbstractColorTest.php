@@ -14,6 +14,7 @@ use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\ColorInterface;
 use Rainbow\Unit\Angle;
+use Rainbow\Unit\Percent;
 
 abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 {
@@ -56,6 +57,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $color = $this->toCurrent($hsl);
 
         $this->assertInstanceOf(get_class($color), $color->saturate(10));
+        $this->assertEquals(new Percent(60), $color->saturate(10)->translate()->toHsl()->getSaturation());
     }
 
     public function testDesaturateShouldReturnColor()
@@ -64,6 +66,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $color = $this->toCurrent($hsl);
 
         $this->assertInstanceOf(get_class($color), $color->desaturate(10));
+        $this->assertEquals(new Percent(40), $color->desaturate(10)->translate()->toHsl()->getSaturation());
     }
 
     public function testLightenShouldReturnColor()
@@ -72,6 +75,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $color = $this->toCurrent($hsl);
 
         $this->assertInstanceOf(get_class($color), $color->lighten(10));
+        $this->assertEquals(new Percent(60), $color->lighten(10)->translate()->toHsl()->getLightness());
     }
 
     public function testDarkenShouldReturnColor()
@@ -80,6 +84,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $color = $this->toCurrent($hsl);
 
         $this->assertInstanceOf(get_class($color), $color->darken(10));
+        $this->assertEquals(new Percent(40), $color->darken(10)->translate()->toHsl()->getLightness());
     }
 
     public function testSpinShouldReturnColorWithUpdatedHue()
