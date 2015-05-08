@@ -14,7 +14,7 @@ use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Hsl;
 use Rainbow\Unit\Percent;
 
-final class Lightness implements CalculationInterface
+final class Lightness extends AbstractOperation implements CalculationInterface
 {
     private $lightness;
 
@@ -24,22 +24,10 @@ final class Lightness implements CalculationInterface
      */
     public function __construct(Hsl $color, $difference = 0)
     {
-        $this->lightness = $this->calculateNewLightness(
-            $color->getLightness()->getValue(),
+        $this->lightness = $this->calculatePercentValue(
+            $color->getLightness(),
             $difference
         );
-    }
-
-    private function calculateNewLightness($value, $difference)
-    {
-        if (!$difference) {
-            return $value;
-        }
-        if ($difference < 0) {
-            return max($value + $difference, 0);
-        }
-
-        return min($value + $difference, 100);
     }
 
     /**

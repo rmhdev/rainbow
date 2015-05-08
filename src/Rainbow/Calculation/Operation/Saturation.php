@@ -14,7 +14,7 @@ use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Hsl;
 use Rainbow\Unit\Percent;
 
-final class Saturation implements CalculationInterface
+final class Saturation extends AbstractOperation implements CalculationInterface
 {
     private $saturation;
 
@@ -24,22 +24,10 @@ final class Saturation implements CalculationInterface
      */
     public function  __construct(Hsl $color, $difference = 0)
     {
-        $this->saturation = $this->calculateNewSaturation(
-            $color->getSaturation()->getValue(),
+        $this->saturation = $this->calculatePercentValue(
+            $color->getSaturation(),
             $difference
         );
-    }
-
-    private function calculateNewSaturation($value, $difference)
-    {
-        if (!$difference) {
-            return $value;
-        }
-        if ($difference < 0) {
-            return max($value + $difference, 0);
-        }
-
-        return min($value + $difference, 100);
     }
 
     /**
