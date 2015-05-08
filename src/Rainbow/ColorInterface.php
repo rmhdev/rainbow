@@ -47,11 +47,11 @@ interface ColorInterface
     public function copy();
 
     /**
-     * Calculates the relative luminance of a color in the RGB color space
+     * Calculates the luma (perceptual brightness) of a color in the RGB color space
      * @return Percent
      * @url http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
      */
-    public function luminance();
+    public function luma();
 
     /**
      * Increase the saturation of a color in the HSL color space

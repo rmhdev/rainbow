@@ -2,16 +2,16 @@
 
 namespace Rainbow\Tests\Calculation;
 
-use Rainbow\Calculation\Channel\Luminance;
+use Rainbow\Calculation\Channel\Luma;
 use Rainbow\Rgb;
 use Rainbow\Unit\Percent;
 
-class LuminanceTest extends \PHPUnit_Framework_TestCase
+class LumaTest extends \PHPUnit_Framework_TestCase
 {
     public function testLuminanceInBlackShouldReturnMinValue()
     {
         $color = new Rgb(0, 0, 0);
-        $luminance = new Luminance($color);
+        $luminance = new Luma($color);
 
         $this->assertEquals(new Percent(0), $luminance->result());
     }
@@ -19,7 +19,7 @@ class LuminanceTest extends \PHPUnit_Framework_TestCase
     public function testLuminanceInWhiteShouldReturnMaxValue()
     {
         $color = new Rgb(255, 255, 255);
-        $luminance = new Luminance($color);
+        $luminance = new Luma($color);
 
         $this->assertEquals(new Percent(100), $luminance->result());
     }
@@ -30,7 +30,7 @@ class LuminanceTest extends \PHPUnit_Framework_TestCase
     public function testLuminanceShouldReturnValidPercentage($expected, $value)
     {
         $color = new Rgb($value["red"], $value["green"], $value["blue"]);
-        $luminance = new Luminance($color);
+        $luminance = new Luma($color);
 
         $this->assertEquals(new Percent($expected), $luminance->result());
     }

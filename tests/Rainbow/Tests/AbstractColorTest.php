@@ -116,6 +116,6 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $hsl = new Hsl();
         $color = $this->toCurrent($hsl);
 
-        $this->assertInstanceOf('Rainbow\Unit\Percent', $color->luminance());
+        $this->assertInstanceOf('Rainbow\Unit\Percent', $color->luma());
     }
 }

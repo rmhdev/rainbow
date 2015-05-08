@@ -10,7 +10,7 @@
 
 namespace Rainbow;
 
-use Rainbow\Calculation\Channel\Luminance;
+use Rainbow\Calculation\Channel\Luma;
 use Rainbow\Calculation\Operation\Lightness;
 use Rainbow\Calculation\Operation\Saturation;
 use Rainbow\Calculation\Operation\Spin;
@@ -133,10 +133,10 @@ abstract class AbstractColor implements ColorInterface
     /**
      * {@inheritDoc}
      */
-    public function luminance()
+    public function luma()
     {
-        $luminance = new Luminance($this->translate()->toRgb());
+        $channel = new Luma($this->translate()->toRgb());
 
-        return $luminance->result();
+        return $channel->result();
     }
 }
