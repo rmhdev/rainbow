@@ -14,7 +14,7 @@ use Rainbow\Rgb;
 use Rainbow\Unit\Component;
 use Rainbow\Unit\Percent;
 
-final class Luminance
+final class Luminance implements CalculationInterface
 {
     private $value;
 

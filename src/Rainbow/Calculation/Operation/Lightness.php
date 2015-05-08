@@ -10,10 +10,11 @@
 
 namespace Rainbow\Calculation\Operation;
 
+use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Hsl;
 use Rainbow\Unit\Percent;
 
-final class Lightness
+final class Lightness implements CalculationInterface
 {
     private $lightness;
 

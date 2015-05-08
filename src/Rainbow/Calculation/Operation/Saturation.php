@@ -10,10 +10,11 @@
 
 namespace Rainbow\Calculation\Operation;
 
+use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Hsl;
 use Rainbow\Unit\Percent;
 
-final class Saturation
+final class Saturation implements CalculationInterface
 {
     private $saturation;
 
