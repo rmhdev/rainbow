@@ -11,6 +11,7 @@
 namespace Rainbow\Tests\Calculation\Operation;
 
 use Rainbow\Calculation\Operation\Contrast;
+use Rainbow\Hsl;
 use Rainbow\Rgb;
 
 class ContrastTest extends \PHPUnit_Framework_TestCase
@@ -55,8 +56,13 @@ class ContrastTest extends \PHPUnit_Framework_TestCase
                     "color" => new Rgb(100, 100, 100),
                     "dark" => new Rgb(50, 50, 50),
                     "light" => new Rgb(200, 200, 200),
-                )
-            )
+            )),
+            array(
+                "light", array(
+                    "color" => new Hsl(0, 0, 13),
+                    "dark" => new Hsl(0, 0, 6),
+                    "light" => new Hsl(0, 0, 87),
+            ))
         );
     }
 }
