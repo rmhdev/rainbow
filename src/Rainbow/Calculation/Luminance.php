@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Rainbow package.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @license MIT License
+ */
+
 namespace Rainbow\Calculation;
 
 use Rainbow\Rgb;
@@ -10,6 +18,9 @@ final class Luminance
 {
     private $value;
 
+    /**
+     * @param Rgb $color
+     */
     public function __construct(Rgb $color)
     {
         $this->value = $this->calculateValue($color);
@@ -37,6 +48,9 @@ final class Luminance
         return ($component <= 0.03928) ? $component / 12.92 : (($component + 0.055) / 1.055) ** 2.4;
     }
 
+    /**
+     * @return Percent
+     */
     public function value()
     {
         return new Percent($this->value);
