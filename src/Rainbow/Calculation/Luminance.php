@@ -17,17 +17,24 @@ final class Luminance
 
     private function calculateValue(Rgb $color)
     {
-        $red = $color->getRed()->getValue() / Component::MAX_VALUE;
-        $green = $color->getGreen()->getValue() / Component::MAX_VALUE;
-        $blue = $color->getBlue()->getValue() / Component::MAX_VALUE;
-
-        $red    = ($red <= 0.03928)     ? $red / 12.92 : (($red + 0.055) / 1.055) ** 2.4;
-        $green  = ($green <= 0.03928)   ? $green / 12.92 : (($green + 0.055) / 1.055) ** 2.4;
-        $blue   = ($blue <= 0.03928)    ? $blue / 12.92 : (($blue + 0.055) / 1.055) ** 2.4;
+        $red    = $this->calculateComponent($color->getRed()->getValue());
+        $green  = $this->calculateComponent($color->getGreen()->getValue());
+        $blue   = $this->calculateComponent($color->getBlue()->getValue());
 
         $value = 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 
         return $value * 100;
+    }
+
+    /**
+     * @param int $component  value from 0 to 255
+     * @return float
+     */
+    private function calculateComponent($component = 0)
+    {
+        $component /= Component::MAX_VALUE;
+
+        return ($component <= 0.03928) ? $component / 12.92 : (($component + 0.055) / 1.055) ** 2.4;
     }
 
     public function value()
