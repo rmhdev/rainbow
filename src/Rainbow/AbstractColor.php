@@ -35,6 +35,11 @@ abstract class AbstractColor implements ColorInterface
      */
     public function saturate($percentage)
     {
+        return $this->updateSaturation($percentage);
+    }
+
+    private function updateSaturation($percentage)
+    {
         $saturation = new Saturation($this->getLocalHsl(), $percentage);
 
         return $saturation->result();
@@ -106,9 +111,7 @@ abstract class AbstractColor implements ColorInterface
      */
     public function desaturate($percentage)
     {
-        $saturation = new Saturation($this->getLocalHsl(), -$percentage);
-
-        return $saturation->result();
+        return $this->updateSaturation(-$percentage);
     }
 
     /**
