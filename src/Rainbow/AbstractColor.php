@@ -10,6 +10,7 @@
 
 namespace Rainbow;
 
+use Rainbow\Calculation\Operation\Saturation;
 use Rainbow\Translator\Translator;
 use Rainbow\Unit\Component;
 use Rainbow\Unit\Percent;
@@ -34,13 +35,9 @@ abstract class AbstractColor implements ColorInterface
      */
     public function saturate($percentage)
     {
-        return $this->toCurrent(
-            new Hsl(
-                $this->localHueValue(),
-                $this->localSaturationValue($percentage),
-                $this->localLightnessValue()
-            )
-        );
+        $saturation = new Saturation($this->getLocalHsl(), $percentage);
+
+        return $saturation->result();
     }
 
     /**
@@ -109,13 +106,9 @@ abstract class AbstractColor implements ColorInterface
      */
     public function desaturate($percentage)
     {
-        return $this->toCurrent(
-            new Hsl(
-                $this->localHueValue(),
-                $this->localSaturationValue(-$percentage),
-                $this->localLightnessValue()
-            )
-        );
+        $saturation = new Saturation($this->getLocalHsl(), -$percentage);
+
+        return $saturation->result();
     }
 
     /**
