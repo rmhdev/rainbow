@@ -13,7 +13,7 @@ class ContrastTest extends \PHPUnit_Framework_TestCase
         $expectedRgb = new Rgb(0, 0, 0);
         $operation = new Contrast($rgb);
 
-        $this->assertEquals($expectedRgb, $operation->result()->translate()->toRgb());
+        $this->assertEquals($expectedRgb, $operation->result());
     }
 
     public function testBlackReturnsWhiteByDefault()
@@ -22,7 +22,7 @@ class ContrastTest extends \PHPUnit_Framework_TestCase
         $expectedRgb = new Rgb(255, 255, 255);
         $operation = new Contrast($rgb);
 
-        $this->assertEquals($expectedRgb, $operation->result()->translate()->toRgb());
+        $this->assertEquals($expectedRgb, $operation->result());
     }
 
     public function testWhiteReturnsDarkColor()
@@ -31,7 +31,7 @@ class ContrastTest extends \PHPUnit_Framework_TestCase
         $dark = new Rgb(50, 50, 50);
         $operation = new Contrast($rgb, $dark);
 
-        $this->assertEquals($dark, $operation->result()->translate()->toRgb());
+        $this->assertEquals($dark, $operation->result());
     }
 
     public function testBlackReturnsLightColor()
@@ -40,6 +40,31 @@ class ContrastTest extends \PHPUnit_Framework_TestCase
         $light = new Rgb(200, 200, 200);
         $operation = new Contrast($rgb, null, $light);
 
-        $this->assertEquals($light, $operation->result()->translate()->toRgb());
+        $this->assertEquals($light, $operation->result());
+    }
+
+    /**
+     * @dataProvider contrastDataProvider
+     * @param string $expectedName
+     * @param array $colors
+     */
+    public function testContrastShouldReturnExpectedColor($expectedName, $colors)
+    {
+        $contrast = new Contrast($colors["color"], $colors["dark"], $colors["light"]);
+
+        $this->assertEquals($colors[$expectedName], $contrast->result());
+    }
+
+    public function contrastDataProvider()
+    {
+        return array(
+            array(
+                "light", array(
+                    "color" => new Rgb(100, 100, 100),
+                    "dark" => new Rgb(50, 50, 50),
+                    "light" => new Rgb(200, 200, 200),
+                )
+            )
+        );
     }
 }
