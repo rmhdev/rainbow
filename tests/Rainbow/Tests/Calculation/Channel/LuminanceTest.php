@@ -40,6 +40,7 @@ class LuminanceTest extends \PHPUnit_Framework_TestCase
         return array(
             array(13, array("red" => 100, "green" => 100, "blue" => 100)),
             array(35, array("red" => 160, "green" => 160, "blue" => 160)),
+            array(44, array("red" => 100, "green" => 200, "blue" => 30)),
         );
     }
 }
