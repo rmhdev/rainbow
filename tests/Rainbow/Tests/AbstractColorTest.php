@@ -51,49 +51,44 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
      */
     abstract protected function toCurrent(Hsl $color);
 
-    public function testSaturateShouldReturnColor()
+    public function testSaturateShouldReturnUpdatedColor()
     {
         $hsl = new Hsl(180, 50, 50);
-        $color = $this->toCurrent($hsl);
+        $color = $this->toCurrent($hsl)->saturate(10);
 
-        $this->assertInstanceOf(get_class($color), $color->saturate(10));
-        $this->assertEquals(new Percent(60), $color->saturate(10)->translate()->toHsl()->getSaturation());
+        $this->assertEquals(new Percent(60), $color->translate()->toHsl()->getSaturation());
     }
 
-    public function testDesaturateShouldReturnColor()
+    public function testDesaturateShouldReturnUpdatedColor()
     {
         $hsl = new Hsl(180, 50, 50);
-        $color = $this->toCurrent($hsl);
+        $color = $this->toCurrent($hsl)->desaturate(10);
 
-        $this->assertInstanceOf(get_class($color), $color->desaturate(10));
-        $this->assertEquals(new Percent(40), $color->desaturate(10)->translate()->toHsl()->getSaturation());
+        $this->assertEquals(new Percent(40), $color->translate()->toHsl()->getSaturation());
     }
 
-    public function testLightenShouldReturnColor()
+    public function testLightenShouldReturnUpdatedColor()
     {
         $hsl = new Hsl(180, 50, 50);
-        $color = $this->toCurrent($hsl);
+        $color = $this->toCurrent($hsl)->lighten(10);
 
-        $this->assertInstanceOf(get_class($color), $color->lighten(10));
-        $this->assertEquals(new Percent(60), $color->lighten(10)->translate()->toHsl()->getLightness());
+        $this->assertEquals(new Percent(60), $color->translate()->toHsl()->getLightness());
     }
 
-    public function testDarkenShouldReturnColor()
+    public function testDarkenShouldReturnUpdatedColor()
     {
         $hsl = new Hsl(180, 50, 50);
-        $color = $this->toCurrent($hsl);
+        $color = $this->toCurrent($hsl)->darken(10);
 
-        $this->assertInstanceOf(get_class($color), $color->darken(10));
-        $this->assertEquals(new Percent(40), $color->darken(10)->translate()->toHsl()->getLightness());
+        $this->assertEquals(new Percent(40), $color->translate()->toHsl()->getLightness());
     }
 
-    public function testSpinShouldReturnColorWithUpdatedHue()
+    public function testSpinShouldReturnUpdatedColor()
     {
         $hsl = new Hsl(180, 50, 50);
-        $color = $this->toCurrent($hsl);
+        $color = $this->toCurrent($hsl)->spin(10);
 
-        $this->assertInstanceOf(get_class($color), $color->spin(10));
-        $this->assertEquals(new Angle(190), $color->spin(10)->translate()->toHsl()->getHue());
+        $this->assertEquals(new Angle(190), $color->translate()->toHsl()->getHue());
     }
 
     public function testCopyShouldReturnEqualColor()
