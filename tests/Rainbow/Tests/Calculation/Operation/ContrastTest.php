@@ -7,7 +7,7 @@ use Rainbow\Rgb;
 
 class ContrastTest extends \PHPUnit_Framework_TestCase
 {
-    public function testLightColorReturnsBlackColorByDefault()
+    public function testWhiteReturnsBlackByDefault()
     {
         $rgb = new Rgb(255, 255, 255);
         $expectedRgb = new Rgb(0, 0, 0);
@@ -16,7 +16,7 @@ class ContrastTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedRgb, $operation->result()->translate()->toRgb());
     }
 
-    public function testDarkColorReturnsWhiteColorByDefault()
+    public function testBlackReturnsWhiteByDefault()
     {
         $rgb = new Rgb(0, 0, 0);
         $expectedRgb = new Rgb(255, 255, 255);
