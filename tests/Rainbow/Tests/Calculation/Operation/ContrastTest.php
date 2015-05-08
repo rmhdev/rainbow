@@ -7,29 +7,12 @@ use Rainbow\Rgb;
 
 class ContrastTest extends \PHPUnit_Framework_TestCase
 {
-    public function testWhiteReturnsBlackByDefault()
-    {
-        $rgb = new Rgb(255, 255, 255);
-        $expectedRgb = new Rgb(0, 0, 0);
-        $operation = new Contrast($rgb);
-
-        $this->assertEquals($expectedRgb, $operation->result());
-    }
-
-    public function testBlackReturnsWhiteByDefault()
-    {
-        $rgb = new Rgb(0, 0, 0);
-        $expectedRgb = new Rgb(255, 255, 255);
-        $operation = new Contrast($rgb);
-
-        $this->assertEquals($expectedRgb, $operation->result());
-    }
-
     public function testWhiteReturnsDarkColor()
     {
         $rgb = new Rgb(255, 255, 255);
         $dark = new Rgb(50, 50, 50);
-        $operation = new Contrast($rgb, $dark);
+        $light = new Rgb(200, 200, 200);
+        $operation = new Contrast($rgb, $dark, $light);
 
         $this->assertEquals($dark, $operation->result());
     }
@@ -37,8 +20,9 @@ class ContrastTest extends \PHPUnit_Framework_TestCase
     public function testBlackReturnsLightColor()
     {
         $rgb = new Rgb(0, 0, 0);
+        $dark = new Rgb(50, 50, 50);
         $light = new Rgb(200, 200, 200);
-        $operation = new Contrast($rgb, null, $light);
+        $operation = new Contrast($rgb, $dark, $light);
 
         $this->assertEquals($light, $operation->result());
     }

@@ -10,14 +10,8 @@ final class Contrast implements CalculationInterface
 {
     private $contrast;
 
-    public function __construct(Rgb $color, Rgb $dark = null, Rgb $light = null)
+    public function __construct(Rgb $color, Rgb $dark, Rgb $light)
     {
-        if (!$dark) {
-            $dark = new Rgb(0, 0, 0);
-        }
-        if (!$light) {
-            $light = new Rgb(255, 255, 255);
-        }
         $this->contrast = $this->calculateContrast($color, $dark, $light);
     }
 
