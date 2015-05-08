@@ -12,7 +12,6 @@ namespace Rainbow\Tests;
 
 use Rainbow\Hsl;
 use Rainbow\Rgb;
-use Rainbow\Unit\Percent;
 use Rainbow\ColorInterface;
 
 abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
@@ -66,41 +65,22 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(get_class($color), $color->desaturate(10));
     }
 
-
-
-    public function testLightenShouldIncreaseLightnessInNewColor()
+    public function testLightenShouldReturnColor()
     {
         $hsl = new Hsl(180, 50, 50);
-        $newColor = $this->toCurrent($hsl)->lighten(20);
+        $color = $this->toCurrent($hsl);
 
-        $this->assertEquals(new Percent(50), $hsl->getLightness());
-        $this->assertEquals(new Percent(70), $newColor->translate()->toHsl()->getLightness());
+        $this->assertInstanceOf(get_class($color), $color->lighten(10));
     }
 
-    public function testLightenShouldBeLesserEqualThan100()
+    public function testDarkenShouldReturnColor()
     {
-        $hsl = new Hsl(180, 50, 80);
-        $newColor = $this->toCurrent($hsl)->lighten(30);
+        $hsl = new Hsl(180, 50, 50);
+        $color = $this->toCurrent($hsl);
 
-        $this->assertEquals("100%", (string)$newColor->translate()->toHsl()->getLightness());
+        $this->assertInstanceOf(get_class($color), $color->darken(10));
     }
 
-    public function testDarkenShouldDecreaseLightnessInNewColor()
-    {
-        $hsl = new Hsl(90, 80, 50);
-        $newColor = $this->toCurrent($hsl)->darken(30);
-
-        $this->assertEquals(new Percent(50), $hsl->getLightness());
-        $this->assertEquals(new Percent(20), $newColor->translate()->toHsl()->getLightness());
-    }
-
-    public function testDarkenShouldBeGreaterEqualThanZero()
-    {
-        $hsl = new Hsl(90, 80, 50);
-        $newColor = $this->toCurrent($hsl)->darken(60);
-
-        $this->assertEquals("0%", (string)$newColor->translate()->toHsl()->getLightness());
-    }
 
     public function testCopyShouldReturnEqualColor()
     {
