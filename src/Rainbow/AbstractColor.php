@@ -41,7 +41,11 @@ abstract class AbstractColor implements ColorInterface
     {
         $saturation = new Saturation($this->getLocalHsl(), $percentage);
 
-        return $this->toCurrent($saturation->result());
+        return $this->toCurrent(new Hsl(
+            $this->localHueValue(),
+            $this->localSaturationValue(),
+            $saturation->result()
+        ));
     }
 
     /**

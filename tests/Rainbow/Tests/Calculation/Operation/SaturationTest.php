@@ -16,31 +16,28 @@ use Rainbow\Unit\Percent;
 
 class SaturationTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSaturationShouldReturnNewColor()
+    public function testSaturationShouldReturnUpdatedPercent()
     {
         $color = new Hsl(180, 0, 50);
-        $saturation = new Saturation($color, 10);
-        $newColor = $saturation->result();
+        $operation = new Saturation($color, 10);
 
-        $this->assertInstanceOf('Rainbow\Hsl', $newColor);
-        $this->assertEquals(new Percent(0), $color->getSaturation());
-        $this->assertEquals(new Percent(10), $newColor->getSaturation());
+        $this->assertEquals(new Percent(10), $operation->result());
     }
 
     public function testSaturationShouldBeLesserEqualThan100()
     {
         $color = new Hsl(180, 80, 50);
-        $saturation = new Saturation($color, 30);
+        $operation = new Saturation($color, 30);
 
-        $this->assertEquals(new Percent(100), $saturation->result()->getSaturation());
+        $this->assertEquals(new Percent(100), $operation->result());
     }
 
     public function testSaturationShouldBeGreaterEqualThanZero()
     {
         $color = new Hsl(180, 20, 50);
-        $saturation = new Saturation($color, -30);
+        $operation = new Saturation($color, -30);
 
-        $this->assertEquals(new Percent(0), $saturation->result()->getSaturation());
+        $this->assertEquals(new Percent(0), $operation->result());
     }
 
     public function testEmptyDifferenceShouldReturnEqualColor()
@@ -48,6 +45,6 @@ class SaturationTest extends \PHPUnit_Framework_TestCase
         $color = new Hsl(180, 20, 50);
         $saturation = new Saturation($color);
 
-        $this->assertEquals($color, $saturation->result());
+        $this->assertEquals(new Percent(20), $saturation->result());
     }
 }

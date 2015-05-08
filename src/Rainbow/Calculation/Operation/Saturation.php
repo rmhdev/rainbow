@@ -11,10 +11,10 @@
 namespace Rainbow\Calculation\Operation;
 
 use Rainbow\Hsl;
+use Rainbow\Unit\Percent;
 
 final class Saturation
 {
-    private $color;
     private $saturation;
 
     /**
@@ -23,32 +23,29 @@ final class Saturation
      */
     public function  __construct(Hsl $color, $difference = 0)
     {
-        $this->color = $color;
-        $this->saturation = $this->calculateNewSaturation($difference);
+        $this->saturation = $this->calculateNewSaturation(
+            $color->getSaturation()->getValue(),
+            $difference
+        );
     }
 
-    private function calculateNewSaturation($difference)
+    private function calculateNewSaturation($value, $difference)
     {
-        $saturation = $this->color->getSaturation()->getValue();
         if (!$difference) {
-            return $saturation;
+            return $value;
         }
         if ($difference < 0) {
-            return max($saturation + $difference, 0);
+            return max($value + $difference, 0);
         }
 
-        return min($saturation + $difference, 100);
+        return min($value + $difference, 100);
     }
 
     /**
-     * @return Hsl
+     * @return Percent
      */
     public function result()
     {
-        return new Hsl(
-            $this->color->getHue()->getValue(),
-            $this->saturation,
-            $this->color->getLightness()->getValue()
-        );
+        return new Percent($this->saturation);
     }
 }
