@@ -10,7 +10,7 @@
 
 namespace Rainbow;
 
-use Rainbow\Calculation\Luminance;
+use Rainbow\Calculation\Channel\Luminance;
 use Rainbow\Calculation\Operation\Lightness;
 use Rainbow\Calculation\Operation\Saturation;
 use Rainbow\Translator\Translator;

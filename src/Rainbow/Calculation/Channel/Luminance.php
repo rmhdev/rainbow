@@ -8,8 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Calculation;
+namespace Rainbow\Calculation\Channel;
 
+use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Rgb;
 use Rainbow\Unit\Component;
 use Rainbow\Unit\Percent;

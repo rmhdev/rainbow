@@ -2,7 +2,7 @@
 
 namespace Rainbow\Tests\Calculation;
 
-use Rainbow\Calculation\Luminance;
+use Rainbow\Calculation\Channel\Luminance;
 use Rainbow\Rgb;
 use Rainbow\Unit\Percent;
 
