@@ -13,7 +13,7 @@ class LuminanceTest extends \PHPUnit_Framework_TestCase
         $color = new Rgb(0, 0, 0);
         $luminance = new Luminance($color);
 
-        $this->assertEquals(new Percent(0), $luminance->getValue());
+        $this->assertEquals(new Percent(0), $luminance->result());
     }
 
     public function testLuminanceInWhiteShouldReturnMaxValue()
@@ -21,7 +21,7 @@ class LuminanceTest extends \PHPUnit_Framework_TestCase
         $color = new Rgb(255, 255, 255);
         $luminance = new Luminance($color);
 
-        $this->assertEquals(new Percent(100), $luminance->getValue());
+        $this->assertEquals(new Percent(100), $luminance->result());
     }
 
     /**
@@ -32,7 +32,7 @@ class LuminanceTest extends \PHPUnit_Framework_TestCase
         $color = new Rgb($value["red"], $value["green"], $value["blue"]);
         $luminance = new Luminance($color);
 
-        $this->assertEquals(new Percent($expected), $luminance->getValue());
+        $this->assertEquals(new Percent($expected), $luminance->result());
     }
 
     public function getLuminanceDataProvider()

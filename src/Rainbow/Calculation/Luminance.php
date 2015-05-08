@@ -51,7 +51,7 @@ final class Luminance
     /**
      * @return Percent
      */
-    public function getValue()
+    public function result()
     {
         return new Percent($this->value);
     }

@@ -122,6 +122,6 @@ abstract class AbstractColor implements ColorInterface
     {
         $luminance = new Luminance($this->translate()->toRgb());
 
-        return $luminance->getValue();
+        return $luminance->result();
     }
 }
