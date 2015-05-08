@@ -45,6 +45,14 @@ abstract class AbstractColor implements ColorInterface
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function desaturate($percentage)
+    {
+        return $this->updateSaturation(-$percentage);
+    }
+
+    /**
      * Converts back to the current color space
      * @param Hsl $color
      * @return ColorInterface
@@ -105,13 +113,7 @@ abstract class AbstractColor implements ColorInterface
         return $this->localHsl;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function desaturate($percentage)
-    {
-        return $this->updateSaturation(-$percentage);
-    }
+
 
     /**
      * {@inheritDoc}
