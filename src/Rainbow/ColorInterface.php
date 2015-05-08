@@ -80,4 +80,11 @@ interface ColorInterface
      * @return ColorInterface
      */
     public function darken($percentage);
+
+    /**
+     * Rotate the hue angle of a color in either direction
+     * @param number|string $angle  An Angle
+     * @return ColorInterface
+     */
+    public function spin($angle);
 }

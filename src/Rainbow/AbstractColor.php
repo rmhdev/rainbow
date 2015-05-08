@@ -13,6 +13,7 @@ namespace Rainbow;
 use Rainbow\Calculation\Channel\Luminance;
 use Rainbow\Calculation\Operation\Lightness;
 use Rainbow\Calculation\Operation\Saturation;
+use Rainbow\Calculation\Operation\Spin;
 use Rainbow\Translator\Translator;
 
 abstract class AbstractColor implements ColorInterface
@@ -105,6 +106,20 @@ abstract class AbstractColor implements ColorInterface
     public function darken($percentage)
     {
         return $this->updateLightnessValue(-$percentage);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function spin($angle)
+    {
+        $operation = new Spin($this->getLocalHsl(), $angle);
+
+        return $this->toCurrent(new Hsl(
+            $operation->result()->getValue(),
+            $this->getLocalHsl()->getSaturation()->getValue(),
+            $this->getLocalHsl()->getLightness()->getValue()
+        ));
     }
 
     /**

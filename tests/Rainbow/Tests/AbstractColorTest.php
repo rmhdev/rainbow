@@ -13,6 +13,7 @@ namespace Rainbow\Tests;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\ColorInterface;
+use Rainbow\Unit\Angle;
 
 abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 {
@@ -81,6 +82,14 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(get_class($color), $color->darken(10));
     }
 
+    public function testSpinShouldReturnColorWithUpdatedHue()
+    {
+        $hsl = new Hsl(180, 50, 50);
+        $color = $this->toCurrent($hsl);
+
+        $this->assertInstanceOf(get_class($color), $color->spin(10));
+        $this->assertEquals(new Angle(190), $color->spin(10)->translate()->toHsl()->getHue());
+    }
 
     public function testCopyShouldReturnEqualColor()
     {
