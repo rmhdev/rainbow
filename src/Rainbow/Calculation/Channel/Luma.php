@@ -12,7 +12,7 @@ namespace Rainbow\Calculation\Channel;
 
 use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Rgb;
-use Rainbow\Unit\Component;
+use Rainbow\Unit\RgbComponent;
 use Rainbow\Unit\Percent;
 
 final class Luma implements CalculationInterface
@@ -44,7 +44,7 @@ final class Luma implements CalculationInterface
      */
     private function calculateComponent($component = 0)
     {
-        $component /= Component::MAX_VALUE;
+        $component /= RgbComponent::MAX_VALUE;
 
         return ($component <= 0.03928) ? $component / 12.92 : (($component + 0.055) / 1.055) ** 2.4;
     }

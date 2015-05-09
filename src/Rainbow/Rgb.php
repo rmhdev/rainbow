@@ -11,7 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Unit\Alpha;
-use Rainbow\Unit\Component;
+use Rainbow\Unit\RgbComponent;
 
 /**
  * Class Rgb
@@ -36,9 +36,9 @@ class Rgb extends AbstractColor implements ColorInterface
      */
     public function __construct($red = 0, $green = 0, $blue = 0)
     {
-        $this->red = new Component($red);
-        $this->green = new Component($green);
-        $this->blue = new Component($blue);
+        $this->red = new RgbComponent($red);
+        $this->green = new RgbComponent($green);
+        $this->blue = new RgbComponent($blue);
     }
 
     /**
@@ -50,7 +50,7 @@ class Rgb extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return Component
+     * @return RgbComponent
      */
     public function getRed()
     {
@@ -58,7 +58,7 @@ class Rgb extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return Component
+     * @return RgbComponent
      */
     public function getGreen()
     {
@@ -66,7 +66,7 @@ class Rgb extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return Component
+     * @return RgbComponent
      */
     public function getBlue()
     {

@@ -10,13 +10,13 @@
 
 namespace Rainbow\Tests\Unit;
 
-use Rainbow\Unit\Component;
+use Rainbow\Unit\RgbComponent;
 
-class ComponentTest extends \PHPUnit_Framework_TestCase
+class RgbComponentTest extends \PHPUnit_Framework_TestCase
 {
     public function testEmptyShouldReturnZero()
     {
-        $unit = new Component();
+        $unit = new RgbComponent();
 
         $this->assertEquals(0, $unit->getValue());
     }
@@ -26,7 +26,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
      */
     public function testCorrectValueShouldReturnValue($expectedValue, $value)
     {
-        $unit = new Component($value);
+        $unit = new RgbComponent($value);
 
         $this->assertEquals($expectedValue, $unit->getValue());
     }
@@ -48,7 +48,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
      */
     public function testCorrectStringShouldReturnValue($expectedValue, $value)
     {
-        $unit = new Component($value);
+        $unit = new RgbComponent($value);
 
         $this->assertEquals($expectedValue, $unit->getValue());
         $this->assertInternalType("int", $unit->getValue());
@@ -69,7 +69,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
      */
     public function testOutOfBoundsValueShouldThrowException($value)
     {
-        new Component($value);
+        new RgbComponent($value);
     }
 
     public function getOutOfBoundsDataProvider()
@@ -86,7 +86,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
      */
     public function testUnexpectedValueShouldThrowException($value)
     {
-        new Component($value);
+        new RgbComponent($value);
     }
 
     public function unexpectedValuesDataProvider()
@@ -104,7 +104,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
      */
     public function testToStringShouldReturnStringValue($expectedValue, $value)
     {
-        $unit = new Component($value);
+        $unit = new RgbComponent($value);
 
         $this->assertEquals($expectedValue, (string) $unit);
     }
@@ -123,7 +123,7 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPercentValuesShouldBeTransformed($expectedValue, $value)
     {
-        $unit = new Component($value);
+        $unit = new RgbComponent($value);
 
         $this->assertEquals($expectedValue, $unit->getValue());
     }

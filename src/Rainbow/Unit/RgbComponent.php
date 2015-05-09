@@ -10,7 +10,7 @@
 
 namespace Rainbow\Unit;
 
-final class Component implements UnitInterface
+final class RgbComponent implements UnitInterface
 {
     const MAX_VALUE = 255;
 

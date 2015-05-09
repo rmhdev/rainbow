@@ -12,7 +12,7 @@ namespace Rainbow\Converter;
 
 use Rainbow\Hsl;
 use Rainbow\Rgb;
-use Rainbow\Unit\Component;
+use Rainbow\Unit\RgbComponent;
 
 final class HslToRgbConverter implements ConverterInterface
 {
@@ -77,9 +77,9 @@ final class HslToRgbConverter implements ConverterInterface
         $blue = $this->hueToRgb($m1, $m2, $hue - 1/3);
 
         return array(
-            $red * Component::MAX_VALUE,
-            $green * Component::MAX_VALUE,
-            $blue * Component::MAX_VALUE
+            $red * RgbComponent::MAX_VALUE,
+            $green * RgbComponent::MAX_VALUE,
+            $blue * RgbComponent::MAX_VALUE
         );
     }
 

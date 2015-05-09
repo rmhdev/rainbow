@@ -12,7 +12,7 @@ namespace Rainbow\Converter;
 
 use Rainbow\Hsl;
 use Rainbow\Rgb;
-use Rainbow\Unit\Component;
+use Rainbow\Unit\RgbComponent;
 
 final class RgbToHslConverter implements ConverterInterface
 {
@@ -88,9 +88,9 @@ final class RgbToHslConverter implements ConverterInterface
 
     private function getComponents()
     {
-        $red = $this->color->getRed()->getValue() / Component::MAX_VALUE;
-        $green = $this->color->getGreen()->getValue() / Component::MAX_VALUE;
-        $blue = $this->color->getBlue()->getValue() / Component::MAX_VALUE;
+        $red = $this->color->getRed()->getValue() / RgbComponent::MAX_VALUE;
+        $green = $this->color->getGreen()->getValue() / RgbComponent::MAX_VALUE;
+        $blue = $this->color->getBlue()->getValue() / RgbComponent::MAX_VALUE;
 
         return array($red, $green, $blue);
     }

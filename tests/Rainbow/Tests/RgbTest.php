@@ -13,7 +13,7 @@ namespace Rainbow\Tests;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\Alpha;
-use Rainbow\Unit\Component;
+use Rainbow\Unit\RgbComponent;
 
 class RgbTest extends AbstractColorTest
 {
@@ -28,7 +28,7 @@ class RgbTest extends AbstractColorTest
     {
         $color = new Rgb();
 
-        $empty = new Component();
+        $empty = new RgbComponent();
         $this->assertEquals($empty, $color->getRed());
         $this->assertEquals($empty, $color->getGreen());
         $this->assertEquals($empty, $color->getBlue());
@@ -38,9 +38,9 @@ class RgbTest extends AbstractColorTest
     {
         $color = new Rgb(50, 100, 150);
 
-        $this->assertEquals(new Component(50), $color->getRed());
-        $this->assertEquals(new Component(100), $color->getGreen());
-        $this->assertEquals(new Component(150), $color->getBlue());
+        $this->assertEquals(new RgbComponent(50), $color->getRed());
+        $this->assertEquals(new RgbComponent(100), $color->getGreen());
+        $this->assertEquals(new RgbComponent(150), $color->getBlue());
     }
 
     /**
