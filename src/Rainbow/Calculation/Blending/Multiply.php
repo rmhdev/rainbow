@@ -24,7 +24,7 @@ final class Multiply
      */
     private function calculateResult(Rgb $colorA, Rgb $colorB)
     {
-        return $colorA;
+        return $colorB->getRed() ? $colorB : $colorA;
     }
 
     /**
