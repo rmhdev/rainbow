@@ -20,6 +20,8 @@ use Rainbow\Unit\Component;
  * @method Rgb desaturate($percentage)
  * @method Rgb lighten($percentage)
  * @method Rgb darken($percentage)
+ * @method Rgb spin($angle)
+ * @method Rgb greyscale()
  */
 class Rgb extends AbstractColor implements ColorInterface
 {

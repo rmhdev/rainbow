@@ -21,6 +21,8 @@ use Rainbow\Unit\Percent;
  * @method Hsl desaturate($percentage)
  * @method Hsl lighten($percentage)
  * @method Hsl darken($percentage)
+ * @method Hsl spin($angle)
+ * @method Hsl greyscale()
  */
 final class Hsl extends AbstractColor implements ColorInterface
 {

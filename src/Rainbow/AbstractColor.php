@@ -153,6 +153,9 @@ abstract class AbstractColor implements ColorInterface
         ));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function contrast(ColorInterface $dark, ColorInterface $light)
     {
         $operation = new Contrast($this, $dark, $light);

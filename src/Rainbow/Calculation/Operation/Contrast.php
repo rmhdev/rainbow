@@ -13,10 +13,23 @@ namespace Rainbow\Calculation\Operation;
 use Rainbow\Calculation\CalculationInterface;
 use Rainbow\ColorInterface;
 
+/**
+ * Choose which of two colors provides the greatest contrast with the first one.
+ * @package Rainbow\Calculation\Operation
+ * @link http://compass-style.org/reference/compass/utilities/color/contrast/
+ */
 final class Contrast implements CalculationInterface
 {
+    /**
+     * @var ColorInterface
+     */
     private $contrast;
 
+    /**
+     * @param ColorInterface $color
+     * @param ColorInterface $dark
+     * @param ColorInterface $light
+     */
     public function __construct(ColorInterface $color, ColorInterface $dark, ColorInterface $light)
     {
         $this->contrast = $this->calculateContrast($color, $dark, $light);
@@ -42,5 +55,4 @@ final class Contrast implements CalculationInterface
     {
         return $this->contrast->copy();
     }
-
 }

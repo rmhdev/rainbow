@@ -89,8 +89,17 @@ interface ColorInterface
     public function spin($angle);
 
     /**
-     * Remove all saturation from a color in the HSL color space;
+     * Remove all saturation from a color in the HSL color space
      * @return ColorInterface
      */
     public function greyscale();
+
+    /**
+     * Choose which of two colors provides the greatest contrast
+     * @uses self::luma to calculate the contrast
+     * @param ColorInterface $dark
+     * @param ColorInterface $light
+     * @return ColorInterface
+     */
+    public function contrast(ColorInterface $dark, ColorInterface $light);
 }
