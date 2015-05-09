@@ -14,4 +14,12 @@ class MultiplyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($black, $operation->result());
     }
+
+    public function testMultiplyWhiteShouldReturnWhite()
+    {
+        $white = new Rgb(255, 255, 255);
+        $operation = new Multiply($white, $white);
+
+        $this->assertEquals($white, $operation->result());
+    }
 }
