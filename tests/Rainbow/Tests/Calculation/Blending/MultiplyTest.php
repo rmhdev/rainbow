@@ -39,9 +39,10 @@ class MultiplyTest extends \PHPUnit_Framework_TestCase
     public function multiplyDataProvider()
     {
         return array(
-            array(new Rgb(51, 20, 0), new Rgb(255, 102, 0), new Rgb(51, 51, 51)),
-            array(new Rgb(102, 41, 0), new Rgb(255, 102, 0), new Rgb(102, 102, 102)),
-            array(new Rgb(0, 0, 0), new Rgb(255, 102, 0), new Rgb(0, 0, 255)),
+            array(new Rgb(100, 0, 0), new Rgb(255, 0, 0), new Rgb(100, 0, 0)),
+            array(new Rgb(100, 100, 0), new Rgb(255, 255, 0), new Rgb(100, 100, 0)),
+            array(new Rgb(100, 100, 100), new Rgb(255, 255, 255), new Rgb(100, 100, 100)),
+            array(new Rgb(39, 39, 39), new Rgb(100, 100, 100), new Rgb(100, 100, 100)),
         );
     }
 }
