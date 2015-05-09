@@ -126,4 +126,13 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(new Percent(0), $color->translate()->toHsl()->getSaturation());
     }
+
+    public function testContrastShouldReturnColor()
+    {
+        $color = new Rgb(100, 100, 100);
+        $dark = new Rgb(50, 50, 50);
+        $light = new Rgb(200, 200, 200);
+
+        $this->assertEquals($light, $color->contrast($dark, $light));
+    }
 }

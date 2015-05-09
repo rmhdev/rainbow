@@ -11,6 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Calculation\Channel\Luma;
+use Rainbow\Calculation\Operation\Contrast;
 use Rainbow\Calculation\Operation\Lightness;
 use Rainbow\Calculation\Operation\Saturation;
 use Rainbow\Calculation\Operation\Spin;
@@ -150,5 +151,12 @@ abstract class AbstractColor implements ColorInterface
             0,
             $this->getLocalHsl()->getLightness()->getValue()
         ));
+    }
+
+    public function contrast(ColorInterface $dark, ColorInterface $light)
+    {
+        $operation = new Contrast($this, $dark, $light);
+
+        return $operation->result();
     }
 }
