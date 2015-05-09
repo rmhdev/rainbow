@@ -23,15 +23,6 @@ class MultiplyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($white, $operation->result());
     }
 
-    public function testMultiplyWhiteAndBlackShouldReturnBlack()
-    {
-        $black = new Rgb(0, 0, 0);
-        $white = new Rgb(255, 255, 255);
-        $operation = new Multiply($white, $black);
-
-        $this->assertEquals($black, $operation->result());
-    }
-
     /**
      * @dataProvider multiplyDataProvider
      * @param Rgb $expected
@@ -50,6 +41,7 @@ class MultiplyTest extends \PHPUnit_Framework_TestCase
         return array(
             array(new Rgb(51, 20, 0), new Rgb(255, 102, 0), new Rgb(51, 51, 51)),
             array(new Rgb(102, 41, 0), new Rgb(255, 102, 0), new Rgb(102, 102, 102)),
+            array(new Rgb(0, 0, 0), new Rgb(255, 102, 0), new Rgb(0, 0, 255)),
         );
     }
 }
