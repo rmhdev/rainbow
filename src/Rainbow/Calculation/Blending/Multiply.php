@@ -3,6 +3,7 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Rgb;
+use Rainbow\Unit\RgbComponent;
 
 final class Multiply
 {
@@ -24,7 +25,11 @@ final class Multiply
      */
     private function calculateResult(Rgb $colorA, Rgb $colorB)
     {
-        return $colorB->getRed() ? $colorB : $colorA;
+        $red = ($colorA->getRed()->getValue() * $colorB->getRed()->getValue()) / RgbComponent::MAX_VALUE;
+        $green = ($colorA->getGreen()->getValue() * $colorB->getGreen()->getValue()) / RgbComponent::MAX_VALUE;
+        $blue = ($colorA->getBlue()->getValue() * $colorB->getBlue()->getValue()) / RgbComponent::MAX_VALUE;
+
+        return new Rgb($red, $green, $blue);
     }
 
     /**

@@ -31,4 +31,25 @@ class MultiplyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($black, $operation->result());
     }
+
+    /**
+     * @dataProvider multiplyDataProvider
+     * @param Rgb $expected
+     * @param Rgb $colorA
+     * @param Rgb $colorB
+     */
+    public function testMultiplyColorsShouldReturnCorrectColor(Rgb $expected, Rgb $colorA, Rgb $colorB)
+    {
+        $operation = new Multiply($colorA, $colorB);
+
+        $this->assertEquals($expected, $operation->result());
+    }
+
+    public function multiplyDataProvider()
+    {
+        return array(
+            array(new Rgb(51, 20, 0), new Rgb(255, 102, 0), new Rgb(51, 51, 51)),
+            array(new Rgb(102, 41, 0), new Rgb(255, 102, 0), new Rgb(102, 102, 102)),
+        );
+    }
 }
