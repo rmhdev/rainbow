@@ -135,4 +135,12 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($light, $color->contrast($dark, $light));
     }
+
+    public function testMultiplyShouldReturnColor()
+    {
+        $color = $this->toCurrent(new Hsl(180, 50, 50));
+        $colorMultiply = $this->toCurrent(new Hsl(180, 75, 25));
+
+        $this->assertInstanceOf(get_class($color), $color->multiply($colorMultiply));
+    }
 }

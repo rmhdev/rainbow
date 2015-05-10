@@ -10,6 +10,7 @@
 
 namespace Rainbow;
 
+use Rainbow\Calculation\Blending\Multiply;
 use Rainbow\Calculation\Channel\Luma;
 use Rainbow\Calculation\Operation\Contrast;
 use Rainbow\Calculation\Operation\Lightness;
@@ -161,5 +162,12 @@ abstract class AbstractColor implements ColorInterface
         $operation = new Contrast($this, $dark, $light);
 
         return $operation->result();
+    }
+
+    public function multiply(ColorInterface $color)
+    {
+        $operation = new Multiply($this->translate()->toRgb(), $color->translate()->toRgb());
+
+        return $operation->result()->translate()->to($this->getName());
     }
 }
