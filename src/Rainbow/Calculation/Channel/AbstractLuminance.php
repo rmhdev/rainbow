@@ -26,18 +26,13 @@ abstract class AbstractLuminance
      */
     public function __construct(Rgb $color)
     {
-        $this->value = $this->calculateValue($color);
-    }
-
-    private function calculateValue(Rgb $color)
-    {
         $red    = $this->calculateComponent($color->getRed());
         $green  = $this->calculateComponent($color->getGreen());
         $blue   = $this->calculateComponent($color->getBlue());
 
         $value = 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 
-        return $value * 100;
+        $this->value = $value * 100;
     }
 
     /**
