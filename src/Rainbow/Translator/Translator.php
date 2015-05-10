@@ -47,4 +47,9 @@ final class Translator
     {
         return ConverterFactory::create($this->getColor(), "hsl")->convert();
     }
+
+    public function to($name)
+    {
+        return ConverterFactory::create($this->getColor(), $name)->convert();
+    }
 }

@@ -29,4 +29,26 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($color, $converter->toRgb());
     }
+
+
+    /**
+     * @dataProvider toColorDataProvider
+     * @param $expectedClass
+     * @param $translateTo
+     */
+    public function testToPassedColorShouldReturnExpectedColor($expectedClass, $translateTo)
+    {
+        $color = new Rgb(100, 150, 200);
+        $converter = new Translator($color);
+
+        $this->assertInstanceOf($expectedClass, $converter->to($translateTo));
+    }
+
+    public function toColorDataProvider()
+    {
+        return array(
+            array('Rainbow\Rgb', 'rgb'),
+            array('Rainbow\Hsl', 'hsl'),
+        );
+    }
 }
