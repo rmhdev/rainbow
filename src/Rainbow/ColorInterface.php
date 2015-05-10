@@ -49,9 +49,16 @@ interface ColorInterface
     /**
      * Calculates the luma (perceptual brightness) of a color in the RGB color space
      * @return Percent
-     * @url http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+     * @link http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
      */
     public function luma();
+
+    /**
+     * Calculates the luma without gamma correction
+     * @see self::luma
+     * @return Percent
+     */
+    public function luminance();
 
     /**
      * Increase the saturation of a color in the HSL color space
