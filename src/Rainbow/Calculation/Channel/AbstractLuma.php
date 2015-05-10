@@ -14,7 +14,7 @@ use Rainbow\Rgb;
 use Rainbow\Unit\Percent;
 use Rainbow\Unit\RgbComponent;
 
-abstract class AbstractLuminance
+abstract class AbstractLuma
 {
     /**
      * @var float

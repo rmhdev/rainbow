@@ -12,7 +12,7 @@ namespace Rainbow\Calculation\Channel;
 
 use Rainbow\Calculation\CalculationInterface;
 
-final class Luminance extends AbstractLuminance implements CalculationInterface
+final class Luminance extends AbstractLuma implements CalculationInterface
 {
     /**
      * No need for gamma correction

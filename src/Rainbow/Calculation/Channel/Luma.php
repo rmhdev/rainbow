@@ -12,7 +12,7 @@ namespace Rainbow\Calculation\Channel;
 
 use Rainbow\Calculation\CalculationInterface;
 
-final class Luma extends AbstractLuminance implements CalculationInterface
+final class Luma extends AbstractLuma implements CalculationInterface
 {
     /**
      * {@inheritDoc}
