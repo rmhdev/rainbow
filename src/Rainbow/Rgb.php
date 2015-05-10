@@ -22,6 +22,7 @@ use Rainbow\Unit\RgbComponent;
  * @method Rgb darken($percentage)
  * @method Rgb spin($angle)
  * @method Rgb greyscale()
+ * @method Rgb multiply(ColorInterface $color)
  */
 class Rgb extends AbstractColor implements ColorInterface
 {

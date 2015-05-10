@@ -2,10 +2,11 @@
 
 namespace Rainbow\Calculation\Blending;
 
+use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Rgb;
 use Rainbow\Unit\RgbComponent;
 
-final class Multiply
+final class Multiply implements CalculationInterface
 {
     private $result;
 

@@ -102,4 +102,10 @@ interface ColorInterface
      * @return ColorInterface
      */
     public function contrast(ColorInterface $dark, ColorInterface $light);
+
+    /**
+     * @param ColorInterface $color
+     * @return ColorInterface
+     */
+    public function multiply(ColorInterface $color);
 }

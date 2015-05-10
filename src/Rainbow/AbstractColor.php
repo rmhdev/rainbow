@@ -164,6 +164,9 @@ abstract class AbstractColor implements ColorInterface
         return $operation->result();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function multiply(ColorInterface $color)
     {
         $operation = new Multiply($this->translate()->toRgb(), $color->translate()->toRgb());

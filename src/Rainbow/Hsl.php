@@ -23,6 +23,7 @@ use Rainbow\Unit\Percent;
  * @method Hsl darken($percentage)
  * @method Hsl spin($angle)
  * @method Hsl greyscale()
+ * @method Hsl multiply(ColorInterface $color)
  */
 final class Hsl extends AbstractColor implements ColorInterface
 {
