@@ -1,6 +1,6 @@
 <?php
 
-namespace Rainbow\Tests\Calculation;
+namespace Rainbow\Tests\Calculation\Channel;
 
 use Rainbow\Calculation\Channel\Luma;
 use Rainbow\Rgb;
@@ -8,34 +8,34 @@ use Rainbow\Unit\Percent;
 
 class LumaTest extends \PHPUnit_Framework_TestCase
 {
-    public function testLuminanceInBlackShouldReturnMinValue()
+    public function testBlackShouldReturnMinValue()
     {
         $color = new Rgb(0, 0, 0);
-        $luminance = new Luma($color);
+        $operation = new Luma($color);
 
-        $this->assertEquals(new Percent(0), $luminance->result());
+        $this->assertEquals(new Percent(0), $operation->result());
     }
 
-    public function testLuminanceInWhiteShouldReturnMaxValue()
+    public function testWhiteShouldReturnMaxValue()
     {
         $color = new Rgb(255, 255, 255);
-        $luminance = new Luma($color);
+        $operation = new Luma($color);
 
-        $this->assertEquals(new Percent(100), $luminance->result());
+        $this->assertEquals(new Percent(100), $operation->result());
     }
 
     /**
-     * @dataProvider getLuminanceDataProvider
+     * @dataProvider getColorDataProvider
      */
-    public function testLuminanceShouldReturnValidPercentage($expected, $value)
+    public function testColorShouldReturnValidPercentage($expected, $value)
     {
         $color = new Rgb($value["red"], $value["green"], $value["blue"]);
-        $luminance = new Luma($color);
+        $operation = new Luma($color);
 
-        $this->assertEquals(new Percent($expected), $luminance->result());
+        $this->assertEquals(new Percent($expected), $operation->result());
     }
 
-    public function getLuminanceDataProvider()
+    public function getColorDataProvider()
     {
         return array(
             array(13, array("red" => 100, "green" => 100, "blue" => 100)),
