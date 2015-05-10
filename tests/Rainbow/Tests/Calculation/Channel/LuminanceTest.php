@@ -23,4 +23,24 @@ class LuminanceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(new Percent(100), $operation->result());
     }
+
+    /**
+     * @dataProvider getColorDataProvider
+     * @param int $expected
+     * @param array $value
+     */
+    public function testColorShouldReturnValidPercentage($expected, $value)
+    {
+        $color = new Rgb($value["red"], $value["green"], $value["blue"]);
+        $operation = new Luminance($color);
+
+        $this->assertEquals(new Percent($expected), $operation->result());
+    }
+
+    public function getColorDataProvider()
+    {
+        return array(
+            array(65, array("red" => 100, "green" => 200, "blue" => 30)),
+        );
+    }
 }
