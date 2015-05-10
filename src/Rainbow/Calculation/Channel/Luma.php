@@ -11,49 +11,14 @@
 namespace Rainbow\Calculation\Channel;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Rgb;
-use Rainbow\Unit\RgbComponent;
-use Rainbow\Unit\Percent;
 
-final class Luma implements CalculationInterface
+final class Luma extends AbstractLuminance implements CalculationInterface
 {
-    private $value;
-
     /**
-     * @param Rgb $color
+     * {@inheritDoc}
      */
-    public function __construct(Rgb $color)
+    protected function gammaCorrection($value)
     {
-        $this->value = $this->calculateValue($color);
-    }
-
-    private function calculateValue(Rgb $color)
-    {
-        $red    = $this->calculateComponent($color->getRed()->getValue());
-        $green  = $this->calculateComponent($color->getGreen()->getValue());
-        $blue   = $this->calculateComponent($color->getBlue()->getValue());
-
-        $value = 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
-
-        return $value * 100;
-    }
-
-    /**
-     * @param int $component  value from 0 to 255
-     * @return float
-     */
-    private function calculateComponent($component = 0)
-    {
-        $component /= RgbComponent::MAX_VALUE;
-
-        return ($component <= 0.03928) ? $component / 12.92 : (($component + 0.055) / 1.055) ** 2.4;
-    }
-
-    /**
-     * @return Percent
-     */
-    public function result()
-    {
-        return new Percent($this->value);
+        return ($value <= 0.03928) ? $value / 12.92 : (($value + 0.055) / 1.055) ** 2.4;
     }
 }

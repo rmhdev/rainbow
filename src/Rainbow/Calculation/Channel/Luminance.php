@@ -1,33 +1,25 @@
 <?php
 
+/**
+ * This file is part of the Rainbow package.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @license MIT License
+ */
+
 namespace Rainbow\Calculation\Channel;
 
-use Rainbow\Rgb;
-use Rainbow\Unit\Percent;
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Calculation\CalculationInterface;
 
-final class Luminance
+final class Luminance extends AbstractLuminance implements CalculationInterface
 {
-    private $value;
-
-    public function __construct(Rgb $color)
+    /**
+     * No need for gamma correction
+     * {@inheritDoc}
+     */
+    protected function gammaCorrection($value)
     {
-        $this->value = $this->calculateLuminance($color);
-    }
-
-    private function calculateLuminance(Rgb $color)
-    {
-        $red    = $color->getRed()->getValue() / RgbComponent::MAX_VALUE;
-        $green  = $color->getGreen()->getValue() / RgbComponent::MAX_VALUE;
-        $blue   = $color->getBlue()->getValue() / RgbComponent::MAX_VALUE;
-
-        $value = 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
-
-        return $value * 100;
-    }
-
-    public function result()
-    {
-        return new Percent($this->value);
+        return $value;
     }
 }
