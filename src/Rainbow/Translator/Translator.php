@@ -32,7 +32,7 @@ final class Translator
      */
     public function toRgb()
     {
-        return ConverterFactory::create($this->getColor(), "rgb")->convert();
+        return $this->to("rgb");
     }
 
     private function getColor()
@@ -45,9 +45,13 @@ final class Translator
      */
     public function toHsl()
     {
-        return ConverterFactory::create($this->getColor(), "hsl")->convert();
+        return $this->to("hsl");
     }
 
+    /**
+     * @param string $name name of the expected color
+     * @return ColorInterface
+     */
     public function to($name)
     {
         return ConverterFactory::create($this->getColor(), $name)->convert();
