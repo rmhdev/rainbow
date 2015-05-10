@@ -86,13 +86,4 @@ class HslTest extends AbstractColorTest
     {
         return $color;
     }
-
-    /**
-     * {@inheritDoc}
-     * @return Hsl
-     */
-    protected function createColor()
-    {
-        return new Hsl(0, 0, 0);
-    }
 }

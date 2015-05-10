@@ -87,13 +87,4 @@ class RgbTest extends AbstractColorTest
     {
         return $color->translate()->toRgb();
     }
-
-    /**
-     * {@inheritDoc}
-     * @return Rgb
-     */
-    protected function createColor()
-    {
-        return new Rgb(0, 0, 0);
-    }
 }
