@@ -10,9 +10,10 @@
 
 namespace Rainbow\Calculation\Blending;
 
+use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Rgb;
 
-final class Screen
+final class Screen implements CalculationInterface
 {
     /**
      * @var Rgb
