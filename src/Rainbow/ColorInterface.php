@@ -111,8 +111,17 @@ interface ColorInterface
     public function contrast(ColorInterface $dark, ColorInterface $light);
 
     /**
+     * Multiply with the color
      * @param ColorInterface $color
      * @return ColorInterface
      */
     public function multiply(ColorInterface $color);
+
+    /**
+     * Do the opposite of multiply
+     * @see self::multiply
+     * @param ColorInterface $color
+     * @return ColorInterface
+     */
+    public function screen(ColorInterface $color);
 }
