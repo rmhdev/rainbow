@@ -23,4 +23,13 @@ class OverlayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($white, $operation->result());
     }
+
+    public function testBlackWithWhiteShouldReturnBlack()
+    {
+        $white = new Rgb(255, 255, 255);
+        $black = new Rgb(0, 0, 0);
+        $operation = new Overlay($black, $white);
+
+        $this->assertEquals($black, $operation->result());
+    }
 }
