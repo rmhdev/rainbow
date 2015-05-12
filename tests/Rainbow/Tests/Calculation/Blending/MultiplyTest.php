@@ -7,20 +7,22 @@ use Rainbow\Rgb;
 
 class MultiplyTest extends \PHPUnit_Framework_TestCase
 {
-    public function testMultiplyBlackShouldReturnBlack()
+    public function testWithBlackShouldReturnBlack()
     {
+        $color = new Rgb(255, 102, 0);
         $black = new Rgb();
-        $operation = new Multiply($black, $black);
+        $operation = new Multiply($color, $black);
 
         $this->assertEquals($black, $operation->result());
     }
 
-    public function testMultiplyWhiteShouldReturnWhite()
+    public function testWithWhiteShouldReturnColor()
     {
+        $color = new Rgb(255, 102, 0);
         $white = new Rgb(255, 255, 255);
-        $operation = new Multiply($white, $white);
+        $operation = new Multiply($color, $white);
 
-        $this->assertEquals($white, $operation->result());
+        $this->assertEquals($color, $operation->result());
     }
 
     /**
