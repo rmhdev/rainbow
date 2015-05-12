@@ -14,13 +14,33 @@ use Rainbow\Rgb;
 
 final class Screen
 {
+    /**
+     * @var Rgb
+     */
     private $result;
 
+    /**
+     * @param Rgb $color1
+     * @param Rgb $color2
+     */
     public function __construct(Rgb $color1, Rgb $color2)
     {
-        $this->result = $color2->getRed()->getValue() ? $color2 : $color1;
+        $redSum     = $color1->getRed()->getValue() + $color2->getRed()->getValue() ;
+        $greenSum   = $color1->getGreen()->getValue() + $color2->getGreen()->getValue();
+        $blueSum    = $color1->getBlue()->getValue() + $color2->getBlue()->getValue();
+        $multiply   = new Multiply($color1, $color2);
+        $multiplied = $multiply->result();
+
+        $this->result = new Rgb(
+            abs($redSum - $multiplied->getRed()->getValue()),
+            abs($greenSum - $multiplied->getGreen()->getValue()),
+            abs($blueSum - $multiplied->getBlue()->getValue())
+        );
     }
 
+    /**
+     * @return Rgb
+     */
     public function result()
     {
         return $this->result->copy();
