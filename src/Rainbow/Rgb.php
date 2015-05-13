@@ -24,6 +24,7 @@ use Rainbow\Unit\RgbComponent;
  * @method Rgb greyscale()
  * @method Rgb multiply(ColorInterface $color)
  * @method Rgb screen(ColorInterface $color)
+ * @method Rgb overlay(ColorInterface $color)
  */
 class Rgb extends AbstractColor implements ColorInterface
 {

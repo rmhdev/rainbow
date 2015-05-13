@@ -11,6 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Calculation\Blending\Multiply;
+use Rainbow\Calculation\Blending\Overlay;
 use Rainbow\Calculation\Blending\Screen;
 use Rainbow\Calculation\Channel\Luma;
 use Rainbow\Calculation\Channel\Luminance;
@@ -192,6 +193,16 @@ abstract class AbstractColor implements ColorInterface
     public function screen(ColorInterface $color)
     {
         $operation = new Screen($this->translate()->toRgb(), $color->translate()->toRgb());
+
+        return $operation->result()->translate()->to($this->getName());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function overlay(ColorInterface $color)
+    {
+        $operation = new Overlay($this->translate()->toRgb(), $color->translate()->toRgb());
 
         return $operation->result()->translate()->to($this->getName());
     }

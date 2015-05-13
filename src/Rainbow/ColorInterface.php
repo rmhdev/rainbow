@@ -124,4 +124,13 @@ interface ColorInterface
      * @return ColorInterface
      */
     public function screen(ColorInterface $color);
+
+    /**
+     * Multiplies or screens the colors, depending on the actual color value
+     * @see self::multiply
+     * @see self::screen
+     * @param ColorInterface $color
+     * @return ColorInterface
+     */
+    public function overlay(ColorInterface $color);
 }
