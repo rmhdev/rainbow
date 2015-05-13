@@ -32,4 +32,24 @@ class OverlayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($black, $operation->result());
     }
+
+    /**
+     * @dataProvider lowLumaDataProvider
+     * @param Rgb $expected
+     * @param Rgb $color
+     */
+    public function testLowLumaColorShouldReturnMultiplyColor(Rgb $expected, Rgb $color)
+    {
+        $lowLumaColor = new Rgb(255, 102, 0);
+        $overlay = new Overlay($lowLumaColor, $color);
+
+        $this->assertEquals($expected, $overlay->result());
+    }
+
+    public function lowLumaDataProvider()
+    {
+        return array(
+            array(new Rgb(255, 0, 0), new Rgb(0, 0, 0)),
+        );
+    }
 }
