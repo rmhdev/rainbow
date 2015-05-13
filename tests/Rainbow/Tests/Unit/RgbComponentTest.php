@@ -138,6 +138,31 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
             array(64, "25%"),
         );
     }
+
+    public function testMultiplyWithMinShouldReturnMin()
+    {
+        $component = new RgbComponent(100);
+        $expected = new RgbComponent(0);
+
+        $this->assertEquals($expected, $component->mul(new RgbComponent(0)));
+    }
+
+    public function testMultiplyWithMaxShouldReturnSameValue()
+    {
+        $component = new RgbComponent(100);
+
+        $this->assertEquals($component, $component->mul(new RgbComponent(RgbComponent::MAX_VALUE)));
+    }
+
+    public function testMultiplyWithValueShouldReturnCorrectValue()
+    {
+        $component1 = new RgbComponent(100);
+        $component2 = new RgbComponent(150);
+        $expected = new RgbComponent(59);
+
+        $this->assertEquals($expected, $component1->mul($component2));
+        $this->assertEquals($expected, $component2->mul($component1));
+    }
 }
 
 

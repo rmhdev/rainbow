@@ -65,4 +65,9 @@ final class RgbComponent implements UnitInterface
     {
         return (string) $this->getValue();
     }
+
+    public function mul(RgbComponent $component)
+    {
+        return new RgbComponent($this->getValue() * $component->getValue() / self::MAX_VALUE);
+    }
 }
