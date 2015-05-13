@@ -56,6 +56,7 @@ class OverlayTest extends \PHPUnit_Framework_TestCase
             array(new Rgb(255, 163, 0), new Rgb(204, 204, 204)),
             array(new Rgb(255, 204, 0), new Rgb(255, 255, 255)),
             array(new Rgb(255, 0, 0), new Rgb(255, 0, 0)),
+            array(new Rgb(255, 204, 0), new Rgb(0, 255, 0)),
             array(new Rgb(255, 0, 0), new Rgb(0, 0, 255)),
         );
     }
