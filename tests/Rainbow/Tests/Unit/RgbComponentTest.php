@@ -154,7 +154,7 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($component, $component->multiply(new RgbComponent(RgbComponent::MAX_VALUE)));
     }
 
-    public function testMultiplyWithValueShouldReturnCorrectValue()
+    public function testMultiplyRgbComponentShouldReturnCorrectValue()
     {
         $component1 = new RgbComponent(100);
         $component2 = new RgbComponent(150);
@@ -162,6 +162,14 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $component1->multiply($component2));
         $this->assertEquals($expected, $component2->multiply($component1));
+    }
+
+    public function testMultiplyNumberShouldReturnCorrectValue()
+    {
+        $component1 = new RgbComponent(100);
+        $expected = new RgbComponent(1);
+
+        $this->assertEquals($expected, $component1->multiply(2));
     }
 }
 
