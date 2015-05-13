@@ -4,7 +4,6 @@ namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Rgb;
-use Rainbow\Unit\RgbComponent;
 
 final class Multiply implements CalculationInterface
 {
@@ -26,9 +25,9 @@ final class Multiply implements CalculationInterface
      */
     private function calculateResult(Rgb $colorA, Rgb $colorB)
     {
-        $red = ($colorA->getRed()->getValue() * $colorB->getRed()->getValue()) / RgbComponent::MAX_VALUE;
-        $green = ($colorA->getGreen()->getValue() * $colorB->getGreen()->getValue()) / RgbComponent::MAX_VALUE;
-        $blue = ($colorA->getBlue()->getValue() * $colorB->getBlue()->getValue()) / RgbComponent::MAX_VALUE;
+        $red = $colorA->getRed()->multiply($colorB->getRed())->getValue();
+        $green = $colorA->getGreen()->multiply($colorB->getGreen())->getValue();
+        $blue = $colorA->getBlue()->multiply($colorB->getBlue())->getValue();
 
         return new Rgb($red, $green, $blue);
     }
