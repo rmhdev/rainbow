@@ -34,7 +34,7 @@ class OverlayTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider lowLumaDataProvider
+     * @dataProvider overlayDataProvider
      * @param Rgb $expected
      * @param Rgb $color
      */
@@ -46,7 +46,7 @@ class OverlayTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $overlay->result());
     }
 
-    public function lowLumaDataProvider()
+    public function overlayDataProvider()
     {
         return array(
             array(new Rgb(255, 0, 0), new Rgb(0, 0, 0)),
