@@ -20,11 +20,12 @@ class Overlay extends AbstractBlending implements CalculationInterface
      */
     protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
     {
-        $max = RgbComponent::MAX_VALUE;
         if ($component1->getValue() <= ceil(RgbComponent::MAX_VALUE / 2)) {
-            return 2 * $component1->getValue() * $component2->getValue() / $max;
+            return $this->multiply($component1, 2 * $component2->getValue());
         }
+        $max = RgbComponent::MAX_VALUE;
 
         return $max - 2 * ($max - $component1->getValue()) * ($max - $component2->getValue()) / $max;
+        //return $this->screen($component1, 2 * $component2->getValue() - 1);
     }
 }

@@ -33,13 +33,37 @@ abstract class AbstractBlending
     abstract protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2);
 
     /**
-     * @param RgbComponent $component1
-     * @param RgbComponent $component2
+     * @param int|RgbComponent $component1
+     * @param int|RgbComponent $component2
      * @return float
      */
-    protected function multiply(RgbComponent $component1, RgbComponent $component2)
+    protected function multiply($component1, $component2)
     {
-        return $component1->getValue() * $component2->getValue() / RgbComponent::MAX_VALUE;
+        if ($component1 instanceof RgbComponent) {
+            $component1 = $component1->getValue();
+        }
+        if ($component2 instanceof RgbComponent) {
+            $component2 = $component2->getValue();
+        }
+
+        return $component1 * $component2 / RgbComponent::MAX_VALUE;
+    }
+
+    /**
+     * @param int|RgbComponent $component1
+     * @param int|RgbComponent $component2
+     * @return float
+     */
+    protected function screen($component1, $component2)
+    {
+        if ($component1 instanceof RgbComponent) {
+            $component1 = $component1->getValue();
+        }
+        if ($component2 instanceof RgbComponent) {
+            $component2 = $component2->getValue();
+        }
+
+        return $component1 + $component2 - ($this->multiply($component1, $component2));
     }
 
     /**

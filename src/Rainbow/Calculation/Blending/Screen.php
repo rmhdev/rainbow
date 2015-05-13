@@ -20,6 +20,6 @@ final class Screen extends AbstractBlending implements CalculationInterface
      */
     protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
     {
-        return $component1->getValue() + $component2->getValue() - ($this->multiply($component1, $component2));
+        return $this->screen($component1, $component2);
     }
 }
