@@ -171,6 +171,14 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(get_class($color), $color->hardLight($colorScreen));
     }
 
+    public function testSoftLightShouldReturnSameColorSpace()
+    {
+        $color = $this->toCurrent(new Hsl(180, 50, 50));
+        $colorScreen = $this->toCurrent(new Hsl(180, 75, 25));
+
+        $this->assertInstanceOf(get_class($color), $color->softLight($colorScreen));
+    }
+
     public function testDifferenceShouldReturnSameColorSpace()
     {
         $color = $this->toCurrent(new Hsl(180, 50, 50));

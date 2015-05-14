@@ -27,6 +27,7 @@ use Rainbow\Unit\Percent;
  * @method Hsl screen(ColorInterface $color)
  * @method Hsl overlay(ColorInterface $color)
  * @method Hsl hardLight(ColorInterface $color)
+ * @method Hsl softLight(ColorInterface $color)
  * @method Hsl difference(ColorInterface $color)
  * @method Hsl exclusion(ColorInterface $color)
  */

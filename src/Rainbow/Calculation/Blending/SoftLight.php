@@ -14,16 +14,14 @@ use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Unit\RgbComponent;
 
 /**
- * Class SoftLight
+ * Darkens or lightens the colors, depending on the source color value
  * @package Rainbow\Calculation\Blending
  * @link http://www.w3.org/TR/compositing-1/#blendingsoftlight
  */
 final class SoftLight extends AbstractBlending implements CalculationInterface
 {
     /**
-     * @param RgbComponent $component1
-     * @param RgbComponent $component2
-     * @return int
+     * {@inheritDoc}
      */
     protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
     {

@@ -143,6 +143,13 @@ interface ColorInterface
     public function hardLight(ColorInterface $color);
 
     /**
+     * Darkens or lightens the colors, depending on the source color value
+     * @param ColorInterface $color
+     * @return ColorInterface
+     */
+    public function softLight(ColorInterface $color);
+
+    /**
      * Subtracts the darker of the two constituent colors from the lighter color
      * @param ColorInterface $color
      * @return ColorInterface

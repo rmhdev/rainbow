@@ -26,6 +26,7 @@ use Rainbow\Unit\RgbComponent;
  * @method Rgb screen(ColorInterface $color)
  * @method Rgb overlay(ColorInterface $color)
  * @method Rgb hardLight(ColorInterface $color)
+ * @method Rgb softLight(ColorInterface $color)
  * @method Rgb difference(ColorInterface $color)
  * @method Rgb exclusion(ColorInterface $color)
  */

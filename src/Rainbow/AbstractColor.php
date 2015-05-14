@@ -16,6 +16,7 @@ use Rainbow\Calculation\Blending\HardLight;
 use Rainbow\Calculation\Blending\Multiply;
 use Rainbow\Calculation\Blending\Overlay;
 use Rainbow\Calculation\Blending\Screen;
+use Rainbow\Calculation\Blending\SoftLight;
 use Rainbow\Calculation\Channel\Luma;
 use Rainbow\Calculation\Channel\Luminance;
 use Rainbow\Calculation\Operation\Contrast;
@@ -216,6 +217,16 @@ abstract class AbstractColor implements ColorInterface
     public function hardLight(ColorInterface $color)
     {
         $operation = new HardLight($this->translate()->toRgb(), $color->translate()->toRgb());
+
+        return $operation->result()->translate()->to($this->getName());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function softLight(ColorInterface $color)
+    {
+        $operation = new SoftLight($this->translate()->toRgb(), $color->translate()->toRgb());
 
         return $operation->result()->translate()->to($this->getName());
     }
