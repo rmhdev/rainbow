@@ -26,6 +26,7 @@ use Rainbow\Unit\Percent;
  * @method Hsl multiply(ColorInterface $color)
  * @method Hsl screen(ColorInterface $color)
  * @method Hsl overlay(ColorInterface $color)
+ * @method Hsl hardLight(ColorInterface $color)
  */
 final class Hsl extends AbstractColor implements ColorInterface
 {

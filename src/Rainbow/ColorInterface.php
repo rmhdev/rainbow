@@ -126,11 +126,19 @@ interface ColorInterface
     public function screen(ColorInterface $color);
 
     /**
-     * Multiplies or screens the colors, depending on the actual color value
-     * @see self::multiply
-     * @see self::screen
+     * Inverse of HardLight
+     * @see self::hardLight
      * @param ColorInterface $color
      * @return ColorInterface
      */
     public function overlay(ColorInterface $color);
+
+    /**
+     * Multiplies or screens the colors, depending on the source color value
+     * @see self::multiply
+     * @see self::screen
+     * @param ColorInterface $color
+     * @return mixed
+     */
+    public function hardLight(ColorInterface $color);
 }
