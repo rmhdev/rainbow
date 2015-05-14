@@ -43,6 +43,13 @@ class RgbTest extends AbstractColorTest
         $this->assertEquals(new RgbComponent(150), $color->getBlue());
     }
 
+    public function testCreateWithUnitsShouldReturnCorrectColor()
+    {
+        $color = new Rgb(new RgbComponent(120), new RgbComponent(75), new RgbComponent(95));
+
+        $this->assertEquals(new Rgb(120, 75, 95), $color);
+    }
+
     /**
      * @dataProvider getToStringDataProvider
      */

@@ -33,20 +33,31 @@ use Rainbow\Unit\RgbComponent;
  */
 class Rgb extends AbstractColor implements ColorInterface
 {
+    /**
+     * @var RgbComponent
+     */
     private $red;
+
+    /**
+     * @var RgbComponent
+     */
     private $green;
+
+    /**
+     * @var RgbComponent
+     */
     private $blue;
 
     /**
-     * @param int|number $red
-     * @param int|number $green
-     * @param int|number $blue
+     * @param int|string|RgbComponent $red
+     * @param int|string|RgbComponent $green
+     * @param int|string|RgbComponent $blue
      */
     public function __construct($red = 0, $green = 0, $blue = 0)
     {
-        $this->red = new RgbComponent($red);
-        $this->green = new RgbComponent($green);
-        $this->blue = new RgbComponent($blue);
+        $this->red = ($red instanceof RgbComponent) ? $red : new RgbComponent($red);
+        $this->green = ($green instanceof RgbComponent) ? $green : new RgbComponent($green);
+        $this->blue = ($blue instanceof RgbComponent) ? $blue : new RgbComponent($blue);
     }
 
     /**
