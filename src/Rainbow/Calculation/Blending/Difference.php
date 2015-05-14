@@ -2,12 +2,16 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Rgb;
+use Rainbow\Calculation\CalculationInterface;
+use Rainbow\Unit\RgbComponent;
 
-final class Difference
+final class Difference extends AbstractBlending implements CalculationInterface
 {
-    public function result()
+    /**
+     * {@inheritDoc}
+     */
+    protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
     {
-        return new Rgb(255, 102, 0);
+        return abs($component1->getValue() - $component2->getValue());
     }
 }
