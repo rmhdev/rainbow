@@ -17,6 +17,7 @@ use Rainbow\Unit\Percent;
 /**
  * Class Hsl
  * @package Rainbow
+ * @method Hsl copy()
  * @method Hsl saturate($percentage)
  * @method Hsl desaturate($percentage)
  * @method Hsl lighten($percentage)

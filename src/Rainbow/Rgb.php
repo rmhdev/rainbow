@@ -16,6 +16,7 @@ use Rainbow\Unit\RgbComponent;
 /**
  * Class Rgb
  * @package Rainbow
+ * @method Rgb copy()
  * @method Rgb saturate($percentage)
  * @method Rgb desaturate($percentage)
  * @method Rgb lighten($percentage)
