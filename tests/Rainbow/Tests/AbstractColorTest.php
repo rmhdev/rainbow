@@ -178,4 +178,12 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(get_class($color), $color->difference($colorScreen));
     }
+
+    public function testExclusionShouldReturnSameColorSpace()
+    {
+        $color = $this->toCurrent(new Hsl(180, 50, 50));
+        $colorScreen = $this->toCurrent(new Hsl(180, 75, 25));
+
+        $this->assertInstanceOf(get_class($color), $color->exclusion($colorScreen));
+    }
 }

@@ -148,4 +148,11 @@ interface ColorInterface
      * @return ColorInterface
      */
     public function difference(ColorInterface $color);
+
+    /**
+     * Produces an effect similar to that of the Difference mode but lower in contrast
+     * @param ColorInterface $color
+     * @return ColorInterface
+     */
+    public function exclusion(ColorInterface $color);
 }

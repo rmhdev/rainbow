@@ -11,6 +11,7 @@
 namespace Rainbow;
 
 use Rainbow\Calculation\Blending\Difference;
+use Rainbow\Calculation\Blending\Exclusion;
 use Rainbow\Calculation\Blending\HardLight;
 use Rainbow\Calculation\Blending\Multiply;
 use Rainbow\Calculation\Blending\Overlay;
@@ -219,9 +220,22 @@ abstract class AbstractColor implements ColorInterface
         return $operation->result()->translate()->to($this->getName());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function difference(ColorInterface $color)
     {
         $operation = new Difference($this->translate()->toRgb(), $color->translate()->toRgb());
+
+        return $operation->result()->translate()->to($this->getName());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function exclusion(ColorInterface $color)
+    {
+        $operation = new Exclusion($this->translate()->toRgb(), $color->translate()->toRgb());
 
         return $operation->result()->translate()->to($this->getName());
     }
