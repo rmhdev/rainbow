@@ -10,19 +10,13 @@
 
 namespace Rainbow;
 
-use Rainbow\Calculation\Blending\Difference;
-use Rainbow\Calculation\Blending\Exclusion;
-use Rainbow\Calculation\Blending\HardLight;
-use Rainbow\Calculation\Blending\Multiply;
-use Rainbow\Calculation\Blending\Overlay;
-use Rainbow\Calculation\Blending\Screen;
-use Rainbow\Calculation\Blending\SoftLight;
 use Rainbow\Calculation\Channel\Luma;
 use Rainbow\Calculation\Channel\Luminance;
 use Rainbow\Calculation\Operation\Contrast;
 use Rainbow\Calculation\Operation\Lightness;
 use Rainbow\Calculation\Operation\Saturation;
 use Rainbow\Calculation\Operation\Spin;
+use Rainbow\Calculation\Blender;
 use Rainbow\Translator\Translator;
 
 abstract class AbstractColor implements ColorInterface
@@ -31,6 +25,11 @@ abstract class AbstractColor implements ColorInterface
      * @var Hsl
      */
     private $localHsl;
+
+    /**
+     * @var Blender
+     */
+    private $blender;
 
     /**
      * {@inheritDoc}
@@ -60,19 +59,26 @@ abstract class AbstractColor implements ColorInterface
     }
 
     /**
+     * Converts back to the current color space
+     * @param ColorInterface $color
+     * @return ColorInterface
+     */
+    private function toCurrent(ColorInterface $color)
+    {
+        if ($this->getName() === $color->getName()) {
+            return $color->copy();
+        }
+
+        return $color->translate()->to($this->getName());
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function desaturate($percentage)
     {
         return $this->updateSaturation(-$percentage);
     }
-
-    /**
-     * Converts back to the current color space
-     * @param Hsl $color
-     * @return ColorInterface
-     */
-    abstract protected function toCurrent(Hsl $color);
 
     /**
      * @return Hsl
@@ -186,9 +192,21 @@ abstract class AbstractColor implements ColorInterface
      */
     public function multiply(ColorInterface $color)
     {
-        $operation = new Multiply($this->translate()->toRgb(), $color->translate()->toRgb());
+        return $this->toCurrent(
+            $this->getBlender()->multiply($color->translate()->toRgb())
+        );
+    }
 
-        return $operation->result()->translate()->to($this->getName());
+    /**
+     * @return Blender
+     */
+    protected function getBlender()
+    {
+        if (!$this->blender) {
+            $this->blender = new Blender($this->translate()->toRgb());
+        }
+
+        return $this->blender;
     }
 
     /**
@@ -196,9 +214,9 @@ abstract class AbstractColor implements ColorInterface
      */
     public function screen(ColorInterface $color)
     {
-        $operation = new Screen($this->translate()->toRgb(), $color->translate()->toRgb());
-
-        return $operation->result()->translate()->to($this->getName());
+        return $this->toCurrent(
+            $this->getBlender()->screen($color->translate()->toRgb())
+        );
     }
 
     /**
@@ -206,9 +224,9 @@ abstract class AbstractColor implements ColorInterface
      */
     public function overlay(ColorInterface $color)
     {
-        $operation = new Overlay($this->translate()->toRgb(), $color->translate()->toRgb());
-
-        return $operation->result()->translate()->to($this->getName());
+        return $this->toCurrent(
+            $this->getBlender()->overlay($color->translate()->toRgb())
+        );
     }
 
     /**
@@ -216,9 +234,9 @@ abstract class AbstractColor implements ColorInterface
      */
     public function hardLight(ColorInterface $color)
     {
-        $operation = new HardLight($this->translate()->toRgb(), $color->translate()->toRgb());
-
-        return $operation->result()->translate()->to($this->getName());
+        return $this->toCurrent(
+            $this->getBlender()->hardLight($color->translate()->toRgb())
+        );
     }
 
     /**
@@ -226,9 +244,9 @@ abstract class AbstractColor implements ColorInterface
      */
     public function softLight(ColorInterface $color)
     {
-        $operation = new SoftLight($this->translate()->toRgb(), $color->translate()->toRgb());
-
-        return $operation->result()->translate()->to($this->getName());
+        return $this->toCurrent(
+            $this->getBlender()->softLight($color->translate()->toRgb())
+        );
     }
 
     /**
@@ -236,9 +254,9 @@ abstract class AbstractColor implements ColorInterface
      */
     public function difference(ColorInterface $color)
     {
-        $operation = new Difference($this->translate()->toRgb(), $color->translate()->toRgb());
-
-        return $operation->result()->translate()->to($this->getName());
+        return $this->toCurrent(
+            $this->getBlender()->difference($color->translate()->toRgb())
+        );
     }
 
     /**
@@ -246,8 +264,8 @@ abstract class AbstractColor implements ColorInterface
      */
     public function exclusion(ColorInterface $color)
     {
-        $operation = new Exclusion($this->translate()->toRgb(), $color->translate()->toRgb());
-
-        return $operation->result()->translate()->to($this->getName());
+        return $this->toCurrent(
+            $this->getBlender()->exclusion($color->translate()->toRgb())
+        );
     }
 }

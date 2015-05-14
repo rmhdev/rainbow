@@ -91,13 +91,4 @@ final class Hsl extends AbstractColor implements ColorInterface
     {
         return new Alpha(1);
     }
-
-    /**
-     * {@inheritDoc}
-     * @return Hsl
-     */
-    protected function toCurrent(Hsl $color)
-    {
-        return $color->copy();
-    }
 }
