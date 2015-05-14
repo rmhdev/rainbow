@@ -52,9 +52,9 @@ abstract class AbstractColor implements ColorInterface
         $saturation = new Saturation($this->getLocalHsl(), $percentage);
 
         return $this->toCurrent(new Hsl(
-            $this->getLocalHsl()->getHue()->getValue(),
+            $this->getLocalHsl()->getHue(),
             $saturation->result(),
-            $this->getLocalHsl()->getLightness()->getValue()
+            $this->getLocalHsl()->getLightness()
         ));
     }
 
@@ -109,8 +109,8 @@ abstract class AbstractColor implements ColorInterface
         $lightness = new Lightness($this->getLocalHsl(), $percentage);
 
         return $this->toCurrent(new Hsl(
-            $this->getLocalHsl()->getHue()->getValue(),
-            $this->getLocalHsl()->getSaturation()->getValue(),
+            $this->getLocalHsl()->getHue(),
+            $this->getLocalHsl()->getSaturation(),
             $lightness->result()
         ));
     }
@@ -132,8 +132,8 @@ abstract class AbstractColor implements ColorInterface
 
         return $this->toCurrent(new Hsl(
             $operation->result()->getValue(),
-            $this->getLocalHsl()->getSaturation()->getValue(),
-            $this->getLocalHsl()->getLightness()->getValue()
+            $this->getLocalHsl()->getSaturation(),
+            $this->getLocalHsl()->getLightness()
         ));
     }
 
@@ -171,9 +171,9 @@ abstract class AbstractColor implements ColorInterface
     public function greyscale()
     {
         return $this->toCurrent(new Hsl(
-            $this->getLocalHsl()->getHue()->getValue(),
+            $this->getLocalHsl()->getHue(),
             0,
-            $this->getLocalHsl()->getLightness()->getValue()
+            $this->getLocalHsl()->getLightness()
         ));
     }
 
