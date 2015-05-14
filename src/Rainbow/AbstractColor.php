@@ -51,11 +51,18 @@ abstract class AbstractColor implements ColorInterface
     {
         $saturation = new Saturation($this->getLocalHsl(), $percentage);
 
-        return $this->toCurrent(new Hsl(
-            $this->getLocalHsl()->getHue(),
-            $saturation->result(),
-            $this->getLocalHsl()->getLightness()
-        ));
+        return $this->editLocalHsl(null, $saturation->result(), null);
+    }
+
+    private function editLocalHsl($hue = null, $saturation = null, $lightness = null)
+    {
+        return $this->toCurrent(
+            new Hsl(
+                is_null($hue) ? $this->getLocalHsl()->getHue() : $hue,
+                is_null($saturation) ? $this->getLocalHsl()->getSaturation() : $saturation,
+                is_null($lightness) ? $this->getLocalHsl()->getLightness() : $lightness
+            )
+        );
     }
 
     /**
@@ -108,11 +115,7 @@ abstract class AbstractColor implements ColorInterface
     {
         $lightness = new Lightness($this->getLocalHsl(), $percentage);
 
-        return $this->toCurrent(new Hsl(
-            $this->getLocalHsl()->getHue(),
-            $this->getLocalHsl()->getSaturation(),
-            $lightness->result()
-        ));
+        return $this->editLocalHsl(null, null, $lightness->result());
     }
 
     /**
@@ -130,11 +133,7 @@ abstract class AbstractColor implements ColorInterface
     {
         $operation = new Spin($this->getLocalHsl(), $angle);
 
-        return $this->toCurrent(new Hsl(
-            $operation->result()->getValue(),
-            $this->getLocalHsl()->getSaturation(),
-            $this->getLocalHsl()->getLightness()
-        ));
+        return $this->editLocalHsl($operation->result(), null, null);
     }
 
     /**
@@ -170,11 +169,7 @@ abstract class AbstractColor implements ColorInterface
      */
     public function greyscale()
     {
-        return $this->toCurrent(new Hsl(
-            $this->getLocalHsl()->getHue(),
-            0,
-            $this->getLocalHsl()->getLightness()
-        ));
+        return $this->editLocalHsl(null, 0, null);
     }
 
     /**
