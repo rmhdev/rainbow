@@ -13,6 +13,7 @@ namespace Rainbow\Calculation;
 use Rainbow\Calculation\Blending\ColorBurn;
 use Rainbow\Calculation\Blending\ColorDodge;
 use Rainbow\Calculation\Blending\Difference;
+use Rainbow\Calculation\Blending\Exclusion;
 use Rainbow\Calculation\Blending\HardLight;
 use Rainbow\Calculation\Blending\Multiply;
 use Rainbow\Calculation\Blending\Overlay;
@@ -127,7 +128,7 @@ final class Blender
      */
     public function exclusion(Rgb $color)
     {
-        $blending = new Difference($this->getColor(), $color);
+        $blending = new Exclusion($this->getColor(), $color);
 
         return $blending->result();
     }
