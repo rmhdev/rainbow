@@ -34,20 +34,31 @@ use Rainbow\Unit\Percent;
  */
 final class Hsl extends AbstractColor implements ColorInterface
 {
+    /**
+     * @var Angle
+     */
     private $hue;
+
+    /**
+     * @var Percent
+     */
     private $saturation;
+
+    /**
+     * @var Percent
+     */
     private $lightness;
 
     /**
-     * @param int|number|string $hue  An angle
-     * @param int|number|string $saturation  A percentage
-     * @param int|number|string $lightness  A percentage
+     * @param int|string|Angle $hue  An angle
+     * @param int|string|Percent $saturation  A percentage
+     * @param int|string|Percent $lightness  A percentage
      */
     public function __construct($hue = 0, $saturation = 0, $lightness = 0)
     {
-        $this->hue = new Angle($hue);
-        $this->saturation = new Percent($saturation);
-        $this->lightness = new Percent($lightness);
+        $this->hue = ($hue instanceof Angle) ? $hue : new Angle($hue);
+        $this->saturation = ($saturation instanceof Percent) ? $saturation : new Percent($saturation);
+        $this->lightness = ($lightness instanceof Percent) ? $lightness : new Percent($lightness);
     }
 
     /**
@@ -58,16 +69,25 @@ final class Hsl extends AbstractColor implements ColorInterface
         return "hsl";
     }
 
+    /**
+     * @return Angle
+     */
     public function getHue()
     {
         return $this->hue;
     }
 
+    /**
+     * @return Percent
+     */
     public function getSaturation()
     {
         return $this->saturation;
     }
 
+    /**
+     * @return Percent
+     */
     public function getLightness()
     {
         return $this->lightness;

@@ -42,6 +42,13 @@ class HslTest extends AbstractColorTest
         $this->assertEquals(new Percent(40), $color->getLightness());
     }
 
+    public function testCreateWithUnitsShouldReturnCorrectColor()
+    {
+        $color = new Hsl(new Angle(120), new Percent(75), new Percent(95));
+
+        $this->assertEquals(new Hsl(120, 75, 95), $color);
+    }
+
     /**
      * @dataProvider getToStringDataProvider
      */
