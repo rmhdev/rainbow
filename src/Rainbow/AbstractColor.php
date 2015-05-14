@@ -10,6 +10,7 @@
 
 namespace Rainbow;
 
+use Rainbow\Calculation\Blending\Difference;
 use Rainbow\Calculation\Blending\HardLight;
 use Rainbow\Calculation\Blending\Multiply;
 use Rainbow\Calculation\Blending\Overlay;
@@ -208,9 +209,19 @@ abstract class AbstractColor implements ColorInterface
         return $operation->result()->translate()->to($this->getName());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function hardLight(ColorInterface $color)
     {
         $operation = new HardLight($this->translate()->toRgb(), $color->translate()->toRgb());
+
+        return $operation->result()->translate()->to($this->getName());
+    }
+
+    public function difference(ColorInterface $color)
+    {
+        $operation = new Difference($this->translate()->toRgb(), $color->translate()->toRgb());
 
         return $operation->result()->translate()->to($this->getName());
     }

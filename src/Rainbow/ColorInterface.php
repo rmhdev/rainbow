@@ -138,7 +138,14 @@ interface ColorInterface
      * @see self::multiply
      * @see self::screen
      * @param ColorInterface $color
-     * @return mixed
+     * @return ColorInterface
      */
     public function hardLight(ColorInterface $color);
+
+    /**
+     * Subtracts the darker of the two constituent colors from the lighter color
+     * @param ColorInterface $color
+     * @return ColorInterface
+     */
+    public function difference(ColorInterface $color);
 }
