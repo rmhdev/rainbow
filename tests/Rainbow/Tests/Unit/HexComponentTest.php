@@ -42,4 +42,22 @@ class HexComponentTest extends \PHPUnit_Framework_TestCase
             array("00", "0"),
         );
     }
+
+    /**
+     * @dataProvider incorrectValueDataProvider
+     * @param $value
+     * @expectedException \OutOfBoundsException
+     */
+    public function testOutOfBoundsValueShouldThrowException($value)
+    {
+        new HexComponent($value);
+    }
+
+    public function incorrectValueDataProvider()
+    {
+        return array(
+            array("123"),
+            array("-1"),
+        );
+    }
 }
