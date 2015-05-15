@@ -39,6 +39,7 @@ class HexTest extends \PHPUnit_Framework_TestCase
             array("#000000", " "),
             array("#123456", " 12 34 56"),
             array("#123abc", "123ABC"),
+            array("#aabbcc", "abc"),
         );
     }
 }

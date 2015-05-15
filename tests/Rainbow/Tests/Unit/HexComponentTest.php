@@ -60,4 +60,11 @@ class HexComponentTest extends \PHPUnit_Framework_TestCase
             array("-1"),
         );
     }
+
+    public function testToStringShouldReturnStringRepresentationOfValue()
+    {
+        $hexComponent = new HexComponent("1a");
+
+        $this->assertEquals("1a", (string)$hexComponent);
+    }
 }
