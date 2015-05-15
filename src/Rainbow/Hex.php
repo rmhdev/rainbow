@@ -65,14 +65,29 @@ final class Hex
     public function __toString()
     {
         return sprintf("#%s%s%s",
-            $this->red,
-            $this->green,
-            $this->blue
+            $this->getRed(),
+            $this->getGreen(),
+            $this->getBlue()
         );
     }
 
     public function getName()
     {
         return "hex";
+    }
+
+    public function getRed()
+    {
+        return $this->red;
+    }
+
+    public function getGreen()
+    {
+        return $this->green;
+    }
+
+    public function getBlue()
+    {
+        return $this->blue;
     }
 }

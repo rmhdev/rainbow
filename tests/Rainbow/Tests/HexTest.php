@@ -11,6 +11,7 @@
 namespace Rainbow\Tests;
 
 use Rainbow\Hex;
+use Rainbow\Unit\HexComponent;
 
 class HexTest extends \PHPUnit_Framework_TestCase
 {
@@ -49,5 +50,14 @@ class HexTest extends \PHPUnit_Framework_TestCase
             array("#123abc", "123ABC"),
             array("#aabbcc", "abc"),
         );
+    }
+
+    public function testColorShouldReturnDefinedValues()
+    {
+        $color = new Hex("#11aa33");
+
+        $this->assertEquals(new HexComponent("11"), $color->getRed());
+        $this->assertEquals(new HexComponent("aa"), $color->getGreen());
+        $this->assertEquals(new HexComponent("33"), $color->getBlue());
     }
 }
