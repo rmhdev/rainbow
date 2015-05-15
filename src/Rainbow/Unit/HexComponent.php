@@ -10,13 +10,16 @@
 
 namespace Rainbow\Unit;
 
-final class HexComponent
+final class HexComponent implements UnitInterface
 {
     /**
      * @var string
      */
     private $value;
 
+    /**
+     * @param number|string $value
+     */
     public function __construct($value = null)
     {
         $this->value = $this->processValue($value);
@@ -58,11 +61,17 @@ final class HexComponent
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getValue()
     {
         return $this->value;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return (string)$this->getValue();
