@@ -27,27 +27,35 @@ final class HexComponent
         if (is_null($value)) {
             $value = 0;
         }
-        $processed = strtolower($value);
-        if (1 === strlen($processed)) {
-            $processed .= $processed;
-        }
-        if ($this->isOutOfBounds($processed)) {
+        if ($this->isOutOfBounds($value)) {
             throw new \OutOfBoundsException(
                 sprintf('Hex value %s must be between 0 and %s', $value, dechex(RgbComponent::MAX_VALUE))
             );
         }
+        $result = $this->valueToString($value);
+        if (1 === strlen($result)) {
+            $result .= $result;
+        }
 
-        return $processed;
+        return $result;
     }
 
-    private function isOutOfBounds($value = "")
+    private function valueToString($value = "")
     {
-        if (is_numeric($value) && (0 > $value)) {
+        return dechex(hexdec($value));
+    }
+
+    private function isOutOfBounds($rawValue)
+    {
+        if (is_numeric($rawValue) && (0 > $rawValue)) {
             return true;
         }
-        $number = hexdec($value);
+        $number = hexdec($rawValue);
+        if (RgbComponent::MAX_VALUE < $number) {
+            return true;
+        }
 
-        return RgbComponent::MAX_VALUE < $number;
+        return false;
     }
 
     public function getValue()

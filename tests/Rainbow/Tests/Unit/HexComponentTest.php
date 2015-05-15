@@ -24,7 +24,7 @@ class HexComponentTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider correctValueDataProvider
      * @param string $expected
-     * @param string $value
+     * @param string|number $value
      */
     public function testCorrectValueShouldReturnValue($expected, $value)
     {
@@ -40,6 +40,7 @@ class HexComponentTest extends \PHPUnit_Framework_TestCase
             array("ff", "FF"),
             array("1a", "1a"),
             array("00", "0"),
+            array("ff", "0xFF"),
         );
     }
 
