@@ -28,6 +28,9 @@ final class HexComponent
             $value = 0;
         }
         $value = strtolower($value);
+        if (1 === strlen($value)) {
+            $value .= $value;
+        }
 
         return $value;
     }

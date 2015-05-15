@@ -39,6 +39,7 @@ class HexComponentTest extends \PHPUnit_Framework_TestCase
             array("00", "00"),
             array("ff", "FF"),
             array("1a", "1a"),
+            array("00", "0"),
         );
     }
 }
