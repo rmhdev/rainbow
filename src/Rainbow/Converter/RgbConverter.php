@@ -18,4 +18,9 @@ final class RgbConverter
     {
         return $color->copy();
     }
+
+    public static function fromRgb(Rgb $color)
+    {
+        return $color->copy();
+    }
 }

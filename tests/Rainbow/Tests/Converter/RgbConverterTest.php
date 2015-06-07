@@ -15,10 +15,17 @@ use Rainbow\Rgb;
 
 class RgbConverterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testFromRgbShouldReturnRgb()
+    public function testToRgbShouldReturnRgb()
     {
         $color = new Rgb(100, 150, 200);
 
         $this->assertEquals($color, RgbConverter::ToRgb($color));
+    }
+
+    public function testFromRgbShouldReturnRgb()
+    {
+        $color = new Rgb(100, 150, 200);
+
+        $this->assertEquals($color, RgbConverter::fromRgb($color));
     }
 }
