@@ -73,4 +73,26 @@ abstract class AbstractConverterTest extends \PHPUnit_Framework_TestCase
             $values["lightness"]
         );
     }
+
+    public function hslRgbEquivalences()
+    {
+        return array(
+            array(new Hsl(0, 0, 0), new Rgb(0, 0, 0)),
+            array(new Hsl(300, 100, 50), new Rgb(255, 0, 255)),
+            array(new Hsl(120, 100, 25), new Rgb(0, 128, 0)),
+            array(new Hsl(30, 100, 50), new Rgb(255, 128, 0)),
+            array(new Hsl(210, 100, 50), new Rgb(0, 128, 255)),
+            array(new Hsl(90, 80, 50), new Rgb(128, 230, 26)),
+        );
+    }
+
+    public function rgbHslEquivalences()
+    {
+        return array_map(
+            function ($item) {
+                return array_reverse($item);
+            },
+            $this->hslRgbEquivalences()
+        );
+    }
 }
