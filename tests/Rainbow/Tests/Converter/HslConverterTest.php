@@ -30,4 +30,19 @@ class HslConverterTest extends AbstractConverterTest
     {
         return $this->rgbHslEquivalences();
     }
+
+    /**
+     * @dataProvider fromRgbDataProvider
+     * @param Hsl $expected
+     * @param Rgb $color
+     */
+    public function testFromRgbShouldReturnHsl(Hsl $expected, Rgb $color)
+    {
+        $this->assertEquals($expected, HslConverter::fromRgb($color));
+    }
+
+    public function fromRgbDataProvider()
+    {
+        return $this->hslRgbEquivalences();
+    }
 }

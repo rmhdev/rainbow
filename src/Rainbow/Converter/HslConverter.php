@@ -11,11 +11,17 @@
 namespace Rainbow\Converter;
 
 use Rainbow\Hsl;
+use Rainbow\Rgb;
 
 final class HslConverter
 {
     public static function toRgb(Hsl $color)
     {
         return RgbConverter::fromHsl($color);
+    }
+
+    public static function fromRgb(Rgb $color)
+    {
+        return RgbConverter::toHsl($color);
     }
 }
