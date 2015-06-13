@@ -45,4 +45,18 @@ class HslConverterTest extends AbstractConverterTest
     {
         return $this->hslRgbEquivalences();
     }
+
+    public function testToHslShouldReturnSameColor()
+    {
+        $color = new Hsl(150, 25, 75);
+
+        $this->assertEquals($color, HslConverter::toHsl($color));
+    }
+
+    public function testFromHslShouldReturnSameColor()
+    {
+        $color = new Hsl(150, 25, 75);
+
+        $this->assertEquals($color, HslConverter::fromHsl($color));
+    }
 }

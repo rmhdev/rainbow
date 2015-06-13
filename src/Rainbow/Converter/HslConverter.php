@@ -24,4 +24,14 @@ final class HslConverter
     {
         return RgbConverter::toHsl($color);
     }
+
+    public static function toHsl(Hsl $color)
+    {
+        return $color->copy();
+    }
+
+    public static function fromHsl(Hsl $color)
+    {
+        return $color->copy();
+    }
 }
