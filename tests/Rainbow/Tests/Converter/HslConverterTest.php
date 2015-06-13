@@ -10,6 +10,7 @@
 
 namespace Rainbow\Tests\Converter;
 
+use Rainbow\Converter\HslConverter;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 
