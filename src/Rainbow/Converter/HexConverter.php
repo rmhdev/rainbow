@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * This file is part of the Rainbow package.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @license MIT License
+ */
+
+namespace Rainbow\Converter;
+
+use Rainbow\Hex;
+use Rainbow\Hsl;
+use Rainbow\Rgb;
+use Rainbow\Unit\HexComponent;
+
+final class HexConverter
+{
+    public static function toRgb(Hex $color)
+    {
+        return new Rgb(
+            hexdec($color->getRed()->getValue()),
+            hexdec($color->getGreen()->getValue()),
+            hexdec($color->getBlue()->getValue())
+        );
+    }
+
+    public static function fromRgb(Rgb $color)
+    {
+        $redHEx     = new HexComponent(dechex((string)$color->getRed()));
+        $greenHEx   = new HexComponent(dechex((string)$color->getGreen()));
+        $blueHEx    = new HexComponent(dechex((string)$color->getBlue()));
+
+        $hexValue = sprintf(
+            "#%s%s%s",
+            $redHEx->getValue(),
+            $greenHEx->getValue(),
+            $blueHEx->getValue()
+        );
+
+        return new Hex($hexValue);
+    }
+
+    public static function toHsl(Hex $color)
+    {
+        return HslConverter::fromRgb(self::toRgb($color));
+    }
+
+    public static function fromHsl(Hsl $color)
+    {
+        return self::fromRgb(RgbConverter::fromHsl($color));
+    }
+}
