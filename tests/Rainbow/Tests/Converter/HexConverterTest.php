@@ -46,7 +46,7 @@ class HexConverterTest extends AbstractConverterTest
         );
     }
 
-    private function rgbEquivalences()
+    public function rgbEquivalences()
     {
         return array_map(
             function ($item) {
@@ -109,7 +109,7 @@ class HexConverterTest extends AbstractConverterTest
         );
     }
 
-    private function hslEquivalences()
+    public function hslEquivalences()
     {
         return array_map(
             function ($item) {
@@ -117,5 +117,30 @@ class HexConverterTest extends AbstractConverterTest
             },
             $this->equivalences()
         );
+    }
+
+
+    /**
+     * @dataProvider rgbEquivalences
+     * @param Hex $expected
+     * @param Rgb $color
+     */
+    public function testCreateFromRgbShouldReturnHexConverter(Hex $expected, Rgb $color)
+    {
+        $converter = new HexConverter($expected);
+
+        $this->assertEquals($converter, HexConverter::createFromRgb($color));
+    }
+
+    /**
+     * @dataProvider hslEquivalences
+     * @param Hex $expected
+     * @param Hsl $color
+     */
+    public function testCreateFromHslShouldReturnHexConverter(Hex $expected, Hsl $color)
+    {
+        $converter = new HexConverter($expected);
+
+        $this->assertEquals($converter, HexConverter::createFromHsl($color));
     }
 }

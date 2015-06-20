@@ -11,7 +11,9 @@
 namespace Rainbow\Converter;
 
 use Rainbow\Hex;
+use Rainbow\Hsl;
 use Rainbow\Rgb;
+use Rainbow\Unit\HexComponent;
 
 final class HexConverter
 {
@@ -44,5 +46,28 @@ final class HexConverter
         $converter = new RgbConverter($this->toRgb());
 
         return $converter->toHsl();
+    }
+
+    public static function createFromRgb(Rgb $color)
+    {
+        $redHEx     = new HexComponent(dechex((string)$color->getRed()));
+        $greenHEx   = new HexComponent(dechex((string)$color->getGreen()));
+        $blueHEx    = new HexComponent(dechex((string)$color->getBlue()));
+
+        $hexValue = sprintf(
+            "#%s%s%s",
+            $redHEx->getValue(),
+            $greenHEx->getValue(),
+            $blueHEx->getValue()
+        );
+
+        return new self(new Hex($hexValue));
+    }
+
+    public static function createFromHsl(Hsl $color)
+    {
+        $converter = new HslConverter($color);
+
+        return self::createFromRgb($converter->toRgb());
     }
 }
