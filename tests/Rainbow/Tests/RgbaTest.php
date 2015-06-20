@@ -3,6 +3,7 @@
 namespace Rainbow\Tests;
 
 use Rainbow\Rgba;
+use Rainbow\Unit\Alpha;
 use Rainbow\Unit\RgbComponent;
 
 class RgbaTest extends \PHPUnit_Framework_TestCase
@@ -22,5 +23,12 @@ class RgbaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($empty, $rgba->getRed());
         $this->assertEquals($empty, $rgba->getGreen());
         $this->assertEquals($empty, $rgba->getBlue());
+    }
+
+    public function testEmptyColorShouldBeOpaque()
+    {
+        $rgba = new Rgba();
+
+        $this->assertEquals(new Alpha(1), $rgba->getAlpha());
     }
 }

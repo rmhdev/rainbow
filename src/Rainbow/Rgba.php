@@ -2,6 +2,8 @@
 
 namespace Rainbow;
 
+use Rainbow\Unit\Alpha;
+
 final class Rgba
 {
     /**
@@ -32,5 +34,10 @@ final class Rgba
     public function getBlue()
     {
         return $this->rgb->getBlue();
+    }
+
+    public function getAlpha()
+    {
+        return new Alpha(1);
     }
 }
