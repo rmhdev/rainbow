@@ -58,15 +58,14 @@ class HslConverterTest extends AbstractConverterTest
     {
         $converter = new HslConverter($expected);
 
-        $this->assertEquals($converter, HslConverter::createFromRgb($color));
+        $this->assertEquals($converter, HslConverter::create($color));
     }
-
 
     public function testCreateFromHslShouldReturnHexConverter()
     {
         $color = new Hsl(150, 25, 75);
         $converter = new HslConverter($color);
 
-        $this->assertEquals($converter, HslConverter::createFromHsl($color));
+        $this->assertEquals($converter, HslConverter::create($color));
     }
 }

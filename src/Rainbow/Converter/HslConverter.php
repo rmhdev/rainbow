@@ -10,6 +10,7 @@
 
 namespace Rainbow\Converter;
 
+use Rainbow\ColorInterface;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\RgbComponent;
@@ -85,15 +86,17 @@ final class HslConverter
         return $m1;
     }
 
-    public static function createFromRgb(Rgb $color)
+    public static function create(ColorInterface $color)
     {
-        $converter = new RgbConverter($color);
+        if ("hsl" === $color->getName()) {
+            return new self($color);
+        }
+        $className = sprintf('Rainbow\Converter\%sConverter', ucfirst($color->getName()));
+        if (!class_exists($className)) {
+            throw new \UnexpectedValueException("{$className} does not exist");
+        }
+        $converter = new $className($color);
 
         return new self($converter->toHsl());
-    }
-
-    public static function createFromHsl(Hsl $color)
-    {
-        return new self($color);
     }
 }
