@@ -11,6 +11,7 @@
 namespace Rainbow\Tests;
 
 use Rainbow\Hex;
+use Rainbow\Unit\Alpha;
 use Rainbow\Unit\HexComponent;
 
 class HexTest extends \PHPUnit_Framework_TestCase
@@ -59,5 +60,13 @@ class HexTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(new HexComponent("11"), $color->getRed());
         $this->assertEquals(new HexComponent("aa"), $color->getGreen());
         $this->assertEquals(new HexComponent("33"), $color->getBlue());
+    }
+
+    public function testAlphaShouldReturnTotalOpacity()
+    {
+        $color = new Hex("#112233");
+        $alpha = new Alpha(1);
+
+        $this->assertEquals($alpha, $color->getAlpha());
     }
 }

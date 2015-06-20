@@ -129,7 +129,7 @@ class HexConverterTest extends AbstractConverterTest
     {
         $converter = new HexConverter($expected);
 
-        $this->assertEquals($converter, HexConverter::createFromRgb($color));
+        $this->assertEquals($converter, HexConverter::create($color));
     }
 
     /**
@@ -141,6 +141,14 @@ class HexConverterTest extends AbstractConverterTest
     {
         $converter = new HexConverter($expected);
 
-        $this->assertEquals($converter, HexConverter::createFromHsl($color));
+        $this->assertEquals($converter, HexConverter::create($color));
+    }
+
+    public function testCreateFromHexShouldReturnHexConverter()
+    {
+        $color = new Hex("#ff0033");
+        $converter = new HexConverter($color);
+
+        $this->assertEquals($converter, HexConverter::create($color));
     }
 }

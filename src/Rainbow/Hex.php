@@ -10,9 +10,10 @@
 
 namespace Rainbow;
 
+use Rainbow\Unit\Alpha;
 use Rainbow\Unit\HexComponent;
 
-final class Hex
+final class Hex extends AbstractColor implements ColorInterface
 {
     /**
      * @var HexComponent
@@ -90,5 +91,10 @@ final class Hex
     public function getBlue()
     {
         return $this->blue;
+    }
+
+    public function getAlpha()
+    {
+        return new Alpha(1);
     }
 }

@@ -10,6 +10,7 @@
 
 namespace Rainbow\Converter;
 
+use Rainbow\ColorInterface;
 use Rainbow\Hex;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
@@ -48,7 +49,20 @@ final class HexConverter
         return $converter->toHsl();
     }
 
-    public static function createFromRgb(Rgb $color)
+    public static function create(ColorInterface $color)
+    {
+        if ($color instanceof Hex) {
+            return new self($color);
+        }
+        if (!$color instanceof Rgb) {
+            $converter = RgbConverter::create($color);
+            $color = $converter->toRgb();
+        }
+
+        return self::createFromRgb($color);
+    }
+
+    private static function createFromRgb(Rgb $color)
     {
         $redHEx     = new HexComponent(dechex((string)$color->getRed()));
         $greenHEx   = new HexComponent(dechex((string)$color->getGreen()));
@@ -62,12 +76,5 @@ final class HexConverter
         );
 
         return new self(new Hex($hexValue));
-    }
-
-    public static function createFromHsl(Hsl $color)
-    {
-        $converter = new HslConverter($color);
-
-        return self::createFromRgb($converter->toRgb());
     }
 }
