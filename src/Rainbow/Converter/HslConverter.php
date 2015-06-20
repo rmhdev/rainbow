@@ -79,4 +79,16 @@ final class HslConverter
 
         return $m1;
     }
+
+    public static function createFromRgb(Rgb $color)
+    {
+        $converter = new RgbConverter($color);
+
+        return new self($converter->toHsl());
+    }
+
+    public static function createFromHsl(Hsl $color)
+    {
+        return new self($color);
+    }
 }
