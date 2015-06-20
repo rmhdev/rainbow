@@ -25,7 +25,9 @@ final class HslConverter
 
     public static function fromRgb(Rgb $color)
     {
-        return RgbConverter::toHsl($color);
+        $converter = new RgbConverter($color);
+
+        return $converter->toHsl();
     }
 
     public static function toHsl(Hsl $color)

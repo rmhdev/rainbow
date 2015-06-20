@@ -19,15 +19,9 @@ class RgbConverterTest extends \PHPUnit_Framework_TestCase
     public function testToRgbShouldReturnRgb()
     {
         $color = new Rgb(100, 150, 200);
+        $converter = new RgbConverter($color);
 
-        $this->assertEquals($color, RgbConverter::ToRgb($color));
-    }
-
-    public function testFromRgbShouldReturnRgb()
-    {
-        $color = new Rgb(100, 150, 200);
-
-        $this->assertEquals($color, RgbConverter::fromRgb($color));
+        $this->assertEquals($color, $converter->toRgb($color));
     }
 
     /**
@@ -37,7 +31,9 @@ class RgbConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function testToHslShouldReturnHsl(Hsl $expected, Rgb $rgb)
     {
-        $this->assertEquals($expected, RgbConverter::toHsl($rgb));
+        $converter = new RgbConverter($rgb);
+
+        $this->assertEquals($expected, $converter->toHsl());
     }
 
     public function toHslDataProvider()
@@ -49,26 +45,6 @@ class RgbConverterTest extends \PHPUnit_Framework_TestCase
             array(new Hsl(30, 100, 50), new Rgb(255, 128, 0)),
             array(new Hsl(210, 100, 50), new Rgb(0, 128, 255)),
             array(new Hsl(90, 80, 50), new Rgb(128, 230, 26)),
-        );
-    }
-
-    /**
-     * @dataProvider fromHslDataProvider
-     * @param Rgb $expected
-     * @param Hsl $color
-     */
-    public function testFromHslShouldReturnRgb(Rgb $expected, Hsl $color)
-    {
-        $this->assertEquals($expected, RgbConverter::fromHsl($color));
-    }
-
-    public function fromHslDataProvider()
-    {
-        return array_map(
-            function ($item) {
-                return array_reverse($item);
-            },
-            $this->toHslDataProvider()
         );
     }
 }

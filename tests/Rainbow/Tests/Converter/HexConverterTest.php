@@ -113,21 +113,6 @@ class HexConverterTest extends AbstractConverterTest
         );
     }
 
-    /**
-     * @dataProvider fromHslProvider
-     * @param Hex $expected
-     * @param Hsl $color
-     */
-    public function testFromHsl(Hex $expected, Hsl $color)
-    {
-        $this->assertEquals($expected, HexConverter::fromHsl($color));
-    }
-
-    public function fromHslProvider()
-    {
-        return $this->hslEquivalences();
-    }
-
     private function hslEquivalences()
     {
         return array_map(

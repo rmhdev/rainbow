@@ -16,33 +16,48 @@ use Rainbow\Unit\RgbComponent;
 
 final class RgbConverter
 {
-    public static function toRgb(Rgb $color)
+    /**
+     * @var Rgb
+     */
+    private $color;
+
+    public function __construct(Rgb $color)
     {
-        return $color->copy();
+        $this->color = $color;
     }
 
-    public static function fromRgb(Rgb $color)
+    /**
+     * @return Rgb
+     */
+    public function toRgb()
     {
-        return $color->copy();
+        return $this->color->copy();
     }
 
-    public static function toHsl(Rgb $color)
+
+//    public static function toRgb(Rgb $color)
+//    {
+//        return $color->copy();
+//    }
+
+
+
+    public function toHsl()
     {
-        list($hue, $saturation, $lightness) = self::calculateHslValues($color);
+        list($hue, $saturation, $lightness) = $this->calculateHslValues();
 
         return new Hsl($hue, $saturation, $lightness);
     }
 
     /**
      * @url https://hg.python.org/cpython/file/2.7/Lib/colorsys.py
-     * @param Rgb $color
      * @return array
      */
-    private static function calculateHslValues(Rgb $color)
+    private function calculateHslValues()
     {
-        $red = $color->getRed()->getValue() / RgbComponent::MAX_VALUE;
-        $green = $color->getGreen()->getValue() / RgbComponent::MAX_VALUE;
-        $blue = $color->getBlue()->getValue() / RgbComponent::MAX_VALUE;
+        $red = $this->color->getRed()->getValue() / RgbComponent::MAX_VALUE;
+        $green = $this->color->getGreen()->getValue() / RgbComponent::MAX_VALUE;
+        $blue = $this->color->getBlue()->getValue() / RgbComponent::MAX_VALUE;
 
         $max = max($red, $green, $blue);
         $min = min($red, $green, $blue);
@@ -67,10 +82,5 @@ final class RgbConverter
         $hue = $hue * (360 / 6);
 
         return array($hue, $saturation * 100, $lightness * 100);
-    }
-
-    public static function fromHsl(Hsl $color)
-    {
-        return HslConverter::toRgb($color);
     }
 }

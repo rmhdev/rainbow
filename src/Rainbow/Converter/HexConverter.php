@@ -11,7 +11,6 @@
 namespace Rainbow\Converter;
 
 use Rainbow\Hex;
-use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\HexComponent;
 
@@ -45,10 +44,5 @@ final class HexConverter
     public static function toHsl(Hex $color)
     {
         return HslConverter::fromRgb(self::toRgb($color));
-    }
-
-    public static function fromHsl(Hsl $color)
-    {
-        return self::fromRgb(RgbConverter::fromHsl($color));
     }
 }
