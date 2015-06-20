@@ -48,4 +48,39 @@ class RgbaTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(new Rgba(120, 75, 95, 0.5), $color);
     }
+
+    /**
+     * @dataProvider getToStringDataProvider
+     * @param $values
+     * @param $expectedValue
+     */
+    public function testToStringShouldReturnValidString($values, $expectedValue)
+    {
+        $color = new Rgba(
+            $values["red"],
+            $values["green"],
+            $values["blue"],
+            $values["alpha"]
+        );
+
+        $this->assertEquals($expectedValue, (string) $color);
+    }
+
+    public function getToStringDataProvider()
+    {
+        return array(
+            array(
+                array("red" => 0, "green" => 0, "blue" => 0, "alpha" => 1),
+                "rgb(0,0,0,1)"
+            ),
+            array(
+                array("red" => 10, "green" => 20, "blue" => 30, "alpha" => 0),
+                "rgb(10,20,30,0)"
+            ),
+            array(
+                array("red" => 255, "green" => 255, "blue" => 255, "alpha" => 0.5),
+                "rgb(255,255,255,0.5)"
+            ),
+        );
+    }
 }

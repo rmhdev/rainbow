@@ -26,6 +26,17 @@ final class Rgba
         $this->alpha = ($alpha instanceof Alpha) ? $alpha : new Alpha($alpha);
     }
 
+    public function __toString()
+    {
+        return sprintf(
+            "rgb(%s,%s,%s,%s)",
+            $this->getRed(),
+            $this->getGreen(),
+            $this->getBlue(),
+            $this->getAlpha()
+        );
+    }
+
     public function getName()
     {
         return "rgba";
