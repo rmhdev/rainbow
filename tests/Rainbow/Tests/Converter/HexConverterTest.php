@@ -17,6 +17,13 @@ use Rainbow\Rgb;
 
 class HexConverterTest extends AbstractConverterTest
 {
+    public function testGetColorShouldReturnHex()
+    {
+        $color = new Hex(100, 150, 200);
+        $converter = new HexConverter($color);
+
+        $this->assertEquals($color, $converter->getColor());
+    }
     /**
      * @dataProvider toRgbDataProvider
      * @param Rgb $expected

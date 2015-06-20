@@ -15,11 +15,19 @@ use Rainbow\Rgb;
 
 final class HexConverter
 {
+    /**
+     * @var Hex
+     */
     private $color;
 
     public function __construct(Hex $color)
     {
         $this->color = $color;
+    }
+
+    public function getColor()
+    {
+        return clone $this->color;
     }
 
     public function toRgb()
