@@ -23,19 +23,7 @@ final class HslConverter
         return new Rgb($red, $green, $blue);
     }
 
-    public static function fromRgb(Rgb $color)
-    {
-        $converter = new RgbConverter($color);
-
-        return $converter->toHsl();
-    }
-
     public static function toHsl(Hsl $color)
-    {
-        return $color->copy();
-    }
-
-    public static function fromHsl(Hsl $color)
     {
         return $color->copy();
     }

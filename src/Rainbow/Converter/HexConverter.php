@@ -16,12 +16,19 @@ use Rainbow\Unit\HexComponent;
 
 final class HexConverter
 {
-    public static function toRgb(Hex $color)
+    private $color;
+
+    public function __construct(Hex $color)
+    {
+        $this->color = $color;
+    }
+
+    public function toRgb()
     {
         return new Rgb(
-            hexdec($color->getRed()->getValue()),
-            hexdec($color->getGreen()->getValue()),
-            hexdec($color->getBlue()->getValue())
+            hexdec($this->color->getRed()->getValue()),
+            hexdec($this->color->getGreen()->getValue()),
+            hexdec($this->color->getBlue()->getValue())
         );
     }
 
@@ -41,8 +48,10 @@ final class HexConverter
         return new Hex($hexValue);
     }
 
-    public static function toHsl(Hex $color)
+    public function toHsl()
     {
-        return HslConverter::fromRgb(self::toRgb($color));
+        $converter = new RgbConverter($this->toRgb());
+
+        return $converter->toHsl();
     }
 }

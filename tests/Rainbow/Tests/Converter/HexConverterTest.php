@@ -24,7 +24,9 @@ class HexConverterTest extends AbstractConverterTest
      */
     public function testToRgbShouldReturnRgb(Rgb $expected, Hex $color)
     {
-        $this->assertEquals($expected, HexConverter::toRgb($color));
+        $converter = new HexConverter($color);
+
+        $this->assertEquals($expected, $converter->toRgb());
     }
 
     public function toRgbDataProvider()
@@ -100,7 +102,9 @@ class HexConverterTest extends AbstractConverterTest
      */
     public function testToHsl(Hsl $expected, Hex $color)
     {
-        $this->assertEquals($expected, HexConverter::toHsl($color));
+        $converter = new HexConverter($color);
+
+        $this->assertEquals($expected, $converter->toHsl());
     }
 
     public function toHslProvider()

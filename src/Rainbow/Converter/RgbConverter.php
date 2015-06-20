@@ -34,14 +34,6 @@ final class RgbConverter
         return $this->color->copy();
     }
 
-
-//    public static function toRgb(Rgb $color)
-//    {
-//        return $color->copy();
-//    }
-
-
-
     public function toHsl()
     {
         list($hue, $saturation, $lightness) = $this->calculateHslValues();
