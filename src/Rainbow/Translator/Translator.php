@@ -11,7 +11,6 @@
 namespace Rainbow\Translator;
 
 use Rainbow\ColorInterface;
-use Rainbow\Converter\ConverterFactory;
 use Rainbow\Rgb;
 use Rainbow\Hsl;
 
@@ -54,6 +53,12 @@ final class Translator
      */
     public function to($name)
     {
-        return ConverterFactory::create($this->getColor(), $name)->convert();
+        $className = sprintf('Rainbow\Converter\%sConverter', ucfirst($name));
+        if (!class_exists($className)) {
+            throw new \UnexpectedValueException("Class {$className} does not exist");
+        }
+        $converter = $className::create($this->getColor());
+
+        return $converter->getColor();
     }
 }

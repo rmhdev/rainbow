@@ -49,6 +49,17 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
         return array(
             array('Rainbow\Rgb', 'rgb'),
             array('Rainbow\Hsl', 'hsl'),
+            array('Rainbow\Hex', 'hex'),
         );
+    }
+
+    /**
+     * @expectedException \UnexpectedValueException
+     */
+    public function testNonExistentColorNameShouldThrowException()
+    {
+        $color = new Rgb(100, 150, 200);
+        $converter = new Translator($color);
+        $converter->to("lorem");
     }
 }
