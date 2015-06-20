@@ -2,6 +2,7 @@
 
 namespace Rainbow\Converter;
 
+use Rainbow\ColorInterface;
 use Rainbow\Rgb;
 use Rainbow\Rgba;
 
@@ -36,5 +37,28 @@ final class RgbaConverter
         $converter = new RgbConverter($this->toRgb());
 
         return $converter->toHsl();
+    }
+
+    public static function create(ColorInterface $color)
+    {
+        if ($color instanceof Rgba) {
+            return new self($color);
+        }
+        $className = sprintf('Rainbow\Converter\%sConverter', ucfirst($color->getName()));
+        if (!class_exists($className)) {
+            throw new \UnexpectedValueException("{$className} does not exist");
+        }
+        /* @var ConverterInterface $converter */
+        $converter = new $className($color);
+        $rgb = $converter->toRgb();
+
+        return new self(
+            new Rgba(
+                $rgb->getRed(),
+                $rgb->getGreen(),
+                $rgb->getBlue(),
+                $rgb->getAlpha()
+            )
+        );
     }
 }

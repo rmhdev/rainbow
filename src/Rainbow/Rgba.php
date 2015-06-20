@@ -5,7 +5,7 @@ namespace Rainbow;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\RgbComponent;
 
-final class Rgba
+final class Rgba extends AbstractColor implements ColorInterface
 {
     /**
      * @var Rgb

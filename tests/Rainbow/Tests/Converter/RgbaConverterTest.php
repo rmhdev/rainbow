@@ -40,4 +40,28 @@ class RgbaConverterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(new Hsl(300, 100, 50), $converter->toHsl());
     }
+
+    public function testCreateFromRgbShouldReturnRgbaConverter()
+    {
+        $color = new Rgb(100, 150, 200);
+        $converter = new RgbaConverter(new Rgba(100, 150, 200, 1));
+
+        $this->assertEquals($converter, RgbaConverter::create($color));
+    }
+
+    public function testCreateFromHslShouldReturnRgbaConverter()
+    {
+        $color = new Hsl(300, 100, 50);
+        $converter = new RgbaConverter(new Rgba(255, 0, 255, 1));
+
+        $this->assertEquals($converter, RgbaConverter::create($color));
+    }
+
+    public function testCreateFromRgbaShouldReturnRgbaConverter()
+    {
+        $color = new Rgba(100, 150, 200, 0.5);
+        $converter = new RgbaConverter($color);
+
+        $this->assertEquals($converter, RgbaConverter::create($color));
+    }
 }
