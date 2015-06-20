@@ -23,7 +23,9 @@ class HslConverterTest extends AbstractConverterTest
      */
     public function testToRgbShouldReturnRgb(Rgb $expected, Hsl $color)
     {
-        $this->assertEquals($expected, HslConverter::toRgb($color));
+        $converter = new HslConverter($color);
+
+        $this->assertEquals($expected, $converter->toRgb());
     }
 
     public function toRgbDataProvider()
@@ -34,7 +36,8 @@ class HslConverterTest extends AbstractConverterTest
     public function testToHslShouldReturnSameColor()
     {
         $color = new Hsl(150, 25, 75);
+        $converter = new HslConverter($color);
 
-        $this->assertEquals($color, HslConverter::toHsl($color));
+        $this->assertEquals($color, $converter->toHsl());
     }
 }

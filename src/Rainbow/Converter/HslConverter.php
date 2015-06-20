@@ -16,32 +16,42 @@ use Rainbow\Unit\RgbComponent;
 
 final class HslConverter
 {
-    public static function toRgb(Hsl $color)
+    /**
+     * @var Hsl
+     */
+    private $color;
+
+    public function __construct(Hsl $color)
     {
-        list($red, $green, $blue) = self::calculateRgbValues($color);
+        $this->color = $color;
+    }
+
+    public function toRgb()
+    {
+        list($red, $green, $blue) = $this->calculateRgbValues();
 
         return new Rgb($red, $green, $blue);
     }
 
-    public static function toHsl(Hsl $color)
+    public function toHsl()
     {
-        return $color->copy();
+        return $this->color->copy();
     }
 
-    private static function calculateRgbValues(Hsl $color)
+    private function calculateRgbValues()
     {
-        $hue = $color->getHue()->getValue() / 360;
-        $saturation = $color->getSaturation()->getValue() / 100;
-        $lightness = $color->getLightness()->getValue() / 100;
+        $hue = $this->color->getHue()->getValue() / 360;
+        $saturation = $this->color->getSaturation()->getValue() / 100;
+        $lightness = $this->color->getLightness()->getValue() / 100;
 
         $m2 = (0.5 >= $lightness) ?
             $lightness * ($saturation + 1) :
             $lightness + $saturation - ($lightness * $saturation);
         $m1 = $lightness * 2 - $m2;
 
-        $red = self::hueToRgb($m1, $m2, $hue + 1/3);
-        $green = self::hueToRgb($m1, $m2, $hue);
-        $blue = self::hueToRgb($m1, $m2, $hue - 1/3);
+        $red = $this->hueToRgb($m1, $m2, $hue + 1/3);
+        $green = $this->hueToRgb($m1, $m2, $hue);
+        $blue = $this->hueToRgb($m1, $m2, $hue - 1/3);
 
         return array(
             $red * RgbComponent::MAX_VALUE,
@@ -50,7 +60,7 @@ final class HslConverter
         );
     }
 
-    private static function hueToRgb($m1, $m2, $hue)
+    private function hueToRgb($m1, $m2, $hue)
     {
         if (0 > $hue) {
             $hue += 1;
