@@ -32,7 +32,7 @@ final class Hex
     /**
      * @param string $value
      */
-    function __construct($value = "")
+    public function __construct($value = "")
     {
         list($red, $green, $blue) = $this->separateValues($value);
         $this->red = $this->createComponent($red);
@@ -64,7 +64,8 @@ final class Hex
 
     public function __toString()
     {
-        return sprintf("#%s%s%s",
+        return sprintf(
+            "#%s%s%s",
             $this->getRed(),
             $this->getGreen(),
             $this->getBlue()
