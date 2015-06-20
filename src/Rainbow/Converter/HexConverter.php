@@ -12,27 +12,36 @@ namespace Rainbow\Converter;
 
 use Rainbow\ColorInterface;
 use Rainbow\Hex;
-use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\HexComponent;
 
-final class HexConverter
+final class HexConverter implements ConverterInterface
 {
     /**
      * @var Hex
      */
     private $color;
 
+    /**
+     * @param Hex $color
+     */
     public function __construct(Hex $color)
     {
         $this->color = $color;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Hex
+     */
     public function getColor()
     {
         return clone $this->color;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function toRgb()
     {
         return new Rgb(
@@ -42,6 +51,9 @@ final class HexConverter
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function toHsl()
     {
         $converter = new RgbConverter($this->toRgb());
@@ -49,6 +61,10 @@ final class HexConverter
         return $converter->toHsl();
     }
 
+    /**
+     * {@inheritDoc}
+     * @return HexConverter
+     */
     public static function create(ColorInterface $color)
     {
         if ($color instanceof Hex) {

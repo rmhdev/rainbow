@@ -50,6 +50,8 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
             array('Rainbow\Rgb', 'rgb'),
             array('Rainbow\Hsl', 'hsl'),
             array('Rainbow\Hex', 'hex'),
+            array('Rainbow\Rgb', 'RGB'),
+            array('Rainbow\Hsl', 'hSl'),
         );
     }
 

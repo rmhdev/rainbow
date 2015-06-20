@@ -13,9 +13,13 @@ namespace Rainbow\Translator;
 use Rainbow\ColorInterface;
 use Rainbow\Rgb;
 use Rainbow\Hsl;
+use Rainbow\Converter\ConverterInterface;
 
 final class Translator
 {
+    /**
+     * @var ColorInterface
+     */
     private $color;
 
     /**
@@ -57,6 +61,7 @@ final class Translator
         if (!class_exists($className)) {
             throw new \UnexpectedValueException("Class {$className} does not exist");
         }
+        /* @var ConverterInterface $className */
         $converter = $className::create($this->getColor());
 
         return $converter->getColor();

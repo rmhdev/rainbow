@@ -22,24 +22,34 @@ final class RgbConverter
      */
     private $color;
 
+    /**
+     * @param Rgb $color
+     */
     public function __construct(Rgb $color)
     {
         $this->color = $color;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Rgb
+     */
     public function getColor()
     {
         return $this->color->copy();
     }
 
     /**
-     * @return Rgb
+     * {@inheritDoc}
      */
     public function toRgb()
     {
         return $this->color->copy();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function toHsl()
     {
         list($hue, $saturation, $lightness) = $this->calculateHslValues();
@@ -82,6 +92,10 @@ final class RgbConverter
         return array($hue, $saturation * 100, $lightness * 100);
     }
 
+    /**
+     * {@inheritDoc}
+     * @return RgbConverter
+     */
     public static function create(ColorInterface $color)
     {
         if ($color instanceof Rgb) {
@@ -91,6 +105,7 @@ final class RgbConverter
         if (!class_exists($className)) {
             throw new \UnexpectedValueException("{$className} does not exist");
         }
+        /* @var ConverterInterface $converter */
         $converter = new $className($color);
 
         return new RgbConverter($converter->toRgb());

@@ -22,16 +22,27 @@ final class HslConverter
      */
     private $color;
 
+    /**
+     * @param Hsl $color
+     */
     public function __construct(Hsl $color)
     {
         $this->color = $color;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Hsl
+     */
     public function getColor()
     {
         return $this->color->copy();
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Rgb
+     */
     public function toRgb()
     {
         list($red, $green, $blue) = $this->calculateRgbValues();
@@ -39,6 +50,10 @@ final class HslConverter
         return new Rgb($red, $green, $blue);
     }
 
+    /**
+     * {@inheritDoc}
+     * @return Hsl
+     */
     public function toHsl()
     {
         return $this->color->copy();
@@ -86,6 +101,10 @@ final class HslConverter
         return $m1;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return HslConverter
+     */
     public static function create(ColorInterface $color)
     {
         if ($color instanceof Hsl) {
@@ -95,6 +114,7 @@ final class HslConverter
         if (!class_exists($className)) {
             throw new \UnexpectedValueException("{$className} does not exist");
         }
+        /* @var ConverterInterface $converter */
         $converter = new $className($color);
 
         return new self($converter->toHsl());

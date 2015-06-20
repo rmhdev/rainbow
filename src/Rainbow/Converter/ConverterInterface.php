@@ -11,12 +11,33 @@
 namespace Rainbow\Converter;
 
 use Rainbow\ColorInterface;
+use Rainbow\Rgb;
+use Rainbow\Hsl;
 
 interface ConverterInterface
 {
     /**
-     * Returns the converted color
+     * Returns the color
      * @return ColorInterface
      */
-    public function convert();
+    public function getColor();
+
+    /**
+     * Returns the translated color
+     * @return Rgb
+     */
+    public function toRgb();
+
+    /**
+     * Returns the translated color
+     * @return Hsl
+     */
+    public function toHsl();
+
+    /**
+     * Create a Converter based on the color
+     * @param ColorInterface $color
+     * @return ConverterInterface
+     */
+    public static function create(ColorInterface $color);
 }
