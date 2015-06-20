@@ -47,4 +47,24 @@ class RgbConverterTest extends \PHPUnit_Framework_TestCase
             array(new Hsl(90, 80, 50), new Rgb(128, 230, 26)),
         );
     }
+
+    public function testCreateFromRgbShouldReturnRgbConverter()
+    {
+        $rgb = new Rgb(100, 150, 200);
+        $converter = new RgbConverter($rgb);
+
+        $this->assertEquals($converter, RgbConverter::createFromRgb($rgb));
+    }
+
+    /**
+     * @dataProvider toHslDataProvider
+     * @param Hsl $hsl
+     * @param Rgb $rgb
+     */
+    public function testCreateFromHslShouldReturnRgbConverter(Hsl $hsl, Rgb $rgb)
+    {
+        $converter = new RgbConverter($rgb);
+
+        $this->assertEquals($converter, RgbConverter::createFromHsl($hsl));
+    }
 }

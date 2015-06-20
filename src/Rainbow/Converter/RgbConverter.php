@@ -75,4 +75,16 @@ final class RgbConverter
 
         return array($hue, $saturation * 100, $lightness * 100);
     }
+
+    public static function createFromRgb(Rgb $color)
+    {
+        return new self($color);
+    }
+
+    public static function createFromHsl(Hsl $color)
+    {
+        $converter = new HslConverter($color);
+
+        return new self($converter->toRgb());
+    }
 }
