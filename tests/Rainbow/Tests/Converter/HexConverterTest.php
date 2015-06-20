@@ -81,21 +81,6 @@ class HexConverterTest extends AbstractConverterTest
     }
 
     /**
-     * @dataProvider fromRgbProvider
-     * @param Hex $expected
-     * @param Rgb $color
-     */
-    public function testFromRgb(Hex $expected, Rgb $color)
-    {
-        $this->assertEquals($expected, HexConverter::fromRgb($color));
-    }
-
-    public function fromRgbProvider()
-    {
-        return $this->rgbEquivalences();
-    }
-
-    /**
      * @dataProvider toHslProvider
      * @param Hsl $expected
      * @param Hex $color
