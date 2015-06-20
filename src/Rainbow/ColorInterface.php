@@ -13,6 +13,7 @@ namespace Rainbow;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Percent;
 use Rainbow\Translator\Translator;
+use Rainbow\Calculation\Blender;
 
 interface ColorInterface
 {
@@ -111,55 +112,8 @@ interface ColorInterface
     public function contrast(ColorInterface $dark, ColorInterface $light);
 
     /**
-     * Multiply with the color
-     * @param ColorInterface $color
-     * @return ColorInterface
+     * Return the object that calculates the mixing of colors
+     * @return Blender
      */
-    public function multiply(ColorInterface $color);
-
-    /**
-     * Do the opposite of multiply
-     * @see self::multiply
-     * @param ColorInterface $color
-     * @return ColorInterface
-     */
-    public function screen(ColorInterface $color);
-
-    /**
-     * Inverse of HardLight
-     * @see self::hardLight
-     * @param ColorInterface $color
-     * @return ColorInterface
-     */
-    public function overlay(ColorInterface $color);
-
-    /**
-     * Multiplies or screens the colors, depending on the source color value
-     * @see self::multiply
-     * @see self::screen
-     * @param ColorInterface $color
-     * @return ColorInterface
-     */
-    public function hardLight(ColorInterface $color);
-
-    /**
-     * Darkens or lightens the colors, depending on the source color value
-     * @param ColorInterface $color
-     * @return ColorInterface
-     */
-    public function softLight(ColorInterface $color);
-
-    /**
-     * Subtracts the darker of the two constituent colors from the lighter color
-     * @param ColorInterface $color
-     * @return ColorInterface
-     */
-    public function difference(ColorInterface $color);
-
-    /**
-     * Produces an effect similar to that of the Difference mode but lower in contrast
-     * @param ColorInterface $color
-     * @return ColorInterface
-     */
-    public function exclusion(ColorInterface $color);
+    public function getBlender();
 }

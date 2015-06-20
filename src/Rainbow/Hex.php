@@ -13,6 +13,17 @@ namespace Rainbow;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\HexComponent;
 
+/**
+ * Class Hex
+ * @package Rainbow
+ * @method Hex copy()
+ * @method Hex saturate($percentage)
+ * @method Hex desaturate($percentage)
+ * @method Hex lighten($percentage)
+ * @method Hex darken($percentage)
+ * @method Hex spin($angle)
+ * @method Hex greyscale()
+ */
 final class Hex extends AbstractColor implements ColorInterface
 {
     /**
@@ -63,6 +74,9 @@ final class Hex extends AbstractColor implements ColorInterface
         return new HexComponent($value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return sprintf(
@@ -73,26 +87,41 @@ final class Hex extends AbstractColor implements ColorInterface
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return "hex";
     }
 
+    /**
+     * @return HexComponent
+     */
     public function getRed()
     {
         return $this->red;
     }
 
+    /**
+     * @return HexComponent
+     */
     public function getGreen()
     {
         return $this->green;
     }
 
+    /**
+     * @return HexComponent
+     */
     public function getBlue()
     {
         return $this->blue;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getAlpha()
     {
         return new Alpha(1);

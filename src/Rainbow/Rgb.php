@@ -23,13 +23,6 @@ use Rainbow\Unit\RgbComponent;
  * @method Rgb darken($percentage)
  * @method Rgb spin($angle)
  * @method Rgb greyscale()
- * @method Rgb multiply(ColorInterface $color)
- * @method Rgb screen(ColorInterface $color)
- * @method Rgb overlay(ColorInterface $color)
- * @method Rgb hardLight(ColorInterface $color)
- * @method Rgb softLight(ColorInterface $color)
- * @method Rgb difference(ColorInterface $color)
- * @method Rgb exclusion(ColorInterface $color)
  */
 class Rgb extends AbstractColor implements ColorInterface
 {

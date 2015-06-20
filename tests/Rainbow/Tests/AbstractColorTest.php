@@ -10,6 +10,7 @@
 
 namespace Rainbow\Tests;
 
+use Rainbow\Calculation\Blender;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\ColorInterface;
@@ -139,59 +140,11 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($light, $color->contrast($dark, $light));
     }
 
-    public function testMultiplyShouldReturnSameColorSpace()
+    public function testGetBlenderShouldReturnBlender()
     {
-        $color = $this->toCurrent(new Hsl(180, 50, 50));
-        $colorMultiply = $this->toCurrent(new Hsl(180, 75, 25));
+        $hsl = new Hsl(180, 50, 50);
+        $blender = new Blender($hsl->translate()->toRgb());
 
-        $this->assertInstanceOf(get_class($color), $color->multiply($colorMultiply));
-    }
-
-    public function testScreenShouldReturnSameColorSpace()
-    {
-        $color = $this->toCurrent(new Hsl(180, 50, 50));
-        $colorScreen = $this->toCurrent(new Hsl(180, 75, 25));
-
-        $this->assertInstanceOf(get_class($color), $color->screen($colorScreen));
-    }
-
-    public function testOverlayShouldReturnSameColorSpace()
-    {
-        $color = $this->toCurrent(new Hsl(180, 50, 50));
-        $colorScreen = $this->toCurrent(new Hsl(180, 75, 25));
-
-        $this->assertInstanceOf(get_class($color), $color->overlay($colorScreen));
-    }
-
-    public function testHardLightShouldReturnSameColorSpace()
-    {
-        $color = $this->toCurrent(new Hsl(180, 50, 50));
-        $colorScreen = $this->toCurrent(new Hsl(180, 75, 25));
-
-        $this->assertInstanceOf(get_class($color), $color->hardLight($colorScreen));
-    }
-
-    public function testSoftLightShouldReturnSameColorSpace()
-    {
-        $color = $this->toCurrent(new Hsl(180, 50, 50));
-        $colorScreen = $this->toCurrent(new Hsl(180, 75, 25));
-
-        $this->assertInstanceOf(get_class($color), $color->softLight($colorScreen));
-    }
-
-    public function testDifferenceShouldReturnSameColorSpace()
-    {
-        $color = $this->toCurrent(new Hsl(180, 50, 50));
-        $colorScreen = $this->toCurrent(new Hsl(180, 75, 25));
-
-        $this->assertInstanceOf(get_class($color), $color->difference($colorScreen));
-    }
-
-    public function testExclusionShouldReturnSameColorSpace()
-    {
-        $color = $this->toCurrent(new Hsl(180, 50, 50));
-        $colorScreen = $this->toCurrent(new Hsl(180, 75, 25));
-
-        $this->assertInstanceOf(get_class($color), $color->exclusion($colorScreen));
+        $this->assertEquals($blender, $this->toCurrent($hsl)->getBlender());
     }
 }

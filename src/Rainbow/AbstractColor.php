@@ -183,84 +183,14 @@ abstract class AbstractColor implements ColorInterface
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public function multiply(ColorInterface $color)
-    {
-        return $this->toCurrent(
-            $this->getBlender()->multiply($color->translate()->toRgb())
-        );
-    }
-
-    /**
      * @return Blender
      */
-    protected function getBlender()
+    public function getBlender()
     {
         if (!$this->blender) {
             $this->blender = new Blender($this->translate()->toRgb());
         }
 
         return $this->blender;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function screen(ColorInterface $color)
-    {
-        return $this->toCurrent(
-            $this->getBlender()->screen($color->translate()->toRgb())
-        );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function overlay(ColorInterface $color)
-    {
-        return $this->toCurrent(
-            $this->getBlender()->overlay($color->translate()->toRgb())
-        );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function hardLight(ColorInterface $color)
-    {
-        return $this->toCurrent(
-            $this->getBlender()->hardLight($color->translate()->toRgb())
-        );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function softLight(ColorInterface $color)
-    {
-        return $this->toCurrent(
-            $this->getBlender()->softLight($color->translate()->toRgb())
-        );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function difference(ColorInterface $color)
-    {
-        return $this->toCurrent(
-            $this->getBlender()->difference($color->translate()->toRgb())
-        );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function exclusion(ColorInterface $color)
-    {
-        return $this->toCurrent(
-            $this->getBlender()->exclusion($color->translate()->toRgb())
-        );
     }
 }
