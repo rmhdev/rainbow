@@ -16,6 +16,14 @@ use Rainbow\Rgb;
 
 class HslConverterTest extends AbstractConverterTest
 {
+    public function testGetColorShouldReturnHsl()
+    {
+        $color = new Hsl(150, 25, 75);
+        $converter = new HslConverter($color);
+
+        $this->assertEquals($color, $converter->getColor());
+    }
+
     /**
      * @dataProvider toRgbDataProvider
      * @param Rgb $expected

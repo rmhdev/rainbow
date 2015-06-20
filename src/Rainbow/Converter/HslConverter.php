@@ -26,6 +26,11 @@ final class HslConverter
         $this->color = $color;
     }
 
+    public function getColor()
+    {
+        return $this->color->copy();
+    }
+
     public function toRgb()
     {
         list($red, $green, $blue) = $this->calculateRgbValues();
