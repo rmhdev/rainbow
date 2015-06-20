@@ -16,6 +16,14 @@ use Rainbow\Rgb;
 
 class RgbConverterTest extends \PHPUnit_Framework_TestCase
 {
+    public function testGetColorShouldReturnRgb()
+    {
+        $color = new Rgb(100, 150, 200);
+        $converter = new RgbConverter($color);
+
+        $this->assertEquals($color, $converter->getColor());
+    }
+
     public function testToRgbShouldReturnRgb()
     {
         $color = new Rgb(100, 150, 200);
@@ -48,14 +56,6 @@ class RgbConverterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testCreateFromRgbShouldReturnRgbConverter()
-    {
-        $rgb = new Rgb(100, 150, 200);
-        $converter = new RgbConverter($rgb);
-
-        $this->assertEquals($converter, RgbConverter::createFromRgb($rgb));
-    }
-
     /**
      * @dataProvider toHslDataProvider
      * @param Hsl $hsl
@@ -65,6 +65,14 @@ class RgbConverterTest extends \PHPUnit_Framework_TestCase
     {
         $converter = new RgbConverter($rgb);
 
-        $this->assertEquals($converter, RgbConverter::createFromHsl($hsl));
+        $this->assertEquals($converter, RgbConverter::create($hsl));
+    }
+
+    public function testCreateFromRgbColorShouldReturnRgbConverter()
+    {
+        $rgb = new Rgb(100, 150, 200);
+        $converter = new RgbConverter($rgb);
+
+        $this->assertEquals($converter, RgbConverter::create($rgb));
     }
 }
