@@ -88,7 +88,7 @@ final class HslConverter
 
     public static function create(ColorInterface $color)
     {
-        if ("hsl" === $color->getName()) {
+        if ($color instanceof Hsl) {
             return new self($color);
         }
         $className = sprintf('Rainbow\Converter\%sConverter', ucfirst($color->getName()));

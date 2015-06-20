@@ -84,7 +84,7 @@ final class RgbConverter
 
     public static function create(ColorInterface $color)
     {
-        if ("rgb" === $color->getName()) {
+        if ($color instanceof Rgb) {
             return new self($color);
         }
         $className = sprintf('Rainbow\Converter\%sConverter', ucfirst($color->getName()));
