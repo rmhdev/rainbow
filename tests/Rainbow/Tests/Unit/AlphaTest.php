@@ -44,10 +44,10 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array("0.3", 0.3),
             array(" 0.5 ", 0.5),
             array("\n0.6\t", 0.6),
-            array(0.41, 0.4),
-            array(0.44, 0.4),
-            array(0.45, 0.5),
-            array(0.49, 0.5),
+            array(0.401, 0.40),
+            array(0.404, 0.40),
+            array(0.405, 0.41),
+            array(0.409, 0.41),
         );
     }
 
@@ -107,7 +107,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array(0, "0"),
             array(" 1 ", "1"),
             array(0.1, "0.1"),
-            array(0.12345, "0.1"),
+            array(0.12345, "0.12"),
         );
     }
 }
