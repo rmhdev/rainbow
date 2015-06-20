@@ -31,4 +31,14 @@ class RgbaTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(new Alpha(1), $rgba->getAlpha());
     }
+
+    public function testColorShouldReturnDefinedValues()
+    {
+        $rgba = new Rgba(100, 150, 200, 0.5);
+
+        $this->assertEquals(new RgbComponent(100), $rgba->getRed());
+        $this->assertEquals(new RgbComponent(150), $rgba->getGreen());
+        $this->assertEquals(new RgbComponent(200), $rgba->getBlue());
+        $this->assertEquals(new Alpha(0.5), $rgba->getAlpha());
+    }
 }

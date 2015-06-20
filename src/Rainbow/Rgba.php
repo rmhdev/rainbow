@@ -11,9 +11,12 @@ final class Rgba
      */
     private $rgb;
 
-    public function __construct()
+    private $alpha;
+
+    public function __construct($red = 0, $green = 0, $blue = 0, $alpha = 1)
     {
-        $this->rgb = new Rgb();
+        $this->rgb = new Rgb($red, $green, $blue);
+        $this->alpha = new Alpha($alpha);
     }
 
     public function getName()
@@ -38,6 +41,6 @@ final class Rgba
 
     public function getAlpha()
     {
-        return new Alpha(1);
+        return $this->alpha;
     }
 }
