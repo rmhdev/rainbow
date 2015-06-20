@@ -36,7 +36,7 @@ final class Blender
     /**
      * @param Rgb $color
      */
-    function __construct(Rgb $color)
+    public function __construct(Rgb $color)
     {
         $this->color = $color;
     }

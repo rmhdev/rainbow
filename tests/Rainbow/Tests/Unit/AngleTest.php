@@ -24,6 +24,8 @@ class AngleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getCorrectValueDataProvider
+     * @param $value
+     * @param $expectedValue
      */
     public function testCorrectValueShouldReturnValue($value, $expectedValue)
     {
@@ -49,6 +51,8 @@ class AngleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getOutOfBoundsDataProvider
+     * @param $value
+     * @param $expectedValue
      */
     public function testOutOfBoundsValueShouldBeCorrected($value, $expectedValue)
     {
@@ -68,6 +72,7 @@ class AngleTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider unexpectedValuesDataProvider
      * @expectedException \UnexpectedValueException
+     * @param $value
      */
     public function testUnexpectedValueShouldThrowException($value)
     {
@@ -86,6 +91,8 @@ class AngleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getToStringDataProvider
+     * @param $value
+     * @param $expectedValue
      */
     public function testToStringShouldReturnStringValue($value, $expectedValue)
     {

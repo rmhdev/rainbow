@@ -23,6 +23,8 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getCorrectValueDataProvider
+     * @param $expectedValue
+     * @param $value
      */
     public function testCorrectValueShouldReturnValue($expectedValue, $value)
     {
@@ -45,6 +47,8 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getCorrectStringValueDataProvider
+     * @param $expectedValue
+     * @param $value
      */
     public function testCorrectStringShouldReturnValue($expectedValue, $value)
     {
@@ -66,6 +70,7 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getOutOfBoundsDataProvider
      * @expectedException \OutOfBoundsException
+     * @param $value
      */
     public function testOutOfBoundsValueShouldThrowException($value)
     {
@@ -83,6 +88,7 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider unexpectedValuesDataProvider
      * @expectedException \UnexpectedValueException
+     * @param $value
      */
     public function testUnexpectedValueShouldThrowException($value)
     {
@@ -101,6 +107,8 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getToStringDataProvider
+     * @param $expectedValue
+     * @param $value
      */
     public function testToStringShouldReturnStringValue($expectedValue, $value)
     {
@@ -120,6 +128,8 @@ class RgbComponentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getPercentValueDataProvider
+     * @param $expectedValue
+     * @param $value
      */
     public function testPercentValuesShouldBeTransformed($expectedValue, $value)
     {

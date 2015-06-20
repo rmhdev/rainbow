@@ -98,7 +98,8 @@ final class Hsl extends AbstractColor implements ColorInterface
      */
     public function __toString()
     {
-        return sprintf("hsl(%s,%s,%s)",
+        return sprintf(
+            "hsl(%s,%s,%s)",
             $this->getHue(),
             $this->getSaturation(),
             $this->getLightness()

@@ -97,7 +97,8 @@ class Rgb extends AbstractColor implements ColorInterface
      */
     public function __toString()
     {
-        return sprintf("rgb(%s,%s,%s)",
+        return sprintf(
+            "rgb(%s,%s,%s)",
             $this->getRed(),
             $this->getGreen(),
             $this->getBlue()

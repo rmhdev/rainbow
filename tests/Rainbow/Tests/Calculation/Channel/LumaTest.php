@@ -26,6 +26,8 @@ class LumaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getColorDataProvider
+     * @param $expected
+     * @param $value
      */
     public function testColorShouldReturnValidPercentage($expected, $value)
     {

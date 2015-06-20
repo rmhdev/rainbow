@@ -24,6 +24,8 @@ class PercentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getCorrectValuesDataProvider
+     * @param $value
+     * @param $expectedValue
      */
     public function testCorrectValueShouldReturnValue($value, $expectedValue)
     {
@@ -49,6 +51,7 @@ class PercentTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getOutOfBoundsDataProvider
      * @expectedException \OutOfBoundsException
+     * @param $value
      */
     public function testOutOfBoundsValueShouldThrowException($value)
     {
@@ -66,6 +69,7 @@ class PercentTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider unexpectedValuesDataProvider
      * @expectedException \UnexpectedValueException
+     * @param $value
      */
     public function testUnexpectedValueShouldThrowException($value)
     {
@@ -84,6 +88,8 @@ class PercentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getToStringDataProvider
+     * @param $value
+     * @param $expectedValue
      */
     public function testToStringShouldReturnStringValue($value, $expectedValue)
     {

@@ -22,7 +22,7 @@ final class Saturation extends AbstractOperation implements CalculationInterface
      * @param Hsl $color
      * @param int $difference
      */
-    public function  __construct(Hsl $color, $difference = 0)
+    public function __construct(Hsl $color, $difference = 0)
     {
         $this->saturation = $this->calculatePercentValue(
             $color->getSaturation(),

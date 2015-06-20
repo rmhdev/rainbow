@@ -51,6 +51,8 @@ class HslTest extends AbstractColorTest
 
     /**
      * @dataProvider getToStringDataProvider
+     * @param $values
+     * @param $expectedValue
      */
     public function testToStringShouldReturnValidString($values, $expectedValue)
     {

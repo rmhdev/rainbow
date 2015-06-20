@@ -24,6 +24,8 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getCorrectValueDataProvider
+     * @param $value
+     * @param $expectedValue
      */
     public function testCorrectValueShouldReturnValue($value, $expectedValue)
     {
@@ -52,6 +54,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getOutOfBoundsDataProvider
      * @expectedException \OutOfBoundsException
+     * @param $value
      */
     public function testOutOfBoundsValueShouldThrowException($value)
     {
@@ -69,6 +72,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider unexpectedValuesDataProvider
      * @expectedException \UnexpectedValueException
+     * @param $value
      */
     public function testUnexpectedValueShouldThrowException($value)
     {
@@ -87,6 +91,8 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getToStringDataProvider
+     * @param $value
+     * @param $expectedValue
      */
     public function testToStringShouldReturnStringValue($value, $expectedValue)
     {
