@@ -49,4 +49,11 @@ class HslaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(new Percent(75), $color->getLightness());
         $this->assertEquals(new Alpha(0.5), $color->getAlpha());
     }
+
+    public function testCreateWithUnitsShouldReturnCorrectColor()
+    {
+        $color = new Hsla(new Angle(120), new Percent(75), new Percent(95), new Alpha(0.5));
+
+        $this->assertEquals(new Hsla(120, 75, 95, 0.5), $color);
+    }
 }
