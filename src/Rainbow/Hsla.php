@@ -60,4 +60,15 @@ final class Hsla
     {
         return $this->alpha;
     }
+
+    public function __toString()
+    {
+        return sprintf(
+            "hsla(%s,%s,%s,%s)",
+            $this->getHue(),
+            $this->getSaturation(),
+            $this->getLightness(),
+            $this->getAlpha()
+        );
+    }
 }

@@ -56,4 +56,39 @@ class HslaTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(new Hsla(120, 75, 95, 0.5), $color);
     }
+
+    /**
+     * @dataProvider getToStringDataProvider
+     * @param $values
+     * @param $expectedValue
+     */
+    public function testToStringShouldReturnValidString($values, $expectedValue)
+    {
+        $color = new Hsla(
+            $values["hue"],
+            $values["saturation"],
+            $values["lightness"],
+            $values["alpha"]
+        );
+
+        $this->assertEquals($expectedValue, (string) $color);
+    }
+
+    public function getToStringDataProvider()
+    {
+        return array(
+            array(
+                array("hue" => 0, "saturation" => 0, "lightness" => 0, "alpha" => 1),
+                "hsla(0,0%,0%,1)"
+            ),
+            array(
+                array("hue" => 10, "saturation" => 20, "lightness" => 30, "alpha" => 0),
+                "hsla(10,20%,30%,0)"
+            ),
+            array(
+                array("hue" => 255, "saturation" => 75, "lightness" => 96, "alpha" => 0.5),
+                "hsla(255,75%,96%,0.5)"
+            ),
+        );
+    }
 }
