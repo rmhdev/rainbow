@@ -10,6 +10,8 @@
 
 namespace Rainbow;
 
+use Rainbow\Unit\Alpha;
+
 final class Hsla
 {
     private $hsl;
@@ -37,5 +39,10 @@ final class Hsla
     public function getLightness()
     {
         return $this->hsl->getLightness();
+    }
+
+    public function getAlpha()
+    {
+        return new Alpha(1);
     }
 }
