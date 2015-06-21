@@ -39,4 +39,14 @@ class HslaTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(new Alpha(1), $color->getAlpha());
     }
+
+    public function testColorShouldReturnDefinedValues()
+    {
+        $color = new Hsla(180, 25, 75, 0.5);
+
+        $this->assertEquals(new Angle(180), $color->getHue());
+        $this->assertEquals(new Percent(25), $color->getSaturation());
+        $this->assertEquals(new Percent(75), $color->getLightness());
+        $this->assertEquals(new Alpha(0.5), $color->getAlpha());
+    }
 }

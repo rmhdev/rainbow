@@ -12,13 +12,28 @@ namespace Rainbow;
 
 use Rainbow\Unit\Alpha;
 
+use Rainbow\Unit\Angle;
+use Rainbow\Unit\Percent;
+
 final class Hsla
 {
+    /**
+     * @var Hsl
+     */
     private $hsl;
 
-    public function __construct()
+    private $alpha;
+
+    /**
+     * @param int|string|Angle $hue  An angle
+     * @param int|string|Percent $saturation  A percentage
+     * @param int|string|Percent $lightness  A percentage
+     * @param int|string|Alpha $alpha  A opacity value
+     */
+    public function __construct($hue = 0, $saturation = 0, $lightness = 0, $alpha = 1)
     {
-        $this->hsl = new Hsl();
+        $this->hsl = new Hsl($hue, $saturation, $lightness);
+        $this->alpha = ($alpha instanceof Alpha) ? $alpha : new Alpha($alpha);
     }
 
     public function getName()
@@ -43,6 +58,6 @@ final class Hsla
 
     public function getAlpha()
     {
-        return new Alpha(1);
+        return $this->alpha;
     }
 }
