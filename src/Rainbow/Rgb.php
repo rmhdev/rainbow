@@ -24,7 +24,7 @@ use Rainbow\Unit\RgbComponent;
  * @method Rgb spin($angle)
  * @method Rgb greyscale()
  */
-class Rgb extends AbstractColor implements ColorInterface
+class Rgb extends AbstractColor implements ColorInterface, RgbInterface
 {
     /**
      * @var RgbComponent
@@ -62,7 +62,7 @@ class Rgb extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return RgbComponent
+     * {@inheritDoc}
      */
     public function getRed()
     {
@@ -70,7 +70,7 @@ class Rgb extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return RgbComponent
+     * {@inheritDoc}
      */
     public function getGreen()
     {
@@ -78,7 +78,7 @@ class Rgb extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return RgbComponent
+     * {@inheritDoc}
      */
     public function getBlue()
     {

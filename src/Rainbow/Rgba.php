@@ -1,17 +1,28 @@
 <?php
 
+/**
+ * This file is part of the Rainbow package.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @license MIT License
+ */
+
 namespace Rainbow;
 
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\RgbComponent;
 
-final class Rgba extends AbstractColor implements ColorInterface
+final class Rgba extends AbstractColor implements ColorInterface, RgbInterface
 {
     /**
      * @var Rgb
      */
     private $rgb;
 
+    /**
+     * @var Alpha
+     */
     private $alpha;
 
     /**
@@ -26,6 +37,9 @@ final class Rgba extends AbstractColor implements ColorInterface
         $this->alpha = ($alpha instanceof Alpha) ? $alpha : new Alpha($alpha);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return sprintf(
@@ -37,26 +51,41 @@ final class Rgba extends AbstractColor implements ColorInterface
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return "rgba";
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getRed()
     {
         return $this->rgb->getRed();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getGreen()
     {
         return $this->rgb->getGreen();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getBlue()
     {
         return $this->rgb->getBlue();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getAlpha()
     {
         return $this->alpha;
