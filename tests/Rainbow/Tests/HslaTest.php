@@ -11,6 +11,8 @@
 namespace Rainbow\Tests;
 
 use Rainbow\Hsla;
+use Rainbow\Unit\Angle;
+use Rainbow\Unit\Percent;
 
 class HslaTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,6 +20,15 @@ class HslaTest extends \PHPUnit_Framework_TestCase
     {
         $color = new Hsla();
 
-        $this->assertEquals("rgba", $color->getName());
+        $this->assertEquals("hsla", $color->getName());
+    }
+
+    public function testEmptyColorShouldReturnBlack()
+    {
+        $color = new Hsla();
+
+        $this->assertEquals(new Angle(0), $color->getHue());
+        $this->assertEquals(new Percent(0), $color->getSaturation());
+        $this->assertEquals(new Percent(0), $color->getLightness());
     }
 }

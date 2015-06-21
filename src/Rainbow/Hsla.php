@@ -12,8 +12,30 @@ namespace Rainbow;
 
 final class Hsla
 {
+    private $hsl;
+
+    public function __construct()
+    {
+        $this->hsl = new Hsl();
+    }
+
     public function getName()
     {
         return "hsla";
+    }
+
+    public function getHue()
+    {
+        return $this->hsl->getHue();
+    }
+
+    public function getSaturation()
+    {
+        return $this->hsl->getSaturation();
+    }
+
+    public function getLightness()
+    {
+        return $this->hsl->getLightness();
     }
 }
