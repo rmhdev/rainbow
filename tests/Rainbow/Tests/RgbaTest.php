@@ -10,11 +10,12 @@
 
 namespace Rainbow\Tests;
 
+use Rainbow\Hsl;
 use Rainbow\Rgba;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\RgbComponent;
 
-class RgbaTest extends \PHPUnit_Framework_TestCase
+class RgbaTest extends AbstractColorTest
 {
     public function testGetNameShouldReturnConstName()
     {
@@ -89,6 +90,22 @@ class RgbaTest extends \PHPUnit_Framework_TestCase
                 array("red" => 255, "green" => 255, "blue" => 255, "alpha" => 0.5),
                 "rgb(255,255,255,0.5)"
             ),
+        );
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return Rgba
+     */
+    protected function toCurrent(Hsl $color)
+    {
+        $rgb = $color->translate()->toRgb();
+
+        return new Rgba(
+            $rgb->getRed(),
+            $rgb->getGreen(),
+            $rgb->getBlue(),
+            new Alpha(1)
         );
     }
 }
