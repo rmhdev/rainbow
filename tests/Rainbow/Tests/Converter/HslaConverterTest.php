@@ -11,7 +11,9 @@
 namespace Rainbow\Tests\Converter;
 
 use Rainbow\Converter\HslaConverter;
+use Rainbow\Hsl;
 use Rainbow\Hsla;
+use Rainbow\Rgb;
 
 class HslaConverterTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,5 +23,21 @@ class HslaConverterTest extends \PHPUnit_Framework_TestCase
         $converter = new HslaConverter($color);
 
         $this->assertEquals($color, $converter->getColor());
+    }
+
+    public function testToRgbShouldReturnRgb()
+    {
+        $color = new Hsla(0, 0, 0, 0.5);
+        $converter = new HslaConverter($color);
+
+        $this->assertEquals(new Rgb(0, 0, 0), $converter->toRgb());
+    }
+
+    public function testToHslShouldReturnHsl()
+    {
+        $color = new Hsla(120, 55, 80, 0.5);
+        $converter = new HslaConverter($color);
+
+        $this->assertEquals(new Hsl(120, 55, 80), $converter->toHsl());
     }
 }
