@@ -15,7 +15,7 @@ use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
 
-final class Hsla
+final class Hsla extends AbstractColor implements ColorInterface
 {
     /**
      * @var Hsl
