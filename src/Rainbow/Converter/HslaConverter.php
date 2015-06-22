@@ -13,7 +13,6 @@ namespace Rainbow\Converter;
 use Rainbow\ColorInterface;
 use Rainbow\Hsl;
 use Rainbow\Hsla;
-use Rainbow\Rgb;
 
 final class HslaConverter
 {
@@ -43,5 +42,31 @@ final class HslaConverter
         $converter = new HslConverter($this->toHsl());
 
         return $converter->toRgb();
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return HslaConverter
+     */
+    public static function create(ColorInterface $color)
+    {
+        if ($color instanceof Hsla) {
+            return new self($color);
+        }
+        $className = sprintf('Rainbow\Converter\%sConverter', ucfirst($color->getName()));
+        if (!class_exists($className)) {
+            throw new \UnexpectedValueException("{$className} does not exist");
+        }
+        /* @var ConverterInterface $converter */
+        $converter = new $className($color);
+        $hslConverter = new HslConverter($converter->toHsl());
+        $hsl = $hslConverter->getColor();
+
+        return new HslaConverter(new Hsla(
+            $hsl->getHue(),
+            $hsl->getSaturation(),
+            $hsl->getLightness(),
+            $color->getAlpha()
+        ));
     }
 }
