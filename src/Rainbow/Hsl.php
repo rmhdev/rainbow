@@ -25,7 +25,7 @@ use Rainbow\Unit\Percent;
  * @method Hsl spin($angle)
  * @method Hsl greyscale()
  */
-final class Hsl extends AbstractColor implements ColorInterface, HslaInterface
+final class Hsl extends AbstractColor implements ColorInterface, HslInterface
 {
     /**
      * @var Angle

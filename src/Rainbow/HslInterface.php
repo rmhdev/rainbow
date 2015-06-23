@@ -5,7 +5,7 @@ namespace Rainbow;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
 
-interface HslaInterface
+interface HslInterface
 {
     /**
      * @return Angle
