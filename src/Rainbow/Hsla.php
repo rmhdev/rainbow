@@ -15,13 +15,16 @@ use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
 
-final class Hsla extends AbstractColor implements ColorInterface
+final class Hsla extends AbstractColor implements ColorInterface, HslaInterface
 {
     /**
      * @var Hsl
      */
     private $hsl;
 
+    /**
+     * @var Alpha
+     */
     private $alpha;
 
     /**
@@ -36,31 +39,49 @@ final class Hsla extends AbstractColor implements ColorInterface
         $this->alpha = ($alpha instanceof Alpha) ? $alpha : new Alpha($alpha);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return "hsla";
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getHue()
     {
         return $this->hsl->getHue();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getSaturation()
     {
         return $this->hsl->getSaturation();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getLightness()
     {
         return $this->hsl->getLightness();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getAlpha()
     {
         return $this->alpha;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
         return sprintf(

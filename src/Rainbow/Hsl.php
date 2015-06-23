@@ -25,7 +25,7 @@ use Rainbow\Unit\Percent;
  * @method Hsl spin($angle)
  * @method Hsl greyscale()
  */
-final class Hsl extends AbstractColor implements ColorInterface
+final class Hsl extends AbstractColor implements ColorInterface, HslaInterface
 {
     /**
      * @var Angle
@@ -63,7 +63,7 @@ final class Hsl extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return Angle
+     * {@inheritDoc}
      */
     public function getHue()
     {
@@ -71,7 +71,7 @@ final class Hsl extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return Percent
+     * {@inheritDoc}
      */
     public function getSaturation()
     {
@@ -79,7 +79,7 @@ final class Hsl extends AbstractColor implements ColorInterface
     }
 
     /**
-     * @return Percent
+     * {@inheritDoc}
      */
     public function getLightness()
     {
