@@ -10,12 +10,13 @@
 
 namespace Rainbow\Tests;
 
+use Rainbow\Hsl;
 use Rainbow\Hsla;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
 
-class HslaTest extends \PHPUnit_Framework_TestCase
+class HslaTest extends AbstractColorTest
 {
     public function testGetNameShouldReturnConstName()
     {
@@ -89,6 +90,20 @@ class HslaTest extends \PHPUnit_Framework_TestCase
                 array("hue" => 255, "saturation" => 75, "lightness" => 96, "alpha" => 0.5),
                 "hsla(255,75%,96%,0.5)"
             ),
+        );
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return Hsla
+     */
+    protected function toCurrent(Hsl $color)
+    {
+        return new Hsla(
+            $color->getHue(),
+            $color->getSaturation(),
+            $color->getLightness(),
+            $color->getAlpha()
         );
     }
 }
