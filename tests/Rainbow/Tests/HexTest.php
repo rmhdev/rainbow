@@ -10,11 +10,13 @@
 
 namespace Rainbow\Tests;
 
+use Rainbow\Converter\HexConverter;
 use Rainbow\Hex;
+use Rainbow\Hsl;
 use Rainbow\Unit\Alpha;
 use Rainbow\Unit\HexComponent;
 
-class HexTest extends \PHPUnit_Framework_TestCase
+class HexTest extends AbstractColorTest
 {
     public function testGetNameShouldReturnConstName()
     {
@@ -68,5 +70,14 @@ class HexTest extends \PHPUnit_Framework_TestCase
         $alpha = new Alpha(1);
 
         $this->assertEquals($alpha, $color->getAlpha());
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return Hex
+     */
+    protected function toCurrent(Hsl $color)
+    {
+        return HexConverter::create($color)->getColor();
     }
 }
