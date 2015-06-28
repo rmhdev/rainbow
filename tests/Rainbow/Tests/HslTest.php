@@ -56,7 +56,11 @@ class HslTest extends AbstractColorTest
      */
     public function testToStringShouldReturnValidString($values, $expectedValue)
     {
-        $color = $this->createHsl($values);
+        $color = new Hsl(
+            $values["hue"],
+            $values["saturation"],
+            $values["lightness"]
+        );
 
         $this->assertEquals($expectedValue, (string) $color);
     }

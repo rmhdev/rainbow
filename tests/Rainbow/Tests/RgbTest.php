@@ -57,7 +57,11 @@ class RgbTest extends AbstractColorTest
      */
     public function testToStringShouldReturnValidString($values, $expectedValue)
     {
-        $color = $this->createRgb($values);
+        $color = new Rgb(
+            $values["red"],
+            $values["green"],
+            $values["blue"]
+        );
 
         $this->assertEquals($expectedValue, (string) $color);
     }
