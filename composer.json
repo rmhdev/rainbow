@@ -19,5 +19,13 @@
       "psr-4": {
         "Rainbow\\": "src/Rainbow"
       }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Rainbow\\Tests\\": "tests/Rainbow"
+      }
+    },
+    "scripts": {
+      "test": "phpunit"
     }
 }
