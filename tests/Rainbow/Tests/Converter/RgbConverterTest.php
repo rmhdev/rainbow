@@ -14,7 +14,7 @@ use Rainbow\Converter\RgbConverter;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 
-class RgbConverterTest extends \PHPUnit_Framework_TestCase
+class RgbConverterTest extends AbstractConverterTest
 {
     public function testGetColorShouldReturnRgb()
     {
@@ -33,7 +33,7 @@ class RgbConverterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider toHslDataProvider
+     * @dataProvider hslRgbEquivalences
      * @param Hsl $expected
      * @param Rgb $rgb
      */
@@ -44,20 +44,13 @@ class RgbConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $converter->toHsl());
     }
 
-    public function toHslDataProvider()
+    public function hslRgbEquivalences()
     {
-        return array(
-            array(new Hsl(0, 0, 0), new Rgb(0, 0, 0)),
-            array(new Hsl(300, 100, 50), new Rgb(255, 0, 255)),
-            array(new Hsl(120, 100, 25), new Rgb(0, 128, 0)),
-            array(new Hsl(30, 100, 50), new Rgb(255, 128, 0)),
-            array(new Hsl(210, 100, 50), new Rgb(0, 128, 255)),
-            array(new Hsl(90, 80, 50), new Rgb(128, 230, 26)),
-        );
+        return $this->getEquivalences("hsl", "rgb");
     }
 
     /**
-     * @dataProvider toHslDataProvider
+     * @dataProvider hslRgbEquivalences
      * @param Hsl $hsl
      * @param Rgb $rgb
      */

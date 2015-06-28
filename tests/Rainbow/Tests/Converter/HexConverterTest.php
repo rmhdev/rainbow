@@ -25,7 +25,7 @@ class HexConverterTest extends AbstractConverterTest
         $this->assertEquals($color, $converter->getColor());
     }
     /**
-     * @dataProvider toRgbDataProvider
+     * @dataProvider rgbHexEquivalences
      * @param Rgb $expected
      * @param Hex $color
      */
@@ -36,59 +36,13 @@ class HexConverterTest extends AbstractConverterTest
         $this->assertEquals($expected, $converter->toRgb());
     }
 
-    public function toRgbDataProvider()
+    public function rgbHexEquivalences()
     {
-        return array_map(
-            function ($item) {
-                return array_reverse($item);
-            },
-            $this->rgbEquivalences()
-        );
-    }
-
-    public function rgbEquivalences()
-    {
-        return array_map(
-            function ($item) {
-                return array($item["hex"], $item["rgb"]);
-            },
-            $this->equivalences()
-        );
-    }
-
-    private function equivalences()
-    {
-        return array(
-            array(
-                "hex"   => new Hex("000000"),
-                "rgb"   => new Rgb(0, 0, 0),
-                "hsl"   => new Hsl(0, 0, 0),
-            ),
-            array(
-                "hex"   => new Hex("#ff0000"),
-                "rgb"   => new Rgb(255, 0, 0),
-                "hsl"   => new Hsl(0, 100, 50),
-            ),
-            array(
-                "hex"   => new Hex("#00ff00"),
-                "rgb"   => new Rgb(0, 255, 0),
-                "hsl"   => new Hsl(120, 100, 50),
-            ),
-            array(
-                "hex"   => new Hex("#0000ff"),
-                "rgb"   => new Rgb(0, 0, 255),
-                "hsl"   => new Hsl(240, 100, 50),
-            ),
-            array(
-                "hex"   => new Hex("#ffffff"),
-                "rgb"   => new Rgb(255, 255, 255),
-                "hsl"   => new Hsl(0, 0, 100),
-            ),
-        );
+        return $this->getEquivalences("rgb", "hex");
     }
 
     /**
-     * @dataProvider toHslProvider
+     * @dataProvider hslHexEquivalences
      * @param Hsl $expected
      * @param Hex $color
      */
@@ -99,29 +53,13 @@ class HexConverterTest extends AbstractConverterTest
         $this->assertEquals($expected, $converter->toHsl());
     }
 
-    public function toHslProvider()
+    public function hslHexEquivalences()
     {
-        return array_map(
-            function ($item) {
-                return array_reverse($item);
-            },
-            $this->hslEquivalences()
-        );
+        return $this->getEquivalences("hsl", "hex");
     }
-
-    public function hslEquivalences()
-    {
-        return array_map(
-            function ($item) {
-                return array($item["hex"], $item["hsl"]);
-            },
-            $this->equivalences()
-        );
-    }
-
 
     /**
-     * @dataProvider rgbEquivalences
+     * @dataProvider hexRgbEquivalences
      * @param Hex $expected
      * @param Rgb $color
      */
@@ -132,8 +70,13 @@ class HexConverterTest extends AbstractConverterTest
         $this->assertEquals($converter, HexConverter::create($color));
     }
 
+    public function hexRgbEquivalences()
+    {
+        return $this->getEquivalences("hex", "rgb");
+    }
+
     /**
-     * @dataProvider hslEquivalences
+     * @dataProvider hexHslEquivalences
      * @param Hex $expected
      * @param Hsl $color
      */
@@ -142,6 +85,11 @@ class HexConverterTest extends AbstractConverterTest
         $converter = new HexConverter($expected);
 
         $this->assertEquals($converter, HexConverter::create($color));
+    }
+
+    public function hexHslEquivalences()
+    {
+        return $this->getEquivalences("hex", "hsl");
     }
 
     public function testCreateFromHexShouldReturnHexConverter()

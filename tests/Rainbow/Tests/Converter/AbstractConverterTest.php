@@ -10,89 +10,91 @@
 
 namespace Rainbow\Tests\Converter;
 
+use Rainbow\Hex;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 
 abstract class AbstractConverterTest extends \PHPUnit_Framework_TestCase
 {
+    private $equivalences = null;
+
+    private function equivalences()
+    {
+        if (!$this->equivalences) {
+            $this->equivalences = $this->baseEquivalences();
+        }
+
+        return $this->equivalences;
+    }
+
+    private function baseEquivalences()
+    {
+        return array(
+            array(
+                "hex"   => new Hex("000000"),
+                "rgb"   => new Rgb(0, 0, 0),
+                "hsl"   => new Hsl(0, 0, 0),
+            ),
+            array(
+                "hex"   => new Hex("#ff0000"),
+                "rgb"   => new Rgb(255, 0, 0),
+                "hsl"   => new Hsl(0, 100, 50),
+            ),
+            array(
+                "hex"   => new Hex("#00ff00"),
+                "rgb"   => new Rgb(0, 255, 0),
+                "hsl"   => new Hsl(120, 100, 50),
+            ),
+            array(
+                "hex"   => new Hex("#0000ff"),
+                "rgb"   => new Rgb(0, 0, 255),
+                "hsl"   => new Hsl(240, 100, 50),
+            ),
+            array(
+                "hex"   => new Hex("#ffffff"),
+                "rgb"   => new Rgb(255, 255, 255),
+                "hsl"   => new Hsl(0, 0, 100),
+            ),
+            array(
+                "hex"   => new Hex("#ff00ff"),
+                "rgb"   => new Rgb(255, 0, 255),
+                "hsl"   => new Hsl(300, 100, 50),
+            ),
+            array(
+                "hex"   => new Hex("#008000"),
+                "rgb"   => new Rgb(0, 128, 0),
+                "hsl"   => new Hsl(120, 100, 25),
+            ),
+            array(
+                "hex"   => new Hex("#ff8000"),
+                "rgb"   => new Rgb(255, 128, 0),
+                "hsl"   => new Hsl(30, 100, 50),
+            ),
+            array(
+                "hex"   => new Hex("#0080ff"),
+                "rgb"   => new Rgb(0, 128, 255),
+                "hsl"   => new Hsl(210, 100, 50),
+            ),
+            array(
+                "hex"   => new Hex("#80e61a"),
+                "rgb"   => new Rgb(128, 230, 26),
+                "hsl"   => new Hsl(90, 80, 50),
+            )
+        );
+    }
+
     /**
+     * @param string $colorNameA
+     * @param string $colorNameB
      * @return array
      */
-    public function getRgbHslEquivalenceDataProvider()
-    {
-        return array(
-            array(
-                array("red" => 0, "green" => 0, "blue" => 0),
-                array("hue" => 0, "saturation" => 0, "lightness" => 0)
-            ),
-            array(
-                array("red" => 255, "green" => 0, "blue" => 255),
-                array("hue" => 300, "saturation" => 100, "lightness" => 50)
-            ),
-            array(
-                array("red" => 0, "green" => 128, "blue" => 0),
-                array("hue" => 120, "saturation" => 100, "lightness" => 25)
-            ),
-            array(
-                array("red" => 255, "green" => 128, "blue" => 0),
-                array("hue" => 30, "saturation" => 100, "lightness" => 50)
-            ),
-            array(
-                array("red" => 0, "green" => 128, "blue" => 255),
-                array("hue" => 210, "saturation" => 100, "lightness" => 50)
-            ),
-            array(
-                array("red" => 128, "green" => 230, "blue" => 26),
-                array("hue" => 90, "saturation" => 80, "lightness" => 50)
-            ),
-        );
-    }
-
-    /**
-     * @param array $values
-     * @return Rgb
-     */
-    public function createRgb($values)
-    {
-        return new Rgb(
-            $values["red"],
-            $values["green"],
-            $values["blue"]
-        );
-    }
-
-    /**
-     * @param array $values
-     * @return Hsl
-     */
-    public function createHsl($values)
-    {
-        return new Hsl(
-            $values["hue"],
-            $values["saturation"],
-            $values["lightness"]
-        );
-    }
-
-    public function hslRgbEquivalences()
-    {
-        return array(
-            array(new Hsl(0, 0, 0), new Rgb(0, 0, 0)),
-            array(new Hsl(300, 100, 50), new Rgb(255, 0, 255)),
-            array(new Hsl(120, 100, 25), new Rgb(0, 128, 0)),
-            array(new Hsl(30, 100, 50), new Rgb(255, 128, 0)),
-            array(new Hsl(210, 100, 50), new Rgb(0, 128, 255)),
-            array(new Hsl(90, 80, 50), new Rgb(128, 230, 26)),
-        );
-    }
-
-    public function rgbHslEquivalences()
+    protected function getEquivalences($colorNameA, $colorNameB)
     {
         return array_map(
-            function ($item) {
-                return array_reverse($item);
+            function ($item) use ($colorNameA, $colorNameB) {
+                return array($item[$colorNameA], $item[$colorNameB]);
             },
-            $this->hslRgbEquivalences()
+            $this->equivalences()
         );
     }
 }
