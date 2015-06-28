@@ -14,7 +14,7 @@ use Rainbow\ColorInterface;
 use Rainbow\Hsl;
 use Rainbow\Hsla;
 
-final class HslaConverter
+final class HslaConverter implements ConverterInterface
 {
     private $color;
 

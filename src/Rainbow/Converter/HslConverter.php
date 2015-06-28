@@ -15,7 +15,7 @@ use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\Unit\RgbComponent;
 
-final class HslConverter
+final class HslConverter implements ConverterInterface
 {
     /**
      * @var Hsl

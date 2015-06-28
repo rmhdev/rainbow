@@ -6,7 +6,7 @@ use Rainbow\ColorInterface;
 use Rainbow\Rgb;
 use Rainbow\Rgba;
 
-final class RgbaConverter
+final class RgbaConverter implements ConverterInterface
 {
     /**
      * @var Rgba
