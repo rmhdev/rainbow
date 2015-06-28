@@ -10,7 +10,6 @@
 
 namespace Rainbow\Tests;
 
-use Rainbow\Converter\HexConverter;
 use Rainbow\Hex;
 use Rainbow\Hsl;
 use Rainbow\Unit\Alpha;
@@ -78,6 +77,6 @@ class HexTest extends AbstractColorTest
      */
     protected function toCurrent(Hsl $color)
     {
-        return HexConverter::create($color)->getColor();
+        return $color->translate()->to("hex");
     }
 }
