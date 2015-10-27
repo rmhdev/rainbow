@@ -15,7 +15,7 @@ use Rainbow\Rgba;
 
 class OverlayTest extends \PHPUnit_Framework_TestCase
 {
-    public function notestWhiteWithBlackShouldReturnWhite()
+    public function testWhiteWithBlackShouldReturnWhite()
     {
         $white = new Rgba(255, 255, 255, 1);
         $black = new Rgba(0, 0, 0, 1);
@@ -24,7 +24,7 @@ class OverlayTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($white, $operation->result());
     }
 
-    public function notestBlackWithWhiteShouldReturnBlack()
+    public function testBlackWithWhiteShouldReturnBlack()
     {
         $white = new Rgba(255, 255, 255, 1);
         $black = new Rgba(0, 0, 0, 1);
