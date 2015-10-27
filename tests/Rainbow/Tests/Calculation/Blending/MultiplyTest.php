@@ -11,14 +11,14 @@
 namespace Rainbow\Tests\Calculation\Blending;
 
 use Rainbow\Calculation\Blending\Multiply;
-use Rainbow\Rgb;
+use Rainbow\Rgba;
 
 class MultiplyTest extends \PHPUnit_Framework_TestCase
 {
     public function testWithBlackShouldReturnBlack()
     {
-        $color = new Rgb(255, 102, 0);
-        $black = new Rgb();
+        $color = new Rgba(255, 102, 0, 1);
+        $black = new Rgba(0, 0, 0, 1);
         $operation = new Multiply($color, $black);
 
         $this->assertEquals($black, $operation->result());
@@ -26,8 +26,8 @@ class MultiplyTest extends \PHPUnit_Framework_TestCase
 
     public function testWithWhiteShouldReturnColor()
     {
-        $color = new Rgb(255, 102, 0);
-        $white = new Rgb(255, 255, 255);
+        $color = new Rgba(255, 102, 0, 1);
+        $white = new Rgba(255, 255, 255, 1);
         $operation = new Multiply($color, $white);
 
         $this->assertEquals($color, $operation->result());
@@ -35,11 +35,11 @@ class MultiplyTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider multiplyDataProvider
-     * @param Rgb $expected
-     * @param Rgb $colorA
-     * @param Rgb $colorB
+     * @param Rgba $expected
+     * @param Rgba $colorA
+     * @param Rgba $colorB
      */
-    public function testMultiplyColorsShouldReturnCorrectColor(Rgb $expected, Rgb $colorA, Rgb $colorB)
+    public function testMultiplyColorsShouldReturnCorrectColor(Rgba $expected, Rgba $colorA, Rgba $colorB)
     {
         $operation = new Multiply($colorA, $colorB);
 
@@ -49,10 +49,10 @@ class MultiplyTest extends \PHPUnit_Framework_TestCase
     public function multiplyDataProvider()
     {
         return array(
-            array(new Rgb(100, 0, 0), new Rgb(255, 0, 0), new Rgb(100, 0, 0)),
-            array(new Rgb(100, 100, 0), new Rgb(255, 255, 0), new Rgb(100, 100, 0)),
-            array(new Rgb(100, 100, 100), new Rgb(255, 255, 255), new Rgb(100, 100, 100)),
-            array(new Rgb(39, 39, 39), new Rgb(100, 100, 100), new Rgb(100, 100, 100)),
+            array(new Rgba(100, 0, 0, 1), new Rgba(255, 0, 0, 1), new Rgba(100, 0, 0, 1)),
+            array(new Rgba(100, 100, 0, 1), new Rgba(255, 255, 0, 1), new Rgba(100, 100, 0, 1)),
+            array(new Rgba(100, 100, 100, 1), new Rgba(255, 255, 255, 1), new Rgba(100, 100, 100, 1)),
+            array(new Rgba(39, 39, 39, 1), new Rgba(100, 100, 100, 1), new Rgba(100, 100, 100, 1)),
         );
     }
 }

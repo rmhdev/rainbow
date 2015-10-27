@@ -14,6 +14,7 @@ use Rainbow\Calculation\Blender;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\ColorInterface;
+use Rainbow\Rgba;
 use Rainbow\Unit\Angle;
 use Rainbow\Unit\Percent;
 
@@ -117,7 +118,15 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
     public function testGetBlenderShouldReturnBlender()
     {
         $hsl = new Hsl(180, 50, 50);
-        $blender = new Blender($hsl->translate()->toRgb());
+        $rgb = $hsl->translate()->toRgb();
+        $blender = new Blender(
+            new Rgba(
+                $rgb->getRed(),
+                $rgb->getGreen(),
+                $rgb->getBlue(),
+                1
+            )
+        );
 
         $this->assertEquals($blender, $this->toCurrent($hsl)->getBlender());
     }

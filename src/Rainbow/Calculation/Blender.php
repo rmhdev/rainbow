@@ -20,6 +20,7 @@ use Rainbow\Calculation\Blending\Overlay;
 use Rainbow\Calculation\Blending\Screen;
 use Rainbow\Calculation\Blending\SoftLight;
 use Rainbow\Rgb;
+use Rainbow\Rgba;
 
 /**
  * Class Blender
@@ -34,15 +35,15 @@ final class Blender
     private $color;
 
     /**
-     * @param Rgb $color
+     * @param Rgba $color
      */
-    public function __construct(Rgb $color)
+    public function __construct(Rgba $color)
     {
         $this->color = $color;
     }
 
     /**
-     * @return Rgb
+     * @return Rgba
      */
     public function getColor()
     {
@@ -51,10 +52,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\Multiply::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function multiply(Rgb $color)
+    public function multiply(Rgba $color)
     {
         $blending = new Multiply($this->getColor(), $color);
 
@@ -63,10 +64,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\Screen::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function screen(Rgb $color)
+    public function screen(Rgba $color)
     {
         $blending = new Screen($this->getColor(), $color);
 
@@ -75,10 +76,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\Overlay::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function overlay(Rgb $color)
+    public function overlay(Rgba $color)
     {
         $blending = new Overlay($this->getColor(), $color);
 
@@ -87,10 +88,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\HardLight::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function hardLight(Rgb $color)
+    public function hardLight(Rgba $color)
     {
         $blending = new HardLight($this->getColor(), $color);
 
@@ -99,10 +100,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\SoftLight::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function softLight(Rgb $color)
+    public function softLight(Rgba $color)
     {
         $blending = new SoftLight($this->getColor(), $color);
 
@@ -111,10 +112,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\Difference::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function difference(Rgb $color)
+    public function difference(Rgba $color)
     {
         $blending = new Difference($this->getColor(), $color);
 
@@ -123,10 +124,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\Exclusion::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function exclusion(Rgb $color)
+    public function exclusion(Rgba $color)
     {
         $blending = new Exclusion($this->getColor(), $color);
 
@@ -135,10 +136,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\ColorDodge::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function colorDodge(Rgb $color)
+    public function colorDodge(Rgba $color)
     {
         $blending = new ColorDodge($this->getColor(), $color);
 
@@ -147,10 +148,10 @@ final class Blender
 
     /**
      * @see Rainbow\Calculation\Blending\ColorBurn::result()
-     * @param Rgb $color
-     * @return Rgb
+     * @param Rgba $color
+     * @return Rgba
      */
-    public function colorBurn(Rgb $color)
+    public function colorBurn(Rgba $color)
     {
         $blending = new ColorBurn($this->getColor(), $color);
 

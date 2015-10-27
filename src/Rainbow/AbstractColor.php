@@ -188,7 +188,15 @@ abstract class AbstractColor implements ColorInterface
     public function getBlender()
     {
         if (!$this->blender) {
-            $this->blender = new Blender($this->translate()->toRgb());
+            $rgb = $this->translate()->toRgb();
+            $this->blender = new Blender(
+                new Rgba(
+                    $rgb->getRed(),
+                    $rgb->getGreen(),
+                    $rgb->getBlue(),
+                    1
+                )
+            );
         }
 
         return $this->blender;

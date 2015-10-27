@@ -11,7 +11,7 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Rgb;
+use Rainbow\Rgba;
 
 /**
  * Class HardLight
@@ -21,22 +21,22 @@ use Rainbow\Rgb;
 final class HardLight implements CalculationInterface
 {
     /**
-     * @var Rgb
+     * @var Rgba
      */
     private $color;
 
     /**
-     * @param Rgb $color1
-     * @param Rgb $color2
+     * @param Rgba $color1
+     * @param Rgba $color2
      */
-    public function __construct(Rgb $color1, Rgb $color2)
+    public function __construct(Rgba $color1, Rgba $color2)
     {
         $overlay = new Overlay($color2, $color1);
         $this->color = $overlay->result();
     }
 
     /**
-     * @return Rgb
+     * @return Rgba
      */
     public function result()
     {

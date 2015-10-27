@@ -10,27 +10,27 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Rgb;
+use Rainbow\Rgba;
 use Rainbow\Unit\RgbComponent;
 
 abstract class AbstractBlending
 {
     /**
-     * @var Rgb
+     * @var Rgba
      */
     private $result;
 
     /**
-     * @param Rgb $color1
-     * @param Rgb $color2
+     * @param Rgba $color1
+     * @param Rgba $color2
      */
-    public function __construct(Rgb $color1, Rgb $color2)
+    public function __construct(Rgba $color1, Rgba $color2)
     {
         $red = $this->calculateComponentValue($color1->getRed(), $color2->getRed());
         $green = $this->calculateComponentValue($color1->getGreen(), $color2->getGreen());
         $blue = $this->calculateComponentValue($color1->getBlue(), $color2->getBlue());
 
-        $this->result = new Rgb($red, $green, $blue);
+        $this->result = new Rgba($red, $green, $blue, 1);
     }
 
     /**
@@ -75,7 +75,7 @@ abstract class AbstractBlending
     }
 
     /**
-     * @return Rgb
+     * @return Rgba
      */
     public function result()
     {

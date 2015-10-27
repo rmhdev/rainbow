@@ -11,18 +11,18 @@
 namespace Rainbow\Tests\Calculation\Blending;
 
 use Rainbow\Calculation\Blending\SoftLight;
-use Rainbow\Rgb;
+use Rainbow\Rgba;
 
 class SoftLightTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider overlayDataProvider
-     * @param Rgb $expected
-     * @param Rgb $color
+     * @param Rgba $expected
+     * @param Rgba $color
      */
-    public function testColorShouldReturnCorrectColor(Rgb $expected, Rgb $color)
+    public function testColorShouldReturnCorrectColor(Rgba $expected, Rgba $color)
     {
-        $baseColor = new Rgb(255, 102, 0);
+        $baseColor = new Rgba(255, 102, 0, 1);
         $overlay = new SoftLight($baseColor, $color);
 
         $this->assertEquals($expected, $overlay->result());
@@ -31,15 +31,15 @@ class SoftLightTest extends \PHPUnit_Framework_TestCase
     public function overlayDataProvider()
     {
         return array(
-            array(new Rgb(255, 41, 0), new Rgb(0, 0, 0)),
-            array(new Rgb(255, 65, 0), new Rgb(51, 51, 51)),
-            array(new Rgb(255, 90, 0), new Rgb(102, 102, 102)),
-            array(new Rgb(255, 114, 0), new Rgb(153, 153, 153)),
-            array(new Rgb(255, 138, 0), new Rgb(204, 204, 204)),
-            array(new Rgb(255, 161, 0), new Rgb(255, 255, 255)),
-            array(new Rgb(255, 41, 0), new Rgb(255, 0, 0)),
-            array(new Rgb(255, 161, 0), new Rgb(0, 255, 0)),
-            array(new Rgb(255, 41, 0), new Rgb(0, 0, 255)),
+            array(new Rgba(255, 41, 0, 1), new Rgba(0, 0, 0, 1)),
+            array(new Rgba(255, 65, 0, 1), new Rgba(51, 51, 51, 1)),
+            array(new Rgba(255, 90, 0, 1), new Rgba(102, 102, 102, 1)),
+            array(new Rgba(255, 114, 0, 1), new Rgba(153, 153, 153, 1)),
+            array(new Rgba(255, 138, 0, 1), new Rgba(204, 204, 204, 1)),
+            array(new Rgba(255, 161, 0, 1), new Rgba(255, 255, 255, 1)),
+            array(new Rgba(255, 41, 0, 1), new Rgba(255, 0, 0, 1)),
+            array(new Rgba(255, 161, 0, 1), new Rgba(0, 255, 0, 1)),
+            array(new Rgba(255, 41, 0, 1), new Rgba(0, 0, 255, 1)),
         );
     }
 }
