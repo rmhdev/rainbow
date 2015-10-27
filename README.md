@@ -23,3 +23,11 @@ Ca' = 1 - (1 - Ea) * (1 - Ca)
 | rgb(46,46,46) | #2e2e2e | hsl(0,0%,18%) |
 | rgb(47,47,47) | #2f2f2f | hsl(0,0%,18%) |
 
+
+Alpha blending
+
+https://en.wikipedia.org/wiki/Alpha_compositing#Alpha_blending
+
+Of course, the translucency can range between these extremes, 
+in which case the blended color is computed as a weighted 
+average of the foreground and background colors.
