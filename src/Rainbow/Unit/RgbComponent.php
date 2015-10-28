@@ -65,4 +65,12 @@ final class RgbComponent implements UnitInterface
     {
         return (string) $this->getValue();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function maxValue()
+    {
+        return self::MAX_VALUE;
+    }
 }

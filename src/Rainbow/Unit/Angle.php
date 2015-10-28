@@ -12,6 +12,8 @@ namespace Rainbow\Unit;
 
 final class Angle implements UnitInterface
 {
+    const MAX_VALUE = 360;
+
     private $value;
 
     /**
@@ -20,7 +22,7 @@ final class Angle implements UnitInterface
     public function __construct($value = 0)
     {
         $number = $this->toNumber($value);
-        $this->value = (($number % 360) + 360) % 360;
+        $this->value = (($number % self::MAX_VALUE) + self::MAX_VALUE) % self::MAX_VALUE;
     }
 
     private function toNumber($value)
@@ -49,5 +51,13 @@ final class Angle implements UnitInterface
     public function __toString()
     {
         return (string) $this->getValue();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function maxValue()
+    {
+        return self::MAX_VALUE;
     }
 }

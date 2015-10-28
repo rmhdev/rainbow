@@ -21,4 +21,9 @@ interface UnitInterface
      * @return string
      */
     public function __toString();
+
+    /**
+     * @return mixed
+     */
+    public static function maxValue();
 }

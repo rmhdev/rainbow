@@ -12,14 +12,24 @@ namespace Rainbow\Tests\Unit;
 
 use Rainbow\Unit\Percent;
 
-class PercentTest extends \PHPUnit_Framework_TestCase
+class PercentTest extends AbstractUnitTest
 {
     public function testEmptyValueShouldReturnZero()
     {
-        $unit = new Percent();
+        $unit = $this->createEmptyUnit();
 
         $this->assertEquals(0, $unit->getValue());
         $this->assertInternalType("int", $unit->getValue());
+    }
+
+    protected function createEmptyUnit()
+    {
+        return new Percent();
+    }
+
+    protected function expectedMaxValue()
+    {
+        return 100;
     }
 
     /**

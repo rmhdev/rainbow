@@ -12,14 +12,24 @@ namespace Rainbow\Tests\Unit;
 
 use Rainbow\Unit\Angle;
 
-class AngleTest extends \PHPUnit_Framework_TestCase
+class AngleTest extends AbstractUnitTest
 {
     public function testEmptyShouldReturnZero()
     {
-        $angle = new Angle();
+        $angle = $this->createEmptyUnit();
 
         $this->assertEquals(0, $angle->getValue());
         $this->assertInternalType("int", $angle->getValue());
+    }
+
+    protected function createEmptyUnit()
+    {
+        return new Angle();
+    }
+
+    protected function expectedMaxValue()
+    {
+        return 360;
     }
 
     /**

@@ -12,13 +12,23 @@ namespace Rainbow\Tests\Unit;
 
 use Rainbow\Unit\RgbComponent;
 
-class RgbComponentTest extends \PHPUnit_Framework_TestCase
+class RgbComponentTest extends AbstractUnitTest
 {
     public function testEmptyShouldReturnZero()
     {
-        $unit = new RgbComponent();
+        $unit = $this->createEmptyUnit();
 
         $this->assertEquals(0, $unit->getValue());
+    }
+
+    protected function createEmptyUnit()
+    {
+        return new RgbComponent();
+    }
+
+    protected function expectedMaxValue()
+    {
+        return 255;
     }
 
     /**

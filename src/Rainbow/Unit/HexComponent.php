@@ -76,4 +76,12 @@ final class HexComponent implements UnitInterface
     {
         return (string)$this->getValue();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function maxValue()
+    {
+        return dechex(RgbComponent::MAX_VALUE);
+    }
 }

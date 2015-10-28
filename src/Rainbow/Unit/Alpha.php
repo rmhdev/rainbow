@@ -12,12 +12,14 @@ namespace Rainbow\Unit;
 
 final class Alpha implements UnitInterface
 {
+    const MAX_VALUE = 1;
+
     private $value;
 
     /**
      * @param int|number $value
      */
-    public function __construct($value = 1)
+    public function __construct($value = self::MAX_VALUE)
     {
         $this->setValue($value);
     }
@@ -45,7 +47,7 @@ final class Alpha implements UnitInterface
 
     private function isOutOfBounds($value)
     {
-        return ($value < 0) || ($value > 1);
+        return ($value < 0) || ($value > self::MAX_VALUE);
     }
 
     /**
@@ -62,5 +64,13 @@ final class Alpha implements UnitInterface
     public function __toString()
     {
         return (string) $this->getValue();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function maxValue()
+    {
+        return self::MAX_VALUE;
     }
 }

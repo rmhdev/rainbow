@@ -12,13 +12,23 @@ namespace Rainbow\Tests\Unit;
 
 use Rainbow\Unit\HexComponent;
 
-class HexComponentTest extends \PHPUnit_Framework_TestCase
+class HexComponentTest extends AbstractUnitTest
 {
     public function testEmptyShouldReturnZero()
     {
-        $hexComponent = new HexComponent();
+        $hexComponent = $this->createEmptyUnit();
 
         $this->assertEquals("00", $hexComponent->getValue());
+    }
+
+    protected function createEmptyUnit()
+    {
+        return new HexComponent();
+    }
+
+    protected function expectedMaxValue()
+    {
+        return "ff";
     }
 
     /**

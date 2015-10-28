@@ -12,14 +12,24 @@ namespace Rainbow\Tests\Unit;
 
 use Rainbow\Unit\Alpha;
 
-class AlphaTest extends \PHPUnit_Framework_TestCase
+class AlphaTest extends AbstractUnitTest
 {
     public function testEmptyShouldReturnZero()
     {
-        $unit = new Alpha();
+        $unit = $this->createEmptyUnit();
 
         $this->assertEquals(1, $unit->getValue());
         $this->assertInternalType("float", $unit->getValue());
+    }
+
+    protected function createEmptyUnit()
+    {
+        return new Alpha();
+    }
+
+    protected function expectedMaxValue()
+    {
+        return 1;
     }
 
     /**

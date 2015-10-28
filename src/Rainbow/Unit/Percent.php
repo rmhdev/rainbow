@@ -12,6 +12,8 @@ namespace Rainbow\Unit;
 
 final class Percent implements UnitInterface
 {
+    const MAX_VALUE = 100;
+
     private $value;
 
     /**
@@ -44,7 +46,7 @@ final class Percent implements UnitInterface
 
     private function isOutOfBounds($value)
     {
-        return ($value < 0) || ($value > 100);
+        return ($value < 0) || ($value > self::MAX_VALUE);
     }
 
     /**
@@ -61,5 +63,13 @@ final class Percent implements UnitInterface
     public function __toString()
     {
         return sprintf("%s%%", $this->getValue());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function maxValue()
+    {
+        return self::MAX_VALUE;
     }
 }
