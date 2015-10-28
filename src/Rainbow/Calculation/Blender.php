@@ -19,7 +19,6 @@ use Rainbow\Calculation\Blending\Multiply;
 use Rainbow\Calculation\Blending\Overlay;
 use Rainbow\Calculation\Blending\Screen;
 use Rainbow\Calculation\Blending\SoftLight;
-use Rainbow\Rgb;
 use Rainbow\Rgba;
 
 /**
@@ -30,7 +29,7 @@ final class Blender
 {
 
     /**
-     * @var Rgb
+     * @var Rgba
      */
     private $color;
 

@@ -55,9 +55,7 @@ final class Hex extends AbstractColor implements ColorInterface
     private function separateValues($value)
     {
         $value = strtolower(trim(str_replace(" ", "", $value)));
-        if (false !== strpos($value, "#")) {
-            $value = str_replace("#", "", $value);
-        }
+        $value = ltrim($value, "#");
         if ("" === $value) {
             $value = "000";
         }
