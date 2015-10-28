@@ -68,6 +68,7 @@ final class RgbComponent implements UnitInterface
 
     /**
      * {@inheritDoc}
+     * @return int
      */
     public static function maxValue()
     {

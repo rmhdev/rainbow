@@ -55,6 +55,7 @@ final class Angle implements UnitInterface
 
     /**
      * {@inheritDoc}
+     * @return int
      */
     public static function maxValue()
     {

@@ -79,6 +79,7 @@ final class HexComponent implements UnitInterface
 
     /**
      * {@inheritDoc}
+     * @return string
      */
     public static function maxValue()
     {

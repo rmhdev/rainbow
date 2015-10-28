@@ -68,6 +68,7 @@ final class Alpha implements UnitInterface
 
     /**
      * {@inheritDoc}
+     * @return float
      */
     public static function maxValue()
     {

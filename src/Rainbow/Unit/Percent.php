@@ -67,6 +67,7 @@ final class Percent implements UnitInterface
 
     /**
      * {@inheritDoc}
+     * @return int
      */
     public static function maxValue()
     {
