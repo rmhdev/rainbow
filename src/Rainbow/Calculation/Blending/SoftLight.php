@@ -25,8 +25,8 @@ final class SoftLight extends AbstractBlending implements CalculationInterface
      */
     protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
     {
-        $value1 = $component1->getValue() / RgbComponent::MAX_VALUE;
-        $value2 = $component2->getValue() / RgbComponent::MAX_VALUE;
+        $value1 = $component1->getValue() / RgbComponent::maxValue();
+        $value2 = $component2->getValue() / RgbComponent::maxValue();
         $d = 1;
         $e = $value1;
         if ($value2 > 0.5) {
@@ -37,6 +37,6 @@ final class SoftLight extends AbstractBlending implements CalculationInterface
         }
         $result = $value1 - (1 - 2 * $value2) * $e * ($d - $value1);
 
-        return $result * RgbComponent::MAX_VALUE;
+        return $result * RgbComponent::maxValue();
     }
 }

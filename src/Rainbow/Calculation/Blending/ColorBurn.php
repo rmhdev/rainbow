@@ -25,17 +25,17 @@ final class ColorBurn extends AbstractBlending implements CalculationInterface
      */
     protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
     {
-        $value1 = $component1->getValue() / RgbComponent::MAX_VALUE;
-        $value2 = $component2->getValue() / RgbComponent::MAX_VALUE;
+        $value1 = $component1->getValue() / RgbComponent::maxValue();
+        $value2 = $component2->getValue() / RgbComponent::maxValue();
         if ($value1 == 1) {
 
-            return RgbComponent::MAX_VALUE;
+            return RgbComponent::maxValue();
         }
         if ($value2 == 0) {
 
             return 0;
         }
 
-        return (1 - min(1, (1 - $value1) / $value2)) * RgbComponent::MAX_VALUE;
+        return (1 - min(1, (1 - $value1) / $value2)) * RgbComponent::maxValue();
     }
 }
