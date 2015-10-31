@@ -79,10 +79,9 @@ final class HexComponent implements UnitInterface
 
     /**
      * {@inheritDoc}
-     * @return string
      */
     public static function maxValue()
     {
-        return dechex(RgbComponent::MAX_VALUE);
+        return RgbComponent::MAX_VALUE;
     }
 }

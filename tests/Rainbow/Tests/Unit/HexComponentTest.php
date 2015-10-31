@@ -18,7 +18,7 @@ class HexComponentTest extends AbstractUnitTest
     {
         $hexComponent = $this->createEmptyUnit();
 
-        $this->assertEquals("00", $hexComponent->getValue());
+        $this->assertEquals(0, $hexComponent->getValue());
     }
 
     protected function createEmptyUnit()
@@ -28,7 +28,7 @@ class HexComponentTest extends AbstractUnitTest
 
     protected function expectedMaxValue()
     {
-        return "ff";
+        return 255;
     }
 
     /**
@@ -40,7 +40,7 @@ class HexComponentTest extends AbstractUnitTest
     {
         $hexComponent = new HexComponent($value);
 
-        $this->assertEquals($expected, $hexComponent->getValue());
+        $this->assertEquals($expected, (string)$hexComponent);
     }
 
     public function correctValueDataProvider()

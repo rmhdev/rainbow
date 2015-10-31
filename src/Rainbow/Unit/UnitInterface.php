@@ -23,7 +23,7 @@ interface UnitInterface
     public function __toString();
 
     /**
-     * @return mixed
+     * @return number
      */
     public static function maxValue();
 }
