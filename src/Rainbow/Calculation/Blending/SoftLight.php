@@ -23,10 +23,10 @@ final class SoftLight extends AbstractBlending implements CalculationInterface
     /**
      * {@inheritDoc}
      */
-    protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
+    protected function blend(RgbComponent $value1, RgbComponent $value2)
     {
-        $value1 = $component1->getValue() / RgbComponent::maxValue();
-        $value2 = $component2->getValue() / RgbComponent::maxValue();
+        $value1 = $value1->getValue() / RgbComponent::maxValue();
+        $value2 = $value2->getValue() / RgbComponent::maxValue();
         $d = 1;
         $e = $value1;
         if ($value2 > 0.5) {

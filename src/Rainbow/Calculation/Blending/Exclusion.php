@@ -23,10 +23,10 @@ final class Exclusion extends AbstractBlending implements CalculationInterface
     /**
      * {@inheritDoc}
      */
-    protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
+    protected function blend(RgbComponent $value1, RgbComponent $value2)
     {
-        $sum = $component1->getValue() + $component2->getValue();
-        $prod = 2 * ($component1->getValue() * $component2->getValue()) / RgbComponent::maxValue();
+        $sum = $value1->getValue() + $value2->getValue();
+        $prod = 2 * ($value1->getValue() * $value2->getValue()) / RgbComponent::maxValue();
 
         return $sum - $prod;
     }

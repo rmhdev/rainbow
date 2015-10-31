@@ -23,8 +23,8 @@ final class Difference extends AbstractBlending implements CalculationInterface
     /**
      * {@inheritDoc}
      */
-    protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
+    protected function blend(RgbComponent $value1, RgbComponent $value2)
     {
-        return abs($component1->getValue() - $component2->getValue());
+        return abs($value1->getValue() - $value2->getValue());
     }
 }

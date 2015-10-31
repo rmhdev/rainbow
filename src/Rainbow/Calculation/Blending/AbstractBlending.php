@@ -26,9 +26,9 @@ abstract class AbstractBlending
      */
     public function __construct(Rgba $color1, Rgba $color2)
     {
-        $red = $this->calculateComponentValue($color1->getRed(), $color2->getRed());
-        $green = $this->calculateComponentValue($color1->getGreen(), $color2->getGreen());
-        $blue = $this->calculateComponentValue($color1->getBlue(), $color2->getBlue());
+        $red = $this->blend($color1->getRed(), $color2->getRed());
+        $green = $this->blend($color1->getGreen(), $color2->getGreen());
+        $blue = $this->blend($color1->getBlue(), $color2->getBlue());
 
         $this->result = new Rgba($red, $green, $blue, 1);
     }
@@ -38,7 +38,7 @@ abstract class AbstractBlending
      * @param RgbComponent $component2
      * @return int
      */
-    abstract protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2);
+    abstract protected function blend(RgbComponent $component1, RgbComponent $component2);
 
     /**
      * @param int|RgbComponent $component1

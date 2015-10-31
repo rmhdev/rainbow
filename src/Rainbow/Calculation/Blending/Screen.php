@@ -18,8 +18,8 @@ final class Screen extends AbstractBlending implements CalculationInterface
     /**
      * {@inheritDoc}
      */
-    protected function calculateComponentValue(RgbComponent $component1, RgbComponent $component2)
+    protected function blend(RgbComponent $value1, RgbComponent $value2)
     {
-        return $this->screen($component1, $component2);
+        return $this->screen($value1, $value2);
     }
 }
