@@ -19,10 +19,10 @@ final class Component implements ComponentInterface
     private function setValue($value)
     {
         if ($this->isNotANumber($value)) {
-            throw new \UnexpectedValueException(sprintf("Incorrect component value %s", $value));
+            throw new \UnexpectedValueException(sprintf("Incorrect value %s", $value));
         }
         if ($this->isOutOfBounds($value)) {
-            throw new \OutOfBoundsException(sprintf("Incorrect component value %s", $value));
+            throw new \OutOfBoundsException(sprintf("Incorrect value %s", $value));
         }
         $this->value = $this->formatNumber($value);
     }
