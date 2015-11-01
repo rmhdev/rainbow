@@ -12,7 +12,7 @@ namespace Rainbow\Tests\Component;
 
 use Rainbow\Component\Hex;
 
-class HexComponentTest extends AbstractComponentTest
+class HexTest extends AbstractComponentTest
 {
     public function testEmptyShouldReturnZero()
     {

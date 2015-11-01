@@ -12,7 +12,7 @@ namespace Rainbow\Tests\Component;
 
 use Rainbow\Component\Rgb;
 
-class RgbComponentTest extends AbstractComponentTest
+class RgbTest extends AbstractComponentTest
 {
     public function testEmptyShouldReturnZero()
     {
