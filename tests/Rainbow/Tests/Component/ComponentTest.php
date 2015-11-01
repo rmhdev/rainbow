@@ -112,4 +112,19 @@ class ComponentTest extends AbstractComponentTest
             array(0.12345, "0.12"),
         );
     }
+
+    protected function createWithMinValue()
+    {
+        return new Component(0);
+    }
+
+    protected function createWithMaxValue()
+    {
+        return new Component(Component::maxValue());
+    }
+
+    public function testCreateComponentWithValueShouldReturnComponent()
+    {
+        $this->assertEquals(new Component(0.5), Component::createComponent(new Component(0.5)));
+    }
 }

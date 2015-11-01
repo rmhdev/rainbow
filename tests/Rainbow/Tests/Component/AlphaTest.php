@@ -11,6 +11,7 @@
 namespace Rainbow\Tests\Component;
 
 use Rainbow\Component\Alpha;
+use Rainbow\Component\Component;
 
 /**
  * Alpha uses Component; it's unnecessary to add extra tests already covered with Component's own.
@@ -36,5 +37,20 @@ class AlphaTest extends AbstractComponentTest
     protected function expectedMaxValue()
     {
         return 1;
+    }
+
+    protected function createWithMinValue()
+    {
+        return new Alpha(0);
+    }
+
+    protected function createWithMaxValue()
+    {
+        return new Alpha(Alpha::maxValue());
+    }
+
+    public function testCreateComponentWithValueShouldReturnComponent()
+    {
+        $this->assertEquals(new Component(0.5), Component::createComponent(new Alpha(0.5)));
     }
 }

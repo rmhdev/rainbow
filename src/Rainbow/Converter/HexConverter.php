@@ -45,9 +45,9 @@ final class HexConverter implements ConverterInterface
     public function toRgb()
     {
         return new Rgb(
-            hexdec($this->color->getRed()->getValue()),
-            hexdec($this->color->getGreen()->getValue()),
-            hexdec($this->color->getBlue()->getValue())
+            $this->color->getRed()->getValue(),
+            $this->color->getGreen()->getValue(),
+            $this->color->getBlue()->getValue()
         );
     }
 
@@ -84,12 +84,7 @@ final class HexConverter implements ConverterInterface
         $greenHEx   = new HexComponent(dechex((string)$color->getGreen()));
         $blueHEx    = new HexComponent(dechex((string)$color->getBlue()));
 
-        $hexValue = sprintf(
-            "#%s%s%s",
-            $redHEx->getValue(),
-            $greenHEx->getValue(),
-            $blueHEx->getValue()
-        );
+        $hexValue = sprintf("#%s%s%s", $redHEx, $greenHEx, $blueHEx);
 
         return new self(new Hex($hexValue));
     }

@@ -10,6 +10,7 @@
 
 namespace Rainbow\Tests\Component;
 
+use Rainbow\Component\Component;
 use Rainbow\Component\ComponentInterface;
 
 abstract class AbstractComponentTest extends \PHPUnit_Framework_TestCase
@@ -29,4 +30,32 @@ abstract class AbstractComponentTest extends \PHPUnit_Framework_TestCase
      * @return mixed
      */
     abstract protected function expectedMaxValue();
+
+    public function testCreateComponentWithMinValueShouldReturnMinComponent()
+    {
+        $this->assertEquals(
+            new Component(0),
+            Component::createComponent($this->createWithMinValue())
+        );
+    }
+
+    public function testCreateComponentWithMaxValueShouldReturnMaxComponent()
+    {
+        $this->assertEquals(
+            new Component(1),
+            Component::createComponent($this->createWithMaxValue())
+        );
+    }
+
+    /**
+     * @return ComponentInterface
+     */
+    abstract protected function createWithMinValue();
+
+    /**
+     * @return ComponentInterface
+     */
+    abstract protected function createWithMaxValue();
+
+    abstract public function testCreateComponentWithValueShouldReturnComponent();
 }

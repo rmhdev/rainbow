@@ -13,16 +13,18 @@ namespace Rainbow\Component;
 final class Hex implements ComponentInterface
 {
     /**
-     * @var string
+     * @var Rgb
      */
-    private $value;
+    private $rgb;
 
     /**
      * @param number|string $value
      */
     public function __construct($value = null)
     {
-        $this->value = $this->processValue($value);
+        $this->rgb = new Rgb(
+            hexdec($this->processValue($value))
+        );
     }
 
     private function processValue($value = null)
@@ -32,7 +34,7 @@ final class Hex implements ComponentInterface
         }
         if ($this->isOutOfBounds($value)) {
             throw new \OutOfBoundsException(
-                sprintf('Hex value %s must be between 0 and %s', $value, dechex(Rgb::MAX_VALUE))
+                sprintf('Hex value %s must be between 0 and %s', $value, self::maxValue())
             );
         }
         $result = $this->valueToString($value);
@@ -66,7 +68,7 @@ final class Hex implements ComponentInterface
      */
     public function getValue()
     {
-        return $this->value;
+        return $this->rgb->getValue();
     }
 
     /**
@@ -74,7 +76,12 @@ final class Hex implements ComponentInterface
      */
     public function __toString()
     {
-        return (string)$this->getValue();
+        $string = (string)dechex($this->getValue());
+        if (strlen($string) == 1) {
+            $string .= $string;
+        }
+
+        return $string;
     }
 
     /**

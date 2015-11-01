@@ -10,6 +10,7 @@
 
 namespace Rainbow\Tests\Component;
 
+use Rainbow\Component\Component;
 use Rainbow\Component\Rgb;
 
 class RgbTest extends AbstractComponentTest
@@ -157,5 +158,20 @@ class RgbTest extends AbstractComponentTest
             array(191, "75%"),
             array(64, "25%"),
         );
+    }
+
+    protected function createWithMinValue()
+    {
+        return new Rgb(0);
+    }
+
+    protected function createWithMaxValue()
+    {
+        return new Rgb(Rgb::maxValue());
+    }
+
+    public function testCreateComponentWithValueShouldReturnComponent()
+    {
+        $this->assertEquals(new Component(0.5), Component::createComponent(new Rgb(255 / 2)));
     }
 }

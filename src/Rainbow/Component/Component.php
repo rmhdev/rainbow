@@ -66,4 +66,11 @@ final class Component implements ComponentInterface
     {
         return self::MAX_VALUE;
     }
+
+    public static function createComponent(ComponentInterface $component)
+    {
+        return new Component(
+            $component->getValue() / $component::maxValue()
+        );
+    }
 }
