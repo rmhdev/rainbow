@@ -12,8 +12,8 @@ namespace Rainbow\Tests;
 
 use Rainbow\Hex;
 use Rainbow\Hsl;
-use Rainbow\Unit\Alpha;
-use Rainbow\Unit\HexComponent;
+use Rainbow\Component\Alpha;
+use Rainbow\Component\Hex as HexComponent;
 
 class HexTest extends AbstractColorTest
 {

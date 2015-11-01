@@ -10,7 +10,7 @@
 
 namespace Rainbow\Calculation\Operation;
 
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Percent;
 
 abstract class AbstractOperation
 {

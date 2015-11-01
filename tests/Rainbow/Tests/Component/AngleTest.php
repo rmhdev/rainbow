@@ -8,21 +8,21 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Unit;
+namespace Rainbow\Tests\Component;
 
-use Rainbow\Unit\Angle;
+use Rainbow\Component\Angle;
 
-class AngleTest extends AbstractUnitTest
+class AngleTest extends AbstractComponentTest
 {
     public function testEmptyShouldReturnZero()
     {
-        $angle = $this->createEmptyUnit();
+        $angle = $this->createEmptyComponent();
 
         $this->assertEquals(0, $angle->getValue());
         $this->assertInternalType("int", $angle->getValue());
     }
 
-    protected function createEmptyUnit()
+    protected function createEmptyComponent()
     {
         return new Angle();
     }
@@ -39,10 +39,10 @@ class AngleTest extends AbstractUnitTest
      */
     public function testCorrectValueShouldReturnValue($value, $expectedValue)
     {
-        $unit = new Angle($value);
+        $component = new Angle($value);
 
-        $this->assertEquals($expectedValue, $unit->getValue());
-        $this->assertInternalType("int", $unit->getValue());
+        $this->assertEquals($expectedValue, $component->getValue());
+        $this->assertInternalType("int", $component->getValue());
     }
 
     public function getCorrectValueDataProvider()
@@ -66,9 +66,9 @@ class AngleTest extends AbstractUnitTest
      */
     public function testOutOfBoundsValueShouldBeCorrected($value, $expectedValue)
     {
-        $unit = new Angle($value);
+        $component = new Angle($value);
 
-        $this->assertEquals($expectedValue, $unit->getValue());
+        $this->assertEquals($expectedValue, $component->getValue());
     }
 
     public function getOutOfBoundsDataProvider()
@@ -106,9 +106,9 @@ class AngleTest extends AbstractUnitTest
      */
     public function testToStringShouldReturnStringValue($value, $expectedValue)
     {
-        $unit = new Angle($value);
+        $component = new Angle($value);
 
-        $this->assertEquals($expectedValue, (string) $unit);
+        $this->assertEquals($expectedValue, (string) $component);
     }
 
     public function getToStringDataProvider()

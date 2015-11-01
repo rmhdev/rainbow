@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Unit;
+namespace Rainbow\Component;
 
-final class Angle implements UnitInterface
+final class Angle implements ComponentInterface
 {
     const MAX_VALUE = 360;
 

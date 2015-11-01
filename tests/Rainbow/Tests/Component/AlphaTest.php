@@ -8,21 +8,21 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Unit;
+namespace Rainbow\Tests\Component;
 
-use Rainbow\Unit\Alpha;
+use Rainbow\Component\Alpha;
 
-class AlphaTest extends AbstractUnitTest
+class AlphaTest extends AbstractComponentTest
 {
     public function testEmptyShouldReturnZero()
     {
-        $unit = $this->createEmptyUnit();
+        $component = $this->createEmptyComponent();
 
-        $this->assertEquals(1, $unit->getValue());
-        $this->assertInternalType("float", $unit->getValue());
+        $this->assertEquals(1, $component->getValue());
+        $this->assertInternalType("float", $component->getValue());
     }
 
-    protected function createEmptyUnit()
+    protected function createEmptyComponent()
     {
         return new Alpha();
     }
@@ -39,10 +39,10 @@ class AlphaTest extends AbstractUnitTest
      */
     public function testCorrectValueShouldReturnValue($value, $expectedValue)
     {
-        $unit = new Alpha($value);
+        $component = new Alpha($value);
 
-        $this->assertEquals($expectedValue, $unit->getValue());
-        $this->assertInternalType("float", $unit->getValue());
+        $this->assertEquals($expectedValue, $component->getValue());
+        $this->assertInternalType("float", $component->getValue());
     }
 
     public function getCorrectValueDataProvider()
@@ -106,9 +106,9 @@ class AlphaTest extends AbstractUnitTest
      */
     public function testToStringShouldReturnStringValue($value, $expectedValue)
     {
-        $unit = new Alpha($value);
+        $component = new Alpha($value);
 
-        $this->assertEquals($expectedValue, (string) $unit);
+        $this->assertEquals($expectedValue, (string) $component);
     }
 
     public function getToStringDataProvider()

@@ -8,22 +8,22 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Unit;
+namespace Rainbow\Tests\Component;
 
-use Rainbow\Unit\HexComponent;
+use Rainbow\Component\Hex;
 
-class HexComponentTest extends AbstractUnitTest
+class HexComponentTest extends AbstractComponentTest
 {
     public function testEmptyShouldReturnZero()
     {
-        $hexComponent = $this->createEmptyUnit();
+        $hexComponent = $this->createEmptyComponent();
 
         $this->assertEquals(0, $hexComponent->getValue());
     }
 
-    protected function createEmptyUnit()
+    protected function createEmptyComponent()
     {
-        return new HexComponent();
+        return new Hex();
     }
 
     protected function expectedMaxValue()
@@ -38,7 +38,7 @@ class HexComponentTest extends AbstractUnitTest
      */
     public function testCorrectValueShouldReturnValue($expected, $value)
     {
-        $hexComponent = new HexComponent($value);
+        $hexComponent = new Hex($value);
 
         $this->assertEquals($expected, (string)$hexComponent);
     }
@@ -61,7 +61,7 @@ class HexComponentTest extends AbstractUnitTest
      */
     public function testOutOfBoundsValueShouldThrowException($value)
     {
-        new HexComponent($value);
+        new Hex($value);
     }
 
     public function incorrectValueDataProvider()
@@ -74,7 +74,7 @@ class HexComponentTest extends AbstractUnitTest
 
     public function testToStringShouldReturnStringRepresentationOfValue()
     {
-        $hexComponent = new HexComponent("1a");
+        $hexComponent = new Hex("1a");
 
         $this->assertEquals("1a", (string)$hexComponent);
     }

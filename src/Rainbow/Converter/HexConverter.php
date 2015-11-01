@@ -13,7 +13,7 @@ namespace Rainbow\Converter;
 use Rainbow\ColorInterface;
 use Rainbow\Hex;
 use Rainbow\Rgb;
-use Rainbow\Unit\HexComponent;
+use Rainbow\Component\Hex as HexComponent;
 
 final class HexConverter implements ConverterInterface
 {

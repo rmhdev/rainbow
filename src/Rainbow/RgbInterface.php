@@ -10,22 +10,22 @@
 
 namespace Rainbow;
 
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Component\Rgb;
 
 interface RgbInterface
 {
     /**
-     * @return RgbComponent
+     * @return Rgb
      */
     public function getRed();
 
     /**
-     * @return RgbComponent
+     * @return Rgb
      */
     public function getGreen();
 
     /**
-     * @return RgbComponent
+     * @return Rgb
      */
     public function getBlue();
 }

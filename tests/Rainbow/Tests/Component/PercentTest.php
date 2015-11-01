@@ -8,21 +8,21 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Unit;
+namespace Rainbow\Tests\Component;
 
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Percent;
 
-class PercentTest extends AbstractUnitTest
+class PercentTest extends AbstractComponentTest
 {
     public function testEmptyValueShouldReturnZero()
     {
-        $unit = $this->createEmptyUnit();
+        $component = $this->createEmptyComponent();
 
-        $this->assertEquals(0, $unit->getValue());
-        $this->assertInternalType("int", $unit->getValue());
+        $this->assertEquals(0, $component->getValue());
+        $this->assertInternalType("int", $component->getValue());
     }
 
-    protected function createEmptyUnit()
+    protected function createEmptyComponent()
     {
         return new Percent();
     }
@@ -39,10 +39,10 @@ class PercentTest extends AbstractUnitTest
      */
     public function testCorrectValueShouldReturnValue($value, $expectedValue)
     {
-        $unit = new Percent($value);
+        $component = new Percent($value);
 
-        $this->assertEquals($expectedValue, $unit->getValue());
-        $this->assertInternalType("int", $unit->getValue());
+        $this->assertEquals($expectedValue, $component->getValue());
+        $this->assertInternalType("int", $component->getValue());
     }
 
     public function getCorrectValuesDataProvider()
@@ -103,9 +103,9 @@ class PercentTest extends AbstractUnitTest
      */
     public function testToStringShouldReturnStringValue($value, $expectedValue)
     {
-        $unit = new Percent($value);
+        $component = new Percent($value);
 
-        $this->assertEquals($expectedValue, (string) $unit);
+        $this->assertEquals($expectedValue, (string)$component);
     }
 
     public function getToStringDataProvider()

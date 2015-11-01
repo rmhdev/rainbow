@@ -8,22 +8,22 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Unit;
+namespace Rainbow\Tests\Component;
 
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Component\Rgb;
 
-class RgbComponentTest extends AbstractUnitTest
+class RgbComponentTest extends AbstractComponentTest
 {
     public function testEmptyShouldReturnZero()
     {
-        $unit = $this->createEmptyUnit();
+        $component = $this->createEmptyComponent();
 
-        $this->assertEquals(0, $unit->getValue());
+        $this->assertEquals(0, $component->getValue());
     }
 
-    protected function createEmptyUnit()
+    protected function createEmptyComponent()
     {
-        return new RgbComponent();
+        return new Rgb();
     }
 
     protected function expectedMaxValue()
@@ -38,9 +38,9 @@ class RgbComponentTest extends AbstractUnitTest
      */
     public function testCorrectValueShouldReturnValue($expectedValue, $value)
     {
-        $unit = new RgbComponent($value);
+        $component = new Rgb($value);
 
-        $this->assertEquals($expectedValue, $unit->getValue());
+        $this->assertEquals($expectedValue, $component->getValue());
     }
 
     public function getCorrectValueDataProvider()
@@ -62,10 +62,10 @@ class RgbComponentTest extends AbstractUnitTest
      */
     public function testCorrectStringShouldReturnValue($expectedValue, $value)
     {
-        $unit = new RgbComponent($value);
+        $component = new Rgb($value);
 
-        $this->assertEquals($expectedValue, $unit->getValue());
-        $this->assertInternalType("int", $unit->getValue());
+        $this->assertEquals($expectedValue, $component->getValue());
+        $this->assertInternalType("int", $component->getValue());
     }
 
     public function getCorrectStringValueDataProvider()
@@ -84,7 +84,7 @@ class RgbComponentTest extends AbstractUnitTest
      */
     public function testOutOfBoundsValueShouldThrowException($value)
     {
-        new RgbComponent($value);
+        new Rgb($value);
     }
 
     public function getOutOfBoundsDataProvider()
@@ -102,7 +102,7 @@ class RgbComponentTest extends AbstractUnitTest
      */
     public function testUnexpectedValueShouldThrowException($value)
     {
-        new RgbComponent($value);
+        new Rgb($value);
     }
 
     public function unexpectedValuesDataProvider()
@@ -122,9 +122,9 @@ class RgbComponentTest extends AbstractUnitTest
      */
     public function testToStringShouldReturnStringValue($expectedValue, $value)
     {
-        $unit = new RgbComponent($value);
+        $component = new Rgb($value);
 
-        $this->assertEquals($expectedValue, (string) $unit);
+        $this->assertEquals($expectedValue, (string) $component);
     }
 
     public function getToStringDataProvider()
@@ -143,9 +143,9 @@ class RgbComponentTest extends AbstractUnitTest
      */
     public function testPercentValuesShouldBeTransformed($expectedValue, $value)
     {
-        $unit = new RgbComponent($value);
+        $component = new Rgb($value);
 
-        $this->assertEquals($expectedValue, $unit->getValue());
+        $this->assertEquals($expectedValue, $component->getValue());
     }
 
     public function getPercentValueDataProvider()

@@ -4,7 +4,7 @@ namespace Rainbow\Tests\Calculation\Channel;
 
 use Rainbow\Calculation\Channel\Luma;
 use Rainbow\Rgb;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Percent;
 
 class LumaTest extends \PHPUnit_Framework_TestCase
 {

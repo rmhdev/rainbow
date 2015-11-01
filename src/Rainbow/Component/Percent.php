@@ -8,11 +8,11 @@
  * @license MIT License
  */
 
-namespace Rainbow\Unit;
+namespace Rainbow\Component;
 
-final class RgbComponent implements UnitInterface
+final class Percent implements ComponentInterface
 {
-    const MAX_VALUE = 255;
+    const MAX_VALUE = 100;
 
     private $value;
 
@@ -21,31 +21,30 @@ final class RgbComponent implements UnitInterface
      */
     public function __construct($value = 0)
     {
-        $number = $this->formatNumber($value);
-        if ($this->isOutOfBoundsValue($number)) {
-            throw new \OutOfBoundsException(sprintf("Incorrect value %s", $value));
+        $number = $this->toNumber($value);
+        if ($this->isOutOfBounds($number)) {
+            throw new \OutOfBoundsException(sprintf("Incorrect percent value %s", $value));
         }
         $this->value = $number;
     }
 
-    private function formatNumber($value)
+    private function toNumber($value)
     {
-        $value = trim($value);
-        if ("%" === substr($value, -1, 1)) {
-            $percent = intval($value, 10);
-            $value = ($percent * self::MAX_VALUE) / 100;
+        $processed = trim($value);
+        if ("%" === substr($processed, -1, 1)) {
+            $processed = substr($processed, 0, strlen($processed) - 1);
         }
-        if (!is_numeric($value)) {
-            throw new \UnexpectedValueException(sprintf("Incorrect component %s", $value));
+        if (!is_numeric($processed)) {
+            throw new \UnexpectedValueException(sprintf("Incorrect value %s", $value));
         }
-        if (((int)$value) != $value) {
-            $value = round($value);
+        if (((int)$processed) != $processed) {
+            $processed = round($processed);
         }
 
-        return (int) $value;
+        return (int) $processed;
     }
 
-    private function isOutOfBoundsValue($value)
+    private function isOutOfBounds($value)
     {
         return ($value < 0) || ($value > self::MAX_VALUE);
     }
@@ -63,7 +62,7 @@ final class RgbComponent implements UnitInterface
      */
     public function __toString()
     {
-        return (string) $this->getValue();
+        return sprintf("%s%%", $this->getValue());
     }
 
     /**

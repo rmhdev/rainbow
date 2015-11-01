@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Unit;
+namespace Rainbow\Component;
 
-final class Alpha implements UnitInterface
+final class Alpha implements ComponentInterface
 {
     const MAX_VALUE = 1;
 

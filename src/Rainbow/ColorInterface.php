@@ -10,8 +10,8 @@
 
 namespace Rainbow;
 
-use Rainbow\Unit\Alpha;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Alpha;
+use Rainbow\Component\Percent;
 use Rainbow\Translator\Translator;
 use Rainbow\Calculation\Blender;
 

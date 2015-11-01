@@ -10,8 +10,8 @@
 
 namespace Rainbow;
 
-use Rainbow\Unit\Alpha;
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Component\Alpha;
+use Rainbow\Component\Rgb as RgbComponent;
 
 /**
  * Class Rgb

@@ -13,7 +13,7 @@ namespace Rainbow\Converter;
 use Rainbow\ColorInterface;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Component\Rgb as RgbComponent;
 
 final class RgbConverter implements ConverterInterface
 {

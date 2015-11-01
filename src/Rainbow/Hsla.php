@@ -10,10 +10,9 @@
 
 namespace Rainbow;
 
-use Rainbow\Unit\Alpha;
-
-use Rainbow\Unit\Angle;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Alpha;
+use Rainbow\Component\Angle;
+use Rainbow\Component\Percent;
 
 final class Hsla extends AbstractColor implements ColorInterface, HslInterface
 {

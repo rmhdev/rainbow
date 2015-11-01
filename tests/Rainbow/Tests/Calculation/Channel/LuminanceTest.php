@@ -4,7 +4,7 @@ namespace Rainbow\Tests\Calculation\Channel;
 
 use Rainbow\Calculation\Channel\Luminance;
 use Rainbow\Rgb;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Percent;
 
 class LuminanceTest extends \PHPUnit_Framework_TestCase
 {

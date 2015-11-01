@@ -12,7 +12,7 @@ namespace Rainbow\Tests\Calculation\Operation;
 
 use Rainbow\Calculation\Operation\Saturation;
 use Rainbow\Hsl;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Percent;
 
 class SaturationTest extends \PHPUnit_Framework_TestCase
 {

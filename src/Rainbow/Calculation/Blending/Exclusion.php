@@ -11,7 +11,7 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Component\Rgb;
 
 /**
  * Produces an effect similar to that of the Difference mode but lower in contrast
@@ -23,10 +23,10 @@ final class Exclusion extends AbstractBlending implements CalculationInterface
     /**
      * {@inheritDoc}
      */
-    protected function blend(RgbComponent $value1, RgbComponent $value2)
+    protected function blend(Rgb $value1, Rgb $value2)
     {
         $sum = $value1->getValue() + $value2->getValue();
-        $prod = 2 * ($value1->getValue() * $value2->getValue()) / RgbComponent::maxValue();
+        $prod = 2 * ($value1->getValue() * $value2->getValue()) / Rgb::maxValue();
 
         return $sum - $prod;
     }

@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Unit;
+namespace Rainbow\Component;
 
-interface UnitInterface
+interface ComponentInterface
 {
     /**
      * @return number

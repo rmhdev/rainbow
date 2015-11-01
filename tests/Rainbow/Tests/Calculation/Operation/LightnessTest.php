@@ -12,7 +12,7 @@ namespace Rainbow\Tests\Calculation\Operation;
 
 use Rainbow\Calculation\Operation\Lightness;
 use Rainbow\Hsl;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Percent;
 
 class LightnessTest extends \PHPUnit_Framework_TestCase
 {

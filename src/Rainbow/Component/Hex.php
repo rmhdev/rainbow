@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Unit;
+namespace Rainbow\Component;
 
-final class HexComponent implements UnitInterface
+final class Hex implements ComponentInterface
 {
     /**
      * @var string
@@ -32,7 +32,7 @@ final class HexComponent implements UnitInterface
         }
         if ($this->isOutOfBounds($value)) {
             throw new \OutOfBoundsException(
-                sprintf('Hex value %s must be between 0 and %s', $value, dechex(RgbComponent::MAX_VALUE))
+                sprintf('Hex value %s must be between 0 and %s', $value, dechex(Rgb::MAX_VALUE))
             );
         }
         $result = $this->valueToString($value);
@@ -54,7 +54,7 @@ final class HexComponent implements UnitInterface
             return true;
         }
         $number = hexdec($rawValue);
-        if (RgbComponent::MAX_VALUE < $number) {
+        if (Rgb::MAX_VALUE < $number) {
             return true;
         }
 
@@ -82,6 +82,6 @@ final class HexComponent implements UnitInterface
      */
     public static function maxValue()
     {
-        return RgbComponent::MAX_VALUE;
+        return Rgb::MAX_VALUE;
     }
 }

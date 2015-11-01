@@ -12,9 +12,9 @@ namespace Rainbow\Tests;
 
 use Rainbow\Hsl;
 use Rainbow\Hsla;
-use Rainbow\Unit\Alpha;
-use Rainbow\Unit\Angle;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Alpha;
+use Rainbow\Component\Angle;
+use Rainbow\Component\Percent;
 
 class HslaTest extends AbstractColorTest
 {
@@ -51,7 +51,7 @@ class HslaTest extends AbstractColorTest
         $this->assertEquals(new Alpha(0.5), $color->getAlpha());
     }
 
-    public function testCreateWithUnitsShouldReturnCorrectColor()
+    public function testCreateWithComponentsShouldReturnCorrectColor()
     {
         $color = new Hsla(new Angle(120), new Percent(75), new Percent(95), new Alpha(0.5));
 

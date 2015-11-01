@@ -11,7 +11,7 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Rgba;
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Component\Rgb;
 
 abstract class AbstractBlending
 {
@@ -34,40 +34,40 @@ abstract class AbstractBlending
     }
 
     /**
-     * @param RgbComponent $component1
-     * @param RgbComponent $component2
+     * @param Rgb $component1
+     * @param Rgb $component2
      * @return int
      */
-    abstract protected function blend(RgbComponent $component1, RgbComponent $component2);
+    abstract protected function blend(Rgb $component1, Rgb $component2);
 
     /**
-     * @param int|RgbComponent $component1
-     * @param int|RgbComponent $component2
+     * @param int|Rgb $component1
+     * @param int|Rgb $component2
      * @return float
      */
     protected function multiply($component1, $component2)
     {
-        if ($component1 instanceof RgbComponent) {
+        if ($component1 instanceof Rgb) {
             $component1 = $component1->getValue();
         }
-        if ($component2 instanceof RgbComponent) {
+        if ($component2 instanceof Rgb) {
             $component2 = $component2->getValue();
         }
 
-        return $component1 * $component2 / RgbComponent::MAX_VALUE;
+        return $component1 * $component2 / Rgb::MAX_VALUE;
     }
 
     /**
-     * @param int|RgbComponent $component1
-     * @param int|RgbComponent $component2
+     * @param int|Rgb $component1
+     * @param int|Rgb $component2
      * @return float
      */
     protected function screen($component1, $component2)
     {
-        if ($component1 instanceof RgbComponent) {
+        if ($component1 instanceof Rgb) {
             $component1 = $component1->getValue();
         }
-        if ($component2 instanceof RgbComponent) {
+        if ($component2 instanceof Rgb) {
             $component2 = $component2->getValue();
         }
 

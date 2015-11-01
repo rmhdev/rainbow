@@ -12,7 +12,7 @@ namespace Rainbow\Tests\Calculation\Operation;
 
 use Rainbow\Calculation\Operation\Spin;
 use Rainbow\Hsl;
-use Rainbow\Unit\Angle;
+use Rainbow\Component\Angle;
 
 class SpinTest extends \PHPUnit_Framework_TestCase
 {

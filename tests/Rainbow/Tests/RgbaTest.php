@@ -12,8 +12,8 @@ namespace Rainbow\Tests;
 
 use Rainbow\Hsl;
 use Rainbow\Rgba;
-use Rainbow\Unit\Alpha;
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Component\Alpha;
+use Rainbow\Component\Rgb;
 
 class RgbaTest extends AbstractColorTest
 {
@@ -28,7 +28,7 @@ class RgbaTest extends AbstractColorTest
     {
         $rgba = new Rgba();
 
-        $empty = new RgbComponent();
+        $empty = new Rgb();
         $this->assertEquals($empty, $rgba->getRed());
         $this->assertEquals($empty, $rgba->getGreen());
         $this->assertEquals($empty, $rgba->getBlue());
@@ -45,15 +45,15 @@ class RgbaTest extends AbstractColorTest
     {
         $rgba = new Rgba(100, 150, 200, 0.5);
 
-        $this->assertEquals(new RgbComponent(100), $rgba->getRed());
-        $this->assertEquals(new RgbComponent(150), $rgba->getGreen());
-        $this->assertEquals(new RgbComponent(200), $rgba->getBlue());
+        $this->assertEquals(new Rgb(100), $rgba->getRed());
+        $this->assertEquals(new Rgb(150), $rgba->getGreen());
+        $this->assertEquals(new Rgb(200), $rgba->getBlue());
         $this->assertEquals(new Alpha(0.5), $rgba->getAlpha());
     }
 
-    public function testCreateWithUnitsShouldReturnCorrectColor()
+    public function testCreateWithComponentsShouldReturnCorrectColor()
     {
-        $color = new Rgba(new RgbComponent(120), new RgbComponent(75), new RgbComponent(95), new Alpha(0.5));
+        $color = new Rgba(new Rgb(120), new Rgb(75), new Rgb(95), new Alpha(0.5));
 
         $this->assertEquals(new Rgba(120, 75, 95, 0.5), $color);
     }

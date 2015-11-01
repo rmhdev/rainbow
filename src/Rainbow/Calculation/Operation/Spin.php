@@ -12,7 +12,7 @@ namespace Rainbow\Calculation\Operation;
 
 use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Hsl;
-use Rainbow\Unit\Angle;
+use Rainbow\Component\Angle;
 
 final class Spin implements CalculationInterface
 {

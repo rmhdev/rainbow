@@ -11,8 +11,8 @@
 namespace Rainbow\Calculation\Channel;
 
 use Rainbow\Rgb;
-use Rainbow\Unit\Percent;
-use Rainbow\Unit\RgbComponent;
+use Rainbow\Component\Percent;
+use Rainbow\Component\Rgb as RgbComponent;
 
 abstract class AbstractLuma
 {

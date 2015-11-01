@@ -15,8 +15,8 @@ use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\ColorInterface;
 use Rainbow\Rgba;
-use Rainbow\Unit\Angle;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Angle;
+use Rainbow\Component\Percent;
 
 abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
 {
@@ -87,7 +87,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $hsl = new Hsl();
         $color = $this->toCurrent($hsl);
 
-        $this->assertInstanceOf('Rainbow\Unit\Percent', $color->luma());
+        $this->assertInstanceOf('Rainbow\Component\Percent', $color->luma());
     }
 
     public function testLuminanceShouldReturnPercent()
@@ -95,7 +95,7 @@ abstract class AbstractColorTest extends \PHPUnit_Framework_TestCase
         $hsl = new Hsl();
         $color = $this->toCurrent($hsl);
 
-        $this->assertInstanceOf('Rainbow\Unit\Percent', $color->luminance());
+        $this->assertInstanceOf('Rainbow\Component\Percent', $color->luminance());
     }
 
     public function testGreyscaleShouldReturnColorWithoutSaturation()

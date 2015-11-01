@@ -2,8 +2,8 @@
 
 namespace Rainbow;
 
-use Rainbow\Unit\Angle;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Angle;
+use Rainbow\Component\Percent;
 
 interface HslInterface
 {

@@ -12,7 +12,7 @@ namespace Rainbow\Calculation\Operation;
 
 use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Hsl;
-use Rainbow\Unit\Percent;
+use Rainbow\Component\Percent;
 
 final class Saturation extends AbstractOperation implements CalculationInterface
 {

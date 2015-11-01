@@ -8,22 +8,22 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Unit;
+namespace Rainbow\Tests\Component;
 
-use Rainbow\Unit\UnitInterface;
+use Rainbow\Component\ComponentInterface;
 
-abstract class AbstractUnitTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractComponentTest extends \PHPUnit_Framework_TestCase
 {
     public function testMaxValueShouldReturnValue()
     {
-        $unit = $this->createEmptyUnit();
-        $this->assertEquals($this->expectedMaxValue(), $unit::maxValue());
+        $component = $this->createEmptyComponent();
+        $this->assertEquals($this->expectedMaxValue(), $component::maxValue());
     }
 
     /**
-     * @return UnitInterface
+     * @return ComponentInterface
      */
-    abstract protected function createEmptyUnit();
+    abstract protected function createEmptyComponent();
 
     /**
      * @return mixed
