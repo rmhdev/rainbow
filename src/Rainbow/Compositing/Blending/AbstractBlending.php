@@ -8,10 +8,10 @@
  * @license MIT License
  */
 
-namespace Rainbow\Calculation\Blending;
+namespace Rainbow\Compositing\Blending;
 
 use Rainbow\Rgba;
-use Rainbow\Component\Rgb;
+use Rainbow\Component\Rgb as RgbComponent;
 
 abstract class AbstractBlending implements BlendingInterface
 {
@@ -27,9 +27,9 @@ abstract class AbstractBlending implements BlendingInterface
     public function __construct(Rgba $backdrop, Rgba $source)
     {
         $this->result = new Rgba(
-            $this->blendRed($backdrop, $source) * Rgb::MAX_VALUE,
-            $this->blendGreen($backdrop, $source) * Rgb::MAX_VALUE,
-            $this->blendBlue($backdrop, $source) * Rgb::MAX_VALUE,
+            $this->blendRed($backdrop, $source) * RgbComponent::MAX_VALUE,
+            $this->blendGreen($backdrop, $source) * RgbComponent::MAX_VALUE,
+            $this->blendBlue($backdrop, $source) * RgbComponent::MAX_VALUE,
             1
         );
     }
@@ -37,24 +37,24 @@ abstract class AbstractBlending implements BlendingInterface
     private function blendRed(Rgba $backdrop, Rgba $source)
     {
         return $this->blend(
-            $backdrop->getRed()->getValue() / Rgb::MAX_VALUE,
-            $source->getRed()->getValue() / Rgb::MAX_VALUE
+            $backdrop->getRed()->getValue() / RgbComponent::MAX_VALUE,
+            $source->getRed()->getValue() / RgbComponent::MAX_VALUE
         );
     }
 
     private function blendGreen(Rgba $backdrop, Rgba $source)
     {
         return $this->blend(
-            $backdrop->getGreen()->getValue() / Rgb::MAX_VALUE,
-            $source->getGreen()->getValue() / Rgb::MAX_VALUE
+            $backdrop->getGreen()->getValue() / RgbComponent::MAX_VALUE,
+            $source->getGreen()->getValue() / RgbComponent::MAX_VALUE
         );
     }
 
     private function blendBlue(Rgba $backdrop, Rgba $source)
     {
         return $this->blend(
-            $backdrop->getBlue()->getValue() / Rgb::MAX_VALUE,
-            $source->getBlue()->getValue() / Rgb::MAX_VALUE
+            $backdrop->getBlue()->getValue() / RgbComponent::MAX_VALUE,
+            $source->getBlue()->getValue() / RgbComponent::MAX_VALUE
         );
     }
 

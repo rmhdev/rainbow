@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Calculation\Blending;
+namespace Rainbow\Tests\Compositing\Blending;
 
-use Rainbow\Calculation\Blending\Exclusion;
+use Rainbow\Compositing\Blending\Exclusion;
 use Rainbow\Rgba;
 
 class ExclusionTest extends \PHPUnit_Framework_TestCase

@@ -8,7 +8,7 @@
  * @license MIT License
  */
 
-namespace Rainbow\Calculation\Blending;
+namespace Rainbow\Compositing\Blending;
 
 /**
  * Produces an effect similar to that of the Difference mode but lower in contrast

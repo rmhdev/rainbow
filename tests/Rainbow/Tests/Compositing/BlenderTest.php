@@ -1,8 +1,8 @@
 <?php
 
-namespace Rainbow\Tests\Calculation;
+namespace Rainbow\Tests\Compositing;
 
-use Rainbow\Calculation\Blender;
+use Rainbow\Compositing\Blender;
 use Rainbow\Rgba;
 
 class BlenderTest extends \PHPUnit_Framework_TestCase

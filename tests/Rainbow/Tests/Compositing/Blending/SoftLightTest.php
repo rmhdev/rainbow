@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Calculation\Blending;
+namespace Rainbow\Tests\Compositing\Blending;
 
-use Rainbow\Calculation\Blending\SoftLight;
+use Rainbow\Compositing\Blending\SoftLight;
 use Rainbow\Rgba;
 
 class SoftLightTest extends \PHPUnit_Framework_TestCase

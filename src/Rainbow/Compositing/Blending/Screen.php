@@ -8,7 +8,7 @@
  * @license MIT License
  */
 
-namespace Rainbow\Calculation\Blending;
+namespace Rainbow\Compositing\Blending;
 
 final class Screen extends AbstractBlending implements BlendingInterface
 {

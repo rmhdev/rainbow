@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Calculation\Blending;
+namespace Rainbow\Tests\Compositing\Blending;
 
-use Rainbow\Calculation\Blending\Overlay;
+use Rainbow\Compositing\Blending\Overlay;
 use Rainbow\Rgba;
 
 class OverlayTest extends \PHPUnit_Framework_TestCase

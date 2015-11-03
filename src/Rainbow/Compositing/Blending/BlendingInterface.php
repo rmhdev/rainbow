@@ -1,6 +1,6 @@
 <?php
 
-namespace Rainbow\Calculation\Blending;
+namespace Rainbow\Compositing\Blending;
 
 use Rainbow\Rgba;
 

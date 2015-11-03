@@ -8,7 +8,7 @@
  * @license MIT License
  */
 
-namespace Rainbow\Calculation\Blending;
+namespace Rainbow\Compositing\Blending;
 
 final class Multiply extends AbstractBlending implements BlendingInterface
 {

@@ -10,7 +10,7 @@
 
 namespace Rainbow\Tests;
 
-use Rainbow\Calculation\Blender;
+use Rainbow\Compositing\Blender;
 use Rainbow\Hsl;
 use Rainbow\Rgb;
 use Rainbow\ColorInterface;

@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Calculation\Blending;
+namespace Rainbow\Tests\Compositing\Blending;
 
-use Rainbow\Calculation\Blending\ColorBurn;
+use Rainbow\Compositing\Blending\ColorBurn;
 use Rainbow\Rgba;
 
 class ColorBurnTest extends \PHPUnit_Framework_TestCase

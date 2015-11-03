@@ -8,7 +8,7 @@
  * @license MIT License
  */
 
-namespace Rainbow\Calculation\Blending;
+namespace Rainbow\Compositing\Blending;
 
 /**
  * Subtracts the darker of the two constituent colors from the lighter color

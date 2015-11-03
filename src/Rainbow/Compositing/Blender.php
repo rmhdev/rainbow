@@ -8,17 +8,17 @@
  * @license MIT License
  */
 
-namespace Rainbow\Calculation;
+namespace Rainbow\Compositing;
 
-use Rainbow\Calculation\Blending\ColorBurn;
-use Rainbow\Calculation\Blending\ColorDodge;
-use Rainbow\Calculation\Blending\Difference;
-use Rainbow\Calculation\Blending\Exclusion;
-use Rainbow\Calculation\Blending\HardLight;
-use Rainbow\Calculation\Blending\Multiply;
-use Rainbow\Calculation\Blending\Overlay;
-use Rainbow\Calculation\Blending\Screen;
-use Rainbow\Calculation\Blending\SoftLight;
+use Rainbow\Compositing\Blending\ColorBurn;
+use Rainbow\Compositing\Blending\ColorDodge;
+use Rainbow\Compositing\Blending\Difference;
+use Rainbow\Compositing\Blending\Exclusion;
+use Rainbow\Compositing\Blending\HardLight;
+use Rainbow\Compositing\Blending\Multiply;
+use Rainbow\Compositing\Blending\Overlay;
+use Rainbow\Compositing\Blending\Screen;
+use Rainbow\Compositing\Blending\SoftLight;
 use Rainbow\Rgba;
 
 /**

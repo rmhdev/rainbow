@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Calculation\Blending;
+namespace Rainbow\Tests\Compositing\Blending;
 
-use Rainbow\Calculation\Blending\Screen;
+use Rainbow\Compositing\Blending\Screen;
 use Rainbow\Rgba;
 
 class ScreenTest extends \PHPUnit_Framework_TestCase

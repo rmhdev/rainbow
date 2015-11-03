@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Calculation\Blending;
+namespace Rainbow\Tests\Compositing\Blending;
 
-use Rainbow\Calculation\Blending\Difference;
+use Rainbow\Compositing\Blending\Difference;
 use Rainbow\Rgba;
 
 class DifferenceTest extends \PHPUnit_Framework_TestCase

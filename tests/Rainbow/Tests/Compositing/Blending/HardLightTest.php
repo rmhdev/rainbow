@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace Rainbow\Tests\Calculation\Blending;
+namespace Rainbow\Tests\Compositing\Blending;
 
-use Rainbow\Calculation\Blending\HardLight;
+use Rainbow\Compositing\Blending\HardLight;
 use Rainbow\Rgba;
 
 class HardLightTest extends \PHPUnit_Framework_TestCase

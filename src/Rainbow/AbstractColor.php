@@ -16,7 +16,7 @@ use Rainbow\Calculation\Operation\Contrast;
 use Rainbow\Calculation\Operation\Lightness;
 use Rainbow\Calculation\Operation\Saturation;
 use Rainbow\Calculation\Operation\Spin;
-use Rainbow\Calculation\Blender;
+use Rainbow\Compositing\Blender;
 use Rainbow\Translator\Translator;
 
 abstract class AbstractColor implements ColorInterface

@@ -8,7 +8,7 @@
  * @license MIT License
  */
 
-namespace Rainbow\Calculation\Blending;
+namespace Rainbow\Compositing\Blending;
 
 /**
  * Darkens or lightens the colors, depending on the source color value
