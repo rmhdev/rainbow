@@ -64,13 +64,4 @@ final class Percent implements ComponentInterface
     {
         return sprintf("%s%%", $this->getValue());
     }
-
-    /**
-     * {@inheritDoc}
-     * @return int
-     */
-    public static function maxValue()
-    {
-        return self::MAX_VALUE;
-    }
 }

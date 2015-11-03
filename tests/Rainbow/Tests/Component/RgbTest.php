@@ -26,11 +26,6 @@ class RgbTest extends AbstractComponentTest
         return new Rgb();
     }
 
-    protected function expectedMaxValue()
-    {
-        return 255;
-    }
-
     /**
      * @dataProvider getCorrectValueDataProvider
      * @param $expectedValue

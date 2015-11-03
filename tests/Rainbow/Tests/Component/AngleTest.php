@@ -27,11 +27,6 @@ class AngleTest extends AbstractComponentTest
         return new Angle();
     }
 
-    protected function expectedMaxValue()
-    {
-        return 360;
-    }
-
     /**
      * @dataProvider getCorrectValueDataProvider
      * @param $value

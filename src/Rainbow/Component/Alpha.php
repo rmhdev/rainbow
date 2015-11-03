@@ -65,13 +65,4 @@ final class Alpha implements ComponentInterface
     {
         return (string) $this->getValue();
     }
-
-    /**
-     * {@inheritDoc}
-     * @return float
-     */
-    public static function maxValue()
-    {
-        return self::MAX_VALUE;
-    }
 }

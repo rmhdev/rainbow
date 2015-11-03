@@ -26,11 +26,6 @@ class HexTest extends AbstractComponentTest
         return new Hex();
     }
 
-    protected function expectedMaxValue()
-    {
-        return 255;
-    }
-
     /**
      * @dataProvider correctValueDataProvider
      * @param string $expected

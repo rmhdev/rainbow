@@ -27,11 +27,6 @@ class PercentTest extends AbstractComponentTest
         return new Percent();
     }
 
-    protected function expectedMaxValue()
-    {
-        return 100;
-    }
-
     /**
      * @dataProvider getCorrectValuesDataProvider
      * @param $value

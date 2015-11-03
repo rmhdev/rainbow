@@ -34,7 +34,7 @@ final class Hex implements ComponentInterface
         }
         if ($this->isOutOfBounds($value)) {
             throw new \OutOfBoundsException(
-                sprintf('Hex value %s must be between 0 and %s', $value, self::maxValue())
+                sprintf('Hex value %s must be between 0 and %s', $value, Rgb::MAX_VALUE)
             );
         }
         $result = $this->valueToString($value);
@@ -82,13 +82,5 @@ final class Hex implements ComponentInterface
         }
 
         return $string;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public static function maxValue()
-    {
-        return Rgb::MAX_VALUE;
     }
 }

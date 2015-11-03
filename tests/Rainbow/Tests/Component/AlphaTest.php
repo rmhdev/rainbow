@@ -32,9 +32,4 @@ class AlphaTest extends AbstractComponentTest
     {
         return new Alpha();
     }
-
-    protected function expectedMaxValue()
-    {
-        return 1;
-    }
 }

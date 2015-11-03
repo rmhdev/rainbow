@@ -27,22 +27,22 @@ abstract class AbstractBlending
     public function __construct(Rgba $color1, Rgba $color2)
     {
         $red = $this->blend(
-            $color1->getRed()->getValue() / Rgb::maxValue(),
-            $color2->getRed()->getValue() / Rgb::maxValue()
+            $color1->getRed()->getValue() / Rgb::MAX_VALUE,
+            $color2->getRed()->getValue() / Rgb::MAX_VALUE
         );
         $green = $this->blend(
-            $color1->getGreen()->getValue() / Rgb::maxValue(),
-            $color2->getGreen()->getValue() / Rgb::maxValue()
+            $color1->getGreen()->getValue() / Rgb::MAX_VALUE,
+            $color2->getGreen()->getValue() / Rgb::MAX_VALUE
         );
         $blue = $this->blend(
-            $color1->getBlue()->getValue() / Rgb::maxValue(),
-            $color2->getBlue()->getValue() / Rgb::maxValue()
+            $color1->getBlue()->getValue() / Rgb::MAX_VALUE,
+            $color2->getBlue()->getValue() / Rgb::MAX_VALUE
         );
 
         $this->result = new Rgba(
-            $red * Rgb::maxValue(),
-            $green * Rgb::maxValue(),
-            $blue * Rgb::maxValue(),
+            $red * Rgb::MAX_VALUE,
+            $green * Rgb::MAX_VALUE,
+            $blue * Rgb::MAX_VALUE,
             1
         );
     }

@@ -65,13 +65,4 @@ final class Rgb implements ComponentInterface
     {
         return (string) $this->getValue();
     }
-
-    /**
-     * {@inheritDoc}
-     * @return int
-     */
-    public static function maxValue()
-    {
-        return self::MAX_VALUE;
-    }
 }

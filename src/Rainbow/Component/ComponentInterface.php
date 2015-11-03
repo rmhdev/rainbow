@@ -21,9 +21,4 @@ interface ComponentInterface
      * @return string
      */
     public function __toString();
-
-    /**
-     * @return number
-     */
-    public static function maxValue();
 }
