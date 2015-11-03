@@ -19,6 +19,6 @@ final class Multiply extends AbstractBlending implements CalculationInterface
      */
     protected function blend($backdrop, $source)
     {
-        return $this->multiply($backdrop, $source);
+        return $backdrop * $source;
     }
 }

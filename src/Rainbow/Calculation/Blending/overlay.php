@@ -22,7 +22,7 @@ class Overlay extends AbstractBlending implements CalculationInterface
         $value1 = 2 * $backdrop;
         if ($value1 <= 1) {
 
-            return $this->multiply($value1, $source);
+            return $value1 * $source;
         }
 
         return $this->screen($value1 - 1, $source);

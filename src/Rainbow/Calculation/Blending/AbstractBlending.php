@@ -59,19 +59,9 @@ abstract class AbstractBlending
      * @param float $source
      * @return float
      */
-    protected function multiply($backdrop, $source)
-    {
-        return $backdrop * $source;
-    }
-
-    /**
-     * @param float $backdrop
-     * @param float $source
-     * @return float
-     */
     protected function screen($backdrop, $source)
     {
-        return $backdrop + $source - ($this->multiply($backdrop, $source));
+        return $backdrop + $source - ($backdrop * $source);
     }
 
     /**
