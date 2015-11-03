@@ -10,14 +10,12 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Calculation\CalculationInterface;
-
 /**
  * Darkens or lightens the colors, depending on the source color value
  * @package Rainbow\Calculation\Blending
  * @link http://www.w3.org/TR/compositing-1/#blendingsoftlight
  */
-final class SoftLight extends AbstractBlending implements CalculationInterface
+final class SoftLight extends AbstractBlending implements BlendingInterface
 {
     /**
      * {@inheritDoc}

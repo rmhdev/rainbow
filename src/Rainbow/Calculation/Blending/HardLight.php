@@ -10,7 +10,6 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Calculation\CalculationInterface;
 use Rainbow\Rgba;
 
 /**
@@ -18,7 +17,7 @@ use Rainbow\Rgba;
  * @package Rainbow\Calculation\Blending
  * @link http://www.w3.org/TR/compositing-1/#valdef-blend-mode-hard-light
  */
-final class HardLight implements CalculationInterface
+final class HardLight implements BlendingInterface
 {
     /**
      * @var Rgba
@@ -26,12 +25,12 @@ final class HardLight implements CalculationInterface
     private $color;
 
     /**
-     * @param Rgba $color1
-     * @param Rgba $color2
+     * @param Rgba $backdrop
+     * @param Rgba $source
      */
-    public function __construct(Rgba $color1, Rgba $color2)
+    public function __construct(Rgba $backdrop, Rgba $source)
     {
-        $overlay = new Overlay($color2, $color1);
+        $overlay = new Overlay($source, $backdrop);
         $this->color = $overlay->result();
     }
 

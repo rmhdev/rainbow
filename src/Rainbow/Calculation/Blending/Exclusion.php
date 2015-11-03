@@ -10,14 +10,12 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Calculation\CalculationInterface;
-
 /**
  * Produces an effect similar to that of the Difference mode but lower in contrast
  * @package Rainbow\Calculation\Blending
  * @link http://www.w3.org/TR/compositing-1/#valdef-blend-mode-exclusion
  */
-final class Exclusion extends AbstractBlending implements CalculationInterface
+final class Exclusion extends AbstractBlending implements BlendingInterface
 {
     /**
      * {@inheritDoc}

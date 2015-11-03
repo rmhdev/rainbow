@@ -10,14 +10,12 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Calculation\CalculationInterface;
-
 /**
  * Brightens the backdrop color to reflect the source color
  * @package Rainbow\Calculation\Blending
  * @link http://www.w3.org/TR/compositing-1/#valdef-blend-mode-color-dodge
  */
-final class ColorDodge extends AbstractBlending implements CalculationInterface
+final class ColorDodge extends AbstractBlending implements BlendingInterface
 {
     /**
      * {@inheritDoc}

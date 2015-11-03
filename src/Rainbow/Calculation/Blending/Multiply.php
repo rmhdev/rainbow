@@ -10,9 +10,7 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Calculation\CalculationInterface;
-
-final class Multiply extends AbstractBlending implements CalculationInterface
+final class Multiply extends AbstractBlending implements BlendingInterface
 {
     /**
      * {@inheritDoc}

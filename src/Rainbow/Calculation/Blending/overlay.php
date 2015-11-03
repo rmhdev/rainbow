@@ -10,9 +10,7 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Calculation\CalculationInterface;
-
-class Overlay extends AbstractBlending implements CalculationInterface
+class Overlay extends AbstractBlending implements BlendingInterface
 {
     /**
      * {@inheritDoc}

@@ -10,14 +10,12 @@
 
 namespace Rainbow\Calculation\Blending;
 
-use Rainbow\Calculation\CalculationInterface;
-
 /**
  * Subtracts the darker of the two constituent colors from the lighter color
  * @package Rainbow\Calculation\Blending
  * @link http://www.w3.org/TR/compositing-1/#valdef-blend-mode-difference
  */
-final class Difference extends AbstractBlending implements CalculationInterface
+final class Difference extends AbstractBlending implements BlendingInterface
 {
     /**
      * {@inheritDoc}

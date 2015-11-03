@@ -13,7 +13,7 @@ namespace Rainbow\Calculation\Blending;
 use Rainbow\Rgba;
 use Rainbow\Component\Rgb;
 
-abstract class AbstractBlending
+abstract class AbstractBlending implements BlendingInterface
 {
     /**
      * @var Rgba
@@ -21,40 +21,40 @@ abstract class AbstractBlending
     private $result;
 
     /**
-     * @param Rgba $color1
-     * @param Rgba $color2
+     * @param Rgba $backdrop
+     * @param Rgba $source
      */
-    public function __construct(Rgba $color1, Rgba $color2)
+    public function __construct(Rgba $backdrop, Rgba $source)
     {
         $this->result = new Rgba(
-            $this->blendRed($color1, $color2) * Rgb::MAX_VALUE,
-            $this->blendGreen($color1, $color2) * Rgb::MAX_VALUE,
-            $this->blendBlue($color1, $color2) * Rgb::MAX_VALUE,
+            $this->blendRed($backdrop, $source) * Rgb::MAX_VALUE,
+            $this->blendGreen($backdrop, $source) * Rgb::MAX_VALUE,
+            $this->blendBlue($backdrop, $source) * Rgb::MAX_VALUE,
             1
         );
     }
 
-    private function blendRed(Rgba $color1, Rgba $color2)
+    private function blendRed(Rgba $backdrop, Rgba $source)
     {
         return $this->blend(
-            $color1->getRed()->getValue() / Rgb::MAX_VALUE,
-            $color2->getRed()->getValue() / Rgb::MAX_VALUE
+            $backdrop->getRed()->getValue() / Rgb::MAX_VALUE,
+            $source->getRed()->getValue() / Rgb::MAX_VALUE
         );
     }
 
-    private function blendGreen(Rgba $color1, Rgba $color2)
+    private function blendGreen(Rgba $backdrop, Rgba $source)
     {
         return $this->blend(
-            $color1->getGreen()->getValue() / Rgb::MAX_VALUE,
-            $color2->getGreen()->getValue() / Rgb::MAX_VALUE
+            $backdrop->getGreen()->getValue() / Rgb::MAX_VALUE,
+            $source->getGreen()->getValue() / Rgb::MAX_VALUE
         );
     }
 
-    private function blendBlue(Rgba $color1, Rgba $color2)
+    private function blendBlue(Rgba $backdrop, Rgba $source)
     {
         return $this->blend(
-            $color1->getBlue()->getValue() / Rgb::MAX_VALUE,
-            $color2->getBlue()->getValue() / Rgb::MAX_VALUE
+            $backdrop->getBlue()->getValue() / Rgb::MAX_VALUE,
+            $source->getBlue()->getValue() / Rgb::MAX_VALUE
         );
     }
 
