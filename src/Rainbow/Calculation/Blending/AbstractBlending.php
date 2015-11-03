@@ -26,52 +26,52 @@ abstract class AbstractBlending
      */
     public function __construct(Rgba $color1, Rgba $color2)
     {
-        $red = $this->blend($color1->getRed(), $color2->getRed());
-        $green = $this->blend($color1->getGreen(), $color2->getGreen());
-        $blue = $this->blend($color1->getBlue(), $color2->getBlue());
+        $red = $this->blend(
+            $color1->getRed()->getValue() / Rgb::maxValue(),
+            $color2->getRed()->getValue() / Rgb::maxValue()
+        );
+        $green = $this->blend(
+            $color1->getGreen()->getValue() / Rgb::maxValue(),
+            $color2->getGreen()->getValue() / Rgb::maxValue()
+        );
+        $blue = $this->blend(
+            $color1->getBlue()->getValue() / Rgb::maxValue(),
+            $color2->getBlue()->getValue() / Rgb::maxValue()
+        );
 
-        $this->result = new Rgba($red, $green, $blue, 1);
+        $this->result = new Rgba(
+            $red * Rgb::maxValue(),
+            $green * Rgb::maxValue(),
+            $blue * Rgb::maxValue(),
+            1
+        );
     }
 
     /**
-     * @param Rgb $component1
-     * @param Rgb $component2
-     * @return int
-     */
-    abstract protected function blend(Rgb $component1, Rgb $component2);
-
-    /**
-     * @param int|Rgb $component1
-     * @param int|Rgb $component2
+     * @param float $backdrop
+     * @param float $source
      * @return float
      */
-    protected function multiply($component1, $component2)
-    {
-        if ($component1 instanceof Rgb) {
-            $component1 = $component1->getValue();
-        }
-        if ($component2 instanceof Rgb) {
-            $component2 = $component2->getValue();
-        }
+    abstract protected function blend($backdrop, $source);
 
-        return $component1 * $component2 / Rgb::MAX_VALUE;
+    /**
+     * @param float $backdrop
+     * @param float $source
+     * @return float
+     */
+    protected function multiply($backdrop, $source)
+    {
+        return $backdrop * $source;
     }
 
     /**
-     * @param int|Rgb $component1
-     * @param int|Rgb $component2
+     * @param float $backdrop
+     * @param float $source
      * @return float
      */
-    protected function screen($component1, $component2)
+    protected function screen($backdrop, $source)
     {
-        if ($component1 instanceof Rgb) {
-            $component1 = $component1->getValue();
-        }
-        if ($component2 instanceof Rgb) {
-            $component2 = $component2->getValue();
-        }
-
-        return $component1 + $component2 - ($this->multiply($component1, $component2));
+        return $backdrop + $source - ($this->multiply($backdrop, $source));
     }
 
     /**

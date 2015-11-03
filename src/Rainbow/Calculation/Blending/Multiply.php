@@ -11,15 +11,14 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Component\Rgb;
 
 final class Multiply extends AbstractBlending implements CalculationInterface
 {
     /**
      * {@inheritDoc}
      */
-    protected function blend(Rgb $value1, Rgb $value2)
+    protected function blend($backdrop, $source)
     {
-        return $this->multiply($value1, $value2);
+        return $this->multiply($backdrop, $source);
     }
 }

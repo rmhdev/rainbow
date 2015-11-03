@@ -11,7 +11,6 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Component\Rgb;
 
 /**
  * Subtracts the darker of the two constituent colors from the lighter color
@@ -23,8 +22,8 @@ final class Difference extends AbstractBlending implements CalculationInterface
     /**
      * {@inheritDoc}
      */
-    protected function blend(Rgb $value1, Rgb $value2)
+    protected function blend($backdrop, $source)
     {
-        return abs($value1->getValue() - $value2->getValue());
+        return abs($backdrop - $source);
     }
 }

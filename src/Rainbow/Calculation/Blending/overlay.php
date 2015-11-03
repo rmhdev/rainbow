@@ -11,21 +11,20 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Component\Rgb;
 
 class Overlay extends AbstractBlending implements CalculationInterface
 {
     /**
      * {@inheritDoc}
      */
-    protected function blend(Rgb $component1, Rgb $component2)
+    protected function blend($backdrop, $source)
     {
-        $value1 = 2 * $component1->getValue();
-        if ($value1 <= Rgb::MAX_VALUE) {
+        $value1 = 2 * $backdrop;
+        if ($value1 <= 1) {
 
-            return $this->multiply($value1, $component2->getValue());
+            return $this->multiply($value1, $source);
         }
 
-        return $this->screen($value1 - Rgb::MAX_VALUE, $component2->getValue());
+        return $this->screen($value1 - 1, $source);
     }
 }

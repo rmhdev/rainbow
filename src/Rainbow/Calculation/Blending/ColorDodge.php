@@ -11,7 +11,6 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Component\Rgb;
 
 /**
  * Brightens the backdrop color to reflect the source color
@@ -23,17 +22,15 @@ final class ColorDodge extends AbstractBlending implements CalculationInterface
     /**
      * {@inheritDoc}
      */
-    protected function blend(Rgb $value1, Rgb $value2)
+    protected function blend($backdrop, $source)
     {
-        $value1 = $value1->getValue() / Rgb::maxValue();
-        $value2 = $value2->getValue() / Rgb::maxValue();
-        if ($value1 == 0) {
+        if ($backdrop == 0) {
             return 0;
         }
-        if ($value2 == 1) {
-            return Rgb::maxValue();
+        if ($source == 1) {
+            return 1;
         }
 
-        return min(1, $value1 / (1 - $value2)) * Rgb::maxValue();
+        return min(1, $backdrop / (1 - $source));
     }
 }

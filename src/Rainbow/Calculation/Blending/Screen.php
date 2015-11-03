@@ -11,15 +11,14 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Component\Rgb;
 
 final class Screen extends AbstractBlending implements CalculationInterface
 {
     /**
      * {@inheritDoc}
      */
-    protected function blend(Rgb $value1, Rgb $value2)
+    protected function blend($backdrop, $source)
     {
-        return $this->screen($value1, $value2);
+        return $this->screen($backdrop, $source);
     }
 }

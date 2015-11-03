@@ -11,7 +11,6 @@
 namespace Rainbow\Calculation\Blending;
 
 use Rainbow\Calculation\CalculationInterface;
-use Rainbow\Component\Rgb;
 
 /**
  * Darkens the backdrop color to reflect the source color
@@ -23,19 +22,17 @@ final class ColorBurn extends AbstractBlending implements CalculationInterface
     /**
      * {@inheritDoc}
      */
-    protected function blend(Rgb $value1, Rgb $value2)
+    protected function blend($backdrop, $source)
     {
-        $value1 = $value1->getValue() / $value1::maxValue();
-        $value2 = $value2->getValue() / $value2::maxValue();
-        if ($value1 == 1) {
+        if ($backdrop == 1) {
 
-            return Rgb::maxValue();
+            return 1;
         }
-        if ($value2 == 0) {
+        if ($source == 0) {
 
             return 0;
         }
 
-        return (1 - min(1, (1 - $value1) / $value2)) * Rgb::maxValue();
+        return 1 - min(1, (1 - $backdrop) / $source);
     }
 }
