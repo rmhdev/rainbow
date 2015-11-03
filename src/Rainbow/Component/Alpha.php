@@ -12,14 +12,42 @@ namespace Rainbow\Component;
 
 final class Alpha implements ComponentInterface
 {
-    private $component;
+    const MAX_VALUE = 1;
+
+    private $value;
 
     /**
      * @param int|number $value
      */
-    public function __construct($value = Component::MAX_VALUE)
+    public function __construct($value = self::MAX_VALUE)
     {
-        $this->component = new Component($value);
+        $this->setValue($value);
+    }
+
+    private function setValue($value)
+    {
+        if ($this->isNotANumber($value)) {
+            throw new \UnexpectedValueException(sprintf("Incorrect value %s", $value));
+        }
+        if ($this->isOutOfBounds($value)) {
+            throw new \OutOfBoundsException(sprintf("Incorrect value %s", $value));
+        }
+        $this->value = $this->formatNumber($value);
+    }
+
+    private function isNotANumber($value)
+    {
+        return !is_numeric(trim($value));
+    }
+
+    private function formatNumber($value)
+    {
+        return round(floatval($value) * 100) / 100;
+    }
+
+    private function isOutOfBounds($value)
+    {
+        return ($value < 0) || ($value > self::MAX_VALUE);
     }
 
     /**
@@ -27,7 +55,7 @@ final class Alpha implements ComponentInterface
      */
     public function getValue()
     {
-        return $this->component->getValue();
+        return $this->value;
     }
 
     /**
@@ -35,7 +63,7 @@ final class Alpha implements ComponentInterface
      */
     public function __toString()
     {
-        return (string) $this->component;
+        return (string) $this->getValue();
     }
 
     /**
@@ -44,6 +72,6 @@ final class Alpha implements ComponentInterface
      */
     public static function maxValue()
     {
-        return Component::maxValue();
+        return self::MAX_VALUE;
     }
 }

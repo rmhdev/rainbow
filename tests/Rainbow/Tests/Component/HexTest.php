@@ -10,7 +10,6 @@
 
 namespace Rainbow\Tests\Component;
 
-use Rainbow\Component\Component;
 use Rainbow\Component\Hex;
 
 class HexTest extends AbstractComponentTest
@@ -78,23 +77,5 @@ class HexTest extends AbstractComponentTest
         $hexComponent = new Hex("1a");
 
         $this->assertEquals("1a", (string)$hexComponent);
-    }
-
-    protected function createWithMinValue()
-    {
-        return new Hex(0);
-    }
-
-    protected function createWithMaxValue()
-    {
-        return new Hex(dechex(Hex::maxValue()));
-    }
-
-    public function testCreateComponentWithValueShouldReturnComponent()
-    {
-        $this->assertEquals(
-            new Component(0.5),
-            Component::createComponent(new Hex("80"))
-        );
     }
 }

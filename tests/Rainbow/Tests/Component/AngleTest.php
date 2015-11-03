@@ -11,7 +11,6 @@
 namespace Rainbow\Tests\Component;
 
 use Rainbow\Component\Angle;
-use Rainbow\Component\Component;
 
 class AngleTest extends AbstractComponentTest
 {
@@ -120,20 +119,5 @@ class AngleTest extends AbstractComponentTest
             array("700", "340"),
             array(-100, "260"),
         );
-    }
-
-    protected function createWithMinValue()
-    {
-        return new Angle(0);
-    }
-
-    protected function createWithMaxValue()
-    {
-        return new Angle(Angle::maxValue() - 1);
-    }
-
-    public function testCreateComponentWithValueShouldReturnComponent()
-    {
-        $this->assertEquals(new Component(0.5), Component::createComponent(new Angle(180)));
     }
 }

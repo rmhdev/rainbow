@@ -10,7 +10,6 @@
 
 namespace Rainbow\Tests\Component;
 
-use Rainbow\Component\Component;
 use Rainbow\Component\Percent;
 
 class PercentTest extends AbstractComponentTest
@@ -116,20 +115,5 @@ class PercentTest extends AbstractComponentTest
             array(12, "12%"),
             array(" 100 ", "100%"),
         );
-    }
-
-    protected function createWithMinValue()
-    {
-        return new Percent(0);
-    }
-
-    protected function createWithMaxValue()
-    {
-        return new Percent(Percent::maxValue());
-    }
-
-    public function testCreateComponentWithValueShouldReturnComponent()
-    {
-        $this->assertEquals(new Component(0.5), Component::createComponent(new Percent(50)));
     }
 }
