@@ -16,6 +16,7 @@ use Rainbow\Compositing\Blending\Difference;
 use Rainbow\Compositing\Blending\Exclusion;
 use Rainbow\Compositing\Blending\HardLight;
 use Rainbow\Compositing\Blending\Multiply;
+use Rainbow\Compositing\Blending\Normal;
 use Rainbow\Compositing\Blending\Overlay;
 use Rainbow\Compositing\Blending\Screen;
 use Rainbow\Compositing\Blending\SoftLight;
@@ -152,6 +153,18 @@ final class Blender
     public function colorBurn(Rgba $color)
     {
         $blending = new ColorBurn($this->getColor(), $color);
+
+        return $blending->result();
+    }
+
+    /**
+     * @see Rainbow\Compositing\Blending\Normal
+     * @param Rgba $color
+     * @return Rgba
+     */
+    public function normal(Rgba $color)
+    {
+        $blending = new Normal($this->getColor(), $color);
 
         return $blending->result();
     }

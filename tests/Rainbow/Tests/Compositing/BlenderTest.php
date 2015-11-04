@@ -82,4 +82,9 @@ class BlenderTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Rainbow\Rgba', $this->blender->colorBurn($this->createNewColor()));
     }
+
+    public function testNormalShouldReturnColor()
+    {
+        $this->assertInstanceOf('Rainbow\Rgba', $this->blender->normal($this->createNewColor()));
+    }
 }
