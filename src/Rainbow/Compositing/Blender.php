@@ -12,6 +12,7 @@ namespace Rainbow\Compositing;
 
 use Rainbow\Compositing\Blending\ColorBurn;
 use Rainbow\Compositing\Blending\ColorDodge;
+use Rainbow\Compositing\Blending\Darken;
 use Rainbow\Compositing\Blending\Difference;
 use Rainbow\Compositing\Blending\Exclusion;
 use Rainbow\Compositing\Blending\HardLight;
@@ -165,6 +166,18 @@ final class Blender
     public function normal(Rgba $color)
     {
         $blending = new Normal($this->getColor(), $color);
+
+        return $blending->result();
+    }
+
+    /**
+     * @see Rainbow\Compositing\Blending\Darken
+     * @param Rgba $color
+     * @return Rgba
+     */
+    public function darken(Rgba $color)
+    {
+        $blending = new Darken($this->getColor(), $color);
 
         return $blending->result();
     }
