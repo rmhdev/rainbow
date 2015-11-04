@@ -23,7 +23,6 @@ use Rainbow\Rgba;
 
 /**
  * Class Blender
- * @package Rainbow\Calculation
  */
 final class Blender
 {
@@ -50,7 +49,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\Multiply::result()
+     * @see Rainbow\Compositing\Blending\Multiply
      * @param Rgba $color
      * @return Rgba
      */
@@ -62,7 +61,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\Screen::result()
+     * @see Rainbow\Compositing\Blending\Screen
      * @param Rgba $color
      * @return Rgba
      */
@@ -74,7 +73,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\Overlay::result()
+     * @see Rainbow\Compositing\Blending\Overlay
      * @param Rgba $color
      * @return Rgba
      */
@@ -86,7 +85,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\HardLight::result()
+     * @see Rainbow\Compositing\Blending\HardLight
      * @param Rgba $color
      * @return Rgba
      */
@@ -98,7 +97,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\SoftLight::result()
+     * @see Rainbow\Compositing\Blending\SoftLight
      * @param Rgba $color
      * @return Rgba
      */
@@ -110,7 +109,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\Difference::result()
+     * @see Rainbow\Compositing\Blending\Difference
      * @param Rgba $color
      * @return Rgba
      */
@@ -122,7 +121,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\Exclusion::result()
+     * @see Rainbow\Compositing\Blending\Exclusion
      * @param Rgba $color
      * @return Rgba
      */
@@ -134,7 +133,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\ColorDodge::result()
+     * @see Rainbow\Compositing\Blending\ColorDodge
      * @param Rgba $color
      * @return Rgba
      */
@@ -146,7 +145,7 @@ final class Blender
     }
 
     /**
-     * @see Rainbow\Calculation\Blending\ColorBurn::result()
+     * @see Rainbow\Compositing\Blending\ColorBurn
      * @param Rgba $color
      * @return Rgba
      */

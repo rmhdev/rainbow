@@ -10,6 +10,10 @@
 
 namespace Rainbow\Compositing\Blending;
 
+/**
+ * Multiplies the complements of the backdrop and source color values, then complements the result.
+ * @link http://www.w3.org/TR/compositing-1/#blendingscreen
+ */
 final class Screen extends AbstractBlending implements BlendingInterface
 {
     /**

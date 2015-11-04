@@ -12,8 +12,7 @@ namespace Rainbow\Compositing\Blending;
 
 /**
  * Produces an effect similar to that of the Difference mode but lower in contrast
- * @package Rainbow\Calculation\Blending
- * @link http://www.w3.org/TR/compositing-1/#valdef-blend-mode-exclusion
+ * @link http://www.w3.org/TR/compositing-1/#blendingexclusion
  */
 final class Exclusion extends AbstractBlending implements BlendingInterface
 {

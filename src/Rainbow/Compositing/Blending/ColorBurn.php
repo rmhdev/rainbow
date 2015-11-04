@@ -12,8 +12,7 @@ namespace Rainbow\Compositing\Blending;
 
 /**
  * Darkens the backdrop color to reflect the source color
- * @package Rainbow\Calculation\Blending
- * @link http://www.w3.org/TR/compositing-1/#valdef-blend-mode-color-burn
+ * @link http://www.w3.org/TR/compositing-1/#blendingcolorburn
  */
 final class ColorBurn extends AbstractBlending implements BlendingInterface
 {

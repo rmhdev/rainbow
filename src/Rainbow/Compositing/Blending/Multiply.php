@@ -10,6 +10,10 @@
 
 namespace Rainbow\Compositing\Blending;
 
+/**
+ * The source color is multiplied by the destination color and replaces the destination
+ * @link http://www.w3.org/TR/compositing-1/#blendingmultiply
+ */
 final class Multiply extends AbstractBlending implements BlendingInterface
 {
     /**

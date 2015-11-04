@@ -14,8 +14,7 @@ use Rainbow\Rgba;
 
 /**
  * Class HardLight
- * @package Rainbow\Calculation\Blending
- * @link http://www.w3.org/TR/compositing-1/#valdef-blend-mode-hard-light
+ * @link http://www.w3.org/TR/compositing-1/#blendinghardlight
  */
 final class HardLight implements BlendingInterface
 {

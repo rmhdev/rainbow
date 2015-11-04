@@ -10,6 +10,10 @@
 
 namespace Rainbow\Compositing\Blending;
 
+/**
+ * Multiplies or screens the colors, depending on the backdrop color value.
+ * @link http://www.w3.org/TR/compositing-1/#blendingoverlay
+ */
 class Overlay extends AbstractBlending implements BlendingInterface
 {
     /**
