@@ -16,6 +16,7 @@ use Rainbow\Compositing\Blending\Darken;
 use Rainbow\Compositing\Blending\Difference;
 use Rainbow\Compositing\Blending\Exclusion;
 use Rainbow\Compositing\Blending\HardLight;
+use Rainbow\Compositing\Blending\Lighten;
 use Rainbow\Compositing\Blending\Multiply;
 use Rainbow\Compositing\Blending\Normal;
 use Rainbow\Compositing\Blending\Overlay;
@@ -178,6 +179,18 @@ final class Blender
     public function darken(Rgba $color)
     {
         $blending = new Darken($this->getColor(), $color);
+
+        return $blending->result();
+    }
+
+    /**
+     * @see Rainbow\Compositing\Blending\Lighten
+     * @param Rgba $color
+     * @return Rgba
+     */
+    public function lighten(Rgba $color)
+    {
+        $blending = new Lighten($this->getColor(), $color);
 
         return $blending->result();
     }

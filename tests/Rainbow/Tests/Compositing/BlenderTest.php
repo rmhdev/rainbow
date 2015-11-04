@@ -92,4 +92,9 @@ class BlenderTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Rainbow\Rgba', $this->blender->darken($this->createNewColor()));
     }
+
+    public function testLightenShouldReturnColor()
+    {
+        $this->assertInstanceOf('Rainbow\Rgba', $this->blender->lighten($this->createNewColor()));
+    }
 }
