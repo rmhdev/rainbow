@@ -46,4 +46,26 @@ class DarkenTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $blendA->result());
         $this->assertEquals($expected, $blendB->result());
     }
+
+    /**
+     * @dataProvider alphaValues
+     */
+    public function testDarkenAlphaShouldReturnColorWithMinAlpha($expected, $backdropAlpha, $sourceAlpha)
+    {
+        $source = new Rgba(110, 120, 130, $sourceAlpha);
+        $backdrop = new Rgba(10, 20, 30, $backdropAlpha);
+        $blend = new Darken($backdrop, $source);
+
+        $this->assertEquals($expected, $blend->result()->getAlpha()->getValue());
+    }
+
+    public function alphaValues()
+    {
+        return array(
+            array(0, 0, 0),
+            array(1, 1, 1),
+            array(0, 1, 0),
+            array(0.5, 1, 0.5),
+        );
+    }
 }
