@@ -10,6 +10,7 @@
 
 namespace Rainbow\Compositing\Blending;
 
+use Rainbow\Component\Alpha;
 use Rainbow\Rgba;
 use Rainbow\Component\Rgb as RgbComponent;
 
@@ -30,7 +31,7 @@ abstract class AbstractBlending implements BlendingInterface
             $this->blendRed($backdrop, $source) * RgbComponent::MAX_VALUE,
             $this->blendGreen($backdrop, $source) * RgbComponent::MAX_VALUE,
             $this->blendBlue($backdrop, $source) * RgbComponent::MAX_VALUE,
-            1
+            $this->blendAlpha($backdrop, $source) * Alpha::MAX_VALUE
         );
     }
 
@@ -56,6 +57,11 @@ abstract class AbstractBlending implements BlendingInterface
             $backdrop->getBlue()->getValue() / RgbComponent::MAX_VALUE,
             $source->getBlue()->getValue() / RgbComponent::MAX_VALUE
         );
+    }
+
+    protected function blendAlpha(Rgba $backdrop, Rgba $source)
+    {
+        return 1;
     }
 
     /**
