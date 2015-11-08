@@ -61,7 +61,10 @@ abstract class AbstractBlending implements BlendingInterface
 
     protected function blendAlpha(Rgba $backdrop, Rgba $source)
     {
-        return 1;
+        return $this->blend(
+            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
+            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
+        );
     }
 
     /**

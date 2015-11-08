@@ -10,9 +10,6 @@
 
 namespace Rainbow\Compositing\Blending;
 
-use Rainbow\Component\Alpha;
-use Rainbow\Rgba;
-
 /**
  * Selects the darker of the backdrop and source colors
  * @link http://www.w3.org/TR/compositing-1/#blendingdarken
@@ -25,13 +22,5 @@ final class Darken extends AbstractBlending implements BlendingInterface
     protected function blend($backdrop, $source)
     {
         return min($backdrop, $source);
-    }
-
-    protected function blendAlpha(Rgba $backdrop, Rgba $source)
-    {
-        return $this->blend(
-            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
-            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
-        );
     }
 }

@@ -9,8 +9,6 @@
  */
 
 namespace Rainbow\Compositing\Blending;
-use Rainbow\Component\Alpha;
-use Rainbow\Rgba;
 
 /**
  * Darkens the backdrop color to reflect the source color
@@ -33,13 +31,5 @@ final class ColorBurn extends AbstractBlending implements BlendingInterface
         }
 
         return 1 - min(1, (1 - $backdrop) / $source);
-    }
-
-    protected function blendAlpha(Rgba $backdrop, Rgba $source)
-    {
-        return $this->blend(
-            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
-            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
-        );
     }
 }

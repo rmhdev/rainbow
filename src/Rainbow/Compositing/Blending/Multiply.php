@@ -9,8 +9,6 @@
  */
 
 namespace Rainbow\Compositing\Blending;
-use Rainbow\Component\Alpha;
-use Rainbow\Rgba;
 
 /**
  * The source color is multiplied by the destination color and replaces the destination
@@ -24,13 +22,5 @@ final class Multiply extends AbstractBlending implements BlendingInterface
     protected function blend($backdrop, $source)
     {
         return $backdrop * $source;
-    }
-
-    protected function blendAlpha(Rgba $backdrop, Rgba $source)
-    {
-        return $this->blend(
-            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
-            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
-        );
     }
 }
