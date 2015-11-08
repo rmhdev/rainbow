@@ -60,4 +60,29 @@ class HardLightTest extends \PHPUnit_Framework_TestCase
             array(new Rgba(0, 0, 255, 1), new Rgba(0, 0, 255, 1)),
         );
     }
+
+    /**
+     * @dataProvider alphaValues
+     */
+    public function testAlphaShouldReturnCorrectAlpha($expected, $backdrop, $source)
+    {
+        $blend = new HardLight(
+            new Rgba(100, 100, 100, $backdrop),
+            new Rgba(150, 150, 150, $source)
+        );
+
+        $this->assertEquals($expected, $blend->result()->getAlpha()->getValue());
+    }
+
+    public function alphaValues()
+    {
+        return array(
+            array(0, 0, 0),
+            array(0, 1, 0),
+            array(1, 1, 0.5),
+            array(1, 0.5, 1),
+            array(0.18, 0.3, 0.3),
+            array(0.94, 0.9, 0.7),
+        );
+    }
 }

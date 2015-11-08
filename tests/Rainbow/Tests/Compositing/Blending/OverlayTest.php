@@ -84,7 +84,8 @@ class OverlayTest extends \PHPUnit_Framework_TestCase
             array(1, 1, 0),
             array(1, 1, 0.5),
             array(1, 0.5, 1),
-            array(0.98, 0.9, 0.9),
+            array(0.18, 0.3, 0.3),
+            array(0.94, 0.9, 0.7),
         );
     }
 }
