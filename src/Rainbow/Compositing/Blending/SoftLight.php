@@ -9,6 +9,8 @@
  */
 
 namespace Rainbow\Compositing\Blending;
+use Rainbow\Component\Alpha;
+use Rainbow\Rgba;
 
 /**
  * Darkens or lightens the colors, depending on the source color value
@@ -32,5 +34,13 @@ final class SoftLight extends AbstractBlending implements BlendingInterface
         $result = $backdrop - (1 - 2 * $source) * $e * ($d - $backdrop);
 
         return $result;
+    }
+
+    protected function blendAlpha(Rgba $backdrop, Rgba $source)
+    {
+        return $this->blend(
+            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
+            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
+        );
     }
 }
