@@ -9,6 +9,8 @@
  */
 
 namespace Rainbow\Compositing\Blending;
+use Rainbow\Component\Alpha;
+use Rainbow\Rgba;
 
 /**
  * Multiplies or screens the colors, depending on the backdrop color value.
@@ -28,5 +30,13 @@ class Overlay extends AbstractBlending implements BlendingInterface
         }
 
         return $this->screen($value1 - 1, $source);
+    }
+
+    protected function blendAlpha(Rgba $backdrop, Rgba $source)
+    {
+        return $this->blend(
+            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
+            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
+        );
     }
 }
