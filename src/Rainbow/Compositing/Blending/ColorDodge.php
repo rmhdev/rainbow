@@ -9,6 +9,8 @@
  */
 
 namespace Rainbow\Compositing\Blending;
+use Rainbow\Component\Alpha;
+use Rainbow\Rgba;
 
 /**
  * Brightens the backdrop color to reflect the source color
@@ -29,5 +31,13 @@ final class ColorDodge extends AbstractBlending implements BlendingInterface
         }
 
         return min(1, $backdrop / (1 - $source));
+    }
+
+    protected function blendAlpha(Rgba $backdrop, Rgba $source)
+    {
+        return $this->blend(
+            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
+            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
+        );
     }
 }

@@ -58,4 +58,31 @@ class ColorDodgeTest extends \PHPUnit_Framework_TestCase
             array(new Rgba(255, 102, 0, 1), new Rgba(0, 0, 255, 1)),
         );
     }
+
+    public function testAlphaColorBurnWithTransparentOpaqueBackdropShouldReturnTransparentOpacity()
+    {
+        $backdrop = new Rgba(100, 100, 100, 0);
+        $source = new Rgba(150, 150, 150, 1);
+        $blend = new ColorDodge($backdrop, $source);
+
+        $this->assertEquals(0, $blend->result()->getAlpha()->getValue());
+    }
+
+    public function testAlphaColorBurnWithTotalOpacityBackdropShouldReturnTotalOpacity()
+    {
+        $backdrop = new Rgba(100, 100, 100, 0.5);
+        $source = new Rgba(150, 150, 150, 1);
+        $blend = new ColorDodge($backdrop, $source);
+
+        $this->assertEquals(1, $blend->result()->getAlpha()->getValue());
+    }
+
+    public function testAlphaColorBurnShouldReturnCorrectAlpha()
+    {
+        $backdrop = new Rgba(100, 100, 100, 0.3);
+        $source = new Rgba(150, 150, 150, 0.3);
+        $blend = new ColorDodge($backdrop, $source);
+
+        $this->assertEquals(0.43, $blend->result()->getAlpha()->getValue());
+    }
 }
