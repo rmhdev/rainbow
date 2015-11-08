@@ -58,4 +58,31 @@ class ColorBurnTest extends \PHPUnit_Framework_TestCase
             array(new Rgba(255, 0, 0, 1), new Rgba(0, 0, 255, 1)),
         );
     }
+
+    public function testAlphaColorBurnWithTotalOpaqueBackdropShouldReturnTotalOpacity()
+    {
+        $backdrop = new Rgba(100, 100, 100, 1);
+        $source = new Rgba(150, 150, 150, 0);
+        $blend = new ColorBurn($backdrop, $source);
+
+        $this->assertEquals(1, $blend->result()->getAlpha()->getValue());
+    }
+
+    public function testAlphaColorBurnWithTransparentBackdropShouldReturnTransparentAlpha()
+    {
+        $backdrop = new Rgba(100, 100, 100, 0.5);
+        $source = new Rgba(150, 150, 150, 0);
+        $blend = new ColorBurn($backdrop, $source);
+
+        $this->assertEquals(0, $blend->result()->getAlpha()->getValue());
+    }
+
+    public function testAlphaColorBurnShouldReturnCorrectAlpha()
+    {
+        $backdrop = new Rgba(100, 100, 100, 0.5);
+        $source = new Rgba(150, 150, 150, 0.7);
+        $blend = new ColorBurn($backdrop, $source);
+
+        $this->assertEquals(0.29, $blend->result()->getAlpha()->getValue());
+    }
 }
