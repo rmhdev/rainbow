@@ -9,6 +9,8 @@
  */
 
 namespace Rainbow\Compositing\Blending;
+use Rainbow\Component\Alpha;
+use Rainbow\Rgba;
 
 /**
  * Subtracts the darker of the two constituent colors from the lighter color
@@ -22,5 +24,13 @@ final class Difference extends AbstractBlending implements BlendingInterface
     protected function blend($backdrop, $source)
     {
         return abs($backdrop - $source);
+    }
+
+    protected function blendAlpha(Rgba $backdrop, Rgba $source)
+    {
+        return $this->blend(
+            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
+            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
+        );
     }
 }

@@ -22,7 +22,7 @@ class DifferenceTest extends \PHPUnit_Framework_TestCase
      */
     public function testColorShouldReturnCorrectColor(Rgba $expected, Rgba $color)
     {
-        $lowLumaColor = new Rgba(255, 102, 0, 1);
+        $lowLumaColor = new Rgba(255, 102, 0, 0);
         $overlay = new Difference($lowLumaColor, $color);
 
         $this->assertEquals($expected, $overlay->result());
@@ -40,6 +40,29 @@ class DifferenceTest extends \PHPUnit_Framework_TestCase
             array(new Rgba(0, 102, 0, 1), new Rgba(255, 0, 0, 1)),
             array(new Rgba(255, 153, 0, 1), new Rgba(0, 255, 0, 1)),
             array(new Rgba(255, 102, 255, 1), new Rgba(0, 0, 255, 1)),
+        );
+    }
+
+    /**
+     * @dataProvider alphaValues
+     */
+    public function testDifferenceAlphaShouldReturnCorrectAlpha($expected, $backdrop, $source)
+    {
+        $blend = new Difference(
+            new Rgba(100, 100, 100, $backdrop),
+            new Rgba(150, 150, 150, $source)
+        );
+
+        $this->assertEquals($expected, $blend->result()->getAlpha()->getValue());
+    }
+
+    public function alphaValues()
+    {
+        return array(
+            array(0, 1, 1),
+            array(0.5, 1, 0.5),
+            array(0.5, 0.5, 1),
+            array(1, 0, 1),
         );
     }
 }
