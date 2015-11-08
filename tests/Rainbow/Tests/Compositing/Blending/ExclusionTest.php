@@ -22,7 +22,7 @@ class ExclusionTest extends \PHPUnit_Framework_TestCase
      */
     public function testColorShouldReturnCorrectColor(Rgba $expected, Rgba $color)
     {
-        $baseColor = new Rgba(255, 102, 0, 1);
+        $baseColor = new Rgba(255, 102, 0, 0);
         $operation = new Exclusion($baseColor, $color);
 
         $this->assertEquals($expected, $operation->result());
@@ -40,6 +40,27 @@ class ExclusionTest extends \PHPUnit_Framework_TestCase
             array(new Rgba(0, 102, 0, 1), new Rgba(255, 0, 0, 1)),
             array(new Rgba(255, 153, 0, 1), new Rgba(0, 255, 0, 1)),
             array(new Rgba(255, 102, 255, 1), new Rgba(0, 0, 255, 1)),
+        );
+    }
+
+    /**
+     * @dataProvider alphaValues
+     */
+    public function testAlphaShouldReturnColorWithMinAlpha($expected, $backdropAlpha, $sourceAlpha)
+    {
+        $source = new Rgba(110, 120, 130, $sourceAlpha);
+        $backdrop = new Rgba(10, 20, 30, $backdropAlpha);
+        $blend = new Exclusion($backdrop, $source);
+
+        $this->assertEquals($expected, $blend->result()->getAlpha()->getValue());
+    }
+
+    public function alphaValues()
+    {
+        return array(
+            array(0.5, 0.5, 0.5),
+            array(1, 1, 0),
+            array(0.7, 1, 0.3),
         );
     }
 }

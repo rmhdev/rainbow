@@ -10,6 +10,9 @@
 
 namespace Rainbow\Compositing\Blending;
 
+use Rainbow\Component\Alpha;
+use Rainbow\Rgba;
+
 /**
  * Produces an effect similar to that of the Difference mode but lower in contrast
  * @link http://www.w3.org/TR/compositing-1/#blendingexclusion
@@ -25,5 +28,13 @@ final class Exclusion extends AbstractBlending implements BlendingInterface
         $prod = 2 * ($backdrop * $source);
 
         return $sum - $prod;
+    }
+
+    protected function blendAlpha(Rgba $backdrop, Rgba $source)
+    {
+        return $this->blend(
+            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
+            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
+        );
     }
 }
