@@ -9,6 +9,8 @@
  */
 
 namespace Rainbow\Compositing\Blending;
+use Rainbow\Component\Alpha;
+use Rainbow\Rgba;
 
 /**
  * Multiplies the complements of the backdrop and source color values, then complements the result.
@@ -22,5 +24,13 @@ final class Screen extends AbstractBlending implements BlendingInterface
     protected function blend($backdrop, $source)
     {
         return $this->screen($backdrop, $source);
+    }
+
+    protected function blendAlpha(Rgba $backdrop, Rgba $source)
+    {
+        return $this->blend(
+            $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
+            $source->getAlpha()->getValue() / Alpha::MAX_VALUE
+        );
     }
 }
