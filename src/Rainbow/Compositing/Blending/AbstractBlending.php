@@ -28,10 +28,10 @@ abstract class AbstractBlending implements BlendingInterface
     public function __construct(Rgba $backdrop, Rgba $source)
     {
         $this->result = new Rgba(
-            $this->blendRed($backdrop, $source) * RgbComponent::MAX_VALUE,
-            $this->blendGreen($backdrop, $source) * RgbComponent::MAX_VALUE,
-            $this->blendBlue($backdrop, $source) * RgbComponent::MAX_VALUE,
-            $this->blendAlpha($backdrop, $source) * Alpha::MAX_VALUE
+            $this->blendRed($backdrop, $source),
+            $this->blendGreen($backdrop, $source),
+            $this->blendBlue($backdrop, $source),
+            $this->blendAlpha($backdrop, $source)
         );
     }
 
@@ -40,7 +40,7 @@ abstract class AbstractBlending implements BlendingInterface
         return $this->blend(
             $backdrop->getRed()->getValue() / RgbComponent::MAX_VALUE,
             $source->getRed()->getValue() / RgbComponent::MAX_VALUE
-        );
+        ) * RgbComponent::MAX_VALUE;
     }
 
     private function blendGreen(Rgba $backdrop, Rgba $source)
@@ -48,7 +48,7 @@ abstract class AbstractBlending implements BlendingInterface
         return $this->blend(
             $backdrop->getGreen()->getValue() / RgbComponent::MAX_VALUE,
             $source->getGreen()->getValue() / RgbComponent::MAX_VALUE
-        );
+        ) * RgbComponent::MAX_VALUE;
     }
 
     private function blendBlue(Rgba $backdrop, Rgba $source)
@@ -56,7 +56,7 @@ abstract class AbstractBlending implements BlendingInterface
         return $this->blend(
             $backdrop->getBlue()->getValue() / RgbComponent::MAX_VALUE,
             $source->getBlue()->getValue() / RgbComponent::MAX_VALUE
-        );
+        ) * RgbComponent::MAX_VALUE;
     }
 
     protected function blendAlpha(Rgba $backdrop, Rgba $source)
@@ -64,7 +64,7 @@ abstract class AbstractBlending implements BlendingInterface
         return $this->blend(
             $backdrop->getAlpha()->getValue() / Alpha::MAX_VALUE,
             $source->getAlpha()->getValue() / Alpha::MAX_VALUE
-        );
+        ) * Alpha::MAX_VALUE;
     }
 
     /**
