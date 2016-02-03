@@ -13,7 +13,7 @@ namespace Rainbow;
 use Rainbow\Component\Alpha;
 use Rainbow\Component\Percent;
 use Rainbow\Translator\Translator;
-use Rainbow\Calculation\Blender;
+use Rainbow\Compositing\Blender;
 
 interface ColorInterface
 {
