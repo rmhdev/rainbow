@@ -1,6 +1,24 @@
-# rainbow
-Immutable colors
+# Rainbow
 
+PHP library to simplify color manipulation.
+
+## Installation
+
+Work in progress.
+
+## Example
+
+Create a color and twist it as you want!
+
+```php
+<?php
+
+Use Rainbow\Hex;
+
+$color = new Hex("#6d3353");
+```
+
+## notes
 
 Alpha compositing: http://www.w3.org/TR/compositing-1/#simplealphacompositing
 http://www.w3.org/TR/SVG11/masking.html#SimpleAlphaBlending
